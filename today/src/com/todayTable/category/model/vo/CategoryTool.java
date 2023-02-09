@@ -1,4 +1,4 @@
-package com.todayTable.member.model.vo;
+package com.todayTable.category.model.vo;
 
 public class CategoryTool {
 	private String cToolNo;
