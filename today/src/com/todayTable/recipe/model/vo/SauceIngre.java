@@ -38,6 +38,9 @@ public class SauceIngre {
 		return recipeNo;
 	}
 
+	
+	
+	
 	public void setRecipeNo(int recipeNo) {
 		this.recipeNo = recipeNo;
 	}
