@@ -2,10 +2,24 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 	<entry key="loginMember">
-	
+
 	</entry>
-	
+
 	<entry key="insertMember">
-		
+
+	</entry>
+
+	<entry key="loginAdmin">
+		SELECT
+		MEM_NO
+		, MEM_ID
+		, MEM_PWD
+		, NICKNAME
+		, MEM_NAME
+		, PHONE
+		, WARNING_COUNT
+		, MEM_IMG
+		FROM TB_MEMBER
+		WHERE MEM_PWD = ?
 	</entry>
 </properties>
