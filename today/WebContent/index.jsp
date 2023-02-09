@@ -27,10 +27,10 @@
 		}
 
 
-		body * {
+		/* body * {
 			box-sizing: border-box;
 			border: 1px solid black;
-		}
+		} */
 
 		.wrap {
 			width: 1000px;
