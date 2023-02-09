@@ -1,4 +1,4 @@
-package com.todayTable.member.model.vo;
+package com.todayTable.recipe.model.vo;
 
 public class CookingOrder {
 	private int coNo;

@@ -1,4 +1,4 @@
-package com.todayTable.member.model.vo;
+package com.todayTable.recipe.model.vo;
 
 import java.sql.Date;
 

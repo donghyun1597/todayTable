@@ -1,4 +1,4 @@
-package com.todayTable.member.model.vo;
+package com.todayTable.recipe.model.vo;
 
 public class Ingredient {
 	private int ingreNo;
