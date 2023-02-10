@@ -14,24 +14,18 @@
 			margin-left: 30px;
 			font-size: 20px;
 		}
-
 		.main-img {
 			display: flex;
 			justify-content: center;
 		}
-
-
 		.carousel-inner img {
 			width: 100%;
 			height: 100%;
 		}
-
-
 		/* body * {
 		box-sizing: border-box;
 		border: 1px solid black;
 		} */
-
 		.wrap {
 			width: 1000px;
 			height: 1200px;
