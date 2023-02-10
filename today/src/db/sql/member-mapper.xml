@@ -2,7 +2,21 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 	<entry key="loginMember">
-
+		SELECT 
+				MEM_NO
+      			,MEM_ID
+      			,MEM_PWD
+      			,NICKNAME
+      			,MEM_NAME
+      			,PHONE
+      			,WARNING_COUNT
+      			,MEM_IMG  
+		FROM 
+			TB_MEMBER
+		WHERE 
+			 MEM_ID=?
+		  AND 
+		     MEM_PWD=?
 	</entry>
 
 	<entry key="insertMember">
@@ -22,4 +36,27 @@
 		FROM TB_MEMBER
 		WHERE MEM_PWD = ?
 	</entry>
+	
+	<entry key="selectMemberAllergy">
+		SELECT 
+			ALG_NO
+			,ALG_NAME 
+    	FROM TB_ALLERGY
+		WHERE
+    		ALG_NO IN(SELECT ALG_NO
+              			FROM TB_MEM_ALLERGY
+              			WHERE MEM_NO=?)
+	</entry>
+	
+	<entry key="selectWishList">
+		SELECT 
+			MEM_NO
+			,RECIPE_NO
+			
+		FROM 
+			TB_WISHLIST
+		WHERE 
+			MEM_NO=?
+	</entry>
+	
 </properties>
