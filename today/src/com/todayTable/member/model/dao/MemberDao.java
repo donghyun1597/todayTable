@@ -6,7 +6,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
 import java.util.Properties;
 
 import static com.todayTable.common.JDBCTemplate.*;
@@ -31,7 +30,7 @@ public class MemberDao {
 		
 	}
 	
-	public HashMap<String, Object> loginMember(Connection conn,String memId,String memPwd) {
+	public Member loginMember(Connection conn,String memId,String memPwd) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String sql = prop.getProperty("loginMember");
@@ -66,16 +65,8 @@ public class MemberDao {
 			close(pstmt);
 			
 		}
-		Allergy memAlg = selectAllergy(conn, member.getMemNo());
-		WishList wish = selectWishList(conn, member.getMemNo());
 		
-		HashMap<String, Object> memberInfo = new HashMap<String, Object>();
-		
-		memberInfo.put("member", member);
-		memberInfo.put("memAlg", memAlg);
-		memberInfo.put("wishList", wish);
-		
-		return memberInfo;
+		return member;
 		
 	}
 	
@@ -105,6 +96,9 @@ public class MemberDao {
 		}
 		return memAlg;
 	}
+	
+	
+	
 	public WishList selectWishList(Connection conn,int memNo) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;

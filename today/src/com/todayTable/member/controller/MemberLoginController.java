@@ -1,16 +1,20 @@
 package com.todayTable.member.controller;
 
 import java.io.IOException;
-import java.util.HashMap;
 
-import javax.servlet.RequestDispatcher;
+
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 import com.todayTable.member.model.service.MemberService;
+import com.todayTable.member.model.vo.Allergy;
+import com.todayTable.member.model.vo.Member;
+import com.todayTable.member.model.vo.WishList;
 
 /**
  * Servlet implementation class MemberLoginController
@@ -35,10 +39,20 @@ public class MemberLoginController extends HttpServlet {
 		String memId=request.getParameter("memId");
 		String memPwd=request.getParameter("memPwd");
 		
-		HashMap<String, Object> memberInfo = new MemberService().loginMember(memId,memPwd);
+		Member member = new MemberService().loginMember(memId,memPwd);
 		
-
-		System.out.println(memberInfo);
+		if(member!=null) {
+			Allergy memAlg = new MemberService().selectAllergy(member.getMemNo());
+			WishList wishList = new MemberService().selectWishList(member.getMemNo());
+			
+			System.out.println(member);
+			System.out.println(memAlg);
+			System.out.println(wishList);
+			
+			
+		}else {
+			System.out.println("없는 회원입니다");
+		}
 		
 		
 	}
