@@ -59,4 +59,29 @@
 			MEM_NO=?
 	</entry>
 	
+	<entry key="selectRecipeFromTheme">
+	
+		SELECT RECIPE_NO 
+				FROM TB_CATEGORY
+				WHERE C_NAT_NO=(SELECT C_NAT_NO
+				FROM TB_CATEGORY_NATION
+				WHERE C_NAT_NAME='한국');
+	</entry>
+	<entry key="selelctRecipeFromIngredient">
+		SELECT RECIPE_NO 
+					FROM TB_INGREDIENT
+				WHERE 
+						INGRE_NAME='닭다리살';
+	
+	</entry>
+	<entry key="selectRecipeFromTheme">
+		SELECT RECIPE_NO
+				FROM TB_CATEGORY
+		WHERE C_THEME_NO = (SELECT C_THEME_NO
+								FROM 
+									TB_CATEGORY_THEME
+								WHERE 
+									C_THEME_NAME = '반려동물을 위한 요리');
+	
+	</entry>
 </properties>
