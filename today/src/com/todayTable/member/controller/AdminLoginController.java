@@ -38,16 +38,13 @@ public class AdminLoginController extends HttpServlet {
 		
 		Member m = new AdminService().loginAdmin(adminPwd);
 		
-		System.out.println(m);
-		System.out.println(adminPwd);
-		
 		if (m == null) {
 			request.setAttribute("errorMsg", "비밀번호를 확인해주세요");
 			
 			RequestDispatcher view = request.getRequestDispatcher("views/errorPage.jsp");
 			view.forward(request, response);
 		} else {
-			RequestDispatcher view = request.getRequestDispatcher("views/adminIndex.jsp");
+			RequestDispatcher view = request.getRequestDispatcher("views/admin/adminMenubar.jsp");
 			view.forward(request, response);
 		}
 	}
