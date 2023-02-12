@@ -1,4 +1,4 @@
-package com.todayTable.member.controller;
+package com.todayTable.customerCenter.controller;
 
 import java.io.IOException;
 
@@ -10,24 +10,25 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class FaqController
+ * Servlet implementation class InquiryController
  */
-@WebServlet("/faq.me")
-public class FaqController extends HttpServlet {
+@WebServlet("/inquiry.me")
+public class InquiryController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
+    /**                                                            
      * @see HttpServlet#HttpServlet()
      */
-    public FaqController() {
+    public InquiryController() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher view = request.getRequestDispatcher("views/faq.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("views/customerCenter/inquiry.jsp");
 		view.forward(request, response);
 	}
 
@@ -35,6 +36,7 @@ public class FaqController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

@@ -1,4 +1,4 @@
-package com.todayTable.customerCenter.model.vo;
+package com.todayTable.notice.model.vo;
 
 import java.sql.Date;
 

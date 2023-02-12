@@ -84,4 +84,35 @@
 									C_THEME_NAME = '반려동물을 위한 요리');
 	
 	</entry>
+	
+	<!-- 문의작성 -->
+	<entry key="writeInquiry">
+	INSERT
+	    INTO MEMBER
+	    (
+	      INQ_NO
+	    , MEM_NO
+	    , INQ_NAME
+	    , INQ_QUESTION
+	    , INQ_DATE
+	    , INQ_ANSWER
+	    , INQ_PROCESSING
+	    , INQ_PRIVATE
+        , INQ_STATUS
+	    )
+    VALUES
+	    (
+	      SEQ_INQ_NO.NEXTVAL
+	    , ?
+	    , ?
+	    , ?
+	    , DEFAULT
+	    , NULL
+	    , DEFAULT
+	    , ?
+        , DEFAULT
+	    )
+	</entry>
+	
+	
 </properties>
