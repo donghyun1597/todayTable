@@ -89,6 +89,11 @@
 <body>
     <body>
         <header>
+            <div style="margin-left: 250px;">
+				<span>
+					<img src="../resources/image/logo.png" alt="" width="130" height="130">
+				</span>
+			</div>		
         <nav class="dropmenu"><!-- 네비게이션 선언-->
         <ul>
            <li><a href="#">레시피 &or;</a><!-- 드롭다운할 상위메뉴--><!-- 상위메뉴-->
