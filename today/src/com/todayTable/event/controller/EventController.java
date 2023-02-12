@@ -1,24 +1,25 @@
-package com.todayTable.customerCenter.controller;
+package com.todayTable.event.controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class WirteInquiry
+ * Servlet implementation class EventController
  */
-@WebServlet("/wirteInquiry.me")
-public class WirteInquiry extends HttpServlet {
+@WebServlet("/event.me")
+public class EventController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public WirteInquiry() {
+    public EventController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,19 +28,8 @@ public class WirteInquiry extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 인코딩
-		request.setCharacterEncoding("UTF-8");
-		
-		// 세션 선언?
-		// HttpSession session = request.getSession();
-		
-		// 변수 설정
-		// String memNo = session.getAttribute("memNo");
-		String inqName = request.getParameter("inqName");
-		String inqQuestion = request.getParameter("inqQuestion");
-		
-		
-		
+		RequestDispatcher view = request.getRequestDispatcher("views/event/event.jsp");
+		view.forward(request, response);
 	}
 
 	/**

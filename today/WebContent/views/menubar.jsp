@@ -175,12 +175,12 @@
                     <li class="subdropmenu"><a href="#">고객센터</a>
                         <ul>
                             <li><a href="<%= contextPath %>/faq.me">자주묻는질문</a></li>
-                            <li><a href="#">1:1문의</a></li>
+                            <li><a href="<%= contextPath %>/inquiry.me">1:1문의</a></li>
                             <li><a href="#"></a></li>
                         </ul>
                     </li>
-                    <li><a href="#">이벤트</a></li>
-                    <li><a href="#">공지사항</a></li>
+                    <li><a href="<%= contextPath %>/event.me">이벤트</a></li>
+                    <li><a href="<%= contextPath %>/notice.me">공지사항</a></li>
                 </ul>
             </li>
         </ul>
