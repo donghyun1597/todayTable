@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	String contextPath = request.getContextPath();
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,8 +19,8 @@
 
    nav.dropmenu{
     display:flex;/* dropmenu를 flexbox로 만들겠다고 선언*/
-    justify-content:center;/*flex된 dropmenu 를 가운데 정렬*/
-    height:48px;/* 높이지정*/
+    justify-content: center;/*flex된 dropmenu 를 가운데 정렬*/
+    height: 48px;/* 높이지정*/
    }
 
    ul{
@@ -31,14 +34,16 @@
     color: rgb(66, 66, 66);/* 컬러*/
     text-decoration: none;/* a태그의 밑줄 삭제*/
     padding: 0px 10px 0px 10px;/* 패딩추가*/
+    /* font-size: 16px; */
     height: 48px;/* 높이*/
     line-height: 48px;/* 글씨의 높이를 중간으로 맞춰줌*/
     display: block;/* 블럭형으로 변경*/
-    font-weight: bold;
+    font-family: "Noto Sans KR", Helvetica, "Helvetica Neue", Arial, "sans-serif";
+    font-weight: 550;
    }
 
    .dropmenu li{
-    width:100px;/* 넓이 지정*/
+    width:150px;/* 넓이 지정*/
    }
 
    .dropmenu ul ul{
@@ -46,7 +51,7 @@
    }
 
    .dropmenu ul li:hover{/* 마우스를 올릴때 하단에 밑줄나오도록*/
-    border-bottom: 3px solid rgb(147, 112, 98);/* 보더 지정*/
+    border-bottom: 2px solid rgb(147, 112, 98);/* 보더 지정*/
     box-sizing:border-box;/* 박스의 크기를 보더의 크기를 포함한 크기로 변경*/
    }
 
@@ -96,6 +101,7 @@
                         <li><a href="#">간단자취</a></li>
                         <li><a href="#">편의점꿀조합</a></li>
                         <li><a href="#">반려동물위한</a></li>
+                        <li><a href="#"></a></li>
                     </ul>
 
                 </li>
@@ -105,6 +111,8 @@
                         <li><a href="#">오븐</a></li>
                         <li><a href="#">에어프라이어</a></li>
                         <li><a href="#">기타</a></li>
+                        <li><a href="#"></a></li>
+                        <li><a href="#"></a></li>
                     </ul>
                 </li>
 
@@ -135,6 +143,9 @@
                         <li><a href="#">안주</a></li>
                         <li><a href="#">반찬</a></li>
                         <li><a href="#">디저트</a></li>
+                        <li><a href="#"></a></li>
+                        <li><a href="#"></a></li>
+                        <li><a href="#"></a></li>
                     </ul>
                 </li>
 
@@ -144,31 +155,43 @@
                         <li><a href="#">양식</a></li>
                         <li><a href="#">일식</a></li>
                         <li><a href="#">중식</a></li>
+                        <li><a href="#"></a></li>
+                        <li><a href="#"></a></li>
                     </ul>
                 </li>
                 </ul>
-        </li><!-- 드롭다운할 상위메뉴 종료-->
+            </li><!-- 드롭다운할 상위메뉴 종료-->
 
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">랭킹 &or;</a>
-            <ul>
-                <li><a href="#">인기셰프</a></li>
-                <li><a href="#">인기레시피</a></li>
-              </ul>
-        </li>
-        <li><a href="#">요리영상</a></li>
-        <li><a href="#">더보기 &or;</a>
-            <ul>
-                <li><a href="#">공지사항</a></li>
-                <li><a href="#">이벤트</a></li>
-                <li><a href="#">고객센터</a></li>
-              </ul>
-        </li>
-
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">랭킹 &or;</a>
+                <ul>
+                    <li><a href="#">인기셰프</a></li>
+                    <li><a href="#">인기레시피</a></li>
+                </ul>
+            </li>
+            <li><a href="#">요리영상</a></li>
+            <li><a href="#">더보기 &or;</a>
+                <ul>
+                    <li class="subdropmenu"><a href="#">고객센터</a>
+                        <ul>
+                            <li><a href="<%= contextPath %>/faq.me">자주묻는질문</a></li>
+                            <li><a href="#">1:1문의</a></li>
+                            <li><a href="#"></a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">이벤트</a></li>
+                    <li><a href="#">공지사항</a></li>
+                </ul>
+            </li>
         </ul>
-        </nav><!-- 네비게이션 종료 선언-->
+        </nav><!-- 네비게이션 종료 선언 ㅠ -->
         </header>
 
+
+
+        <footer>    <!-- 푸터 선언 -->
+
+        </footer>   <!-- 푸터 선언 종료 수고하셨습니다-->
        </body>
 </body>
 </html>

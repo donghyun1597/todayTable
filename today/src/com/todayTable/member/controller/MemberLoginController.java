@@ -2,28 +2,31 @@ package com.todayTable.member.controller;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
+
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import com.todayTable.member.model.service.AdminService;
+
+import com.todayTable.member.model.service.MemberService;
+import com.todayTable.member.model.vo.Allergy;
 import com.todayTable.member.model.vo.Member;
+import com.todayTable.member.model.vo.WishList;
 
 /**
- * Servlet implementation class AdminLoginController
+ * Servlet implementation class MemberLoginController
  */
-@WebServlet("/adminlogin.do")
-public class AdminLoginController extends HttpServlet {
+@WebServlet("/login.me")
+public class MemberLoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminLoginController() {
+    public MemberLoginController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,21 +35,26 @@ public class AdminLoginController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
 		
-		String adminPwd = request.getParameter("adminPwd");
+		String memId=request.getParameter("memId");
+		String memPwd=request.getParameter("memPwd");
 		
-		Member m = new AdminService().loginAdmin(adminPwd);
+		Member member = new MemberService().loginMember(memId,memPwd);
 		
-		if (m == null) {
-			request.setAttribute("errorMsg", "비밀번호를 확인해주세요");
+		if(member!=null) {
+			Allergy memAlg = new MemberService().selectAllergy(member.getMemNo());
+			WishList wishList = new MemberService().selectWishList(member.getMemNo());
 			
-			RequestDispatcher view = request.getRequestDispatcher("views/errorPage.jsp");
-			view.forward(request, response);
-		} else {
-			RequestDispatcher view = request.getRequestDispatcher("views/admin/adminMenubar.jsp");
-			view.forward(request, response);
+			System.out.println(member);
+			System.out.println(memAlg);
+			System.out.println(wishList);
+			
+			
+		}else {
+			System.out.println("없는 회원입니다");
 		}
+		
+		
 	}
 
 	/**

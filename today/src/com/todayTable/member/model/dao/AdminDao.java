@@ -51,7 +51,6 @@ public class AdminDao {
 							 , rset.getString("MEM_IMG"));
 			}
 			
-			System.out.println(m);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

@@ -2,7 +2,21 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 	<entry key="loginMember">
-
+		SELECT 
+				MEM_NO
+      			,MEM_ID
+      			,MEM_PWD
+      			,NICKNAME
+      			,MEM_NAME
+      			,PHONE
+      			,WARNING_COUNT
+      			,MEM_IMG  
+		FROM 
+			TB_MEMBER
+		WHERE 
+			 MEM_ID=?
+		  AND 
+		     MEM_PWD=?
 	</entry>
 
 	<entry key="insertMember">
@@ -21,5 +35,53 @@
 		, MEM_IMG
 		FROM TB_MEMBER
 		WHERE MEM_PWD = ?
+	</entry>
+	
+	<entry key="selectMemberAllergy">
+		SELECT 
+			ALG_NO
+			,ALG_NAME 
+    	FROM TB_ALLERGY
+		WHERE
+    		ALG_NO IN(SELECT ALG_NO
+              			FROM TB_MEM_ALLERGY
+              			WHERE MEM_NO=?)
+	</entry>
+	
+	<entry key="selectWishList">
+		SELECT 
+			MEM_NO
+			,RECIPE_NO
+			
+		FROM 
+			TB_WISHLIST
+		WHERE 
+			MEM_NO=?
+	</entry>
+	
+	<entry key="selectRecipeFromTheme">
+	
+		SELECT RECIPE_NO 
+				FROM TB_CATEGORY
+				WHERE C_NAT_NO=(SELECT C_NAT_NO
+				FROM TB_CATEGORY_NATION
+				WHERE C_NAT_NAME='한국');
+	</entry>
+	<entry key="selelctRecipeFromIngredient">
+		SELECT RECIPE_NO 
+					FROM TB_INGREDIENT
+				WHERE 
+						INGRE_NAME='닭다리살';
+	
+	</entry>
+	<entry key="selectRecipeFromTheme">
+		SELECT RECIPE_NO
+				FROM TB_CATEGORY
+		WHERE C_THEME_NO = (SELECT C_THEME_NO
+								FROM 
+									TB_CATEGORY_THEME
+								WHERE 
+									C_THEME_NAME = '반려동물을 위한 요리');
+	
 	</entry>
 </properties>
