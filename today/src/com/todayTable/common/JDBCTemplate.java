@@ -50,6 +50,8 @@ public class JDBCTemplate {
 		return conn;
 	}
 	
+	
+	
 	// 2_1. Connection 객체 전달받아서 commit 시켜주는 commit 메소드
 	public static void commit(Connection conn) {
 		try {
@@ -63,6 +65,9 @@ public class JDBCTemplate {
 		}
 		
 	}
+	
+	
+	
 	// 2_2. Connection 객체 전달받아서 rollback 시켜주는 rollback 메소드
 	public static void rollback(Connection conn) {
 		try {
@@ -76,6 +81,8 @@ public class JDBCTemplate {
 		}
 		
 	}
+	
+	
 	
 	// 3_1. Connection 객체 전달받아서 반납시켜주는 close 메소드
 	public static void close(Connection conn) {
@@ -91,6 +98,9 @@ public class JDBCTemplate {
 		
 	}
 	
+	
+	
+	
 	// 3_2. Statement 객체 전달받아서 반납시켜주는 close 메소드
 	public static void close(Statement stmt) {
 		try {
@@ -104,6 +114,8 @@ public class JDBCTemplate {
 		}
 		
 	}
+	
+	
 	
 	// 3_3. ResultSet 객체 전달받아서 반납시켜주는 close 메소드
 	public static void close(ResultSet rset) {
