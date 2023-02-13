@@ -89,7 +89,8 @@
 <body>
     <body>
         <header>
-            <div style="margin-left: 250px;">
+            <div class="wrapper">
+            <div>
 				<span>
 					<img src="../resources/image/logo.png" alt="" width="130" height="130">
 				</span>
@@ -179,17 +180,18 @@
                 <ul>
                     <li class="subdropmenu"><a href="#">고객센터</a>
                         <ul>
-                            <li><a href="<%= contextPath %>/faq.me">자주묻는질문</a></li>
-                            <li><a href="<%= contextPath %>/inquiry.me">1:1문의</a></li>
+                            <li><a href="<%= contextPath %>/faq.cu">자주묻는질문</a></li>
+                            <li><a href="<%= contextPath %>/inquiry.cu">1:1문의</a></li>
                             <li><a href="#"></a></li>
                         </ul>
                     </li>
-                    <li><a href="<%= contextPath %>/event.me">이벤트</a></li>
-                    <li><a href="<%= contextPath %>/notice.me">공지사항</a></li>
+                    <li><a href="<%= contextPath %>/event.ev">이벤트</a></li>
+                    <li><a href="<%= contextPath %>/noticeList.no">공지사항</a></li>
                 </ul>
             </li>
         </ul>
         </nav><!-- 네비게이션 종료 선언 ㅠ -->
+    </div>
         </header>
 
 

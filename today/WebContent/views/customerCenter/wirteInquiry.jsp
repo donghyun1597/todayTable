@@ -42,7 +42,7 @@
     <div id="wrap">
         <br><br>
         <h1 id="title"><b>문의 작성</b></h1> <br><br>
-        <form id="wirteInquiry-form" action="<%= contextPath %>/insertInquiry.me" method="post">
+        <form id="wirteInquiry-form" action="<%= contextPath %>/insertInquiry.cu" method="post">
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label"><b>제목</b></label>
             <input type="email" class="form-control" id="exampleFormControlInput1" name="inqName" placeholder="제목을 입력해주세요.">

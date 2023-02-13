@@ -21,6 +21,14 @@ public class Notice {
 		this.noticeClsfc = noticeClsfc;
 		this.noticeStatus = noticeStatus;
 	}
+	
+	public Notice(int noticeNo, String noticeClsfc, String noticeName, Date noticeDate) {
+		super();
+		this.noticeNo = noticeNo;
+		this.noticeClsfc = noticeClsfc;
+		this.noticeName = noticeName;
+		this.noticeDate = noticeDate;
+	}
 	public int getNoticeNo() {
 		return noticeNo;
 	}
