@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+	<!-- 공지사항 조회 -->
+	
+	<entry key="selectNoticeList">
+		SELECT
+		        NOTICE_NO
+		    ,   NOTICE_CLSFC
+		    ,   NOTICE_NAME
+		    ,   NOTICE_DATE
+		FROM TB_NOTICE
+		WHERE NOTICE_STATUS = 'Y'
+		ORDER
+		   BY NOTICE_NO DESC
+	</entry>
+
+
+
+
+
+</properties>

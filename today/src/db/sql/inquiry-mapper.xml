@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+	<!-- 문의작성 -->
+	<entry key="writeInquiry">
+	INSERT
+	    INTO MEMBER
+	    (
+	      INQ_NO
+	    , MEM_NO
+	    , INQ_NAME
+	    , INQ_QUESTION
+	    , INQ_DATE
+	    , INQ_ANSWER
+	    , INQ_PROCESSING
+	    , INQ_PRIVATE
+        , INQ_STATUS
+	    )
+    VALUES
+	    (
+	      SEQ_INQ_NO.NEXTVAL
+	    , ?
+	    , ?
+	    , ?
+	    , DEFAULT
+	    , NULL
+	    , DEFAULT
+	    , ?
+        , DEFAULT
+	    )
+	</entry>
+
+
+</properties>
