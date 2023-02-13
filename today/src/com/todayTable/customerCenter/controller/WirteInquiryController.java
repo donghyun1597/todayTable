@@ -1,4 +1,4 @@
-package com.todayTable.member.controller;
+package com.todayTable.customerCenter.controller;
 
 import java.io.IOException;
 
@@ -10,20 +10,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.todayTable.member.model.service.AdminService;
-import com.todayTable.member.model.vo.Member;
-
 /**
- * Servlet implementation class AdminLoginController
+ * Servlet implementation class WirteInquiry
  */
-@WebServlet("/adminlogin.do")
-public class AdminLoginController extends HttpServlet {
+@WebServlet("/wirteInquiry.cu")
+public class WirteInquiryController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminLoginController() {
+    public WirteInquiryController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,21 +29,25 @@ public class AdminLoginController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
+		RequestDispatcher view = request.getRequestDispatcher("views/customerCenter/wirteInquiry.jsp");
+		view.forward(request, response);
+		
+		
+		// 인코딩
 		request.setCharacterEncoding("UTF-8");
 		
-		String adminPwd = request.getParameter("adminPwd");
+		// 세션 선언?
+		// HttpSession session = request.getSession();
 		
-		Member m = new AdminService().loginAdmin(adminPwd);
+		// 변수 설정
+		// String memNo = session.getAttribute("memNo");
+		String inqName = request.getParameter("inqName");
+		String inqQuestion = request.getParameter("inqQuestion");
 		
-		if (m == null) {
-			request.setAttribute("errorMsg", "비밀번호를 확인해주세요");
-			
-			RequestDispatcher view = request.getRequestDispatcher("views/errorPage.jsp");
-			view.forward(request, response);
-		} else {
-			RequestDispatcher view = request.getRequestDispatcher("views/admin/adminIndex.jsp");
-			view.forward(request, response);
-		}
+		
+		
 	}
 
 	/**

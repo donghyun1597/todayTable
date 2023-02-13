@@ -89,6 +89,12 @@
 <body>
     <body>
         <header>
+            <div class="wrapper">
+            <div>
+				<span>
+					<img src="../resources/image/logo.png" alt="" width="130" height="130">
+				</span>
+			</div>		
         <nav class="dropmenu"><!-- 네비게이션 선언-->
         <ul>
            <li><a href="#">레시피 &or;</a><!-- 드롭다운할 상위메뉴--><!-- 상위메뉴-->
@@ -174,17 +180,18 @@
                 <ul>
                     <li class="subdropmenu"><a href="#">고객센터</a>
                         <ul>
-                            <li><a href="<%= contextPath %>/faq.me">자주묻는질문</a></li>
-                            <li><a href="#">1:1문의</a></li>
+                            <li><a href="<%= contextPath %>/faq.cu">자주묻는질문</a></li>
+                            <li><a href="<%= contextPath %>/inquiry.cu">1:1문의</a></li>
                             <li><a href="#"></a></li>
                         </ul>
                     </li>
-                    <li><a href="#">이벤트</a></li>
-                    <li><a href="#">공지사항</a></li>
+                    <li><a href="<%= contextPath %>/event.ev">이벤트</a></li>
+                    <li><a href="<%= contextPath %>/noticeList.no">공지사항</a></li>
                 </ul>
             </li>
         </ul>
         </nav><!-- 네비게이션 종료 선언 ㅠ -->
+    </div>
         </header>
 
 

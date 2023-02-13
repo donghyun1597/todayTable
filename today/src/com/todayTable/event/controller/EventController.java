@@ -1,4 +1,4 @@
-package com.todayTable.member.controller;
+package com.todayTable.event.controller;
 
 import java.io.IOException;
 
@@ -8,22 +8,18 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import com.todayTable.member.model.service.AdminService;
-import com.todayTable.member.model.vo.Member;
 
 /**
- * Servlet implementation class AdminLoginController
+ * Servlet implementation class EventController
  */
-@WebServlet("/adminlogin.do")
-public class AdminLoginController extends HttpServlet {
+@WebServlet("/event.ev")
+public class EventController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminLoginController() {
+    public EventController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,21 +28,8 @@ public class AdminLoginController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		
-		String adminPwd = request.getParameter("adminPwd");
-		
-		Member m = new AdminService().loginAdmin(adminPwd);
-		
-		if (m == null) {
-			request.setAttribute("errorMsg", "비밀번호를 확인해주세요");
-			
-			RequestDispatcher view = request.getRequestDispatcher("views/errorPage.jsp");
-			view.forward(request, response);
-		} else {
-			RequestDispatcher view = request.getRequestDispatcher("views/admin/adminIndex.jsp");
-			view.forward(request, response);
-		}
+		RequestDispatcher view = request.getRequestDispatcher("views/event/event.jsp");
+		view.forward(request, response);
 	}
 
 	/**

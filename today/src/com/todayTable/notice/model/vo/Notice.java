@@ -1,4 +1,4 @@
-package com.todayTable.customerCenter.model.vo;
+package com.todayTable.notice.model.vo;
 
 import java.sql.Date;
 
@@ -20,6 +20,14 @@ public class Notice {
 		this.noticeDate = noticeDate;
 		this.noticeClsfc = noticeClsfc;
 		this.noticeStatus = noticeStatus;
+	}
+	
+	public Notice(int noticeNo, String noticeClsfc, String noticeName, Date noticeDate) {
+		super();
+		this.noticeNo = noticeNo;
+		this.noticeClsfc = noticeClsfc;
+		this.noticeName = noticeName;
+		this.noticeDate = noticeDate;
 	}
 	public int getNoticeNo() {
 		return noticeNo;
