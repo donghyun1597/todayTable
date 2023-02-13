@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+	<entry key="selectEventList">
+		SELECT 
+	        EVENT_NO
+	      , EVENT_PROCESSING
+	      , EVENT_NAME
+	      , EVENT_DATE
+		FROM TB_EVENT
+	</entry>
+
+
+</properties>

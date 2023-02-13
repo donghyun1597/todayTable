@@ -7,13 +7,13 @@ public class Event {
 	private String eventName;
 	private String eventContents;
 	private Date eventDate;
-	private char eventProcessing;
-	private char eventStatus;
+	private String eventProcessing;
+	private String eventStatus;
 	
 	public Event() {}
 
-	public Event(int eventNo, String eventName, String eventContents, Date eventDate, char eventProcessing,
-			char eventStatus) {
+	public Event(int eventNo, String eventName, String eventContents, Date eventDate, String eventProcessing,
+			String eventStatus) {
 		super();
 		this.eventNo = eventNo;
 		this.eventName = eventName;
@@ -21,6 +21,14 @@ public class Event {
 		this.eventDate = eventDate;
 		this.eventProcessing = eventProcessing;
 		this.eventStatus = eventStatus;
+	}
+
+	public Event(int eventNo, String eventProcessing, String eventName, Date eventDate) {
+		super();
+		this.eventNo = eventNo;
+		this.eventProcessing = eventProcessing;
+		this.eventName = eventName;
+		this.eventDate = eventDate;
 	}
 
 	public int getEventNo() {
@@ -55,19 +63,19 @@ public class Event {
 		this.eventDate = eventDate;
 	}
 
-	public char getEventProcessing() {
+	public String getEventProcessing() {
 		return eventProcessing;
 	}
 
-	public void setEventProcessing(char eventProcessing) {
+	public void setEventProcessing(String eventProcessing) {
 		this.eventProcessing = eventProcessing;
 	}
 
-	public char getEventStatus() {
+	public String getEventStatus() {
 		return eventStatus;
 	}
 
-	public void setEventStatus(char eventStatus) {
+	public void setEventStatus(String eventStatus) {
 		this.eventStatus = eventStatus;
 	}
 
