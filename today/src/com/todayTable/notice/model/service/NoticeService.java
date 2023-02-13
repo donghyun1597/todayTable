@@ -12,8 +12,6 @@ public class NoticeService {
 	public ArrayList<Notice> selectNoticeList() {
 		java.sql.Connection conn = getConnection();
 		
-		new NoticeDao().selectNoticeList(conn);
-		
 		ArrayList<Notice> list = new NoticeDao().selectNoticeList(conn);
 		close(conn);
 		
