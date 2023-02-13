@@ -68,6 +68,7 @@ public class MemberDao {
 		
 		return member;
 		
+		
 	}
 	
 	public Allergy selectAllergy(Connection conn,int memNo) {
