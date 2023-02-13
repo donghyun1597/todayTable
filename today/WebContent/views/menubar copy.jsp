@@ -12,18 +12,15 @@
     <title>메뉴바</title>
 
     <style>
-    *{/* 화면 전체의 기본적인 패딩,마진 제거 */
+    *{ /* 화면 전체의 기본적인 패딩,마진 제거 */
     margin:0px;
     padding:0px;
    }
 
    nav.dropmenu{
-    display: block;/* dropmenu를 ? 만들겠다고 선언*/
-    width: 750px;
-    height: 40px;
-    justify-content: center;/*flex된 dropmenu 를 가운데 정렬*/
-    height: 48px;/* 높이지정*/
-    padding:auto;
+    display:flex; /*dropmenu를 flexbox로 만들겠다고 선언*/
+    justify-content: center; /*flex된 dropmenu 를 가운데 정렬*/
+    height: 48px; /*높이지정*/
    }
 
    ul{
@@ -33,8 +30,7 @@
     border-radius: 5px;/* 보더를 둥글게*/
    }
 
-
-   .dropmenu a{
+   a{
     color: rgb(66, 66, 66);/* 컬러*/
     text-decoration: none;/* a태그의 밑줄 삭제*/
     padding: 0px 10px 0px 10px;/* 패딩추가*/
@@ -46,13 +42,12 @@
     font-weight: 550;
    }
 
-
    .dropmenu li{
     width:150px;/* 넓이 지정*/
    }
 
    .dropmenu ul ul{
-    display:none;/* .dropmenu의 ul 하위의 ul을 숨김처리*/
+    display:none; /*.dropmenu의 ul 하위의 ul을 숨김처리*/
    }
 
    .dropmenu ul li:hover{/* 마우스를 올릴때 하단에 밑줄나오도록*/
@@ -74,6 +69,7 @@
     box-sizing:border-box;/* 박스의 크기를 보더의 크기를 포함한 크기로 변경*/
    }
 
+
    .dropmenu ul li:hover li.subdropmenu ul{/*추가 2단 드랍메뉴 구성*/
      display: none;/*추가 드랍메뉴 숨기기*/
    }
@@ -85,33 +81,30 @@
      top: 0px;/*추가 드랍메뉴 위치를 상단에서 30px만큼 옮김(a 에서 지정한 높이값 만큼)*/
    }
    
-    .dropmenu ul li:hover li.subdropmenu:hover ul li{
+.dropmenu ul li:hover li.subdropmenu:hover ul li{
      width: 120px;/*추가 하위메뉴 넓이 수정*/
    }
+
     </style>
+
+
 </head>
 <body>
-    
+    <body>
         <header>
-        <div class="wrapper">
-            <div>
-				<span>
-					<img src="../resources/image/logo.png" alt="" width="130" height="130">
-				</span>
-			</div>		
-        <nav class="dropmenu" style="border: 1px solid ;"><!-- 네비게이션 선언-->
+        <nav class="dropmenu"><!-- 네비게이션 선언-->
         <ul>
-           <li><a href="#">레시피 &or;</a><!-- 드롭다운할 상위메뉴--><!-- 상위메뉴-->
+           <li class="main1"><a href="#">레시피 &or;</a><!-- 드롭다운할 상위메뉴--><!-- 상위메뉴-->
                 <ul>
 
                  <li class="subdropmenu"><a href="#">테마별</a>
                     <ul>
-                        <li><a href="#">건강식</a></li>
-                        <li><a href="#">캠핑요리</a></li>
-                        <li><a href="#">간단자취</a></li>
-                        <li><a href="#">편의점꿀조합</a></li>
-                        <li><a href="#">반려동물위한</a></li>
-                        <li><a href="#"></a></li>
+                        <li id="sub1"><a href="#">건강식</a></li>
+                        <li id="sub2"><a href="#">캠핑요리</a></li>
+                        <li id="sub3"><a href="#">간단자취</a></li>
+                        <li id="sub4"><a href="#">편의점꿀조합</a></li>
+                        <li id="sub5"><a href="#">반려동물위한</a></li>
+                        <li id="sub6"><a href="#"></a></li>
                     </ul>
 
                 </li>
@@ -172,30 +165,29 @@
                 </ul>
             </li><!-- 드롭다운할 상위메뉴 종료-->
 
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">랭킹 &or;</a>
+            <li class="main2"><a href="#">About Us</a></li>
+            <li class="main3"><a href="#">랭킹 &or;</a>
                 <ul>
                     <li><a href="#">인기셰프</a></li>
                     <li><a href="#">인기레시피</a></li>
                 </ul>
             </li>
-            <li><a href="#">요리영상</a></li>
-            <li><a href="#">더보기 &or;</a>
+            <li class="main4"><a href="#">요리영상</a></li>
+            <li class="main5"><a href="#">더보기 &or;</a>
                 <ul>
                     <li class="subdropmenu"><a href="#">고객센터</a>
                         <ul>
-                            <li><a href="<%= contextPath %>/faq.cu">자주묻는질문</a></li>
-                            <li><a href="<%= contextPath %>/inquiry.cu">1:1문의</a></li>
+                            <li><a href="<%= contextPath %>/faq.me">자주묻는질문</a></li>
+                            <li><a href="#">1:1문의</a></li>
                             <li><a href="#"></a></li>
                         </ul>
                     </li>
-                    <li><a href="<%= contextPath %>/eventList.ev">이벤트</a></li>
-                    <li><a href="<%= contextPath %>/noticeList.no">공지사항</a></li>
+                    <li><a href="#">이벤트</a></li>
+                    <li><a href="#">공지사항</a></li>
                 </ul>
             </li>
         </ul>
         </nav><!-- 네비게이션 종료 선언 ㅠ -->
-    </div>
         </header>
 
 
@@ -203,6 +195,6 @@
         <footer>    <!-- 푸터 선언 -->
 
         </footer>   <!-- 푸터 선언 종료 수고하셨습니다-->
-       <br>
+       </body>
 </body>
 </html>
