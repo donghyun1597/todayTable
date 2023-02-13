@@ -1,5 +1,10 @@
+<%@page import="com.todayTable.event.model.vo.Event"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	ArrayList<Event> list = (ArrayList<Event>)request.getAttribute("list");
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -65,6 +70,7 @@
 
 <%@ include file = "../menubar.jsp" %>
 
+
 <div id="wrap">
     <br><br>
     <div id="notice">
@@ -85,66 +91,22 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>x</td>
-                    <td>xx</td>
-                    <td style="text-align: left;"><a href="#">xxxx</a></td>
-                    <td>xx</td>
+            	<!-- case1. 공지글 없음 -->
+            	<%if(list.isEmpty()) { %>
+           		<tr>
+                    <td colspan="4">존재하는 공지사항이 없습니다.</td>
                 </tr>
+                <% }else { %>
+                <!-- case2. 공지글 있음 -->
+                <% for(Event e :list) { %>
                 <tr>
-                    <td>x</td>
-                    <td>xx</td>
-                    <td style="text-align: left;"><a href="#">xxxx</a></td>
-                    <td>xx</td>
+                    <td><%= e.getEventNo() %></td>
+                    <td><%= (e.getEventProcessing().equals("Y")) ? "진행" : "종료" %></td>
+                    <td style="text-align: left;"><a href="#"><%= e.getEventName() %></a></td>
+                    <td><%= e.getEventDate() %></td>
                 </tr>
-                <tr>
-                    <td>x</td>
-                    <td>xx</td>
-                    <td style="text-align: left;"><a href="#">xxxx</a></td>
-                    <td>xx</td>
-                </tr>
-                <tr>
-                    <td>x</td>
-                    <td>xx</td>
-                    <td style="text-align: left;"><a href="#">xxxx</a></td>
-                    <td>xx</td>
-                </tr>
-                <tr>
-                    <td>x</td>
-                    <td>xx</td>
-                    <td style="text-align: left;"><a href="#">xxxx</a></td>
-                    <td>xx</td>
-                </tr>
-                <tr>
-                    <td>x</td>
-                    <td>xx</td>
-                    <td style="text-align: left;"><a href="#">xxxx</a></td>
-                    <td>xx</td>
-                </tr>
-                <tr>
-                    <td>x</td>
-                    <td>xx</td>
-                    <td style="text-align: left;"><a href="#">xxxx</a></td>
-                    <td>xx</td>
-                </tr>
-                <tr>
-                    <td>x</td>
-                    <td>xx</td>
-                    <td style="text-align: left;"><a href="#">xxxx</a></td>
-                    <td>xx</td>
-                </tr>
-                <tr>
-                    <td>x</td>
-                    <td>xx</td>
-                    <td style="text-align: left;"><a href="#">xxxx</a></td>
-                    <td>xx</td>
-                </tr>
-                <tr>
-                    <td>x</td>
-                    <td>xx</td>
-                    <td style="text-align: left;"><a href="#">xxxx</a></td>
-                    <td>xx</td>
-                </tr>
+                <% } %>
+                <% } %>
             </tbody>
         </table>
     </div>
@@ -152,13 +114,13 @@
     <div class="m-4" id="paging">
         <nav>
             <ul class="pagination">
-                <li class="page-item"><a href="#" class="page-link"> < </a></li>
+                <li class="page-item"><a href="#" class="page-link"> &lt; </a></li>
                 <li class="page-item"><a href="#" class="page-link">1</a></li>
                 <li class="page-item"><a href="#" class="page-link">2</a></li>
                 <li class="page-item"><a href="#" class="page-link">3</a></li>
                 <li class="page-item"><a href="#" class="page-link">4</a></li>
                 <li class="page-item"><a href="#" class="page-link">5</a></li>
-                <li class="page-item"><a href="#" class="page-link"> > </a></li>
+                <li class="page-item"><a href="#" class="page-link"> &gt; </a></li>
             </ul>
         </nav>
     </div>
@@ -176,6 +138,7 @@
             </button>
         </div>
     </div>
+</div>
 </div>
 
 </body>

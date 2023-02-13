@@ -33,7 +33,8 @@
     border-radius: 5px;/* 보더를 둥글게*/
    }
 
-   a{
+
+   .dropmenu a{
     color: rgb(66, 66, 66);/* 컬러*/
     text-decoration: none;/* a태그의 밑줄 삭제*/
     padding: 0px 10px 0px 10px;/* 패딩추가*/
@@ -90,7 +91,7 @@
     </style>
 </head>
 <body>
-    <body>
+    
         <header>
         <div class="wrapper">
             <div>
@@ -188,7 +189,7 @@
                             <li><a href="#"></a></li>
                         </ul>
                     </li>
-                    <li><a href="<%= contextPath %>/event.ev">이벤트</a></li>
+                    <li><a href="<%= contextPath %>/eventList.ev">이벤트</a></li>
                     <li><a href="<%= contextPath %>/noticeList.no">공지사항</a></li>
                 </ul>
             </li>
@@ -202,6 +203,6 @@
         <footer>    <!-- 푸터 선언 -->
 
         </footer>   <!-- 푸터 선언 종료 수고하셨습니다-->
-       </body>
+       <br>
 </body>
 </html>
