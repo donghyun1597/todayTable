@@ -18,41 +18,7 @@
 <link href="<%= contextPath %>/resources/css/styles.css"
 	rel="stylesheet" />
 <style>
-.list-group-flush span {
-	font-weight: 900;
-	margin-left: 30px;
-}
 
-.report-wrapper, .inquiry-wrapper{
-	width: 100%;
-	height: 30%;
-}
-
-.report-wrapper div{
-	height: 100%;
-	float: left;
-}
-
-.inquiry-wrapper div{
-	height: 100%;
-	float: left;
-}
-
-.report-left, .inquiry-left{
-	width: 50%;
-}
-
-.report-right, .inquiry-right{
-	width: 50%;
-}
-
-.more{
-	text-decoration: none;
-	color: #ccd0d3;
-	text-align: right;
-	float: right;
-	margin-right: 5px;
-}
 </style>
 </head>
 
@@ -77,37 +43,36 @@
 		<div id="page-content-wrapper">
 		
 			<!-- Page content-->
-			<div class="container-fluid" style="width: 100%; height: 100%;">
-				
-				<h3 style="font-weight: 900; margin-top:30px">새로운 알림</h3>
-				<hr>
-
-				<div class="inquiry-wrapper">
-					<h5>새로운 신고 xx건 </h5>
-					<div class="inquiry-left" style="border: 1px solid black;">
-						<span>게시글 신고 xx건</span>
-						<span style="float: right; margin-right: 5px;"><a class="more" href="#">>더보기</a></span>
-					</div>
-					<div class="inquiry-right" style="border: 1px solid black;">
-						<span>댓글 신고 xx건</span>
-						<span style="float: right; margin-right: 5px;"><a class="more" href="#">>더보기</a></span>
-					</div>
-				</div>
-				
+			<div class="container-fluid" style="width:1000px; height:800px;">
 				<br><br>
+				<h2 align="center">회원조회</h2>
 				<hr>
 
-				<div class="report-wrapper">
-					<h5>새로운 신고 xx건 </h5>
-						<div class="report-left" style="border: 1px solid black;">
-							<span>게시글 신고 xx건</span>
-							<span style="float: right; margin-right: 5px;"><a class="more" href="#">>더보기</a></span>
-						</div>
-						<div class="report-right" style="border: 1px solid black;">
-							<span>댓글 신고 xx건</span>
-							<span style="float: right; margin-right: 5px;"><a class="more" href="#">>더보기</a></span>
-						</div>
-				</div>
+				<table align="center">
+					<thead>
+						<tr>
+							<th>선택</th>
+							<th>회원번호</th>
+							<th>아이디</th>
+							<th>닉네임</th>
+							<th>이름</th>
+							<th>전화번호</th>
+							<th>경고횟수</th>
+						</tr>
+					</thead>
+					
+					<tbody>
+						<tr style="text-align: center;">
+							<td><input type="checkbox" name="checkMember"></td>
+							<td>xx</td>
+							<td>xx</td>
+							<td>xx</td>
+							<td>xx</td>
+							<td>xx</td>
+							<td>xx</td>
+						</tr>
+					</tbody>
+				</table>
 
 			</div>
 		</div>

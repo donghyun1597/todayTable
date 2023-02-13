@@ -56,5 +56,34 @@ public class NoticeDao {
 
 		
 	}
+	
+	public ArrayList<Notice> adminSelectNotice(Connection conn) {
+		ArrayList<Notice> list = new ArrayList<Notice>();
+
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectNoticeList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Notice(rset.getInt("notice_no"),
+									rset.getString("notice_clsfc"),
+									rset.getString("notice_name"),
+									rset.getDate("notice_date")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+	}
 
 }
