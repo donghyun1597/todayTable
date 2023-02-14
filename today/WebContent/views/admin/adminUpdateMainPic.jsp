@@ -7,6 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
+	<div class="d-flex" id="wrapper">
+		<%@ include file="adminMenubar.jsp" %>
+		<div id="page-content-wrapper">
+		
+		</div>
+		
+	</div>
 </body>
 </html>
