@@ -9,14 +9,28 @@ public class Inquiry {
 	private String inqQuestion;
 	private Date inqDate;
 	private String inqAnswer;
-	private char inqProcessing;
-	private char inqPrivate;
-	private char inqStatus;
+	private String inqProcessing;
+	private String inqPrivate;
+	private String inqStatus;
+	
+	private String memId;
 	
 	public Inquiry() {}
 
+	public Inquiry(int inqNo, String inqName, String inqProcessing, String memId, Date inqDate, String inqQuestion, String inqAnswer, String inqPrivate) {
+		super();
+		this.inqNo = inqNo;
+		this.inqName = inqName;
+		this.inqProcessing = inqProcessing;
+		this.memId = memId;
+		this.inqDate = inqDate;
+		this.inqQuestion = inqQuestion;
+		this.inqAnswer = inqAnswer;
+		this.inqPrivate = inqPrivate;
+	}
+
 	public Inquiry(int inqNo, int memNo, String inqName, String inqQuestion, Date inqDate, String inqAnswer,
-			char inqProcessing, char inqPrivate, char inqStatus) {
+			String inqProcessing, String inqPrivate, String inqStatus) {
 		super();
 		this.inqNo = inqNo;
 		MemNo = memNo;
@@ -77,29 +91,39 @@ public class Inquiry {
 		this.inqAnswer = inqAnswer;
 	}
 
-	public char getInqProcessing() {
+	public String getInqProcessing() {
 		return inqProcessing;
 	}
 
-	public void setInqProcessing(char inqProcessing) {
+	public void setInqProcessing(String inqProcessing) {
 		this.inqProcessing = inqProcessing;
 	}
 
-	public char getInqPrivate() {
+	public String getInqPrivate() {
 		return inqPrivate;
 	}
 
-	public void setInqPrivate(char inqPrivate) {
+	public void setInqPrivate(String inqPrivate) {
 		this.inqPrivate = inqPrivate;
 	}
 
-	public char getInqStatus() {
+	public String getInqStatus() {
 		return inqStatus;
 	}
 
-	public void setInqStatus(char inqStatus) {
+	public void setInqStatus(String inqStatus) {
 		this.inqStatus = inqStatus;
 	}
+	
+	public String getMemId() {
+		return memId;
+	}
+
+	public void setMemId(String memId) {
+		this.memId = memId;
+	}
+
+
 
 	@Override
 	public String toString() {

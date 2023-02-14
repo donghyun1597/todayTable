@@ -72,15 +72,10 @@
 
 
           <div id="btn-group">
-          <button type="button" class="btn btn-secondary" onclick="backInquiry();">돌아가기</button>
+          <button type="button" class="btn btn-secondary" onclick="history.back();">돌아가기</button>
           <button type="submit" class="btn btn-primary" id="submit">작성</button>
           </div>
           
-          <script>
-	      	function backInquiry(){
-	    		location.href = "<%= contextPath %>/inquiry.me";
-	    	}
-          </script>
         </form>
     </div>
 </body>
