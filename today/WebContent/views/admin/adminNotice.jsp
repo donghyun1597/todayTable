@@ -139,6 +139,9 @@
 															<table class="table table-striped" style="width: 800px;">
 																<thead>
 																	<tr>
+																		<td colspan="5" align="right"><a class="btn btn-sm btn-secondary" href="<%= contextPath %>/insertNoticeForm.no"><b>공지사항 작성</b></a></td>
+																	</tr>
+																	<tr>
 																		<th style="width: 10%;">선택</th>
 																		<th style="width: 10%;">글번호</th>
 																		<th style="width: 10%;">분류</th>
@@ -174,11 +177,15 @@
 																				</tr>
 																				<% } %>
 																					<% } %>
+																					<tr>
+																						<td colspan="5" align="right">
+																							<a class="btn btn-sm btn-warning" href="<%= contextPath %>/deleteNotice.no"><b>삭제</b></a>
+																						</td>
+																					</tr>
 																</tbody>
 															</table>
 														</form>
 													</div>
-													<a class="btn btn-sm btn-warning" href="<%= contextPath %>/deleteNotice.no"><b>삭제</b></a>
 
 
 												</div>

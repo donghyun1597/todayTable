@@ -28,5 +28,21 @@ public class NoticeService {
 		
 		return list;
 	}
+	
+	public int insertNotice(String noticeTitle, String noticeContent, String checkEmerge) {
+		Connection conn = getConnection();
+		
+		int result = new NoticeDao().insertNotice(conn, noticeTitle, noticeContent, checkEmerge);
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+	}
 
 }

@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<% 
-	String contextPath = request.getContextPath();
-	String alertMsg = (String)session.getAttribute("alertMsg");
-%>
+<% String contextPath = request.getContextPath(); %>
 <!-- contextPath = localhost:8002/today -->
 <!DOCTYPE html>
 <html lang="en">
@@ -26,46 +23,10 @@
 	margin-left: 30px;
 }
 
-.report-wrapper, .inquiry-wrapper{
-	width: 100%;
-	height: 30%;
-}
-
-.report-wrapper div{
-	height: 100%;
-	float: left;
-}
-
-.inquiry-wrapper div{
-	height: 100%;
-	float: left;
-}
-
-.report-left, .inquiry-left{
-	width: 50%;
-}
-
-.report-right, .inquiry-right{
-	width: 50%;
-}
-
-.more{
-	text-decoration: none;
-	color: #ccd0d3;
-	text-align: right;
-	float: right;
-	margin-right: 5px;
-}
 </style>
 </head>
 
 <body>
-<% if(alertMsg != null) { %>
-	<script>
-		alert("<%= alertMsg %>");
-	</script>
-	<% session.removeAttribute("alertMsg"); %>
-	<% } %>
 	<div class="d-flex" id="wrapper">
 		<!-- Sidebar-->
 		<div class="border-end bg-white" id="sidebar-wrapper">
@@ -86,37 +47,40 @@
 		<div id="page-content-wrapper">
 		
 			<!-- Page content-->
-			<div class="container-fluid" style="width: 100%; height: 100%;">
-				
-				<h3 style="font-weight: 900; margin-top:30px">새로운 알림</h3>
+			<div class="container-fluid" style="width: 80%; height: 100%;" align="center">
+				<br><br><br><br>
+				<h1>공지사항 작성</h1>
 				<hr>
 
-				<div class="inquiry-wrapper">
-					<h5>새로운 신고 xx건 </h5>
-					<div class="inquiry-left" style="border: 1px solid black;">
-						<span>게시글 신고 xx건</span>
-						<span style="float: right; margin-right: 5px;"><a class="more" href="#">>더보기</a></span>
-					</div>
-					<div class="inquiry-right" style="border: 1px solid black;">
-						<span>댓글 신고 xx건</span>
-						<span style="float: right; margin-right: 5px;"><a class="more" href="#">>더보기</a></span>
-					</div>
-				</div>
-				
-				<br><br>
-				<hr>
+				<form action="<%= contextPath %>/insertNotice.no">
+					<table>
+						<tr>
+							<th style="text-align: left; padding-right: 10px;">제목</th>
+							<td align="right">긴급&nbsp;<input type="checkbox" name="checkEmerge" value="긴급"></td>
+						</tr>
 
-				<div class="report-wrapper">
-					<h5>새로운 신고 xx건 </h5>
-						<div class="report-left" style="border: 1px solid black;">
-							<span>게시글 신고 xx건</span>
-							<span style="float: right; margin-right: 5px;"><a class="more" href="#">>더보기</a></span>
-						</div>
-						<div class="report-right" style="border: 1px solid black;">
-							<span>댓글 신고 xx건</span>
-							<span style="float: right; margin-right: 5px;"><a class="more" href="#">>더보기</a></span>
-						</div>
-				</div>
+						<tr>
+							<td colspan="2"><input type="text" name="noticeTitle" style="width: 100%;"></td>
+						</tr>
+						
+						<tr>
+							<th colspan="2" name="noticeContent" style="text-align:left;">내용</th>
+						</tr>
+
+						<tr>
+							<td colspan="2"><textarea name="noticeContent" cols="70" rows="10" style="resize: none;"></textarea></td>
+						</tr>
+
+						<tr>
+							<td colspan="2" align="right"><button class="btn btn-sm btn-secondary">작성</button></td>
+						</tr>
+					</table>
+
+					<script>
+
+
+					</script>
+				</form>
 
 			</div>
 		</div>

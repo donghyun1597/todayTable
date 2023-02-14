@@ -16,7 +16,26 @@
 		   BY NOTICE_NO DESC
 	</entry>
 
-
+	<entry key="insertNotice">
+	INSERT
+		INTO 
+			TB_NOTICE(
+				NOTICE_NO
+              , NOTICE_NAME
+			  , NOTICE_CONTENTS
+              , NOTICE_DATE
+			  , NOTICE_CLSFC
+			  , NOTICE_STATUS
+			  )
+	  VALUES (
+	  		SEQ_NOTICE_NO.NEXTVAL
+	  	  , ?
+	  	  , ?
+	  	  , SYSDATE
+	  	  , ?
+	  	  , DEFAULT	
+	  )
+	</entry>
 
 
 
