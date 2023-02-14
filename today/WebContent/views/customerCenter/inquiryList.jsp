@@ -1,5 +1,10 @@
+<%@page import="com.todayTable.customerCenter.model.vo.Inquiry"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	ArrayList<Inquiry> list = (ArrayList<Inquiry>)request.getAttribute("list");
+%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +16,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <style>
         @import url(https://fonts.googleapis.com/css?family=Roboto:400,700,500);
         body {
@@ -81,26 +86,66 @@
                 <tr>
                     <th style="width: 10%;">글번호</th>
                     <th style="width: 50%;">제목</th>
-                    <th style="width: 20%;">답변여부</th>
+                    <th style="width: 15%;">답변여부</th>
                     <th style="width: 10%;">작성자</th>
-                    <th style="width: 10%;">작성일</th>
+                    <th style="width: 15%;">작성일</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td>x</td>
-                    <td style="text-align: left;"><a href="#">xxxx</a></td>
-                    <td>xx</td>
-                    <td>xx</td>
-                    <td>xx</td>
+            <tbody id="listbody">
+                <!-- case1. 공지글 없음 -->
+            	<%if(list.isEmpty()) { %>
+           		<tr>
+                    <td colspan="5">존재하는 문의글이 없습니다.</td>
                 </tr>
+                <% }else { %>
+                <!-- case2. 공지글 있음 -->
+                <% for(Inquiry i :list) { %>
+                <% if(i.getInqPrivate().equals("N")) { %>
                 <tr>
-                    <td>x</td>
-                    <td style="text-align: left;"><a href="#">xxxx</a></td>
-                    <td>xx</td>
-                    <td>xx</td>
-                    <td>xx</td>
+                    <td><%= i.getInqNo() %></td>
+                    <td style="text-align: left;">
+                        <div class="pub"><%= i.getInqName() %></div>
+                        <div style="display: none;">
+                            <br>
+                            [문의내용]
+                            <br><br>
+                            <%= i.getInqQuestion() %>
+                            <br><br>
+                            [답변]
+                            <br><br>
+                            <%= i.getInqAnswer() %>
+                            <br><br>
+                        </div>
+                    </td>
+                    <td><%= (i.getInqProcessing().equals("Y")) ? "처리완료" : "답변대기" %></td>
+                    <td><%= i.getMemId() %></td>
+                    <td><%= i.getInqDate() %></td>
                 </tr>
+                <%}else {%>
+                <tr>
+                    <td><%= i.getInqNo() %></td>
+                    <td style="text-align: left;">
+                        <div class="pri">비밀글입니다.</div>
+                        <div style="display: none;" >
+                            <br>
+                            [문의내용]
+                            <br><br>
+                            <%= i.getInqQuestion() %>
+                            <br><br>
+                            [답변]
+                            <br><br>
+                            <%= i.getInqAnswer() %>
+                            <br><br>
+                        </div>
+                    </td>
+                    <td><%= (i.getInqProcessing().equals("Y")) ? "처리완료" : "답변대기" %></td>
+                    <td><%= i.getMemId() %></td>
+                    <td><%= i.getInqDate() %></td>
+                </tr>
+                <% } %>
+                <% } %>
+                <% } %>
+				<!-- 
                 <tr>
                     <td>x</td>
                     <td style="text-align: left; color: gray;">비밀글입니다.</td>
@@ -108,55 +153,8 @@
                     <td>xx</td>
                     <td>xx</td>
                 </tr>
-                <tr>
-                    <td>x</td>
-                    <td style="text-align: left;"><a href="#">xxxx</a></td>
-                    <td>xx</td>
-                    <td>xx</td>
-                    <td>xx</td>
-                </tr>
-                <tr>
-                    <td>x</td>
-                    <td style="text-align: left; color: gray;">비밀글입니다.</td>
-                    <td>xx</td>
-                    <td>xx</td>
-                    <td>xx</td>
-                </tr>
-                <tr>
-                    <td>x</td>
-                    <td style="text-align: left; color: gray;">비밀글입니다.</td>
-                    <td>xx</td>
-                    <td>xx</td>
-                    <td>xx</td>
-                </tr>
-                <tr>
-                    <td>x</td>
-                    <td style="text-align: left; color: gray;">비밀글입니다.</td>
-                    <td>xx</td>
-                    <td>xx</td>
-                    <td>xx</td>
-                </tr>
-                <tr>
-                    <td>x</td>
-                    <td style="text-align: left;"><a href="#">xxxx</a></td>
-                    <td>xx</td>
-                    <td>xx</td>
-                    <td>xx</td>
-                </tr>
-                <tr>
-                    <td>x</td>
-                    <td style="text-align: left;"><a href="#">xxxx</a></td>
-                    <td>xx</td>
-                    <td>xx</td>
-                    <td>xx</td>
-                </tr>
-                <tr>
-                    <td>x</td>
-                    <td style="text-align: left;"><a href="#">xxxx</a></td>
-                    <td>xx</td>
-                    <td>xx</td>
-                    <td>xx</td>
-                </tr>
+                 -->
+               
             </tbody>
         </table>
         <button type="button" class="btn btn-secondary" onclick="wirteInquiry();" style="margin-left: 90%;">글쓰기</button>
@@ -164,20 +162,33 @@
     
     <script>
     	function wirteInquiry(){
-    		location.href = "<%= contextPath %>/wirteInquiry.me";
+    		location.href = "<%= contextPath %>/wirteInquiry.cu";
     	}
+        $(function(){
+            $(".pub").click(function(){
+
+                const $p = $(this).next();
+                
+                if($p.css("display") == "none"){
+                    $(this).siblings("p").slideUp();
+                    $p.slideDown();
+                }else {
+                    $p.slideUp();
+                }
+            })
+        })
     </script>
     
     <div class="m-4" id="paging">
         <nav>
             <ul class="pagination">
-                <li class="page-item"><a href="#" class="page-link"> < </a></li>
+                <li class="page-item"><a href="#" class="page-link"> &lt; </a></li>
                 <li class="page-item"><a href="#" class="page-link">1</a></li>
                 <li class="page-item"><a href="#" class="page-link">2</a></li>
                 <li class="page-item"><a href="#" class="page-link">3</a></li>
                 <li class="page-item"><a href="#" class="page-link">4</a></li>
                 <li class="page-item"><a href="#" class="page-link">5</a></li>
-                <li class="page-item"><a href="#" class="page-link"> > </a></li>
+                <li class="page-item"><a href="#" class="page-link"> &gt; </a></li>
             </ul>
         </nav>
     </div>

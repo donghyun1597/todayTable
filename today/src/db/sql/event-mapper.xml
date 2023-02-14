@@ -9,6 +9,8 @@
 	      , EVENT_NAME
 	      , EVENT_DATE
 		FROM TB_EVENT
+		ORDER
+		   BY EVENT_NO DESC
 	</entry>
 
 
