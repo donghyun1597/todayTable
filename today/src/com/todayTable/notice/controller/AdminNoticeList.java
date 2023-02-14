@@ -1,6 +1,7 @@
-package com.todayTable.member.controller;
+package com.todayTable.notice.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,22 +9,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import com.todayTable.member.model.service.AdminService;
-import com.todayTable.member.model.vo.Member;
+import com.todayTable.notice.model.service.NoticeService;
+import com.todayTable.notice.model.vo.Notice;
 
 /**
- * Servlet implementation class AdminLoginController
+ * Servlet implementation class AdminNoticeList
  */
-@WebServlet("/adminlogin.do")
-public class AdminLoginController extends HttpServlet {
+@WebServlet("/adminNotice.no")
+public class AdminNoticeList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminLoginController() {
+    public AdminNoticeList() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,20 +34,11 @@ public class AdminLoginController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
-		String adminPwd = request.getParameter("adminPwd");
+		ArrayList<Notice> list = new NoticeService().adminSelectNotice();
+		request.setAttribute("list", list);
 		
-		Member m = new AdminService().loginAdmin(adminPwd);
-		HttpSession session = request.getSession();
-		
-		if (m == null) {
-			request.setAttribute("errorMsg", "비밀번호를 확인해주세요");
-			
-			RequestDispatcher view = request.getRequestDispatcher("views/errorPage.jsp");
-			view.forward(request, response);
-		} else {
-			RequestDispatcher view = request.getRequestDispatcher("views/admin/adminIndex.jsp");
-			view.forward(request, response);
-		}
+		RequestDispatcher view = request.getRequestDispatcher("views/admin/adminNotice.jsp");
+		view.forward(request, response);
 	}
 
 	/**
