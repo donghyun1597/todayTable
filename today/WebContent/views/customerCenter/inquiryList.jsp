@@ -124,7 +124,7 @@
                 <%}else {%>
                 <tr>
                     <td><%= i.getInqNo() %></td>
-                    <td style="text-align: left;">
+                    <td style="text-align: left; color: gray;">
                         <div class="pri">비밀글입니다.</div>
                         <div style="display: none;" >
                             <br>

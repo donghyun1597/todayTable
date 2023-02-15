@@ -42,7 +42,7 @@ public class InquiryDao {
 				list.add(new Inquiry(rset.getInt("inq_no"),
 									rset.getString("inq_name"),
 									rset.getString("inq_processing"),
-									rset.getString("mem_id"),
+									rset.getString("user_id"),
 									rset.getDate("inq_date"),
 									rset.getString("inq_question"),
 									rset.getString("inq_answer"),
