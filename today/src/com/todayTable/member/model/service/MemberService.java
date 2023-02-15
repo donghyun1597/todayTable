@@ -1,7 +1,7 @@
 package com.todayTable.member.model.service;
 
 import java.sql.Connection;
-
+import java.util.ArrayList;
 
 import com.todayTable.member.model.dao.MemberDao;
 import com.todayTable.member.model.vo.Allergy;
@@ -59,6 +59,15 @@ public class MemberService {
 		
 	}
 	
+	public ArrayList<Member> selectMember() {
+		Connection conn = getConnection();
+		
+		ArrayList<Member> list = new MemberDao().selectMember(conn);
+		
+		close(conn);
+		
+		return list;
+	}
 	
 
 }

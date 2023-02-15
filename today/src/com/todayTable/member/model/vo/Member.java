@@ -24,6 +24,18 @@ public class Member {
 		this.warningCount = warningCount;
 		this.memImg = memImg;
 	}
+	
+	
+
+	public Member(int memNo, String memId, String nickName, String memName, String phone, int warningCount) {
+		super();
+		this.memNo = memNo;
+		this.memId = memId;
+		this.nickName = nickName;
+		this.memName = memName;
+		this.phone = phone;
+		this.warningCount = warningCount;
+	}
 
 	public int getMemNo() {
 		return memNo;

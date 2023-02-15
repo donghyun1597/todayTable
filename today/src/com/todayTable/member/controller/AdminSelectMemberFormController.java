@@ -1,23 +1,28 @@
 package com.todayTable.member.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.todayTable.member.model.service.MemberService;
+import com.todayTable.member.model.vo.Member;
+
 /**
  * Servlet implementation class AdminSelectMemberController
  */
 @WebServlet("/adminSelectMember.mem")
-public class AdminSelectMemberController extends HttpServlet {
+public class AdminSelectMemberFormController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminSelectMemberController() {
+    public AdminSelectMemberFormController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,6 +31,11 @@ public class AdminSelectMemberController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Member m = new Member();
+		
+		ArrayList<Member> list = new MemberService().selectMember();
+		
+		request.setAttribute("list", list);
 		
 		request.getRequestDispatcher("views/admin/adminSelectMember.jsp").forward(request, response);
 	}

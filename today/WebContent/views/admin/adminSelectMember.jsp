@@ -1,5 +1,8 @@
+<%@page import="com.todayTable.member.model.vo.Member"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<% ArrayList<Member> list = (ArrayList<Member>)request.getAttribute("list"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,15 +34,17 @@
 					</thead>
 					
 					<tbody>
+						<% for(Member m : list) { %>
 						<tr style="text-align: center;">
 							<td><input type="checkbox" name="checkMember"></td>
-							<td>xx</td>
-							<td>xx</td>
-							<td>xx</td>
-							<td>xx</td>
-							<td>xx</td>
-							<td>xx</td>
+							<td><%= m.getMemNo() %></td>
+							<td><%= m.getMemId() %></td>
+							<td><%= m.getNickName() %></td>
+							<td><%= m.getMemName() %></td>
+							<td><%= m.getPhone() %></td>
+							<td><%= m.getWarningCount() %></td>
 						</tr>
+						<% } %>
 					</tbody>
 				</table>
 

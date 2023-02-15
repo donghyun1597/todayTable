@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Properties;
 
 import static com.todayTable.common.JDBCTemplate.*;
@@ -126,4 +127,36 @@ public class MemberDao {
 		return wish;
 	}
 
+	public ArrayList<Member> selectMember(Connection conn) {
+		ArrayList<Member> list = new ArrayList<Member>();
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectMember");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Member(
+							rset.getInt("mem_no"),
+							rset.getString("mem_id"),
+							rset.getString("nickname"),
+							rset.getString("mem_name"),
+							rset.getString("phone"),
+							rset.getInt("warning_count")
+						));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+	}
 }

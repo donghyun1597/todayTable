@@ -85,7 +85,16 @@
 	
 	</entry>
 	
-
+	<entry key="selectMember">
+		SELECT 
+			  MEM_NO
+			, MEM_ID
+			, NICKNAME
+			, MEM_NAME
+			, PHONE
+			, WARNING_COUNT
+		FROM TB_MEMBER
+	</entry>
 	
 	
 </properties>
