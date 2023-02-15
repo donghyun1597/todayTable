@@ -127,13 +127,13 @@ public class MemberDao {
 		return wish;
 	}
 
-	public ArrayList<Member> selectMember(Connection conn) {
+	public ArrayList<Member> selectMemberList(Connection conn) {
 		ArrayList<Member> list = new ArrayList<Member>();
 		
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
-		String sql = prop.getProperty("selectMember");
+		String sql = prop.getProperty("selectMemberList");
 		
 		try {
 			pstmt = conn.prepareStatement(sql);

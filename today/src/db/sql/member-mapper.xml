@@ -85,7 +85,7 @@
 	
 	</entry>
 	
-	<entry key="selectMember">
+	<entry key="selectMemberList">
 		SELECT 
 			  MEM_NO
 			, MEM_ID
@@ -94,6 +94,30 @@
 			, PHONE
 			, WARNING_COUNT
 		FROM TB_MEMBER
+	</entry>
+	
+	<entry key="selectMemberById">
+		SELECT
+			  MEM_NO
+			, MEM_ID
+			, NICKNAME
+			, MEM_NAME
+			, PHONE
+			, WARNING_COUNT
+		FROM TB_MEMBER
+		WHERE MEM_ID LIKE '%'|| ? ||'%'
+	</entry>
+	
+	<entry key="selectMemberByNick">
+		SELECT
+			  MEM_NO
+			, MEM_ID
+			, NICKNAME
+			, MEM_NAME
+			, PHONE
+			, WARNING_COUNT
+		FROM TB_MEMBER
+		WHERE MEM_ID = ?
 	</entry>
 	
 	

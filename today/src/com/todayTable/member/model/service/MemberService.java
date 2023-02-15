@@ -59,10 +59,10 @@ public class MemberService {
 		
 	}
 	
-	public ArrayList<Member> selectMember() {
+	public ArrayList<Member> selectMemberList() {
 		Connection conn = getConnection();
 		
-		ArrayList<Member> list = new MemberDao().selectMember(conn);
+		ArrayList<Member> list = new MemberDao().selectMemberList(conn);
 		
 		close(conn);
 		
