@@ -105,7 +105,7 @@
 															<br>
 															<div class="notice-wrapper">
 																<div class="m-4" id="noticeList">
-																	<form action="<%= contextPath %>/delete.no" method="post">
+																	
 																		<table class="table table-striped"
 																			style="width: 800px;">
 																			<thead>
@@ -132,9 +132,10 @@
 																					</tr>
 																					<% } else { %>
 																						<!-- case2. 공지글 있음 -->
-																						<% for(Notice n :list) { %>
+																						<form action="deleteNotice.no">
+																							<% for(Notice n :list) { %>
 																							<tr>
-																								<td><input type="checkbox" name="noticeCheck"></td>
+																								<td><input type="checkbox" class='noticeCheck' name="noticeCheck" value="<%= n.getNoticeNo()%>"></td>
 																								<td>
 																									<%= n.getNoticeNo()%>
 																								</td>
@@ -155,13 +156,34 @@
 																									<tr>
 																										<td colspan="5"
 																											align="right">
-																											<a class="btn btn-sm btn-warning"
-																												href="<%= contextPath %>/deleteNotice.no"><b>삭제</b></a>
+																											<button type="submit" onclick="confirm('삭제하시겠습니까?');">삭제</button>
 																										</td>
 																									</tr>
+
+																									<!-- <script>
+																										
+																											function checkNone(){
+																												if($(".noticeCheck").checked()==false){
+																													return false;
+																												}
+																												
+																											}
+																										
+																										//function checkNone(){
+																											//const noticeCheck = document.getElementsByClassName("noticeCheck");
+																										//	for(let i;i<noticeCheck.length;i++){
+																												
+																										//		noticeCheck[i].checked
+
+																										//	}
+																										//	if(noticeCheck.value == null) {
+																										//		return false;
+																										//	}
+																										// 
+																									</script> -->
+																						</form>
 																			</tbody>
 																		</table>
-																	</form>
 																</div>
 
 

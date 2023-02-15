@@ -108,5 +108,6 @@ public class NoticeDao {
 		
 		return result;
 	}
-
+	
+	
 }

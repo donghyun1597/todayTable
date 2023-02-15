@@ -17,7 +17,7 @@
     <body>
         <div class="wrapper" align="center" style="margin-top: 100px;">
             <div class="img-wrap">
-                <img src="resources/image/logo.jpg" width="200px" height="200px">
+                <img src="resources/image/logo.png" width="200px" height="200px">
             </div>
             <div class="form-wrap">
                 <h2 style="font-weight: bold;">관리자 로그인</h2>

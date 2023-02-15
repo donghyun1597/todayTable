@@ -37,6 +37,12 @@
 	  )
 	</entry>
 
+	<entry key="deleteNotice">
+		DELETE
+			TB_NOTICE
+		WHERE
+			 NOTICE_NO IN (
+	</entry>
 
 
 </properties>

@@ -9,21 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.todayTable.member.model.service.AdminService;
 import com.todayTable.member.model.service.MemberService;
 import com.todayTable.member.model.vo.Member;
 
 /**
  * Servlet implementation class AdminSelectMemberController
  */
-@WebServlet("/search.mem")
-public class AdminSelectMemberController extends HttpServlet {
+@WebServlet("/adminSelectMember.mem")
+public class AdminSelectMemberFormController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminSelectMemberController() {
+    public AdminSelectMemberFormController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,23 +31,13 @@ public class AdminSelectMemberController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
+		Member m = new Member();
 		
-		String searchOp = request.getParameter("searchOption");
-		String searchContent = request.getParameter("searchContent");
-		ArrayList<Member> list = null;
-		if(searchOp.equals("memId")) {
-			list = new AdminService().selectMemberById(searchContent);
-		} else {
-			list = new AdminService().selectMemberByNick(searchContent);
-		}
-		System.out.println(list);
+		ArrayList<Member> list = new MemberService().selectMemberList();
+		
 		request.setAttribute("list", list);
 		
-		
-		
 		request.getRequestDispatcher("views/admin/adminSelectMember.jsp").forward(request, response);
-		
 	}
 
 	/**

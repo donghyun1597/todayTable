@@ -38,7 +38,7 @@
 		<div class="border-end bg-white" id="sidebar-wrapper">
 			<div class="sidebar-heading bg-light"
 				style="width: 180px; margin: auto; padding: 0px;">
-				<img src="<%= contextPath %>/resources/image/logo.jpg" alt=""
+				<img src="<%= contextPath %>/resources/image/logo.png" alt=""
 					style="box-sizing: border-box; width: 100%; height: 100%;">
 			</div>
 			<div class="list-group list-group-flush">
