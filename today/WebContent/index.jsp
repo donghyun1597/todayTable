@@ -312,7 +312,7 @@
     <section class="best-receipe-area">
         <div class="container">
             <div class="row">
-                <div class="col-12"> <br><br><br><br>
+                <div class="col-12"> <br><br>
                     <div class="section-heading" style="text-align: left;">
                         <h3>OUR RECIPES VIDEO</h3>
                     </div>
