@@ -9,17 +9,27 @@
 
     <!-- Core Stylesheet -->
     <link rel="stylesheet" href="resources/css/style.css">
+    
     <style>
+   
         /* 로고 이미지 영역 수정했음 */
-        .nav-brand {
-            width: 150px;
+        .nav-brand { width: 80%;}
+        
+        #col-510 { 
+        flex:0 0 25%;
+        padding-left: 7px;
+        padding-right: 7px;
         }
+
+        #row-510 { flex-wrap:wrap}
+        
     </style>
 </head>
 
 <body>
-
+	<!-- 메뉴바 가져오기 -->
 	<%@ include file="views/common/menubar.jsp" %>
+	
 
 	<!-- ##### Hero Area Start ##### -->
     <section class="hero-area">
@@ -40,7 +50,7 @@
             </div>
 
             <!-- Single Hero Slide -->
-            <div class="single-hero-slide bg-img" style="background-image: url(resources/img/bg-img/sumin2.jpg);">
+            <div class="single-hero-slide bg-img" style="background-image: url(resources/image/bg-img/sumin1.jpeg);">
                 <div class="container h-100">
                     <div class="row h-100 align-items-center">
                         <div class="col-12 col-md-9 col-lg-7 col-xl-6">
@@ -55,7 +65,7 @@
             </div>
 
             <!-- Single Hero Slide -->
-            <div class="single-hero-slide bg-img" style="background-image: url(resources/img/bg-img/sumin.jpg);">
+            <div class="single-hero-slide bg-img" style="background-image: url(resources/image/bg-img/sumin1.jpeg);">
                 <div class="container h-100">
                     <div class="row h-100 align-items-center">
                         <div class="col-12 col-md-9 col-lg-7 col-xl-6">
@@ -109,14 +119,14 @@
      <section class="best-receipe-area">
         <div class="container">
 
-            <div class="row" id="sumin-row">
+            <div class="row" id="row-510">
                 <!-- Single Best Receipe Area -->
-                <div class="col-12 col-sm-6 col-lg-4" id="sumin-col">
+                <div class="col-12 col-sm-6 col-lg-4" id="col-510">
                     <div class="single-best-receipe-area mb-30">
-                        <img src="resources/image/bg-img/sumin5.jpg" alt="음식1">
+                        <img src="resources/image/bg-img/sumin6.jpg" alt="음식1">
                         <div class="receipe-content">
                             <a href="#">
-                                <h5>두부두부</h5>
+                                <h5>레시피1</h5>
                             </a>
                             <div class="ratings">난이도
                                 <i class="fa fa-star" aria-hidden="true"></i>
@@ -132,12 +142,12 @@
 
 
                 <!-- Single Best Receipe Area -->
-                <div class="col-12 col-sm-6 col-lg-4" id="sumin-col">
+                <div class="col-12 col-sm-6 col-lg-4" id="col-510">
                     <div class="single-best-receipe-area mb-30">
                         <img src="resources/image/bg-img/sumin6.jpg" alt="음식2">
                         <div class="receipe-content">
                             <a href="receipe-post.html">
-                                <h5>수란이랑크로와상맛</h5>
+                                <h5>레시피2</h5>
                             </a>
                             <div class="ratings">난이도
                                 <i class="fa fa-star" aria-hidden="true"></i>
@@ -153,12 +163,12 @@
 
 
                 <!-- Single Best Receipe Area -->
-                <div class="col-12 col-sm-6 col-lg-4" id="sumin-col">
+                <div class="col-12 col-sm-6 col-lg-4" id="col-510">
                     <div class="single-best-receipe-area mb-30">
                         <img src="resources/image/bg-img/sumin6.jpg" alt="음식2">
                         <div class="receipe-content">
                             <a href="receipe-post.html">
-                                <h5>수란이랑크로와상맛</h5>
+                                <h5>레시피3</h5>
                             </a>
                             <div class="ratings">난이도
                                 <i class="fa fa-star" aria-hidden="true"></i>
@@ -172,12 +182,12 @@
                 </div>
 
                 <!-- Single Best Receipe Area -->
-                <div class="col-12 col-sm-6 col-lg-4" id="sumin-col">
+                <div class="col-12 col-sm-6 col-lg-4" id="col-510">
                     <div class="single-best-receipe-area mb-30">
-                        <img src="resources/image/bg-img/sumin7.jpg" alt="음식3">
+                        <img src="resources/image/bg-img/sumin6.jpg" alt="음식3">
                         <div class="receipe-content">
                             <a href="receipe-post.html">
-                                <h5>핏자피이짜</h5>
+                                <h5>레시피4</h5>
                             </a>
                             <div class="ratings">난이도
                                 <i class="fa fa-star" aria-hidden="true"></i>
@@ -201,16 +211,17 @@
     <section class="cta-area bg-img bg-overlay">
         <div class="container h-100"> <br>
             <span class="section-heading" style="text-align: left; margin-top: auto;" >
-                <h3>OUR RECIPES 2</h3>
+                <h3>OUR RECIPES</h3>
             </span>
             <div class="row h-100 align-items-center">
                 
-                <div class="col-12 col-sm-6 col-lg-4">
+               <!-- Single Best Receipe Area -->
+                <div class="col-12 col-sm-6 col-lg-4" id="col-510">
                     <div class="single-best-receipe-area mb-30">
-                        <img src="resources/image/bg-img/sumin8.jpg" alt="">
+                        <img src="resources/image/bg-img/sumin6.jpg" alt="음식2">
                         <div class="receipe-content">
                             <a href="receipe-post.html">
-                                <h5>맛있어보이는음식 원</h5>
+                                <h5>레시피5</h5>
                             </a>
                             <div class="ratings">난이도
                                 <i class="fa fa-star" aria-hidden="true"></i>
@@ -224,12 +235,13 @@
                 </div>
 
 
-                <div class="col-12 col-sm-6 col-lg-4">
+                                <!-- Single Best Receipe Area -->
+                <div class="col-12 col-sm-6 col-lg-4" id="col-510">
                     <div class="single-best-receipe-area mb-30">
-                        <img src="resources/image/bg-img/sumin8.jpg" alt="">
+                        <img src="resources/image/bg-img/sumin6.jpg" alt="음식2">
                         <div class="receipe-content">
                             <a href="receipe-post.html">
-                                <h5>맛있어보이는음식 투</h5>
+                                <h5>레시피6</h5>
                             </a>
                             <div class="ratings">난이도
                                 <i class="fa fa-star" aria-hidden="true"></i>
@@ -243,12 +255,13 @@
                 </div>
 
 
-                <div class="col-12 col-sm-6 col-lg-4">
+                                <!-- Single Best Receipe Area -->
+                <div class="col-12 col-sm-6 col-lg-4" id="col-510">
                     <div class="single-best-receipe-area mb-30">
-                        <img src="resources/image/bg-img/sumin8.jpg" alt="">
+                        <img src="resources/image/bg-img/sumin6.jpg" alt="음식2">
                         <div class="receipe-content">
                             <a href="receipe-post.html">
-                                <h5>맛있어보이는음식 쓰리</h5>
+                                <h5>레시피7</h5>
                             </a>
                             <div class="ratings">난이도
                                 <i class="fa fa-star" aria-hidden="true"></i>
@@ -260,6 +273,32 @@
                         </div>
                     </div>
                 </div>
+                
+                
+                
+                
+                                <!-- Single Best Receipe Area -->
+                <div class="col-12 col-sm-6 col-lg-4" id="col-510">
+                    <div class="single-best-receipe-area mb-30">
+                        <img src="resources/image/bg-img/sumin6.jpg" alt="음식2">
+                        <div class="receipe-content">
+                            <a href="receipe-post.html">
+                                <h5>레시피8</h5>
+                            </a>
+                            <div class="ratings">난이도
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                
+                
                 
             </div>
         </div>
@@ -284,10 +323,10 @@
                 <!-- Single Best Receipe Area -->
                 <div class="col-12 col-sm-6 col-lg-4">
                     <div class="single-best-receipe-area mb-30">
-                        <img src="resources/image/bg-img/sumin5.jpg" alt="음식1">
+                        <img src="resources/image/bg-img/sumin6.jpg" alt="음식1">
                         <div class="receipe-content">
                             <a href="#">
-                                <h5>두부두부</h5>
+                                <h5>레시피9</h5>
                             </a>
                             <div class="ratings">난이도
                                 <i class="fa fa-star" aria-hidden="true"></i>
@@ -306,7 +345,7 @@
                         <img src="resources/image/bg-img/sumin6.jpg" alt="음식2">
                         <div class="receipe-content">
                             <a href="receipe-post.html">
-                                <h5>수란이랑크로와상맛</h5>
+                                <h5>레시피10</h5>
                             </a>
                             <div class="ratings">난이도
                                 <i class="fa fa-star" aria-hidden="true"></i>
@@ -322,10 +361,10 @@
                 <!-- Single Best Receipe Area -->
                 <div class="col-12 col-sm-6 col-lg-4">
                     <div class="single-best-receipe-area mb-30">
-                        <img src="resources/image/bg-img/sumin7.jpg" alt="">
+                        <img src="resources/image/bg-img/sumin6.jpg" alt="">
                         <div class="receipe-content">
                             <a href="receipe-post.html">
-                                <h5>맛있어보이는음식</h5>
+                                <h5>레시피11</h5>
                             </a>
                             <div class="ratings">난이도
                                 <i class="fa fa-star" aria-hidden="true"></i>
@@ -357,31 +396,12 @@
 
             <div class="row">
                 <!-- Single Best Receipe Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-best-receipe-area mb-30">
-                        <img src="resources/image/bg-img/sumin5.jpg" alt="음식1">
-                        <div class="receipe-content">
-                            <a href="#">
-                                <h5>두부두부</h5>
-                            </a>
-                            <div class="ratings">난이도
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single Best Receipe Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
+                <div class="col-12 col-sm-6 col-lg-4" id="col-510">
                     <div class="single-best-receipe-area mb-30">
                         <img src="resources/image/bg-img/sumin6.jpg" alt="음식2">
                         <div class="receipe-content">
                             <a href="receipe-post.html">
-                                <h5>수란이랑크로와상맛</h5>
+                                <h5>레시피12</h5>
                             </a>
                             <div class="ratings">난이도
                                 <i class="fa fa-star" aria-hidden="true"></i>
@@ -395,12 +415,52 @@
                 </div>
 
                 <!-- Single Best Receipe Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
+                <div class="col-12 col-sm-6 col-lg-4" id="col-510">
                     <div class="single-best-receipe-area mb-30">
-                        <img src="resources/image/bg-img/sumin7.jpg" alt="">
+                        <img src="resources/image/bg-img/sumin6.jpg" alt="음식2">
                         <div class="receipe-content">
                             <a href="receipe-post.html">
-                                <h5>맛있어보이는음식</h5>
+                                <h5>레시피13</h5>
+                            </a>
+                            <div class="ratings">난이도
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Best Receipe Area -->
+                <div class="col-12 col-sm-6 col-lg-4" id="col-510">
+                    <div class="single-best-receipe-area mb-30">
+                        <img src="resources/image/bg-img/sumin6.jpg" alt="음식2">
+                        <div class="receipe-content">
+                            <a href="receipe-post.html">
+                                <h5>레시피14</h5>
+                            </a>
+                            <div class="ratings">난이도
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                
+                <!-- Single Best Receipe Area -->
+                <div class="col-12 col-sm-6 col-lg-4" id="col-510">
+                    <div class="single-best-receipe-area mb-30">
+                        <img src="resources/image/bg-img/sumin6.jpg" alt="음식2">
+                        <div class="receipe-content">
+                            <a href="receipe-post.html">
+                                <h5>레시피15</h5>
                             </a>
                             <div class="ratings">난이도
                                 <i class="fa fa-star" aria-hidden="true"></i>

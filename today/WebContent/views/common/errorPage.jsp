@@ -8,6 +8,6 @@
 </head>
 <body>
 	<%@ include file="../adminLogin.jsp" %>
-	<div align="center"><%= request.getAttribute("errorMsg") %></div>
+	<div align="center" style="color:red"><%= request.getAttribute("errorMsg") %></div>
 </body>
 </html>

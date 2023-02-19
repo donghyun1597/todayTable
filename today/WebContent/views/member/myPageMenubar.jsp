@@ -5,66 +5,47 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
-
-<style>
-    .wrap {
-        width: 1200px;
-        height: 1000px;
-        margin: auto;
-    }
-
-    .nav-area { background-color: white; }
-
-    .tab { display: table-cell; width: 80px; height: 30px; }
-
-    .tab a {
-        text-decoration: none;
-        color: #555;
-        font-size: 14px;
-        font-weight: bold;
-        display: block;
-        width: 100%;
-        height: 90%;
-        line-height: 30px;
-        border: 1px solid gray;
-    }
-
-    .tab a:hover { /* 기능 테스트 중 => 성공 */
-        /* 눌렸을때, 이걸로 적용하려고 함 */
-        border-bottom: 1px solid #fff;
-        border-bottom-width: 1px;
-        border-bottom-style: solid;
-        border-bottom-color: rgb(255, 255, 255);
-    }
-
-    .btn-primary {
-        color: #fff;
-        background-color: #46ae4f;
-        border: 1px solid #497725;
-        height: 30px;
-        /* 추후에 버튼 스타일 입히기 */
-    }
-
-    .tab { text-align: center; }
-
-
-</style>
 </head>
 <body>
-    
-    <div class="wrap">
-    
-        <!-- tab 영역-->
-        <br clear="both"><br>
-        <div class="nav-area" align="left">
-            <div class="tab"><a href="#">My레시피</a></div>
-            <div class="tab"><a href="#">My후기</a></div>
-            <div class="tab"><a href="#">My댓글</a></div>
-            <div class="tab"><a href="#">찜목록</a></div>
-            <div class="tab"><a href="#">내정보</a></div>
-        </div>
-        <!-- tab 영역 끝 -->
-    </div>
+	
+    <!-- ##### About Area Start ##### -->
+            <div class="row align-items-center mt-70">
+                <!-- Single Cool Fact -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single-cool-fact">
+                        <img src="img/core-img/salad.png" alt="">
+                        <h3><span class="counter">1287</span></h3>
+                        <h6>내가 작성한 레시피</h6>
+                    </div>
+                </div>
+
+                <!-- Single Cool Fact -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single-cool-fact">
+                        <img src="img/core-img/hamburger.png" alt="">
+                        <h3><span class="counter">25</span></h3>
+                        <h6>내가 작성한 댓글</h6>
+                    </div>
+                </div>
+
+                <!-- Single Cool Fact -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single-cool-fact">
+                        <img src="img/core-img/rib.png" alt="">
+                        <h3><span class="counter">471</span></h3>
+                        <h6>내가 찜한 목록</h6>
+                    </div>
+                </div>
+
+                <!-- Single Cool Fact -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single-cool-fact">
+                        <img src="img/core-img/pancake.png" alt="">
+                        <h3><span style="font-size: 25px; font-weight: 700;">사케동러버</span></h3>
+                        <h6>내 정보 수정하기</h6>
+                    </div>
+                </div>
+            </div>
+	
 </body>
 </html>
