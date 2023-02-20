@@ -14,13 +14,13 @@ public class Recipe {
 	private int memNo;
 	private String recipePic;
 	private int recipeViews;
-	private char recipeStatus;
+	private String recipeStatus;
 	
 	public Recipe() {}
 
 	public Recipe(int recipeNo, String recipeName, String recipeTag, String recipeVideo, char recipeDifficulty,
 			int recipePerson, int recipeTime, Date recipeDate, int memNo, String recipePic, int recipeViews,
-			char recipeStatus) {
+			String recipeStatus) {
 		super();
 		this.recipeNo = recipeNo;
 		this.recipeName = recipeName;
@@ -124,11 +124,11 @@ public class Recipe {
 		this.recipeViews = recipeViews;
 	}
 
-	public char getRecipeStatus() {
+	public String getRecipeStatus() {
 		return recipeStatus;
 	}
 
-	public void setRecipeStatus(char recipeStatus) {
+	public void setRecipeStatus(String recipeStatus) {
 		this.recipeStatus = recipeStatus;
 	}
 
@@ -139,8 +139,7 @@ public class Recipe {
 				+ recipePerson + ", recipeTime=" + recipeTime + ", recipeDate=" + recipeDate + ", memNo=" + memNo
 				+ ", recipePic=" + recipePic + ", recipeViews=" + recipeViews + ", recipeStatus=" + recipeStatus + "]";
 	}
-	
-	
+
 	
 }
 

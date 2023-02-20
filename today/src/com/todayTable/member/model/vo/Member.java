@@ -9,11 +9,12 @@ public class Member {
 	private String phone;
 	private int warningCount;
 	private String memImg;
+	private String memStatus;
 	
 	public Member() {}
 
 	public Member(int memNo, String memId, String memPwd, String nickName, String memName, String phone,
-			int warningCount, String memImg) {
+			int warningCount, String memImg, String memStatus) {
 		super();
 		this.memNo = memNo;
 		this.memId = memId;
@@ -23,18 +24,7 @@ public class Member {
 		this.phone = phone;
 		this.warningCount = warningCount;
 		this.memImg = memImg;
-	}
-	
-	
-
-	public Member(int memNo, String memId, String nickName, String memName, String phone, int warningCount) {
-		super();
-		this.memNo = memNo;
-		this.memId = memId;
-		this.nickName = nickName;
-		this.memName = memName;
-		this.phone = phone;
-		this.warningCount = warningCount;
+		this.memStatus = memStatus;
 	}
 
 	public int getMemNo() {
@@ -101,13 +91,21 @@ public class Member {
 		this.memImg = memImg;
 	}
 
+	public String getMemStatus() {
+		return memStatus;
+	}
+
+	public void setMemStatus(String memStatus) {
+		this.memStatus = memStatus;
+	}
+
 	@Override
 	public String toString() {
 		return "Member [memNo=" + memNo + ", memId=" + memId + ", memPwd=" + memPwd + ", nickName=" + nickName
 				+ ", memName=" + memName + ", phone=" + phone + ", warningCount=" + warningCount + ", memImg=" + memImg
-				+ "]";
+				+ ", memStatus=" + memStatus + "]";
 	}
-	
+
 	
 	
 }
