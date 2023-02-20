@@ -27,8 +27,8 @@ public class AdminNoticeDao {
 		PreparedStatement pstmt = null;
 		
 		String sql = prop.getProperty("deleteNotice");
-		for(int i=0;i<checkInt.length;i++) {
-			sql+="?,";
+		for (int i = 0; i < checkInt.length; i++) {
+			sql += "?,";
 		}
 		sql = sql.substring(0, sql.length() - 1) + ")";
 		
