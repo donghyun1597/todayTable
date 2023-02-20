@@ -165,7 +165,7 @@
                                                 <!-- Nav Start -->
                                                 <div class="classynav">
                                                     <ul>
-                                                        <li class="active"><a href="<%= contextPath%>/mypage.me">MYPAGE</a></li>
+                                                        <li class="active"><a href="<%= contextPath%>">HOME</a></li>
                                                         <li><a href="#">레시피</a>
                                                             <ul class="dropdown">
                                                                 <li><a href="#">테마별</a>
