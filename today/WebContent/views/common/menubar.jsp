@@ -20,8 +20,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Insert title here</title>
-    
+    <title>오늘의 식탁</title>
+    <link rel="icon" href="<%=application.getContextPath()%>/resources/image/core-img/logo.jpg">
+
+    <!-- Core Stylesheet -->
+    <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/css/style.css">
     
     
     <style>
@@ -144,8 +147,7 @@
                                         <nav class="classy-navbar justify-content-between" id="deliciousNav">
 
                                             <!-- Logo -->
-                                            <a class="nav-brand" href="index.html"><img src="resources/image/core-img/logo.png"
-                                                    alt=""></a>
+                                            
 
                                             <!-- Navbar Toggler -->
                                             <div class="classy-navbar-toggler">
@@ -255,6 +257,18 @@
                             </div>
     </header>
     <!-- ##### All Javascript Files ##### -->
+    
+    <!-- ##### All Javascript Files ##### -->
+    <!-- jQuery-2.2.4 js -->
+    <script defer src="<%=application.getContextPath()%>/resources/js/jquery/jquery-2.2.4.min.js"></script>
+    <!-- Popper js -->
+    <script defer src="<%=application.getContextPath()%>/resources/js/bootstrap/popper.min.js"></script>
+    <!-- Bootstrap js -->
+    <script defer src="<%=application.getContextPath()%>/resources/js/bootstrap/bootstrap.min.js"></script>
+    <!-- All Plugins js -->
+    <script defer src="<%=application.getContextPath()%>/resources/js/plugins/plugins.js"></script>
+    <!-- Active js -->
+    <script defer src="<%=application.getContextPath()%>/resources/js/active.js"></script>
    
 </body>
 </html>

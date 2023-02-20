@@ -5,10 +5,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" href="resources/image/core-img/favicon.ico">
-
-    <!-- Core Stylesheet -->
-    <link rel="stylesheet" href="resources/css/style.css">
+	
     
     <style>
    
@@ -50,7 +47,7 @@
             </div>
 
             <!-- Single Hero Slide -->
-            <div class="single-hero-slide bg-img" style="background-image: url(resources/image/bg-img/sumin1.jpeg);">
+            <div class="single-hero-slide bg-img" style="background-image: url(resources/image/bg-img/sumin2.jpg);">
                 <div class="container h-100">
                     <div class="row h-100 align-items-center">
                         <div class="col-12 col-md-9 col-lg-7 col-xl-6">
@@ -65,7 +62,7 @@
             </div>
 
             <!-- Single Hero Slide -->
-            <div class="single-hero-slide bg-img" style="background-image: url(resources/image/bg-img/sumin1.jpeg);">
+            <div class="single-hero-slide bg-img" style="background-image: url(resources/image/bg-img/sumin3.jpeg);">
                 <div class="container h-100">
                     <div class="row h-100 align-items-center">
                         <div class="col-12 col-md-9 col-lg-7 col-xl-6">
@@ -125,7 +122,7 @@
                     <div class="single-best-receipe-area mb-30">
                         <img src="resources/image/bg-img/sumin6.jpg" alt="음식1">
                         <div class="receipe-content">
-                            <a href="#">
+                            <a href="<%=contextPath%>/recipeView.rc">
                                 <h5>레시피1</h5>
                             </a>
                             <div class="ratings">난이도
@@ -507,18 +504,7 @@
         </div>
     </footer>
     <!-- ##### Footer Area Start ##### -->
-
-	<!-- ##### All Javascript Files ##### -->
-    <!-- jQuery-2.2.4 js -->
-    <script src="resources/js/jquery/jquery-2.2.4.min.js"></script>
-    <!-- Popper js -->
-    <script src="resources/js/bootstrap/popper.min.js"></script>
-    <!-- Bootstrap js -->
-    <script src="resources/js/bootstrap/bootstrap.min.js"></script>
-    <!-- All Plugins js -->
-    <script src="resources/js/plugins/plugins.js"></script>
-    <!-- Active js -->
-    <script src="resources/js/active.js"></script>
+	
 
 
 
