@@ -1,16 +1,64 @@
+<%@page import="com.todayTable.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	String contextPath = request.getContextPath();	// "/today"
+	
+	Member loginUser = (Member)session.getAttribute("loginUser");
+	// 로그인 시도 member.jsp 로딩시: null | 회원정보 담겨있는 Member 객체
+	
+	String alertMsg = (String)session.getAttribute("alertMsg");
+	// 서비스 요청 member.jsp 로딩시: null | alert로 띄워줄 문구
+%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
+    <title>Insert title here</title>
     
+    <!-- Core Stylesheet -->
+    <link rel="stylesheet" href="resources/css/style.css">
+    
+    <style>
+    
+        /* 로고 이미지 영역 수정했음 */
+        .nav-brand { width: 150px; }
+        
+    </style>
+
+	    <!-- Favicon -->
+	    <link rel="icon" href="img/core-img/favicon.ico">
+	
+	    <!-- Core Stylesheet -->
+	    <link rel="stylesheet" href="style.css">
+
+	    <!-- jQuery-2.2.4 js -->
+	    <script src="js/jquery/jquery-2.2.4.min.js"></script>
+	    
+	    <!-- Popper js -->
+	    <script src="js/bootstrap/popper.min.js"></script>
+	    
+	    <!-- Bootstrap js -->
+	    <script src="js/bootstrap/bootstrap.min.js"></script>
+	    
+	    <!-- All Plugins js -->
+	    <script src="js/plugins/plugins.js"></script>
+	    
+	    <!-- Active js -->
+	    <script src="js/active.js"></script>
 </head>
+
+
 <body>
+	<!-- Preloader -->
+    <div id="preloader">
+        <i class="circle-preloader"></i>
+        <img src="img/core-img/salad.png" alt="">
+    </div>
+
     <!-- Search Wrapper -->
     <div class="search-wrapper">
         <!-- Close Btn -->
@@ -39,9 +87,9 @@
                         <div class="breaking-news">
                             <div id="breakingNewsTicker" class="ticker">
                                 <ul>
-                                    <li><a href="#">맛으로 소통하는</a></li>
-                                    <li><a href="#">행복한 식탁!</a></li>
-                                    <li><a href="#">오늘의 식탁입니다</a></li>
+                                    <li>맛으로 소통하는</li>
+                                    <li>행복한 식탁!</li>
+                                    <li>오늘의 식탁입니다</li>
                                 </ul>
                             </div>
                         </div>
@@ -119,7 +167,7 @@
                                                 <!-- Nav Start -->
                                                 <div class="classynav">
                                                     <ul>
-                                                        <li class="active"><a href="index.jsp">Home</a></li>
+                                                        <li class="active"><a href="<%= contextPath%>/mypage.me">MYPAGE</a></li>
                                                         <li><a href="#">레시피</a>
                                                             <ul class="dropdown">
                                                                 <li><a href="#">테마별</a>
