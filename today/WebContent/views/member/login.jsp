@@ -151,7 +151,7 @@
                 <li><a href=""><i class="fab fa-facebook-f"></i></a></li>
                 <li><a href=""><i class="fab fa-twitter"></i></a></li>
             </div>
-            <form action="<%=request.getContextPath() %>/login.me">
+            <form action="<%=request.getContextPath() %>/login.me" method="post">
                 <div class="login_id">
                     <h4>LOGIN</h4>
                     <input type="text" name="memId" placeholder="아이디">

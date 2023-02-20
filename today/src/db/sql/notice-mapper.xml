@@ -38,9 +38,11 @@
 	</entry>
 
 	<entry key="deleteNotice">
-		DELETE
+		UPDATE
 			TB_NOTICE
-		WHERE
+		SET 
+			NOTICE_STATUS = 'N'
+		WHERE	
 			 NOTICE_NO IN (
 	</entry>
 

@@ -8,12 +8,12 @@ public class EventComment {
 	private int memNo;
 	private String eventComContents;
 	private Date eventComDate;
-	private char eventComStatus;
+	private String eventComStatus;
 	
 	public EventComment() {}
 
 	public EventComment(int eventComNo, int eventNo, int memNo, String eventComContents, Date eventComDate,
-			char eventComStatus) {
+			String eventComStatus) {
 		super();
 		this.eventComNo = eventComNo;
 		this.eventNo = eventNo;
@@ -63,11 +63,11 @@ public class EventComment {
 		this.eventComDate = eventComDate;
 	}
 
-	public char getEventComStatus() {
+	public String getEventComStatus() {
 		return eventComStatus;
 	}
 
-	public void setEventComStatus(char eventComStatus) {
+	public void setEventComStatus(String eventComStatus) {
 		this.eventComStatus = eventComStatus;
 	}
 
@@ -77,6 +77,6 @@ public class EventComment {
 				+ ", eventComContents=" + eventComContents + ", eventComDate=" + eventComDate + ", eventComStatus="
 				+ eventComStatus + "]";
 	}
-	
+
 	
 }

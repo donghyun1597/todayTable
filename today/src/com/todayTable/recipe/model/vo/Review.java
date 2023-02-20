@@ -9,10 +9,14 @@ public class Review {
 	private String revImg;
 	private int memNo;
 	private Date revDate;
+	private String revStatus;
 	
 	public Review() {}
+	
+	
 
-	public Review(int revNo, int recipeNo, String revContent, String revImg, int memNo, Date revDate) {
+	public Review(int revNo, int recipeNo, String revContent, String revImg, int memNo, Date revDate,
+			String revStatus) {
 		super();
 		this.revNo = revNo;
 		this.recipeNo = recipeNo;
@@ -20,7 +24,10 @@ public class Review {
 		this.revImg = revImg;
 		this.memNo = memNo;
 		this.revDate = revDate;
+		this.revStatus = revStatus;
 	}
+
+
 
 	public int getRevNo() {
 		return revNo;
@@ -70,11 +77,21 @@ public class Review {
 		this.revDate = revDate;
 	}
 
+	public String getRevStatus() {
+		return revStatus;
+	}
+
+	public void setRevStatus(String revStatus) {
+		this.revStatus = revStatus;
+	}
+
 	@Override
 	public String toString() {
 		return "Review [revNo=" + revNo + ", recipeNo=" + recipeNo + ", revContent=" + revContent + ", revImg=" + revImg
-				+ ", memNo=" + memNo + ", revDate=" + revDate + "]";
+				+ ", memNo=" + memNo + ", revDate=" + revDate + ", revStatus=" + revStatus + "]";
 	}
+
+	
 	
 	
 }

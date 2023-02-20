@@ -1,4 +1,4 @@
-package com.todayTable.notice.controller;
+package com.todayTable.admin.notice.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.todayTable.member.model.service.AdminService;
-import com.todayTable.notice.model.service.AdminNoticeService;
+import com.todayTable.admin.member.model.service.AdminService;
+import com.todayTable.admin.notice.model.service.AdminNoticeService;
 
 /**
  * Servlet implementation class AdminDeleteNotice

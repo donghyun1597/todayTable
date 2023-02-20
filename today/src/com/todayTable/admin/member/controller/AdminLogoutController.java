@@ -1,4 +1,4 @@
-package com.todayTable.member.controller;
+package com.todayTable.admin.member.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

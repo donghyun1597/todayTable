@@ -1,9 +1,9 @@
-package com.todayTable.member.model.service;
+package com.todayTable.admin.member.model.service;
 
 import java.sql.Connection;
 import java.util.ArrayList;
 
-import com.todayTable.member.model.dao.AdminDao;
+import com.todayTable.admin.member.model.dao.AdminDao;
 import com.todayTable.member.model.vo.Member;
 import com.todayTable.notice.model.dao.NoticeDao;
 

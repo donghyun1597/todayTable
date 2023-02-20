@@ -2,16 +2,16 @@ package com.todayTable.recipe.model.vo;
 
 public class Ingredient {
 	private int ingreNo;
-	private int recipeNo;
+	private int ingreCno;
 	private String ingreName;
 	private String ingreAmount;
 	
 	public Ingredient() {}
 
-	public Ingredient(int ingreNo, int recipeNo, String ingreName, String ingreAmount) {
+	public Ingredient(int ingreNo, int ingreCno, String ingreName, String ingreAmount) {
 		super();
 		this.ingreNo = ingreNo;
-		this.recipeNo = recipeNo;
+		this.ingreCno = ingreCno;
 		this.ingreName = ingreName;
 		this.ingreAmount = ingreAmount;
 	}
@@ -24,12 +24,12 @@ public class Ingredient {
 		this.ingreNo = ingreNo;
 	}
 
-	public int getRecipeNo() {
-		return recipeNo;
+	public int getIngreCno() {
+		return ingreCno;
 	}
 
-	public void setRecipeNo(int recipeNo) {
-		this.recipeNo = recipeNo;
+	public void setIngreCno(int ingreCno) {
+		this.ingreCno = ingreCno;
 	}
 
 	public String getIngreName() {
@@ -50,9 +50,11 @@ public class Ingredient {
 
 	@Override
 	public String toString() {
-		return "Ingredient [ingreNo=" + ingreNo + ", recipeNo=" + recipeNo + ", ingreName=" + ingreName
+		return "Ingredient [ingreNo=" + ingreNo + ", ingreCno=" + ingreCno + ", ingreName=" + ingreName
 				+ ", ingreAmount=" + ingreAmount + "]";
 	}
+
+
 	
 	
 }

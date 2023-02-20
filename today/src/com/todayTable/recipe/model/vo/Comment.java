@@ -8,16 +8,18 @@ public class Comment {
 	private String comContent;
 	private int memNo;
 	private Date comDate;
+	private String comStatus;
 	
 	public Comment() {}
 
-	public Comment(int comNo, int recipeNo, String comContent, int memNo, Date comDate) {
+	public Comment(int comNo, int recipeNo, String comContent, int memNo, Date comDate, String comStatus) {
 		super();
 		this.comNo = comNo;
 		this.recipeNo = recipeNo;
 		this.comContent = comContent;
 		this.memNo = memNo;
 		this.comDate = comDate;
+		this.comStatus = comStatus;
 	}
 
 	public int getComNo() {
@@ -60,11 +62,19 @@ public class Comment {
 		this.comDate = comDate;
 	}
 
+	public String getComStatus() {
+		return comStatus;
+	}
+
+	public void setComStatus(String comStatus) {
+		this.comStatus = comStatus;
+	}
+
 	@Override
 	public String toString() {
 		return "Comment [comNo=" + comNo + ", recipeNo=" + recipeNo + ", comContent=" + comContent + ", memNo=" + memNo
-				+ ", comDate=" + comDate + "]";
+				+ ", comDate=" + comDate + ", comStatus=" + comStatus + "]";
 	}
-	
+
 	
 }

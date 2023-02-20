@@ -8,13 +8,13 @@ public class Report {
 	private String repContents;
 	private Date repDate;
 	private String repClsfc;
-	private char repProcessing;
-	private char repStatus;
+	private String repProcessing;
+	private String repStatus;
 	
 	public Report() {}
 
-	public Report(int repNo, int memNo, String repContents, Date repDate, String repClsfc, char repProcessing,
-			char repStatus) {
+	public Report(int repNo, int memNo, String repContents, Date repDate, String repClsfc, String repProcessing,
+			String repStatus) {
 		super();
 		this.repNo = repNo;
 		this.memNo = memNo;
@@ -65,19 +65,19 @@ public class Report {
 		this.repClsfc = repClsfc;
 	}
 
-	public char getRepProcessing() {
+	public String getRepProcessing() {
 		return repProcessing;
 	}
 
-	public void setRepProcessing(char repProcessing) {
+	public void setRepProcessing(String repProcessing) {
 		this.repProcessing = repProcessing;
 	}
 
-	public char getRepStatus() {
+	public String getRepStatus() {
 		return repStatus;
 	}
 
-	public void setRepStatus(char repStatus) {
+	public void setRepStatus(String repStatus) {
 		this.repStatus = repStatus;
 	}
 
@@ -86,7 +86,6 @@ public class Report {
 		return "Report [repNo=" + repNo + ", memNo=" + memNo + ", repContents=" + repContents + ", repDate=" + repDate
 				+ ", repClsfc=" + repClsfc + ", repProcessing=" + repProcessing + ", repStatus=" + repStatus + "]";
 	}
-	
-	
+
 	
 }
