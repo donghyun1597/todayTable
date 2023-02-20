@@ -23,8 +23,12 @@
             font-family: "Roboto", sans-serif;
         }
         #wrap {
-            width: 500px;
+            width: 700px;
             margin:auto;
+        }
+        hr {
+            width: 700px;
+            margin: auto;
         }
         #title {
             text-align: center;
@@ -39,6 +43,11 @@
         #privateChecked {
             float: right;
         }
+        h6 {
+            color: gray;
+            text-align: center;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
@@ -46,8 +55,13 @@
 <%@ include file = "../common/menubar.jsp" %>
     
     <div id="wrap">
+        <br>
+        <h1 id="title"><b>문의 작성</b></h1>
+        <br>
+        <h6>- 문의작성을 위한 '문의작성' 페이지입니다.</h6>
+        <br>
+        <hr>
         <br><br>
-        <h1 id="title"><b>문의 작성</b></h1> <br><br>
         <form id="wirteInquiry-form" action="<%= contextPath %>/insertInquiry.cu" method="post">
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label"><b>제목</b></label>
