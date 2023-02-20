@@ -1,3 +1,4 @@
+<%@page import="com.todayTable.member.model.vo.WishList"%>
 <%@page import="com.todayTable.member.model.vo.Allergy"%>
 <%@page import="com.todayTable.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -8,6 +9,7 @@
 	Member loginUser = (Member)session.getAttribute("loginUser");
 	// 로그인 시도 member.jsp 로딩시: null | 회원정보 담겨있는 Member 객체
 	Allergy memAlg = (Allergy)session.getAttribute("memAlg");
+	WishList wishList = (WishList)session.getAttribute("wishList");
 	String alertMsg = (String)session.getAttribute("alertMsg");
 	// 서비스 요청 member.jsp 로딩시: null | alert로 띄워줄 문구
 %>
@@ -20,8 +22,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Insert title here</title>
     
-    <!-- Core Stylesheet -->
-    <!-- <link rel="stylesheet" href="resources/css/style.css">-->
+    
     
     <style>
     
@@ -30,30 +31,21 @@
         
     </style>
 
-	    <!-- Favicon -->
-	    <link rel="icon" href="img/core-img/favicon.ico">
-	
-	    <!-- Core Stylesheet -->
-	    <link rel="stylesheet" href="style.css">
-
-	    <!-- jQuery-2.2.4 js -->
-	    <script src="js/jquery/jquery-2.2.4.min.js"></script>
-	    
-	    <!-- Popper js -->
-	    <script src="js/bootstrap/popper.min.js"></script>
-	    
-	    <!-- Bootstrap js -->
-	    <script src="js/bootstrap/bootstrap.min.js"></script>
-	    
-	    <!-- All Plugins js -->
-	    <script src="js/plugins/plugins.js"></script>
-	    
-	    <!-- Active js -->
-	    <script src="js/active.js"></script>
+	   
 </head>
 
 
 <body>
+	
+	<%if(alertMsg!=null){ %>
+	<script>
+		alert("<%=alertMsg%>");
+		
+	</script> 
+	<% session.removeAttribute("alertMsg");
+	} %>
+	
+	
 	<!-- Preloader -->
     <div id="preloader">
         <i class="circle-preloader"></i>
@@ -99,7 +91,12 @@
                     <!-- Top Social Info -->
                     <div class="col-12 col-sm-6">
                         <div class="top-social-info text-right">
-                            <a href="#">로그인 <i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                        <%if(loginUser!=null){ %>
+                        	<a href="views/member/mypageReceipe.jsp"><%=loginUser.getMemName() %> <i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                        	<a href="<%=contextPath%>/logout.me">로그아웃</a>
+                        <%}else{ %>
+                            <a href="<%=contextPath%>/loginForm.me">로그인 <i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                         <%} %>
                         </div>
                     </div>
                 </div>

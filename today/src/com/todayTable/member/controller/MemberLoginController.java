@@ -9,7 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
 
 import com.todayTable.member.model.service.MemberService;
 import com.todayTable.member.model.vo.Allergy;
@@ -40,7 +40,7 @@ public class MemberLoginController extends HttpServlet {
 		String memPwd=request.getParameter("memPwd");
 		
 		Member member = new MemberService().loginMember(memId,memPwd);
-		
+		HttpSession session = request.getSession();
 		if(member!=null) {
 			Allergy memAlg = new MemberService().selectAllergy(member.getMemNo());
 			WishList wishList = new MemberService().selectWishList(member.getMemNo());
@@ -49,9 +49,19 @@ public class MemberLoginController extends HttpServlet {
 			System.out.println(memAlg);
 			System.out.println(wishList);
 			
+			session.setAttribute("loginUser", member);
+			session.setAttribute("memAlg", memAlg);
+			session.setAttribute("wishList", wishList);
+			
+			response.sendRedirect(request.getContextPath());
+			
+			
 			
 		}else {
-			System.out.println("없는 회원입니다");
+			
+			System.out.println("로그인실패");
+			session.setAttribute("alertMsg", "없는 회원입니다");
+			response.sendRedirect(request.getContextPath()+"/loginForm.me");
 		}
 		
 		
