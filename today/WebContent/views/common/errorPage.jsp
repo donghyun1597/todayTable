@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%@ include file="../adminLogin.jsp" %>
+	<%@ include file="../../adminLogin.jsp" %>
 	<div align="center" style="color:red"><%= request.getAttribute("errorMsg") %></div>
 </body>
 </html>

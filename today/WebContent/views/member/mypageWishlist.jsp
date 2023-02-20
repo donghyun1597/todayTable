@@ -75,7 +75,7 @@
 
 
 
-	<%@include file="/mypageMenubar.jsp" %>
+	<%@include file="mypageMenubar.jsp" %>
 
 
             <div class="row" align="center">

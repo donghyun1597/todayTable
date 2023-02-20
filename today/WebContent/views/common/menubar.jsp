@@ -1,3 +1,4 @@
+<%@page import="com.todayTable.member.model.vo.Allergy"%>
 <%@page import="com.todayTable.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -6,7 +7,7 @@
 	
 	Member loginUser = (Member)session.getAttribute("loginUser");
 	// 로그인 시도 member.jsp 로딩시: null | 회원정보 담겨있는 Member 객체
-	
+	Allergy memAlg = (Allergy)session.getAttribute("memAlg");
 	String alertMsg = (String)session.getAttribute("alertMsg");
 	// 서비스 요청 member.jsp 로딩시: null | alert로 띄워줄 문구
 %>
@@ -20,7 +21,7 @@
     <title>Insert title here</title>
     
     <!-- Core Stylesheet -->
-    <link rel="stylesheet" href="resources/css/style.css">
+    <!-- <link rel="stylesheet" href="resources/css/style.css">-->
     
     <style>
     
@@ -237,7 +238,7 @@
                                                                 <li><a href="#">공지사항</a></li>
                                                                 <li><a href="#">고객센터</a>
                                                                     <ul class="dropdown">
-                                                                        <li><a href="#">자주묻는질문</a></li>
+                                                                        <li><a href="<%= contextPath %>/faq.cu">자주묻는질문</a></li>
                                                                         <li><a href="#">1::1문의</a></li>
                                                                     </ul>
                                                                 </li>

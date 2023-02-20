@@ -68,7 +68,7 @@
 </head>
 <body>
 
-<%@ include file = "../menubar.jsp" %>
+<%@ include file = "../common/menubar.jsp" %>
 
 
 <div id="wrap">

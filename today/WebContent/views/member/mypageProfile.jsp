@@ -49,6 +49,7 @@
 		String nickName = loginUser.getNickName();
 		String phone = loginUser.getPhone();
 		String memImg = loginUser.getMemImg();
+		
     %>
 
 	
@@ -122,16 +123,16 @@
                         <table border="1px solid gray">
                             <tr>
                                 <td id="t1">&nbsp;* 아이디</td> 
-                                <td id="t2"><input type="text" name="userId" maxlength="12" value="<%= userId %>" readonly></td>
+                                <td id="t2"><input type="text" name="userId" maxlength="12" value="<%= memId %>" readonly></td>
                                 <!-- readonly: 보여지기만 할 뿐, 수정은 불가 -->
                             </tr>
                             <tr>
                                 <td id="t1">&nbsp;* 이름</td>
-                                <td id="t2"><input type="text" name="userName" maxlength="6" value="<%= userName %>" readonly></td>
+                                <td id="t2"><input type="text" name="userName" maxlength="6" value="<%= memName %>" readonly></td>
                             </tr>
                             <tr>
                                 <td id="t1">&nbsp;&nbsp;비밀번호</td>
-                                <td id="t2"><input type="password" name="userPwd" maxlength="30" value="<%= userPwd %>" required>
+                                <td id="t2"><input type="password" name="userPwd" maxlength="30" value="<%= memPwd %>" required>
                                     <span style="font-size: 10px;">* 영문 대소문자/숫자/특수문자 혼용하여 2종류 10 ~ 16자</span></td>
                                 
                             </tr>
@@ -141,7 +142,7 @@
                             </tr>
                             <tr>
                                 <td id="t1">&nbsp;&nbsp;닉네임</td>
-                                <td id="t2"><input type="text" name="nickname" value="<%= nickname %>"></td>
+                                <td id="t2"><input type="text" name="nickname" value="<%= nickName %>"></td>
                             </tr>
                             <tr>
                                 <td id="t1">&nbsp;&nbsp;휴대폰</td>
@@ -171,7 +172,7 @@
 
                         <script>
                             $(function(){
-                                const ag = "<%= ag %>";
+                                const ag = "<%= memAlg.getAlgName() %>";
                                 $("input[type=checkbox]").each(function(){
                                     if(ag.search($(this).val()) != -1){
                                         $(this).attr("checked",true);
@@ -209,7 +210,7 @@
           <form action="<%= contextPath %>/delete.me" method="post">
             <b>탈퇴 후 복구가 불가능 합니다. <br> 정말로 탈퇴 하시겠습니까?</b> <br><br>
             비밀번호: <input type="password" name="userPwd" required> 
-            <input type="hidden" name="userId" value="<%= userId%>"><br><br>
+            <input type="hidden" name="userId" value="<%= memId%>"><br><br>
             <button type="submit" class="btn btn-sm btn-danger">탈퇴하기</button>
           </form>
         </div>
