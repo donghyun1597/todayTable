@@ -1,4 +1,4 @@
-package com.todayTable.member.model.dao;
+package com.todayTable.admin.member.model.dao;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -49,7 +49,8 @@ public class AdminDao {
 							 , rset.getString("MEM_NAME")
 							 , rset.getString("PHONE")
 							 , rset.getInt("WARNING_COUNT")
-							 , rset.getString("MEM_IMG"));
+							 , rset.getString("MEM_IMG")
+							 , rset.getString("MEM_STATUS"));
 			}
 			
 		} catch (SQLException e) {

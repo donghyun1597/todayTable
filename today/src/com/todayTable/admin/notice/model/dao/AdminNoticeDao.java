@@ -1,4 +1,4 @@
-package com.todayTable.notice.model.dao;
+package com.todayTable.admin.notice.model.dao;
 
 import static com.todayTable.common.JDBCTemplate.close;
 

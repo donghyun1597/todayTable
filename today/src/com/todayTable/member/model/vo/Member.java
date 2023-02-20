@@ -26,6 +26,32 @@ public class Member {
 		this.memImg = memImg;
 		this.memStatus = memStatus;
 	}
+	
+
+	public Member(int memNo, String memId, String nickName, String memName, String phone, int warningCount) {
+		super();
+		this.memNo = memNo;
+		this.memId = memId;
+		this.nickName = nickName;
+		this.memName = memName;
+		this.phone = phone;
+		this.warningCount = warningCount;
+	}
+
+
+	
+	public Member(int memNo, String memId, String memPwd, String nickName, String memName, String phone,
+			int warningCount, String memImg) {
+		super();
+		this.memNo = memNo;
+		this.memId = memId;
+		this.memPwd = memPwd;
+		this.nickName = nickName;
+		this.memName = memName;
+		this.phone = phone;
+		this.warningCount = warningCount;
+		this.memImg = memImg;
+	}
 
 	public int getMemNo() {
 		return memNo;

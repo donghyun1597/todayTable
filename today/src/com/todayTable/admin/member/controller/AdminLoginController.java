@@ -1,4 +1,4 @@
-package com.todayTable.member.controller;
+package com.todayTable.admin.member.controller;
 
 import java.io.IOException;
 
@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.todayTable.member.model.service.AdminService;
+import com.todayTable.admin.member.model.service.AdminService;
 import com.todayTable.member.model.vo.Member;
 
 /**

@@ -18,7 +18,7 @@
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 <!-- Core theme CSS (includes Bootstrap)-->
-<link href="<%= contextPath %>/resources/css/styles.css"
+<link href="<%= contextPath %>/resources/css/adminStyles.css"
 	rel="stylesheet" />
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -36,10 +36,8 @@
 	
 		<!-- Sidebar-->
 		<div class="border-end bg-white" id="sidebar-wrapper">
-			<div class="sidebar-heading bg-light"
-				style="width: 180px; margin: auto; padding: 0px;">
-				<img src="<%= contextPath %>/resources/image/logo.png" alt=""
-					style="box-sizing: border-box; width: 100%; height: 100%;">
+			<div class="sidebar-heading bg-light" style="width: 180px; margin: auto; padding: 0px;">
+				<a href="<%= contextPath %>/views/admin/adminIndex.jsp"><img src="<%= contextPath %>/resources/image/logo.png" alt="" style="box-sizing: border-box; width: 100%; height: 100%;"></a>
 			</div>
 			<div class="list-group list-group-flush">
 				<a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!" style="border-top: 1px solid #dee2e6;"><span>메인사진변경</span></a>

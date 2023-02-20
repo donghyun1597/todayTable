@@ -1,4 +1,4 @@
-package com.todayTable.notice.controller;
+package com.todayTable.admin.notice.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

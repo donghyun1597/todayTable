@@ -42,19 +42,24 @@ public class MemberLoginController extends HttpServlet {
 		Member member = new MemberService().loginMember(memId,memPwd);
 		HttpSession session = request.getSession();
 		if(member!=null) {
-			Allergy memAlg = new MemberService().selectAllergy(member.getMemNo());
-			WishList wishList = new MemberService().selectWishList(member.getMemNo());
-			
-			System.out.println(member);
-			System.out.println(memAlg);
-			System.out.println(wishList);
-			
-			session.setAttribute("loginUser", member);
-			session.setAttribute("memAlg", memAlg);
-			session.setAttribute("wishList", wishList);
-			
-			response.sendRedirect(request.getContextPath());
-			
+			if(member.getMemId().equals("admin")) {
+				request.getRequestDispatcher("adminLogin.jsp").forward(request, response);
+			}else {
+				
+				Allergy memAlg = new MemberService().selectAllergy(member.getMemNo());
+				WishList wishList = new MemberService().selectWishList(member.getMemNo());
+				
+				System.out.println(member);
+				System.out.println(memAlg);
+				System.out.println(wishList);
+				
+				session.setAttribute("loginUser", member);
+				session.setAttribute("memAlg", memAlg);
+				session.setAttribute("wishList", wishList);
+				
+				response.sendRedirect(request.getContextPath());
+				
+			}
 			
 			
 		}else {

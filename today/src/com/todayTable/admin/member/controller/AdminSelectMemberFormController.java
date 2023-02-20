@@ -1,23 +1,28 @@
-package com.todayTable.notice.controller;
+package com.todayTable.admin.member.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.todayTable.member.model.service.MemberService;
+import com.todayTable.member.model.vo.Member;
+
 /**
- * Servlet implementation class AdminInsertNoticeController
+ * Servlet implementation class AdminSelectMemberController
  */
-@WebServlet("/insertNoticeForm.no")
-public class AdminInsertNoticeFormController extends HttpServlet {
+@WebServlet("/adminSelectMember.mem")
+public class AdminSelectMemberFormController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminInsertNoticeFormController() {
+    public AdminSelectMemberFormController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,7 +31,13 @@ public class AdminInsertNoticeFormController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("views/admin/insertNotice.jsp").forward(request, response);
+		Member m = new Member();
+		
+		ArrayList<Member> list = new MemberService().selectMemberList();
+		
+		request.setAttribute("list", list);
+		
+		request.getRequestDispatcher("views/admin/adminSelectMember.jsp").forward(request, response);
 	}
 
 	/**

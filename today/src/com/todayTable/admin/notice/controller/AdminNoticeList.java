@@ -1,28 +1,29 @@
-package com.todayTable.member.controller;
+package com.todayTable.admin.notice.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.todayTable.member.model.service.MemberService;
-import com.todayTable.member.model.vo.Member;
+import com.todayTable.notice.model.service.NoticeService;
+import com.todayTable.notice.model.vo.Notice;
 
 /**
- * Servlet implementation class AdminSelectMemberController
+ * Servlet implementation class AdminNoticeList
  */
-@WebServlet("/adminSelectMember.mem")
-public class AdminSelectMemberFormController extends HttpServlet {
+@WebServlet("/adminNotice.no")
+public class AdminNoticeList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminSelectMemberFormController() {
+    public AdminNoticeList() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,13 +32,13 @@ public class AdminSelectMemberFormController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Member m = new Member();
+		request.setCharacterEncoding("UTF-8");
 		
-		ArrayList<Member> list = new MemberService().selectMemberList();
-		
+		ArrayList<Notice> list = new NoticeService().adminSelectNotice();
 		request.setAttribute("list", list);
 		
-		request.getRequestDispatcher("views/admin/adminSelectMember.jsp").forward(request, response);
+		RequestDispatcher view = request.getRequestDispatcher("views/admin/adminNotice.jsp");
+		view.forward(request, response);
 	}
 
 	/**
