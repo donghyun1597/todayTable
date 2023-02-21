@@ -11,36 +11,38 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class MyPageContoller
+ * @author sm.kim
+ * Servlet implementation class MypageController
  */
-@WebServlet("/myPage.me")
-public class MyPageContoller extends HttpServlet {
+@WebServlet("/mypage.me")
+public class MypageController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MyPageContoller() {
+    public MypageController() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
-    
-    
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		// 일단 무조건 페이지 뜨게 하자
+		// 로그인전에 url 들어온 경우, 로그인전=>alert/로그인후=>mypage
 		HttpSession session = request.getSession();
-
-		RequestDispatcher view = request.getRequestDispatcher("views/member/mypageProfile.jsp");
-		view.forward(request, response);
-		System.out.println("접속성공");
+		
+		if(session.getAttribute("loginUser") == null) {
+			session.setAttribute("alertMsg", "로그인 후 이용 가능한 서비스입니다");
+			response.sendRedirect(request.getContextPath());
+		}else {
+			// mypageProfile 확인하기
+			RequestDispatcher view = request.getRequestDispatcher("views/member/mypageProfile.jsp");
+		}
+		
 		
 	}
-	
-	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

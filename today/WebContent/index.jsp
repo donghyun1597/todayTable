@@ -62,7 +62,7 @@
             </div>
 
             <!-- Single Hero Slide -->
-            <div class="single-hero-slide bg-img" style="background-image: url(resources/image/bg-img/sumin3.jpeg);">
+            <div class="single-hero-slide bg-img" style="background-image: url(resources/image/bg-img/sumin.jpg);">
                 <div class="container h-100">
                     <div class="row h-100 align-items-center">
                         <div class="col-12 col-md-9 col-lg-7 col-xl-6">

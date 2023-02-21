@@ -31,6 +31,9 @@ public class MemberDao {
 		
 	}
 	
+	
+	
+	
 	public Member loginMember(Connection conn,String memId,String memPwd) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -69,8 +72,10 @@ public class MemberDao {
 		
 		return member;
 		
-		
 	}
+	
+	
+	
 	
 	public Allergy selectAllergy(Connection conn,int memNo) {
 		PreparedStatement pstmt = null;
@@ -126,6 +131,10 @@ public class MemberDao {
 		}
 		return wish;
 	}
+	
+	
+	
+	
 
 	public ArrayList<Member> selectMemberList(Connection conn) {
 		ArrayList<Member> list = new ArrayList<Member>();
@@ -159,4 +168,96 @@ public class MemberDao {
 		
 		return list;
 	}
+	
+	
+	
+	/**
+	 * 회원정보 수정
+	 * @author sm.kim
+	 * @return
+	 */
+	public int updateMember(Connection conn, Member m) {
+		
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateMember");
+		
+		try {
+			// 이거 별 별별
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, m.getMemName());
+			pstmt.setString(2, m.getNickName());
+			pstmt.setString(3, m.getPhone());
+			pstmt.setString(4, m.getAlgName());
+			pstmt.setString(5, m.getMemId());
+			
+			// 실행
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	
+	
+	
+	
+	
+	
+	/**
+	 * 회원정보 수정
+	 * @author sm.kim
+	 * @return
+	 */
+	public Member selectMember(Connection conn, String MemId) {
+		Member m = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectMember");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, MemId);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				
+				m = new Member(rset.getInt("memNo")
+							, rset.getString("memId")
+							, rset.getString("memPwd")
+							, rset.getString("nickName")
+							, rset.getString("memName")
+							, rset.getString("phone")
+							, rset.getInt("warningCount")
+							, rset.getString("memImg")
+							, rset.getString("memStatus"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return m;
+				
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 }

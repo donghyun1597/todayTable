@@ -12,7 +12,7 @@
 
     <!-- Title -->
     <title>오늘의 식탁</title>
-
+    
     <style>
 		#mypage-form table { margin: auto;}
         #mypage-form input { margin: 5px; }
@@ -38,7 +38,7 @@
 </head>
 
 <body>
-    <%@ include file="/../views/common/menubar.jsp" %>
+    <%@ include file="../common/menubar.jsp" %>
  
  
      <!-- 로그인 성공하면 session 다 쓸 수 있는것 -->
@@ -154,18 +154,13 @@
                                     <input type="checkbox" name="ag" id="ag" value="ag1">
                                     <label for="ag">난류</label>
                                     <input type="checkbox" name="ag" id="ag" value="ag1">
-                                    <label for="ag">난류2</label>
+                                    <label for="ag">우유</label>
                                     <input type="checkbox" name="ag" id="ag" value="ag1">
-                                    <label for="ag">난류3</label>
+                                    <label for="ag">곡류</label>
                                     <input type="checkbox" name="ag" id="ag" value="ag1">
-                                    <label for="ag">난류4</label>
+                                    <label for="ag">갑각류</label>
                                     <input type="checkbox" name="ag" id="ag" value="ag1">
-                                    <label for="ag">난류5</label>
-                                    <input type="checkbox" name="ag" id="ag" value="ag1">
-                                    <label for="ag">난류6</label>
-
-
-
+                                    <label for="ag">견과류</label>
                                 </td>
                             </tr>
                         </table>
@@ -260,17 +255,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     </footer>
     <!-- ##### Footer Area Start ##### -->
 
-    <!-- ##### All Javascript Files ##### -->
-    <!-- jQuery-2.2.4 js -->
-    <script src="js/jquery/jquery-2.2.4.min.js"></script>
-    <!-- Popper js -->
-    <script src="js/bootstrap/popper.min.js"></script>
-    <!-- Bootstrap js -->
-    <script src="js/bootstrap/bootstrap.min.js"></script>
-    <!-- All Plugins js -->
-    <script src="js/plugins/plugins.js"></script>
-    <!-- Active js -->
-    <script src="js/active.js"></script>
+    
 </body>
 
 </html>

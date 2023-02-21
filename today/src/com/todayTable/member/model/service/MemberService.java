@@ -69,5 +69,32 @@ public class MemberService {
 		return list;
 	}
 	
+	
+	
+	
+	/**
+	 * 회원 정보 수정
+	 * @author sm.kim
+	 * @return
+	 */
+	public Member updateMember(Member m) {
+		Connection conn = getConnection();
+		
+		int result = new MemberDao().updateMember(conn, m);
+		
+		Member updateMem = null;
+		
+		if(result > 0) {
+			commit(conn);
+			
+			updateMem = new MemberDao().selectMember(conn, m.getMemId());
+			
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return updateMem;
+	}	//... end 
+	
 
 }

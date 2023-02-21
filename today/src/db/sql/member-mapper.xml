@@ -126,4 +126,31 @@
 	</entry>
 	
 	
+	
+<!-- 수민.회원정보수정 (미완)-->
+<entry key="selectMemberList">
+	UPDATE MEMBER M
+	SET MEM_NAME = ?
+	    , NICKNAME = ?
+	    , PHONE = ?
+	    , ALG_NO = ?
+	FROM MEM_ALLERGY A
+	WHERE M.MEM_NO = A.MEM_NO;
+</entry>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 </properties>
