@@ -234,7 +234,7 @@
                                                         <li><a href="#">더보기</a>
                                                             <ul class="dropdown">
                                                                 <li><a href="<%= contextPath %>/eventList.ev">이벤트</a></li>
-                                                                <li><a href="<%= contextPath %>/noticeList.no">공지사항</a></li>
+                                                                <li><a href="<%= contextPath %>/noticeList.no?cpage=1">공지사항</a></li>
                                                                 <li><a href="#">고객센터</a>
                                                                     <ul class="dropdown">
                                                                         <li><a href="<%= contextPath %>/faq.cu">자주묻는질문</a></li>

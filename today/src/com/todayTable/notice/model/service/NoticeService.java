@@ -1,5 +1,6 @@
 package com.todayTable.notice.model.service;
 
+import com.todayTable.common.model.vo.PageInfo;
 import com.todayTable.notice.model.dao.NoticeDao;
 import com.todayTable.notice.model.vo.Notice;
 
@@ -10,12 +11,11 @@ import java.util.ArrayList;
 
 public class NoticeService {
 
-	public ArrayList<Notice> selectNoticeList() {
+	public ArrayList<Notice> selectNoticeList(PageInfo pi) {
 		java.sql.Connection conn = getConnection();
+		ArrayList<Notice> list = new NoticeDao().selectNoticeList(conn, pi);
 		
-		ArrayList<Notice> list = new NoticeDao().selectNoticeList(conn);
 		close(conn);
-		
 		return list;
 	}
 	
@@ -43,6 +43,16 @@ public class NoticeService {
 		close(conn);
 		
 		return result;
+	}
+
+	public int noticeSelectListCount() {
+		
+		Connection conn = getConnection();
+		
+		int listCount = new NoticeDao().noticeSelectListCount(conn);
+		
+		close(conn);
+		return listCount;
 	}
 
 }
