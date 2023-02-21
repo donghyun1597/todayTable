@@ -143,7 +143,7 @@
 	<%} %>
     <div class="wrap">
         <div class="login">
-            <img src="../todayTable (1)/img/logo/logo.png" alt="" width="200">
+            <img src="../../resources/image/logo.png" alt="" width="200">
             <a href="<%=request.getContextPath()%>">HOME</a>
             <h2>Log-in</h2>
             <div class="login_sns">

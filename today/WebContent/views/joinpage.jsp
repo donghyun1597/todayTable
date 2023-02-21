@@ -6,6 +6,72 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Noto Sans KR", sans-serif;
+    }
+
+    a {
+    text-decoration: none;
+    color: black;
+    }
+
+    .wrap {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.1);
+    }
+
+    .join {
+    width: 60%;
+    height: 800px;
+    background: white;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    }
+
+    h2 {
+    color: tomato;
+    font-size: 2em;
+    }
+
+
+    .join_input {
+    width: 80%;
+    height: 40px;
+    border-radius: 30px;
+    margin-top: 10px;
+    padding: 0px 20px;
+    border: 1px solid lightgray;
+    outline: none;
+    }
+
+    .submit {
+    margin-top: 30px;
+    width: 50%;
+    }
+    
+    .submit input {
+    width: 50%;
+    height: 50px;
+    border: 0;
+    outline: none;
+    border-radius: 40px;
+    background: linear-gradient(to left, rgb(255, 77, 46), rgb(255, 155, 47));
+    color: white;
+    font-size: 1.2em;
+    letter-spacing: 2px;
+    }
+</style>
+<style>
     #joinform{
         background-color: lightgray;
         border: 1;
@@ -13,117 +79,125 @@
 </style>
 </head>
 <body>
+    <div class="wrap">
+        <div class="join">
+            <img src="../resources/image/logo.png" alt="" width="200" href="<%=request.getContextPath()%>">
+            <h2>회원 가입</h2>
 
-    <div id="wrap">
-        <br><br>
-        <div align="center">
-            <b>
-                <img src="../resources/image/logo.png" alt="" width="200">
-                <br>
-                <font size="6" color="gray">회원가입</font>
-            </b>
+            <form action="<%=request.getContextPath() %>/login.me" method="post">
+                <table align="center">
+                    <tr>
+                        <td id="id">
+                            <img src="../resources/image/mail.png" alt="" width="20" >
+                        </td>
+    
+                        <td>
+                            <input type="text" name="memId" class="join_input" placeholder="아이디">
+
+                                <input type="button" name="" value="중복확인">
+
+
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td id="pwd">
+                            <img src="../resources/image/pw.png" alt="" width="20">
+                        </td>
+                        <td>
+                            <input type="password" name="memPwd" class="join_input"  placeholder="비밀번호">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="pwdCheck">
+                            <img src="../resources/image/pw.png" alt="" width="20">
+                        </td>
+                        <td>
+                            <input type="password" name="checkedPwd" class="join_input" placeholder="비밀번호 확인">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="uName">
+                            <img src="../resources/image/person.png" alt="" width="20">
+                        </td>
+                        <td>
+                            <input type="text" name="userName" class="join_input" placeholder="닉네임">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="name">
+                            <img src="../resources/image/person.png" alt="" width="20">
+                        </td>
+                        <td>
+                            <input type="text" name="name" class="join_input" placeholder="이름">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="email">
+                            <img src="../resources/image/mail.png" alt="" width="20">
+                        </td>
+                        <td>
+                            <input type="text" name="mail1" class="join_input" placeholder="이메일">@
+                            <select name="mail2" id="" class="join_input" >
+                                <option value="naver.com">naver.com</option>
+                                <option value="daum.net">daum.net</option>
+                                <option value="gmail.com">gmail.com</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="phone">
+                            <img src="../resources/image/phone.png" alt="" width="20">
+                        </td>
+                        <td>
+                            <input type="text" name="phone" class="join_input" placeholder="휴대전화">
+                        </td>
+                    </tr>
+                    <tr>
+                            <td id="title">
+                                알레르기
+                            </td>
+                            <td>
+                                <input type="checkbox" name="egg" id="egg">
+                                <label for="egg">계란</label>
+                                <input type="checkbox" name="milk" id="milk">
+                                <label for="milk">우유</label>
+                                <input type="checkbox" name="cereal" id="cereal">
+                                <label for="cereal">곡류</label>
+                                <br>
+                                <input type="checkbox" name="crustacea" id="crustacea">
+                                <label for="crustacea">갑각류</label>
+                                <input type="checkbox" name="nut" id="nut">
+                                <label for="nut">견과류</label>
+                                <input type="checkbox" name="fish" id="fish">
+                                <label for="fish">생선류</label>
+                                <br>
+                                <input type="checkbox" name="sulfurous" id="sulfurous">
+                                <label for="sulfurous">아황산류</label>
+                                <input type="checkbox" name="Mollusca" id="Mollusca">
+                                <label for="Mollusca">연체류</label>
+                                <input type="checkbox" name="Meat" id="Meat">
+                                <label for="Meat">육류</label>
+                            </td>
+                            
+                        </tr>
+                </table> 
+            </form>
+
 
         </div>
-        <br><br><br>
+    </div>
 
-        <form action="test.do">
-            <table align="center" id="joinform">
-                <tr>
-                    <td id="id">
-                        <img src="../resources/image/mail.png" alt="" width="20" >
-                    </td>
+        <form action="<%=request.getContextPath() %>/Join.me" method="post">
+            <div class="loign_id">
+                
+            </div>
 
-                    <td>
-                        <input type="text" name="userId" id="userId" placeholder="아이디">
-                        <input type="button" name="" id="" value="중복확인">
-                    </td>
-                </tr>
-
-                <tr>
-                    <td id="pwd">
-                        <img src="../resources/image/pw.png" alt="" width="20">
-                    </td>
-                    <td>
-                        <input type="password" name="userPwd" id="userPwd" placeholder="비밀번호">
-                    </td>
-                </tr>
-                <tr>
-                    <td id="pwdCheck">
-                        <img src="../resources/image/pw.png" alt="" width="20">
-                    </td>
-                    <td>
-                        <input type="password" name="checkedPwd" id="checkedPwd" placeholder="비밀번호 확인">
-                    </td>
-                </tr>
-                <tr>
-                    <td id="uName">
-                        <img src="../resources/image/person.png" alt="" width="20">
-                    </td>
-                    <td>
-                        <input type="text" name="userName" id="userName" placeholder="닉네임">
-                    </td>
-                </tr>
-                <tr>
-                    <td id="name">
-                        <img src="../resources/image/person.png" alt="" width="20">
-                    </td>
-                    <td>
-                        <input type="text" name="name" id="name" placeholder="이름">
-                    </td>
-                </tr>
-                <tr>
-                    <td id="email">
-                        <img src="../resources/image/mail.png" alt="" width="20">
-                    </td>
-                    <td>
-                        <input type="text" name="mail1" id="mail1" placeholder="이메일">@
-                        <select name="mail2" id="">
-                            <option value="naver.com">naver.com</option>
-                            <option value="daum.net">daum.net</option>
-                            <option value="gmail.com">gmail.com</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td id="phone">
-                        <img src="../resources/image/phone.png" alt="" width="20">
-                    </td>
-                    <td>
-                        <input type="text" name="phone" id="phone" placeholder="휴대전화">
-                    </td>
-                </tr>
-                <tr>
-                    <td id="title">
-                        알레르기
-                    </td>
-                    <td>
-                        <input type="checkbox" name="egg" id="egg">
-                        <label for="egg">계란</label>
-                        <input type="checkbox" name="milk" id="milk">
-                        <label for="milk">우유</label>
-                        <input type="checkbox" name="cereal" id="cereal">
-                        <label for="cereal">곡류</label>
-                        <br>
-                        <input type="checkbox" name="crustacea" id="crustacea">
-                        <label for="crustacea">갑각류</label>
-                        <input type="checkbox" name="nut" id="nut">
-                        <label for="nut">견과류</label>
-                        <input type="checkbox" name="fish" id="fish">
-                        <label for="fish">생선류</label>
-                        <br>
-                        <input type="checkbox" name="sulfurous" id="sulfurous">
-                        <label for="sulfurous">아황산류</label>
-                        <input type="checkbox" name="Mollusca" id="Mollusca">
-                        <label for="Mollusca">연체류</label>
-                        <input type="checkbox" name="Meat" id="Meat">
-                        <label for="Meat">육류</label>
-                    </td>
-                </tr>
-            </table>
             <br>
-            <input type="checkbox" name="checked1" id="checked1" required>이용약관 동의(필수)
             <div>
-                <textarea name="terms" id="terms" style="width: 100%; resize: none;" rows="10">
+                <input type="checkbox" name="checked1" id="checked1" required>이용약관 동의(필수)
+                    <div align="center">
+                <textarea name="terms" id="terms" style="width: 80%; resize: none;" rows="10">
                     제 1장 총칙
 
 제 1 조(목적)
@@ -267,8 +341,8 @@
 
             <br>
             <input type="checkbox" name="checked2" id="checked2" required>개인정보 수집 및 이용 동의(필수)
-            <div>
-                <textarea name="privacy" id="privacy" style="width: 100%; resize: none;" rows="10">
+            <div align="center">
+                <textarea name="privacy" id="privacy" style="width: 80%; resize: none;" rows="10">
 가. 개인정보의 수집 및 이용 목적
 ① 오늘의 식탁은 다음의 목적을 위하여 개인정보를 처리합니다. 처리하고 있는 개인정보는 다음의 목적 이외의 용도로는 이용되지 않으며, 이용 목적이 변경되는 경우에는 개인정보 보호법 제18조에 따라 별도의 동의를 받는 등 필요한 조치를 이행할 예정입니다.
 1. 오늘의 식탁 서비스 제공을 위한 회원관리
@@ -299,10 +373,11 @@
                 </textarea>
             </div>
 
+
             <br>
-            <div align="center">
-                <input type="submit" name="join" id="join" value="가입">
-                <input type="reset" name="reset" id="reset" value="취소">
+            <div align="center" class="submit">
+                <input type="submit" name="join" class="submit" value="가입">
+                <input type="reset" name="reset" class="submit" value="취소">
             </div>
         </form>
 
