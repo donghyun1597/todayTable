@@ -120,7 +120,19 @@
             </tbody>
         </table>
     </div>
-    
+   <!--  
+    <script>
+    	$(function(){
+    		$(".table >tbody>tr").click(function(){
+    			const num = $(this).children().eq().text();
+    			
+    			console.log(num);
+    			
+    			location.href = '<%= contextPath %>/detail.no?num' + num;
+    		});
+    	});
+    </script>
+     -->
     <div class="m-4" id="paging">
         <nav>
             <div class="pagination">

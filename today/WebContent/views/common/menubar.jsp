@@ -94,11 +94,18 @@
                     <!-- Top Social Info -->
                     <div class="col-12 col-sm-6">
                         <div class="top-social-info text-right">
-                        <%if(loginUser!=null){ %>
-                        	<a href="views/member/mypageReceipe.jsp"><%=loginUser.getMemName() %> <i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                        	<a href="<%=contextPath%>/logout.me">로그아웃</a>
-                        <%}else{ %>
-                            <a href="<%=contextPath%>/loginForm.me">로그인 <i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                        
+                        <%if(loginUser!= null){ %>	<!-- 로그인에 성공했을때, -->
+                        	<!-- 회원정보 수정페이지로 보내기 -->
+                        	<a href="<%=contextPath%>/profile.me"><%=loginUser.getMemName()%>님<i class="login" aria-hidden="true"></i></a>
+                        	<!-- 마이페이지 화면으로 보내기 -->
+                        	<a href="views/member/mypageReceipe.jsp">MYRECIPE</a>
+                        	<!-- 로그아웃 된 후, 메인페이지로 보내기 -->
+                        	<a href="<%=contextPath%>/logout.me">LOGOUT</a>
+                        	
+                        <%}else { %>
+                            <a href="<%=contextPath%>/loginForm.me">LOGIN<i class="login" aria-hidden="true"></i></a>
+                            
                          <%} %>
                         </div>
                     </div>
