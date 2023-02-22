@@ -77,11 +77,12 @@ public class MemberDao {
 	
 	
 	
-	public Allergy selectAllergy(Connection conn,int memNo) {
+	public ArrayList<Allergy> selectAllergy(Connection conn,int memNo) {
+		ArrayList<Allergy> memAlg = new ArrayList<Allergy>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String sql = prop.getProperty("selectMemberAllergy");
-		Allergy memAlg = null;
+		
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -89,9 +90,13 @@ public class MemberDao {
 			
 			rset = pstmt.executeQuery();
 			
-			if(rset.next()) {
-				memAlg = new Allergy(rset.getString("alg_no"),
-									rset.getString("alg_name"));
+			while(rset.next()) {
+				Allergy a = new Allergy();
+				a.setAlgNo(rset.getString("alg_no"));
+				a.setAlgName(rset.getString("alg_name"));
+				
+				memAlg.add(a);
+				
 				
 			}
 		} catch (SQLException e) {
@@ -106,11 +111,12 @@ public class MemberDao {
 	
 	
 	
-	public WishList selectWishList(Connection conn,int memNo) {
+	public ArrayList<WishList> selectWishList(Connection conn,int memNo) {
+		ArrayList<WishList> wishList = new ArrayList<WishList>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String sql = prop.getProperty("selectWishList");
-		WishList wish = null;
+		
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -118,8 +124,11 @@ public class MemberDao {
 			
 			rset = pstmt.executeQuery();
 			
-			if(rset.next()) {
-				wish = new WishList(rset.getInt("mem_no"),rset.getInt("recipe_no"));
+			while(rset.next()) {
+				WishList w = new WishList();
+				w.setMemNo(rset.getInt("mem_no"));
+				w.setRecipeNo(rset.getInt("recipe_no"));
+				wishList.add(w);
 				
 			}
 		} catch (SQLException e) {
@@ -129,7 +138,7 @@ public class MemberDao {
 			close(rset);
 			close(pstmt);
 		}
-		return wish;
+		return wishList;
 	}
 	
 	
@@ -177,9 +186,7 @@ public class MemberDao {
 	 * @return
 	 */
 	public int updateMember(Connection conn, Member m) {
-		
 		int result = 0;
-		
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("updateMember");
 		
@@ -187,11 +194,10 @@ public class MemberDao {
 			// 이거 별 별별
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, m.getMemName());
+			pstmt.setString(1, m.getMemPwd());
 			pstmt.setString(2, m.getNickName());
 			pstmt.setString(3, m.getPhone());
-			pstmt.setString(4, m.getAlgName());
-			pstmt.setString(5, m.getMemId());
+			pstmt.setString(4, m.getMemId());
 			
 			// 실행
 			result = pstmt.executeUpdate();
@@ -251,6 +257,68 @@ public class MemberDao {
 		}
 		return m;
 				
+	}
+	
+	
+	
+	
+	
+	
+	public int deleteMemberAllergy(Connection conn,int memNo) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("deleteMemberAllergy");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, memNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	public int insertMemberAllergy(Connection conn, int memNo, String[] algNo) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertMemberAllergy");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			if(algNo!=null) {
+				for(int i=0; i<algNo.length; i++) {
+					
+					pstmt.setInt(1, memNo);
+					pstmt.setString(2, algNo[i]);
+		
+					result += pstmt.executeUpdate();
+				}
+			}else {
+				System.out.println("algNo안됨??");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+		
+		
 	}
 	
 	

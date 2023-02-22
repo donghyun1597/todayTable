@@ -28,31 +28,23 @@ public class MemberService {
 		
 	}
 	
-	public Allergy selectAllergy(int memNo) {
+	public ArrayList<Allergy> selectAllergy(int memNo) {
 		Connection conn = getConnection();
 		 
-		Allergy memAlg = new MemberDao().selectAllergy(conn,memNo);
+		ArrayList<Allergy> memAlg = new MemberDao().selectAllergy(conn,memNo);
 		
-		if(memAlg==null) {
-			rollback(conn);
-		}else {
-			commit(conn);
-		}
+		
 		close(conn);
 		
 		return memAlg;
 		
 	}
-	public WishList selectWishList(int memNo) {
+	public ArrayList<WishList> selectWishList(int memNo) {
 		Connection conn = getConnection();
 		 
-		WishList wishList = new MemberDao().selectWishList(conn,memNo);
+		ArrayList<WishList> wishList = new MemberDao().selectWishList(conn,memNo);
 		
-		if(wishList==null) {
-			rollback(conn);
-		}else {
-			commit(conn);
-		}
+		
 		close(conn);
 		
 		return wishList;
@@ -77,24 +69,31 @@ public class MemberService {
 	 * @author sm.kim
 	 * @return
 	 */
-	public Member updateMember(Member m) {
+	public int updateMember(Member m,String[] algNo,ArrayList<Allergy> memAlg) {
 		Connection conn = getConnection();
+		int result2 =1;
+		int result1 = new MemberDao().updateMember(conn, m);
+		if(memAlg!=null) {
+			result2 = new MemberDao().deleteMemberAllergy(conn,m.getMemNo());
 		
-		int result = new MemberDao().updateMember(conn, m);
+		}
+		int result3 = new MemberDao().insertMemberAllergy(conn,m.getMemNo(),algNo);
+		System.out.println(result1);
+		System.out.println(result2);
+		System.out.println(result3);
+		int total = result1 * result2 * result3;
 		
-		Member updateMem = null;
-		
-		if(result > 0) {
+		if(total > 0) {
 			commit(conn);
-			
-			updateMem = new MemberDao().selectMember(conn, m.getMemId());
 			
 		}else {
 			rollback(conn);
 		}
 		close(conn);
-		return updateMem;
+		return total;
 	}	//... end 
+	
+	
 	
 
 }

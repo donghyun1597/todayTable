@@ -12,31 +12,34 @@ public class Member {
 	private String memStatus;
 	
 	// 수민. 알러지 정보 필요
-	private String algName;
+	private String[] algNo;
 	
 	public Member() {}
 
 	
 	// 수민. 회원정보 변경시 사용
-	public Member(String memId, String memPwd, String nickName, String memName, String phone, String algName) {
+	public Member(int memNo,String memId, String memPwd, String nickName, String phone) {
 		super();
+		this.memNo = memNo;
 		this.memId = memId;
 		this.memPwd = memPwd;
 		this.nickName = nickName;
-		this.memName = memName;
 		this.phone = phone;
-		this.algName = algName;
+		
 	}
 
 	
 
-	public String getAlgName() {
-		return algName;
+	
+
+
+	public String[] getAlgNo() {
+		return algNo;
 	}
 
 
-	public void setAlgName(String algName) {
-		this.algName = algName;
+	public void setAlgNo(String[] algNo) {
+		this.algNo = algNo;
 	}
 
 

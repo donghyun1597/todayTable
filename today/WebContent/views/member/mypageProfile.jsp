@@ -12,7 +12,7 @@
 
     <!-- Title -->
     <title>오늘의 식탁</title>
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <style>
 		#mypage-form table { margin: auto;}
         #mypage-form input { margin: 5px; }
@@ -119,26 +119,26 @@
             <div class="row" align="center">
                 <div class="col-12">
                     <h5>회원 정보 수정</h5>
-                    <form id="mypage-form" action="#" method="post"> <br><br>
+                    <form id="mypage-form" action="<%=contextPath %>/update.me" method="post"> <br><br>
+                    	<input type="hidden" value="<%=loginUser.getMemNo()%>" name="memNo">
                         <table border="1px solid gray">
                             <tr>
                                 <td id="t1">&nbsp;* 아이디</td> 
-                                <td id="t2"><input type="text" name="userId" maxlength="12" value="<%= memId %>" readonly></td>
+                                <td id="t2"><input type="text" name="memId" maxlength="12" value="<%= memId %>" readonly></td>
                                 <!-- readonly: 보여지기만 할 뿐, 수정은 불가 -->
                             </tr>
                             <tr>
                                 <td id="t1">&nbsp;* 이름</td>
-                                <td id="t2"><input type="text" name="userName" maxlength="6" value="<%= memName %>" readonly></td>
+                                <td id="t2"><input type="text" maxlength="6" value="<%= memName %>" readonly></td>
                             </tr>
                             <tr>
                                 <td id="t1">&nbsp;&nbsp;비밀번호</td>
-                                <td id="t2"><input type="password" name="userPwd" maxlength="30" value="<%= memPwd %>" required>
+                                <td id="t2"><input type="password" name="memPwd" maxlength="30" value="<%= memPwd %>" required>
                                     <span style="font-size: 10px;">* 영문 대소문자/숫자/특수문자 혼용하여 2종류 10 ~ 16자</span></td>
-                                
                             </tr>
                             <tr>
                                 <td id="t1">&nbsp;&nbsp;비밀번호 확인</td>
-                                <td id="t2"><input type="password" name="userPwd" required></td>
+                                <td id="t2"><input type="password" required></td>
                             </tr>
                             <tr>
                                 <td id="t1">&nbsp;&nbsp;닉네임</td>
@@ -151,37 +151,46 @@
                             <tr>
                                 <td id="t1">&nbsp;&nbsp;알러지정보</td>
                                 <td id="t2" colspan="2" >
-                                    <input type="checkbox" name="ag" id="ag" value="ag1">
+                                    <input type="checkbox" name="agllergy" id="ag" value="A1">
                                     <label for="ag">난류</label>
-                                    <input type="checkbox" name="ag" id="ag" value="ag1">
+                                    <input type="checkbox" name="agllergy" id="ag" value="A2">
                                     <label for="ag">우유</label>
-                                    <input type="checkbox" name="ag" id="ag" value="ag1">
+                                    <input type="checkbox" name="agllergy" id="ag" value="A3">
                                     <label for="ag">곡류</label>
-                                    <input type="checkbox" name="ag" id="ag" value="ag1">
+                                    <input type="checkbox" name="agllergy" id="ag" value="A4">
                                     <label for="ag">갑각류</label>
-                                    <input type="checkbox" name="ag" id="ag" value="ag1">
+                                    <input type="checkbox" name="agllergy" id="ag" value="A5">
                                     <label for="ag">견과류</label>
                                 </td>
                             </tr>
                         </table>
-
-                        <script>
-                            $(function(){
-                                const ag = "<%= memAlg.getAlgName() %>";
-                                $("input[type=checkbox]").each(function(){
-                                    if(ag.search($(this).val()) != -1){
-                                        $(this).attr("checked",true);
-                                    }
-                                })
-                            })
-                        </script>
-                        <br><br>
+                        
+    <!--02-10 스크립트 태그를 쓰는 게 나음 -->
+            <script>
+            	$(function(){
+            		const agllergy = "<%= alg %>";
+            		// 현재 로그인한 회원의 관심분야들
+            		// "" | "운동, 등산, 게임"
+            		console.log("제이쿼리");
+            		$("input[type=checkbox]").each(function(){
+            			// $(this): 순차적으로 접근되는 체크박스 요소
+            			// $(this).val() : 해당 체크박스의 value 값 => 운동 등산 게임...
+            			if(agllergy.search($(this).val()) != -1){
+            				// -1 은 없고, 1은 있고
+            				$(this).attr("checked", true);
+            			}
+            			
+            		});
+            	})	
+            </script>
+            <br><br>
 
 
                         <div align="center">
-                            <a href="#" class="btn delicious-btn btn-4 m-1">정보변경</a>
+                            <button type="submit" class="btn delicious-btn btn-4 m-1">정보변경</button>
                             <a href="#" class="btn delicious-btn btn-4 m-1" data-toggle="modal" data-target="#deleteModal">회원탈퇴</a>
                         </div>
+                        
                     </form>
                 </div>
             </div>
@@ -189,7 +198,7 @@
 
 
          <!-- 회원 탈퇴용 Modal -->
- <div class="modal" id="deleteModal">
+ 	<div class="modal" id="deleteModal">
     <div class="modal-dialog">
       <div class="modal-content">
   

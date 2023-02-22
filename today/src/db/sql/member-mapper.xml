@@ -128,19 +128,41 @@
 	
 	
 <!-- 수민.회원정보수정 (미완)-->
-<entry key="selectMemberList">
-	UPDATE MEMBER M
-	SET MEM_NAME = ?
+<entry key="updateMember">
+	UPDATE 
+	    TB_MEMBER
+	SET
+	      MEM_PWD = ?
 	    , NICKNAME = ?
 	    , PHONE = ?
-	    , ALG_NO = ?
-	FROM MEM_ALLERGY A
-	WHERE M.MEM_NO = A.MEM_NO;
+	WHERE 
+	    MEM_ID = ?
 </entry>
 	
 	
 	
 	
+<entry key="insertMemberAllergy">
+	INSERT 
+	    INTO TB_MEM_ALLERGY
+	    (
+	      MEM_NO
+	    , ALG_NO
+	    )
+	    VALUES
+	    (
+	      ?
+	    , ?
+	    )
+</entry>
+
+
+<entry key="deleteMemberAllergy">
+	DELETE 
+	    TB_MEM_ALLERGY
+	WHERE
+	    MEM_NO=?
+</entry>	
 	
 	
 	

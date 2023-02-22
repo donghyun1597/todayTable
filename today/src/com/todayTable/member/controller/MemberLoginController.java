@@ -1,8 +1,7 @@
 package com.todayTable.member.controller;
 
 import java.io.IOException;
-
-
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -46,12 +45,9 @@ public class MemberLoginController extends HttpServlet {
 				request.getRequestDispatcher("adminLogin.jsp").forward(request, response);
 			}else {
 				
-				Allergy memAlg = new MemberService().selectAllergy(member.getMemNo());
-				WishList wishList = new MemberService().selectWishList(member.getMemNo());
+				ArrayList<Allergy> memAlg = new MemberService().selectAllergy(member.getMemNo());
+				ArrayList<WishList> wishList = new MemberService().selectWishList(member.getMemNo());
 				
-				System.out.println(member);
-				System.out.println(memAlg);
-				System.out.println(wishList);
 				
 				session.setAttribute("loginUser", member);
 				session.setAttribute("memAlg", memAlg);
