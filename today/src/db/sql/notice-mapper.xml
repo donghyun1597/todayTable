@@ -1,20 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
-
+	
+	<entry key="noticeSelectListCount">
+		SELECT
+		       COUNT(*) count
+		  FROM TB_NOTICE
+		 WHERE NOTICE_STATUS = 'Y'
+	</entry>
+	
+	
 	<!-- 공지사항 조회 -->
 	
+	/*
 	<entry key="selectNoticeList">
-		SELECT
-		        NOTICE_NO
-		    ,   NOTICE_CLSFC
-		    ,   NOTICE_NAME
-		    ,   NOTICE_DATE
-		FROM TB_NOTICE
-		WHERE NOTICE_STATUS = 'Y'
-		ORDER
-		   BY NOTICE_NO DESC
+		SELECT *
+		FROM
+		(SELECT ROWNUM RNUM, A.*
+		    FROM(
+		        SELECT
+		            NOTICE_NO
+		        ,   NOTICE_CLSFC
+		        ,   NOTICE_NAME
+		        ,   NOTICE_DATE
+		        FROM TB_NOTICE
+		        WHERE NOTICE_STATUS = 'Y'
+		        ORDER
+		        BY NOTICE_NO DESC)
+		        A
+		        )
+		        WHERE RNUM BETWEEN ? AND ?
 	</entry>
+	*/
+	
+	<entry key="selectNoticeList">
+        SELECT
+                NOTICE_NO
+            ,   NOTICE_CLSFC
+            ,   NOTICE_NAME
+            ,   NOTICE_DATE
+        FROM TB_NOTICE
+        WHERE NOTICE_STATUS = 'Y'
+        ORDER
+           BY NOTICE_NO DESC
+    </entry>
+	
+	
 
 	<entry key="insertNotice">
 	INSERT

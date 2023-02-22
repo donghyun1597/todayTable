@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%
 	String contextPath = request.getContextPath();
-	String url = request.getContextPath()+"/adminLogin.jsp";
 	
 %>
     <!DOCTYPE html>
@@ -17,7 +16,6 @@
     </head>
 
     <body>
-
         <div class="wrapper" align="center" style="margin-top: 100px;">
             <div class="img-wrap">
                 <img src="resources/image/logo.png" width="200px" height="200px">

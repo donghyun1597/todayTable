@@ -52,7 +52,8 @@ public class MemberDao {
 									rset.getString("mem_name"),
 									rset.getString("phone"),
 									rset.getInt("warning_count"),
-									rset.getString("mem_img"));
+									rset.getString("mem_img"),
+									rset.getString("mem_status"));
 				
 			}
 			
