@@ -120,7 +120,7 @@
             </tbody>
         </table>
     </div>
-   <!--  
+   <!-- 
     <script>
     	$(function(){
     		$(".table >tbody>tr").click(function(){

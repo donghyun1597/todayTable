@@ -3,14 +3,28 @@
 <properties>
 
 	<entry key="selectEventList">
-		SELECT 
-	        EVENT_NO
-	      , EVENT_PROCESSING
-	      , EVENT_NAME
-	      , EVENT_DATE
-		FROM TB_EVENT
-		ORDER
-		   BY EVENT_NO DESC
+	    SELECT *
+	    FROM
+	    (SELECT ROWNUM RNUM, A.*
+	        FROM(
+	          SELECT 
+		        EVENT_NO
+		      , EVENT_PROCESSING
+		      , EVENT_NAME
+		      , EVENT_DATE
+			FROM TB_EVENT
+			ORDER
+			   BY EVENT_NO DESC)
+	           A
+	           )
+	           WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="eventSelectListCount">
+		SELECT
+			   COUNT(*) count
+		  FROM TB_EVENT
+		 WHERE EVENT_STATUS='Y'
 	</entry>
 
 

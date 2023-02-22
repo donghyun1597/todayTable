@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
-	
+
 	<entry key="noticeSelectListCount">
 		SELECT
 		       COUNT(*) count
@@ -12,7 +12,7 @@
 	
 	<!-- 공지사항 조회 -->
 	
-	/*
+	
 	<entry key="selectNoticeList">
 		SELECT *
 		FROM
@@ -31,9 +31,9 @@
 		        )
 		        WHERE RNUM BETWEEN ? AND ?
 	</entry>
-	*/
 	
-	<entry key="selectNoticeList">
+	
+	<entry key="adminSelectNoticeList">
         SELECT
                 NOTICE_NO
             ,   NOTICE_CLSFC

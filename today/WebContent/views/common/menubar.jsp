@@ -249,12 +249,12 @@
                                                         </li>
                                                         <li><a href="#">더보기</a>
                                                             <ul class="dropdown">
-                                                                <li><a href="<%= contextPath %>/eventList.ev">이벤트</a></li>
+                                                                <li><a href="<%= contextPath %>/eventList.ev?cpage=1">이벤트</a></li>
                                                                 <li><a href="<%= contextPath %>/noticeList.no?cpage=1">공지사항</a></li>
                                                                 <li><a href="#">고객센터</a>
                                                                     <ul class="dropdown">
                                                                         <li><a href="<%= contextPath %>/faq.cu">자주묻는질문</a></li>
-                                                                        <li><a href="<%= contextPath %>/inquiry.cu">1:1문의</a></li>
+                                                                        <li><a href="<%= contextPath %>/inquiry.cu?cpage=1">1:1문의</a></li>
                                                                     </ul>
                                                                 </li>
                                                             </ul>
