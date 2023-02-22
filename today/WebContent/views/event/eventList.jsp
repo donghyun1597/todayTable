@@ -1,9 +1,16 @@
+<%@page import="com.todayTable.common.model.vo.PageInfo"%>
 <%@page import="com.todayTable.event.model.vo.Event"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	ArrayList<Event> list = (ArrayList<Event>)request.getAttribute("list");
+	
+	int currentPage = pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -115,17 +122,25 @@
         </table>
     </div>
     
-    <div class="m-4" id="paging">
+	<div class="m-4" id="paging">
         <nav>
-            <ul class="pagination">
-                <li class="page-item"><a href="#" class="page-link"> &lt; </a></li>
-                <li class="page-item"><a href="#" class="page-link">1</a></li>
-                <li class="page-item"><a href="#" class="page-link">2</a></li>
-                <li class="page-item"><a href="#" class="page-link">3</a></li>
-                <li class="page-item"><a href="#" class="page-link">4</a></li>
-                <li class="page-item"><a href="#" class="page-link">5</a></li>
-                <li class="page-item"><a href="#" class="page-link"> &gt; </a></li>
-            </ul>
+            <div class="pagination">
+            	<%if(currentPage != 1) { %>
+                <button onclick="location.href='<%=contextPath%>/eventList.ev?cpage=<%= currentPage -1 %>';" class="page-link"> &lt; </button>
+                <% } %>
+                
+                <%for(int p = startPage; p<=endPage; p++) { %>
+                	<% if(p == currentPage){ %>
+                		<button style="color: orange" disabled><%=p %></button>
+                	<%}else{ %>
+                	    <button onclick="location.href = '<%= contextPath%>/eventList.ev?cpage=<%=p%>';" class="page-link"><%=p %></button>
+		        	<%} %>
+		        <%} %>
+		        
+		        <%if(currentPage != maxPage) {%>
+		        	<button onclick="location.href='<%=contextPath%>/eventList.ev?cpage=<%= currentPage +1 %>';" class="page-link"> &gt; </button>
+		        <%} %>
+            </div>
         </nav>
     </div>
 

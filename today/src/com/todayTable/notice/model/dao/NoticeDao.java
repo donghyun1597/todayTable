@@ -71,7 +71,7 @@ public class NoticeDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
-		String sql = prop.getProperty("selectNoticeList");
+		String sql = prop.getProperty("adminSelectNoticeList");
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
