@@ -126,4 +126,53 @@
 	</entry>
 	
 	
+	
+<!-- 수민.회원정보수정 (미완)-->
+<entry key="updateMember">
+	UPDATE 
+	    TB_MEMBER
+	SET
+	      MEM_PWD = ?
+	    , NICKNAME = ?
+	    , PHONE = ?
+	WHERE 
+	    MEM_ID = ?
+</entry>
+	
+	
+	
+	
+<entry key="insertMemberAllergy">
+	INSERT 
+	    INTO TB_MEM_ALLERGY
+	    (
+	      MEM_NO
+	    , ALG_NO
+	    )
+	    VALUES
+	    (
+	      ?
+	    , ?
+	    )
+</entry>
+
+
+<entry key="deleteMemberAllergy">
+	DELETE 
+	    TB_MEM_ALLERGY
+	WHERE
+	    MEM_NO=?
+</entry>	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 </properties>

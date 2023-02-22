@@ -11,7 +11,37 @@ public class Member {
 	private String memImg;
 	private String memStatus;
 	
+	// 수민. 알러지 정보 필요
+	private String[] algNo;
+	
 	public Member() {}
+
+	
+	// 수민. 회원정보 변경시 사용
+	public Member(int memNo,String memId, String memPwd, String nickName, String phone) {
+		super();
+		this.memNo = memNo;
+		this.memId = memId;
+		this.memPwd = memPwd;
+		this.nickName = nickName;
+		this.phone = phone;
+		
+	}
+
+	
+
+	
+
+
+	public String[] getAlgNo() {
+		return algNo;
+	}
+
+
+	public void setAlgNo(String[] algNo) {
+		this.algNo = algNo;
+	}
+
 
 	public Member(int memNo, String memId, String memPwd, String nickName, String memName, String phone,
 			int warningCount, String memImg, String memStatus) {

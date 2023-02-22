@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="com.todayTable.member.model.vo.WishList"%>
 <%@page import="com.todayTable.member.model.vo.Allergy"%>
 <%@page import="com.todayTable.member.model.vo.Member"%>
@@ -8,9 +9,17 @@
 	
 	Member loginUser = (Member)session.getAttribute("loginUser");
 	// 로그인 시도 member.jsp 로딩시: null | 회원정보 담겨있는 Member 객체
-	Allergy memAlg = (Allergy)session.getAttribute("memAlg");
-	WishList wishList = (WishList)session.getAttribute("wishList");
+	ArrayList<Allergy> memAlg = (ArrayList<Allergy>)session.getAttribute("memAlg");
+	ArrayList<WishList> wishList = (ArrayList<WishList>)session.getAttribute("wishList");
 	String alertMsg = (String)session.getAttribute("alertMsg");
+	String alg = "";
+	if(memAlg!=null){
+		for(Allergy a : memAlg){
+			alg+=a.getAlgNo();
+		}
+		
+	}
+	
 	// 서비스 요청 member.jsp 로딩시: null | alert로 띄워줄 문구
 %>
 
@@ -96,10 +105,10 @@
                         <div class="top-social-info text-right">
                         
                         <%if(loginUser!= null){ %>	<!-- 로그인에 성공했을때, -->
-                        	<!-- 회원정보 수정페이지로 보내기 -->
-                        	<a href="<%=contextPath%>/profile.me"><%=loginUser.getMemName()%>님<i class="login" aria-hidden="true"></i></a>
-                        	<!-- 마이페이지 화면으로 보내기 -->
-                        	<a href="views/member/mypageReceipe.jsp">MYRECIPE</a>
+                        	<!-- sm.회원정보 수정페이지로 보내기 -->
+                        	<a href="<%=contextPath%>/myProfile.me"><%=loginUser.getMemName()%>님<i class="login" aria-hidden="true"></i></a>
+                        	<!-- sm.마이페이지 화면으로 보내기 -->
+                        	<a href="<%=contextPath%>/mypage.me">MYRECIPE</a>
                         	<!-- 로그아웃 된 후, 메인페이지로 보내기 -->
                         	<a href="<%=contextPath%>/logout.me">LOGOUT</a>
                         	
