@@ -122,7 +122,7 @@
 			, PHONE
 			, WARNING_COUNT
 		FROM TB_MEMBER
-		WHERE MEM_ID = ?
+		WHERE NICKNAME LIKE '%'|| ? ||'%'
 	</entry>
 	
 	
