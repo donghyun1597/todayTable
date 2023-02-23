@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <style>
+        .changeTest:hover{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <p id="parent">
+        <div style="background-color: blue;" class="changeTest" id="mainDiv">
+            내프로필
+        </div>
+
+        <div  style="background-color: antiquewhite;" class="changeTest" id="div1"> 
+            내 레시피
+        </div>
+        <div  style="background-color: aquamarine;" class="changeTest" id="div2">
+            찜목록
+        </div>
+        <div  style="background-color: blueviolet;" class="changeTest" id="div3">
+            내 댓글
+        </div>
+    </p>
+
+    <script>
+        let mainDiv=document.getElementById("mainDiv");
+        let div1 = document.getElementById("div1");
+        let div2 = document.getElementById("div2");
+        let div3 = document.getElementById("div3");
+
+        let parent = document.getElementById("parent");
+        
+
+        console.log(mainDiv);
+        console.log(div1);
+        console.log(div2);
+        console.log(div3);
+        console.log(parent);
+
+        $(function(){
+            $(".changeTest").click(function(){
+                
+                $(this).insertAfter(parent);
+                
+
+            })
+
+
+
+        })
+
+    </script>
+</body>
+</html>

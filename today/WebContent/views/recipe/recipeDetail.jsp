@@ -50,9 +50,9 @@
             <div class="row">
                 <div class="col-12">
                     <div class="receipe-slider owl-carousel">
-                        <img src="img/bg-img/bg5.jpg" alt="">
-                        <img src="img/bg-img/bg5.jpg" alt="">
-                        <img src="img/bg-img/bg5.jpg" alt="">
+                        <img src="<%=contextPath%>/resources/image/bg-img/sumin.jpg" alt="">
+                        <img src="<%=contextPath%>/resources/image/bg-img/sumin.jpg" alt="">
+                        <img src="<%=contextPath%>/resources/image/bg-img/sumin.jpg" alt="">
                     </div>
                 </div>
             </div>
@@ -93,7 +93,7 @@
                     <div class="col-12 col-lg-8">
                         <!-- Single Preparation Step -->
                         <div class="single-preparation-step d-flex">
-                            <h5>STEP 1</h5>
+                            <h5>STEP 1</h5><br>
                             <p>키친타올로 고기 핏물을 제거하고 먹기 좋은 크기로 숭덩숭덩 잘라주세요. </p>
                         </div>
                         <!-- Single Preparation Step -->

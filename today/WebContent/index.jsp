@@ -5,7 +5,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	
+	<link rel="stylesheet" href="<%=application.getContextPath()%>/resources/css/style.css">
     
     <style>
    
@@ -89,7 +89,7 @@
                 <!-- Top Catagory Area 1 -->
                 <div class="col-12 col-lg-6">
                     <div class="single-top-catagory">
-                        <img src="resources/image/bg-img/bg2.jpg" alt="">
+                        <img src="<%=contextPath%>/resources/image/bg-img/sumin.jpg" alt="">
                         <!-- Content -->
                         <div class="top-cta-content">
                             <h3>동현님</h3>
