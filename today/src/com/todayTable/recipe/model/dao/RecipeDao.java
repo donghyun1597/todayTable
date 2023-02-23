@@ -9,14 +9,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
-import com.todayTable.member.model.vo.Member;
+import static com.todayTable.common.JDBCTemplate.*;
 import com.todayTable.recipe.model.vo.Recipe;
 
 public class RecipeDao {
 	private Properties prop = new Properties();
 	
 	public RecipeDao() {
-		String filePath = Member.class.getResource("/db/sql/recipe-mapper.xml").getPath();
+		String filePath = RecipeDao.class.getResource("/db/sql/recipe-mapper.xml").getPath();
 		try {
 			prop.loadFromXML(new FileInputStream(filePath));
 		} catch (IOException e) {
@@ -26,7 +26,7 @@ public class RecipeDao {
 		
 		
 	}
-	public ArrayList<Recipe> selectMainThumbnail(Connection conn){
+	public ArrayList<Recipe> selectMainThumbnailList(Connection conn){
 		ArrayList<Recipe> list = new ArrayList<Recipe>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -43,13 +43,19 @@ public class RecipeDao {
 				r.setRecipePic(rset.getString("recipe_pic"));
 				r.setRecipeName(rset.getString("recipe_name"));
 				r.setRecipeDifficulty(rset.getString("recipe_difficulty"));
-				
+				r.setRecipeViews(rset.getInt("recipe_views"));
+				list.add(r);
 				
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+			
 		}
+		return list;
 		
 		
 	}

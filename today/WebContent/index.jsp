@@ -6,6 +6,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="<%=application.getContextPath()%>/resources/css/style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     
     <style>
    
@@ -21,12 +22,34 @@
         #row-510 { flex-wrap:wrap}
         
     </style>
+    
 </head>
 
 <body>
 	<!-- 메뉴바 가져오기 -->
 	<%@ include file="views/common/menubar.jsp" %>
+	<script>
+		$(function(){
+	        let value = "";
+	    	$.ajax({
+	            url : "mainThumnail.re",
+	            success : function(list){
+	                
+	                console.log(list);
+	                console.log($("#topRecipeImg1"));
+                    $("#topRecipeImg1").attr("src","<%=contextPath%>+list[0].recipePic");
+                   
+	            },
+	            error : function(){
+	                console.log("ajax 실패!!!");
+	            }
 	
+	
+	        })
+			
+           
+		})
+    </script>
 
 	<!-- ##### Hero Area Start ##### -->
     <section class="hero-area">
@@ -210,12 +233,12 @@
             <span class="section-heading" style="text-align: left; margin-top: auto;" >
                 <h3>OUR RECIPES</h3>
             </span>
-            <div class="row h-100 align-items-center">
+            <div class="row h-100 align-items-center" id="topRecipe">
                 
                <!-- Single Best Receipe Area -->
-                <div class="col-12 col-sm-6 col-lg-4" id="col-510">
+                <div class="col-12 col-sm-6 col-lg-4" id="col-510" id="topRecipe1">
                     <div class="single-best-receipe-area mb-30">
-                        <img src="resources/image/bg-img/sumin6.jpg" alt="음식2">
+                        <img src="resources/image/bg-img/sumin6.jpg" alt="음식2" id="topRecipeImg1">
                         <div class="receipe-content">
                             <a href="receipe-post.html">
                                 <h5>레시피5</h5>
@@ -233,7 +256,7 @@
 
 
                                 <!-- Single Best Receipe Area -->
-                <div class="col-12 col-sm-6 col-lg-4" id="col-510">
+                <div class="col-12 col-sm-6 col-lg-4" id="col-510" id="topRecipe2">
                     <div class="single-best-receipe-area mb-30">
                         <img src="resources/image/bg-img/sumin6.jpg" alt="음식2">
                         <div class="receipe-content">
@@ -253,7 +276,7 @@
 
 
                                 <!-- Single Best Receipe Area -->
-                <div class="col-12 col-sm-6 col-lg-4" id="col-510">
+                <div class="col-12 col-sm-6 col-lg-4" id="col-510" id="topRecipe3">
                     <div class="single-best-receipe-area mb-30">
                         <img src="resources/image/bg-img/sumin6.jpg" alt="음식2">
                         <div class="receipe-content">
@@ -275,7 +298,7 @@
                 
                 
                                 <!-- Single Best Receipe Area -->
-                <div class="col-12 col-sm-6 col-lg-4" id="col-510">
+                <div class="col-12 col-sm-6 col-lg-4" id="col-510" id="topRecipe4">
                     <div class="single-best-receipe-area mb-30">
                         <img src="resources/image/bg-img/sumin6.jpg" alt="음식2">
                         <div class="receipe-content">

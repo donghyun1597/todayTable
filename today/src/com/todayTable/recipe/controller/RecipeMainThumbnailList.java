@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
 import com.todayTable.recipe.model.service.RecipeService;
 import com.todayTable.recipe.model.vo.Recipe;
 
@@ -33,7 +34,13 @@ public class RecipeMainThumbnailList extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
-		ArrayList<Recipe> list = new RecipeService().selectMainThumnail();
+		ArrayList<Recipe> list = new RecipeService().selectMainThumbnailList();
+		
+		System.out.println(list);
+		
+		response.setContentType("application/json; charset=utf-8");
+		new Gson().toJson(list,response.getWriter());
+		
 		
 		
 	}

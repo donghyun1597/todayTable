@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="selectMainThumbnailList">
+		SELECT
+		      RECIPE_PIC
+		    , RECIPE_NAME
+		    , RECIPE_DIFFICULTY
+		    , RECIPE_VIEWS
+		FROM (SELECT
+		           ROWNUM "RNUM"
+		         , R.*
+		        FROM 
+		            (SELECT
+		                  RECIPE_PIC
+		                , RECIPE_NAME
+		                , RECIPE_DIFFICULTY
+		                , RECIPE_VIEWS
+		            FROM 
+		                TB_RECIPE
+		            ORDER BY 
+		                RECIPE_VIEWS DESC) "R")
+		WHERE RNUM BETWEEN 1 AND 4
+	
+	</entry>
+
+</properties>
