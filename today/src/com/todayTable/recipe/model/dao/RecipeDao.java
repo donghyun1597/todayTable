@@ -44,6 +44,7 @@ public class RecipeDao {
 				r.setRecipeName(rset.getString("recipe_name"));
 				r.setRecipeDifficulty(rset.getString("recipe_difficulty"));
 				
+				
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

@@ -7,7 +7,7 @@ public class Recipe {
 	private String recipeName;
 	private String recipeTag;
 	private String recipeVideo;
-	private char recipeDifficulty;
+	private String recipeDifficulty;
 	private int recipePerson;
 	private int recipeTime;
 	private Date recipeDate;
@@ -18,7 +18,7 @@ public class Recipe {
 	
 	public Recipe() {}
 
-	public Recipe(int recipeNo, String recipeName, String recipeTag, String recipeVideo, char recipeDifficulty,
+	public Recipe(int recipeNo, String recipeName, String recipeTag, String recipeVideo, String recipeDifficulty,
 			int recipePerson, int recipeTime, Date recipeDate, int memNo, String recipePic, int recipeViews,
 			String recipeStatus) {
 		super();
@@ -68,11 +68,11 @@ public class Recipe {
 		this.recipeVideo = recipeVideo;
 	}
 
-	public char getRecipeDifficulty() {
+	public String getRecipeDifficulty() {
 		return recipeDifficulty;
 	}
 
-	public void setRecipeDifficulty(char recipeDifficulty) {
+	public void setRecipeDifficulty(String recipeDifficulty) {
 		this.recipeDifficulty = recipeDifficulty;
 	}
 
