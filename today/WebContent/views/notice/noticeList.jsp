@@ -22,59 +22,63 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+        <script src="resources/js/jquery/jquery-2.2.4.min.js"></script>
     
     <link rel="icon" href="resources/image/core-img/favicon.ico">
 	<!-- Core Stylesheet -->
 	<link rel="stylesheet" href="resources/css/style.css">
     
     <style>
-        @import url(https://fonts.googleapis.com/css?family=Roboto:400,700,500);
-        body {
-            font-family: "Roboto", sans-serif;
-        }
-        #wrap {
-            height: 1000px;
-        }
-        #paging {
-          display: flex;
-          justify-content: center;
-        }
-        th {
-            text-align: center;
-        }
-        .dropdown-toggle {
-            background-color: white;
-            color: gray;
-        }
-        button {
-            display: inline-block;
-        }
-        input {
-            display: inline-block;
-        }
-        #notice {
-            text-align: center;
-        }
-        #noticeList {
-            display: flex;
-          justify-content: center;
-        }
-        hr {
-            width: 800px;
-            margin: auto;
-        }
-        h6 {
-            color: gray;
-            text-align: center;
-            font-size: 14px;
-        }
-        td a {
-            color: black;
-            text-decoration: none;
-        }
-        .btn-group button{
-            border-color: lightgray;
-        }
+    @import url(https://fonts.googleapis.com/css?family=Roboto:400,700,500);
+    body {
+        font-family: "Roboto", sans-serif;
+    }
+    #wrap {
+        height: 1000px;
+    }
+    #paging {
+        display: flex;
+        justify-content: center;
+    }
+    th {
+        text-align: center;
+    }
+    .dropdown-toggle {
+        background-color: white;
+        color: gray;
+    }
+    button {
+        display: inline-block;
+    }
+    input {
+        display: inline-block;
+    }
+    #notice {
+        text-align: center;
+    }
+    #noticeList {
+        display: flex;
+        justify-content: center;
+    }
+    hr {
+        width: 800px;
+        margin: auto;
+    }
+    h6 {
+        color: gray;
+        text-align: center;
+        font-size: 14px;
+    }
+    td a {
+        color: black;
+        text-decoration: none;
+    }
+    .btn-group button{
+        border-color: lightgray;
+    }
+    tr{
+        cursor: pointer;
+    }
     </style>
 </head>
 <body>
@@ -101,6 +105,7 @@
                 </tr>
             </thead>
             <tbody>
+            	<%int i=0; %>
             	<!-- case1. 공지글 없음 -->
             	<%if(list.isEmpty()) { %>
            		<tr>
@@ -109,10 +114,10 @@
                 <% }else { %>
                 <!-- case2. 공지글 있음 -->
                 <% for(Notice n :list) { %>
-                <tr>
-                    <td><%= n.getNoticeNo() %></td>
+                <tr onclick="detailNo(<%= n.getNoticeNo() %>);">
+                    <td id="detailNo<%=i++%>"><%= n.getNoticeNo() %></td>
                     <td><%= n.getNoticeClsfc() %></td>
-                    <td style="text-align: left;"><a href="#"><%= n.getNoticeName() %></a></td>
+                    <td style="text-align: left;"><%= n.getNoticeName() %></td>
                     <td><%= n.getNoticeDate() %></td>
                 </tr>
                 <% } %>
@@ -120,19 +125,17 @@
             </tbody>
         </table>
     </div>
-   <!-- 
+
     <script>
-    	$(function(){
-    		$(".table >tbody>tr").click(function(){
-    			const num = $(this).children().eq().text();
-    			
-    			console.log(num);
-    			
-    			location.href = '<%= contextPath %>/detail.no?num' + num;
-    		});
-    	});
+
+    	function detailNo(noticeNo){
+			console.log(noticeNo);
+            location.href = '<%= contextPath %>/detail.no?num=' + noticeNo;
+        }
+
+
     </script>
-     -->
+
     <div class="m-4" id="paging">
         <nav>
             <div class="pagination">

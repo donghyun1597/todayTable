@@ -75,6 +75,10 @@
 	.btn-group button {
 		border-color: lightgray;
 	}
+
+	tr{
+            cursor: pointer;
+    }
 	
 </style>
 </head>
@@ -127,20 +131,18 @@
 													<!-- case2. 공지글 있음 -->
 												<form action="deleteNotice.no">
 													<% for(Notice n :list) { %>
-												<tr class="notice">
+												<tr class="notice" onclick="detailNo();">
 													<td>
 														<input type="checkbox" class='noticeCheck' name="noticeCheck" value="<%= n.getNoticeNo()%>">
 													</td>
-													<td>
+													<td id="noticeNo">
 														<%= n.getNoticeNo()%>
 													</td>
 													<td>
 														<%= n.getNoticeClsfc()%>
 													</td>
 													<td style="text-align: left;">
-														<a href="#">
 															<%= n.getNoticeName()%>
-														</a>
 													</td>
 													<td>
 														<%= n.getNoticeDate()%>
@@ -159,19 +161,13 @@
 						</div>
 
 						<script>
-							// $(function(){
-							// 	$(".list-area>tbody>tr").click(function(){
-							// 		const num = $(this).children().eq(0).text();
-							// 		// console.log(num);
-									
-							// 		// 요청할 url?key=value&key=value
-							// 		// 요청 시 전달값(키=밸류) == 쿼리스트링
-									
-							// 		// /jsp/detail.no?num=클릭한글번호
-							// 		   location.href = '<%= contextPath %>/detail.no?num=' + num;
-							// 	});
-							// });
-							
+						function detailNo(){
+							const noticeNo = document.getElementById("noticeNo").innerText;
+
+							console.log(noticeNo);
+
+							location.href = '<%= contextPath %>/adminDetail.no?num=' + noticeNo;
+						}
 						
 
 						</script>

@@ -31,6 +31,17 @@ public class Notice {
 
 	}
 	
+	
+
+
+
+	public Notice(String noticeName, String noticeContents, Date noticeDate, String noticeClsfc) {
+		super();
+		this.noticeName = noticeName;
+		this.noticeContents = noticeContents;
+		this.noticeDate = noticeDate;
+		this.noticeClsfc = noticeClsfc;
+	}
 
 	public int getNoticeNo() {
 		return noticeNo;
