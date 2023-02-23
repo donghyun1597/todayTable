@@ -11,8 +11,6 @@
 	
 	
 	<!-- 공지사항 조회 -->
-	
-	
 	<entry key="selectNoticeList">
 		SELECT *
 		FROM
@@ -31,8 +29,7 @@
 		        )
 		        WHERE RNUM BETWEEN ? AND ?
 	</entry>
-	
-	
+
 	<entry key="adminSelectNoticeList">
         SELECT
                 NOTICE_NO
@@ -77,5 +74,14 @@
 			 NOTICE_NO IN (
 	</entry>
 
-
+	<entry key="selectDetailNotice">
+		SELECT
+			NOTICE_NAME
+		  , NOTICE_CONTENTS
+		  , NOTICE_DATE
+		  , NOTICE_CLSFC
+	  FROM TB_NOTICE
+	  WHERE NOTICE_NO = ?
+	    AND NOTICE_STATUS = 'Y' 	
+	</entry>
 </properties>

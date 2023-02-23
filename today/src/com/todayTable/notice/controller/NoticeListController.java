@@ -64,7 +64,7 @@ public class NoticeListController extends HttpServlet {
 		
 		// 3) 요청처리
 		ArrayList<Notice> list = new NoticeService().selectNoticeList(pi);
-		
+		System.out.println(list);
 		// 4) 공지사항 목록 페이지
 		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
