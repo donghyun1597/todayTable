@@ -28,7 +28,7 @@
     }
 
     .join {
-    width: 60%;
+    width: 70%;
     height: 800px;
     background: white;
     border-radius: 20px;
@@ -60,7 +60,7 @@
     }
     
     .submit input {
-    width: 50%;
+    width: 40%;
     height: 50px;
     border: 0;
     outline: none;
@@ -88,7 +88,7 @@
                 <table align="center">
                     <tr>
                         <td id="id">
-                            <img src="../resources/image/mail.png" alt="" width="20" >
+                            <img src="../../resources/image/userInfo/email.png" alt="" width="20" >
                         </td>
     
                         <td>
@@ -102,7 +102,7 @@
     
                     <tr>
                         <td id="pwd">
-                            <img src="../resources/image/pw.png" alt="" width="20">
+                            <img src="../../resources/image/userInfo/pwd.png" alt="" width="20">
                         </td>
                         <td>
                             <input type="password" name="memPwd" class="join_input"  placeholder="비밀번호">
@@ -110,7 +110,7 @@
                     </tr>
                     <tr>
                         <td id="pwdCheck">
-                            <img src="../resources/image/pw.png" alt="" width="20">
+                            <img src="../../resources/image/userInfo/pwd.png" alt="" width="20">
                         </td>
                         <td>
                             <input type="password" name="checkedPwd" class="join_input" placeholder="비밀번호 확인">
@@ -134,7 +134,7 @@
                     </tr>
                     <tr>
                         <td id="email">
-                            <img src="../resources/image/mail.png" alt="" width="20">
+                            <img src="../../resources/image/userInfo/email.png" alt="" width="20">
                         </td>
                         <td>
                             <input type="text" name="mail1" class="join_input" placeholder="이메일">@
@@ -375,7 +375,7 @@
 
 
             <br>
-            <div align="center" class="submit">
+            <div class="submit">
                 <input type="submit" name="join" class="submit" value="가입">
                 <input type="reset" name="reset" class="submit" value="취소">
             </div>
