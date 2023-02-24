@@ -28,8 +28,10 @@
 <body>
 	<!-- 메뉴바 가져오기 -->
 	<%@ include file="views/common/menubar.jsp" %>
+	
 	<script>
 		$(function(){
+			let contextPath = "<%=contextPath%>";
 	        let value = "";
 	    	$.ajax({
 	            url : "mainThumnail.re",
@@ -37,7 +39,7 @@
 	                
 	                console.log(list);
 	                console.log($("#topRecipeImg1"));
-                    $("#topRecipeImg1").attr("src","<%=contextPath%>+list[0].recipePic");
+                    $("#topRecipeImg1").attr("src","resources/recipe_title_img/recipe2.jpg");
                    
 	            },
 	            error : function(){
