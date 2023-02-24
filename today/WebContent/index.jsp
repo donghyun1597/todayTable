@@ -39,7 +39,24 @@
 	                
 	                console.log(list);
 	                console.log($("#topRecipeImg1"));
-                    $("#topRecipeImg1").attr("src","resources/recipe_title_img/recipe2.jpg");
+                    
+	                value = '<div class="col-12 col-sm-6 col-lg-4" id="col-510" id="topRecipe1">'+
+		                    ''<div class="single-best-receipe-area mb-30">
+		                    <img src="resources/image/bg-img/sumin6.jpg" alt="음식2" id="topRecipeImg1">
+		                    <div class="receipe-content">
+		                        <a href="receipe-post.html">
+		                            <h5>레시피5</h5>
+		                        </a>
+		                        <div class="ratings">난이도
+		                            <i class="fa fa-star" aria-hidden="true"></i>
+		                            <i class="fa fa-star" aria-hidden="true"></i>
+		                            <i class="fa fa-star" aria-hidden="true"></i>
+		                            <i class="fa fa-star" aria-hidden="true"></i>
+		                            <i class="fa fa-star-o" aria-hidden="true"></i>
+		                        </div>
+		                    </div>
+		                </div>
+		            </div>
                    
 	            },
 	            error : function(){
