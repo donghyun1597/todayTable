@@ -56,11 +56,11 @@
 
     .submit {
     margin-top: 30px;
-    width: 50%;
+    width: 100%;
     }
     
     .submit input {
-    width: 40%;
+    width: 30%;
     height: 50px;
     border: 0;
     outline: none;
@@ -69,6 +69,10 @@
     color: white;
     font-size: 1.2em;
     letter-spacing: 2px;
+    }
+    .checkbox{
+        margin: auto;
+        width: 80%;
     }
 </style>
 <style>
@@ -81,7 +85,7 @@
 <body>
     <div class="wrap">
         <div class="join">
-            <img src="../resources/image/logo.png" alt="" width="200" href="<%=request.getContextPath()%>">
+            <img src="../../resources/image/logo.png" alt="" width="200" href="<%=request.getContextPath()%>">
             <h2>회원 가입</h2>
 
             <form action="<%=request.getContextPath() %>/login.me" method="post">
@@ -90,16 +94,11 @@
                         <td id="id">
                             <img src="../../resources/image/userInfo/email.png" alt="" width="20" >
                         </td>
-    
                         <td>
                             <input type="text" name="memId" class="join_input" placeholder="아이디">
-
                                 <input type="button" name="" value="중복확인">
-
-
                         </td>
-                    </tr>
-    
+                    </tr> 
                     <tr>
                         <td id="pwd">
                             <img src="../../resources/image/userInfo/pwd.png" alt="" width="20">
@@ -118,36 +117,23 @@
                     </tr>
                     <tr>
                         <td id="uName">
-                            <img src="../resources/image/person.png" alt="" width="20">
+                            <img src="../../resources/image/userInfo/people.png" alt="" width="20">
                         </td>
                         <td>
-                            <input type="text" name="userName" class="join_input" placeholder="닉네임">
+                            <input type="text" name="nickname" class="join_input" placeholder="닉네임">
                         </td>
                     </tr>
                     <tr>
                         <td id="name">
-                            <img src="../resources/image/person.png" alt="" width="20">
+                            <img src="../../resources/image/userInfo/people.png" alt="" width="20">
                         </td>
                         <td>
-                            <input type="text" name="name" class="join_input" placeholder="이름">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td id="email">
-                            <img src="../../resources/image/userInfo/email.png" alt="" width="20">
-                        </td>
-                        <td>
-                            <input type="text" name="mail1" class="join_input" placeholder="이메일">@
-                            <select name="mail2" id="" class="join_input" >
-                                <option value="naver.com">naver.com</option>
-                                <option value="daum.net">daum.net</option>
-                                <option value="gmail.com">gmail.com</option>
-                            </select>
+                            <input type="text" name="memName" class="join_input" placeholder="이름">
                         </td>
                     </tr>
                     <tr>
                         <td id="phone">
-                            <img src="../resources/image/phone.png" alt="" width="20">
+                            <img src="../../resources/image/userInfo/phone.png" alt="" width="30">
                         </td>
                         <td>
                             <input type="text" name="phone" class="join_input" placeholder="휴대전화">
@@ -195,7 +181,10 @@
 
             <br>
             <div>
-                <input type="checkbox" name="checked1" id="checked1" required>이용약관 동의(필수)
+                <div class="checkbox">
+                    <input type="checkbox" name="checked1" id="checked1" required>이용약관 동의(필수)
+                </div>
+
                     <div align="center">
                 <textarea name="terms" id="terms" style="width: 80%; resize: none;" rows="10">
                     제 1장 총칙
@@ -340,7 +329,9 @@
             </div>
 
             <br>
-            <input type="checkbox" name="checked2" id="checked2" required>개인정보 수집 및 이용 동의(필수)
+            <div class="checkbox">
+                <input type="checkbox" name="checked2" id="checked2" required>개인정보 수집 및 이용 동의(필수)
+            </div>
             <div align="center">
                 <textarea name="privacy" id="privacy" style="width: 80%; resize: none;" rows="10">
 가. 개인정보의 수집 및 이용 목적
@@ -375,7 +366,7 @@
 
 
             <br>
-            <div class="submit">
+            <div class="submit" align="center">
                 <input type="submit" name="join" class="submit" value="가입">
                 <input type="reset" name="reset" class="submit" value="취소">
             </div>
