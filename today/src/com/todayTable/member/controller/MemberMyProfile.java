@@ -27,7 +27,11 @@ public class MemberMyProfile extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.getRequestDispatcher("views/member/mypageProfile.jsp").forward(request, response);
+		// 비밀번호 확인
+		request.getRequestDispatcher("views/member/mypageCheck.jsp").forward(request, response);
+		
+		// 회원정보 수정페이지로 가는거
+		//request.getRequestDispatcher("views/member/mypageProfile.jsp").forward(request, response);
 	}
 
 	/**
