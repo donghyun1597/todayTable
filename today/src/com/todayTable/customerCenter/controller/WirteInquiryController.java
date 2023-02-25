@@ -10,10 +10,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.todayTable.customerCenter.model.service.InquiryService;
+import com.todayTable.customerCenter.model.vo.Inquiry;
+import com.todayTable.member.model.vo.Member;
+import com.todayTable.notice.model.service.NoticeService;
+
 /**
  * Servlet implementation class WirteInquiry
  */
-@WebServlet("/wirteInquiry.cu")
+@WebServlet("/writeInquiry.cu")
 public class WirteInquiryController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -30,23 +35,39 @@ public class WirteInquiryController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
-		RequestDispatcher view = request.getRequestDispatcher("views/customerCenter/wirteInquiry.jsp");
-		view.forward(request, response);
-		
-		
 		// 인코딩
 		request.setCharacterEncoding("UTF-8");
 		
-		// 세션 선언?
-		// HttpSession session = request.getSession();
-		
-		// 변수 설정
-		// String memNo = session.getAttribute("memNo");
 		String inqName = request.getParameter("inqName");
 		String inqQuestion = request.getParameter("inqQuestion");
+		String checkPrivate = null;
 		
+		if(request.getParameter("checkPrivate") == "pri") {
+			checkPrivate = "Y";
+		}else {
+			checkPrivate = "N";
+		}
 		
+		HttpSession session = request.getSession();
+		
+		int memNo = ((Member)session.getAttribute("loginUser")).getMemNo();
+		
+		Inquiry i = new Inquiry();
+		
+		i.setMemNo(memNo);
+		i.setInqName(inqName);
+		i.setInqQuestion(inqQuestion);
+		i.setInqPrivate(checkPrivate);
+		
+		int result = new InquiryService().writeInquiry(i);
+		
+		if(result > 0) {
+			request.getSession().setAttribute("alertMsg", "등록완료");
+			response.sendRedirect(request.getContextPath() + "/inquiry.cu?cpage=1");
+		}else {
+			request.getSession().setAttribute("alertMsg", "등록실패");
+			response.sendRedirect(request.getContextPath());
+		}
 		
 	}
 

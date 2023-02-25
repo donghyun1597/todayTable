@@ -62,21 +62,21 @@
         <br>
         <hr>
         <br><br>
-        <form id="wirteInquiry-form" action="<%= contextPath %>/insertInquiry.cu" method="post">
+        <form id="wirteInquiry-form" action="<%= contextPath %>/writeInquiry.cu" method="post">
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label"><b>제목</b></label>
-            <input type="email" class="form-control" id="exampleFormControlInput1" name="inqName" placeholder="제목을 입력해주세요.">
+            <input type="text" class="form-control" id="exampleFormControlInput1" name="inqName" placeholder="제목을 입력해주세요.">
           </div>
             <div id="privateChecked">
                 <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked">
+                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" name="checkPrivate" value="pri">
                     <label class="form-check-label" for="flexSwitchCheckChecked">비밀글 설정</label>
                 </div>
             </div>
             <br><br>
           <div class="mb-3">
             <label for="exampleFormControlTextarea1" class="form-label"><b>문의내용</b></label>
-            <textarea class="form-control" id="content" rows="3" placeholder="문의하실 내용을 입력해주세요. (500자이내)"></textarea>
+            <textarea class="form-control" name="inqQuestion" rows="3" placeholder="문의하실 내용을 입력해주세요. (500자이내)"></textarea>
             <span id="count">0</span>/500
           </div>
 
