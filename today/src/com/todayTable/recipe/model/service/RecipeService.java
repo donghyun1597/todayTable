@@ -18,5 +18,20 @@ public class RecipeService {
 		close(conn);
 		return list;
 	}
+	
+	
+	
+	/**
+	 * 마이페이지 - 썸네일 사진 정보 조회용
+	 * @author sumin
+	 * @return
+	 */
+	public ArrayList<Recipe> selectThumbnailList(){
+		Connection conn = getConnection();
+		ArrayList<Recipe> list = new RecipeDao().selectThumbnailList(conn);
+		
+		close(conn);
+		return list;
+	}
 
 }

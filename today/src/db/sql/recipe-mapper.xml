@@ -24,4 +24,32 @@
 	
 	</entry>
 
+
+
+
+
+
+	<entry key="selectThumbnailList">
+	SELECT
+	   RECIPE_NAME
+	   , RECIPE_DATE
+	   , RECIPE_VIEWS
+	   , RECIPE_PIC
+	FROM TB_RECIPE
+	WHERE MEM_NO = ?
+	AND RECIPE_STATUS = 'Y'
+	ORDER BY RECIPE_NO DESC
+	</entry>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 </properties>

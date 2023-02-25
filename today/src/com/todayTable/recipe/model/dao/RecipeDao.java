@@ -59,6 +59,40 @@ public class RecipeDao {
 		
 		
 	}
+	
+	
+	
+	
+	
+	
+	public ArrayList<Recipe> selectThumbnailList(Connection conn){
+		ArrayList<Recipe> list =new ArrayList<Recipe>();
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("selectThumbnailList");
+		ResultSet rset = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Recipe(rset.getString("recipeName"),
+									rset.getDate("recipeDate"),
+									rset.getInt("recipeViews"),
+									rset.getString("recipePic"),
+									rset.getInt("memNo")
+									));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+	}
 
 }
 
