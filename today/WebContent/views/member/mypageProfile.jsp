@@ -27,6 +27,13 @@
             width: 600px;
         }
 
+        #tag-sm{
+            padding-top: 0px;
+        }
+
+
+        #read { border: none; background: transparent; }
+
     </style>
 
     <!-- Favicon -->
@@ -74,62 +81,24 @@
 
     
     <!-- ##### About Area Start ##### -->
-    <section class="about-area section-padding-80">
-
-            <div class="row align-items-center mt-70">
-                <!-- Single Cool Fact -->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="single-cool-fact">
-                        <img src="img/core-img/salad.png" alt="">
-                        <h3><span class="counter">1287</span></h3>
-                        <h6>내가 작성한 레시피</h6>
-                    </div>
-                </div>
-
-                <!-- Single Cool Fact -->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="single-cool-fact">
-                        <img src="img/core-img/hamburger.png" alt="">
-                        <h3><span class="counter">25</span></h3>
-                        <h6>내가 작성한 댓글</h6>
-                    </div>
-                </div>
-
-                <!-- Single Cool Fact -->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="single-cool-fact">
-                        <img src="img/core-img/rib.png" alt="">
-                        <h3><span class="counter">471</span></h3>
-                        <h6>내가 찜한 목록</h6>
-                    </div>
-                </div>
-
-                <!-- Single Cool Fact -->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="single-cool-fact">
-                        <img src="img/core-img/pancake.png" alt="">
-                        <h3><span style="font-size: 25px; font-weight: 700;">사케동러버</span></h3>
-                        <h6>내 정보 수정하기</h6>
-                    </div>
-                </div>
-            </div>
+    <section class="about-area section-padding-80" id="tag-sm">
 
 
 
             <div class="row" align="center">
-                <div class="col-12">
-                    <h5>회원 정보 수정</h5>
+                <div class="col-12"> <br><br><br>
+                    <h6>회원 정보 수정</h6>
                     <form id="mypage-form" action="<%=contextPath %>/update.me" method="post"> <br><br>
                     	<input type="hidden" value="<%=loginUser.getMemNo()%>" name="memNo">
                         <table border="1px solid gray">
                             <tr>
                                 <td id="t1">&nbsp;* 아이디</td> 
-                                <td id="t2"><input type="text" name="memId" maxlength="12" value="<%= memId %>" readonly></td>
+                                <td id="t2"><input type="text" name="memId" id="read" maxlength="12" value="<%= memId %>" readonly ></td>
                                 <!-- readonly: 보여지기만 할 뿐, 수정은 불가 -->
                             </tr>
                             <tr>
                                 <td id="t1">&nbsp;* 이름</td>
-                                <td id="t2"><input type="text" maxlength="6" value="<%= memName %>" readonly></td>
+                                <td id="t2"><input type="text" id="read" maxlength="6" value="<%= memName %>" readonly></td>
                             </tr>
                             <tr>
                                 <td id="t1">&nbsp;&nbsp;비밀번호</td>
