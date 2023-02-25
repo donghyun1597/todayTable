@@ -28,6 +28,9 @@ public class MemberService {
 		
 	}
 	
+	
+	
+	
 	public ArrayList<Allergy> selectAllergy(int memNo) {
 		Connection conn = getConnection();
 		 
@@ -39,6 +42,9 @@ public class MemberService {
 		return memAlg;
 		
 	}
+	
+	
+	
 	public ArrayList<WishList> selectWishList(int memNo) {
 		Connection conn = getConnection();
 		 
@@ -50,6 +56,8 @@ public class MemberService {
 		return wishList;
 		
 	}
+	
+	
 	
 	public ArrayList<Member> selectMemberList() {
 		Connection conn = getConnection();
@@ -69,30 +77,33 @@ public class MemberService {
 	 * @author sm.kim
 	 * @return
 	 */
-	public int updateMember(Member m,String[] algNo,ArrayList<Allergy> memAlg) {
+	public int updateMember(Member m, String[] algNo, ArrayList<Allergy> memAlg) {
 		Connection conn = getConnection();
-		int result2 =1;
-		int result1 = new MemberDao().updateMember(conn, m);
-		if(memAlg!=null) {
-			result2 = new MemberDao().deleteMemberAllergy(conn,m.getMemNo());
 		
+		int result2 = 1;
+		
+		int result1 = new MemberDao().updateMember(conn, m);
+		
+		if (memAlg != null) {
+			result2 = new MemberDao().deleteMemberAllergy(conn, m.getMemNo());
 		}
-		int result3 = new MemberDao().insertMemberAllergy(conn,m.getMemNo(),algNo);
+		
+		int result3 = new MemberDao().insertMemberAllergy(conn, m.getMemNo(), algNo);
+		
 		System.out.println(result1);
 		System.out.println(result2);
 		System.out.println(result3);
-		int total = result1 * result2 * result3;
 		
-		if(total > 0) {
+		int total = result1 * result2 * result3;
+
+		if (total > 0) {
 			commit(conn);
-			
-		}else {
+		} else {
 			rollback(conn);
 		}
 		close(conn);
 		return total;
-	}	//... end 
-	
+	} // ... end
 	
 	
 
