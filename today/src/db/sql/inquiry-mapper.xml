@@ -3,9 +3,9 @@
 <properties>
 
 	<!-- 문의작성 -->
-	<entry key="writeInquiry">
+	<entry key="wirteInquiry">
 	INSERT
-	    INTO MEMBER
+	    INTO TB_INQUIRY
 	    (
 	      INQ_NO
 	    , MEM_NO

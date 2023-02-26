@@ -1,7 +1,6 @@
 package com.todayTable.customerCenter.model.service;
 
-import static com.todayTable.common.JDBCTemplate.close;
-import static com.todayTable.common.JDBCTemplate.getConnection;
+import static com.todayTable.common.JDBCTemplate.*;
 
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -31,6 +30,23 @@ public class InquiryService {
 		
 		return listCount;
 		
+	}
+
+	public int writeInquiry(Inquiry i) {
+		
+		Connection conn = getConnection();
+		
+		int result = new InquiryDao().writeInquiry(conn, i);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
 	}
 
 }

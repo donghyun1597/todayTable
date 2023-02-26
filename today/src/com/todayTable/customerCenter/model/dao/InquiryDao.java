@@ -93,4 +93,31 @@ public class InquiryDao {
 		
 	}
 
+	public int writeInquiry(Connection conn, Inquiry i) {
+		
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("wirteInquiry");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, i.getMemNo());
+			pstmt.setString(2, i.getInqName());
+			pstmt.setString(3, i.getInqQuestion());
+			pstmt.setString(4, i.getInqPrivate());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+
+		return result;
+	}
+
 }

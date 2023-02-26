@@ -169,12 +169,16 @@
                
             </tbody>
         </table>
-        <button type="button" class="btn btn-secondary" onclick="wirteInquiry();" style="margin-left: 90%;">글쓰기</button>
+        <button type="button" class="btn btn-secondary" onclick="writeInquiry();" style="margin-left: 90%;">글쓰기</button>
     </div>
     
     <script>
-    	function wirteInquiry(){
-    		location.href = "<%= contextPath %>/wirteInquiry.cu";
+    	function writeInquiry(){
+    		<% if(session.getAttribute("loginUser") != null) { %>
+    		location.href = "<%= contextPath %>/writeInquiryForm.cu";
+    		<% }else {%>
+    			alert("로그인 후 이용 가능합니다.");
+    		<% } %>
     	}
         $(function(){
             $(".pub").click(function(){
