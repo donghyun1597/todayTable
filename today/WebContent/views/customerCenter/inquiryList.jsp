@@ -175,9 +175,10 @@
     <script>
     	function writeInquiry(){
     		<% if(session.getAttribute("loginUser") != null) { %>
-    		location.href = "<%= contextPath %>/writeInquiryForm.cu";
+    			location.href = "<%= contextPath %>/writeInquiryForm.cu";
     		<% }else {%>
     			alert("로그인 후 이용 가능합니다.");
+    			location.href = "<%= contextPath %>/loginForm.me";
     		<% } %>
     	}
         $(function(){
