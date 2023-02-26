@@ -38,7 +38,7 @@
         }
 
         .login {
-        width: 30%;
+        width: 50%;
         height: 800px;
         background: white;
         border-radius: 20px;
@@ -137,14 +137,12 @@
 	<%if(alertMsg!=null){ %>
 	<script>
 		alert("<%=alertMsg%>");
-	
 	</script>
 	<%session.removeAttribute("alertMsg"); %>
 	<%} %>
     <div class="wrap">
         <div class="login">
-            <img src="../todayTable (1)/img/logo/logo.png" alt="" width="200">
-            <a href="<%=request.getContextPath()%>">HOME</a>
+            <img src="../../resources/image/logo.png" alt="" width="200" href="<%=request.getContextPath()%>">
             <h2>Log-in</h2>
             <div class="login_sns">
                 <li><a href=""><i class="fab fa-instagram"></i></a></li>
@@ -166,13 +164,13 @@
             </form>
             <div class="login_etc">
                 <div class="forgot_id">
-                    <a href="">Forgot ID?</a>
+                    <a href="#">아이디 찾기</a>
                 </div>
                 <div class="forgot_pw">
-                    <a href="">Forgot Password?</a>
+                    <a href="#">비밀번호 찾기</a>
                 </div>
                 <div class="join">
-                    <a href="">JOIN!!</a>
+                    <a href="#">회원가입</a>
                 </div>
             </div>
 
