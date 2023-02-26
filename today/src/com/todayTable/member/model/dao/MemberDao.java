@@ -187,6 +187,7 @@ public class MemberDao {
 	 * @return
 	 */
 	public int updateMember(Connection conn, Member m) {
+		
 		int result = 0;
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("updateMember");

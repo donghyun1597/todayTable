@@ -33,6 +33,8 @@
 
 
         #read { border: none; background: transparent; }
+        #mypage-check table{  margin: auto; }
+        #mypage-check input{  margin: 5px; }
 
     </style>
 
@@ -90,7 +92,7 @@
         </p>
         <hr> <br>
         <div class="outer">
-            <form action="#" id="mypage-check" method="post">
+            <form action="myProfile.me" id="mypage-check" method="post">
                 <div id="check" align="center">
                     <table id="td">
                         <tr>
@@ -99,7 +101,7 @@
                         </tr>
                         <tr>
                             <td>PASSWORD:</td>
-                            <td><input type="password" name="memPwd" maxlength="30" value="<%= memPwd %>" required></td>
+                            <td><input type="password" name="checkPwd" maxlength="30" placeholder="ENTER PASSWORD" required></td>
                         </tr>
                     </table>
                 </div> <br>

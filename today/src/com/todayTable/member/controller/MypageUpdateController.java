@@ -63,7 +63,7 @@ public class MypageUpdateController extends HttpServlet {
 		
 		int result = new MemberService().updateMember(m,algNo,memAlg);
 		
-		if(result>0) {
+		if(result > 0) {
 			Member loginUser = new MemberService().loginMember(memId, memPwd);
 			memAlg = new MemberService().selectAllergy(memNo);
 			session.setAttribute("loginUser", loginUser);

@@ -106,9 +106,9 @@
                         
                         <%if(loginUser!= null){ %>	<!-- 로그인에 성공했을때, -->
                         	<!-- sm.회원정보 수정페이지로 보내기 -->
-                        	<a href="<%=contextPath%>/myProfile.me"><%=loginUser.getMemName()%>님<i class="login" aria-hidden="true"></i></a>
+                        	<a href="<%=contextPath%>/check.me"><%=loginUser.getMemName()%>님<i class="login" aria-hidden="true"></i></a>
                         	<!-- sm.마이페이지 화면으로 보내기 -->
-                        	<a href="<%=contextPath%>/mypage.me">MYRECIPE</a>
+                        	<a href="<%=contextPath%>/recipe.me">MYRECIPE</a>
                         	<!-- 로그아웃 된 후, 메인페이지로 보내기 -->
                         	<a href="<%=contextPath%>/logout.me">LOGOUT</a>
                         	
