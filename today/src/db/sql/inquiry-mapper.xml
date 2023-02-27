@@ -42,7 +42,7 @@
 		        INQ_NO
 		      , INQ_NAME
 		      , INQ_PROCESSING
-		      , RPAD(SUBSTR(MEM_ID,1,3),LENGTH(MEM_ID),'*') USER_ID
+		      , MEM_ID USER_ID
 		      , INQ_DATE
 		      , INQ_QUESTION
 		      , INQ_ANSWER

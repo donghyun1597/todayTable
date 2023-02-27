@@ -11,6 +11,8 @@
 	int startPage = pi.getStartPage();
 	int endPage = pi.getEndPage();
 	int maxPage = pi.getMaxPage();
+	
+	Member loginUser = (Member)request.getAttribute("loginUser");
 %>
 
 <!DOCTYPE html>
@@ -104,13 +106,13 @@
                 </tr>
             </thead>
             <tbody id="listbody">
-                <!-- case1. 공지글 없음 -->
+                <!-- case1. 문의글 없음 -->
             	<%if(list.isEmpty()) { %>
            		<tr>
                     <td colspan="5">존재하는 문의글이 없습니다.</td>
                 </tr>
                 <% }else { %>
-                <!-- case2. 공지글 있음 -->
+                <!-- case2. 문의글 있음 -->
                 <% for(Inquiry i :list) { %>
                 <% if(i.getInqPrivate().equals("N")) { %>
                 <tr>
@@ -125,7 +127,11 @@
                             <br><br>
                             [답변]
                             <br><br>
-                            <%= i.getInqAnswer() %>
+                            <% if(i.getInqAnswer() != null){ %>
+                            	<%= i.getInqAnswer() %>
+                            <% }else { %>
+                            	<p style="color:gray;">답변대기 중 입니다.</p>
+                            <% }%>
                             <br><br>
                         </div>
                     </td>
@@ -134,6 +140,33 @@
                     <td><%= i.getInqDate() %></td>
                 </tr>
                 <%}else {%>
+                <%if(loginUser.getMemNo() == i.getMemNo()) { %>
+                <% if(i.getInqPrivate().equals("N")) { %>
+                <tr>
+                    <td><%= i.getInqNo() %></td>
+                    <td style="text-align: left;">
+                        <div class="pub"><%= i.getInqName() %></div>
+                        <div style="display: none;">
+                            <br>
+                            [문의내용]
+                            <br><br>
+                            <%= i.getInqQuestion() %>
+                            <br><br>
+                            [답변]
+                            <br><br>
+                            <% if(i.getInqAnswer() != null){ %>
+                            	<%= i.getInqAnswer() %>
+                            <% }else { %>
+                            	<p style="color:gray;">답변대기 중 입니다.</p>
+                            <% }%>
+                            <br><br>
+                        </div>
+                    </td>
+                    <td><%= (i.getInqProcessing().equals("Y")) ? "처리완료" : "답변대기" %></td>
+                    <td><%= i.getMemId() %></td>
+                    <td><%= i.getInqDate() %></td>
+                </tr>
+                <%}else{ %>
                 <tr>
                     <td><%= i.getInqNo() %></td>
                     <td style="text-align: left; color: gray;">
@@ -146,7 +179,7 @@
                             <br><br>
                             [답변]
                             <br><br>
-                            <%= i.getInqAnswer() %>
+							<%= i.getInqAnswer() %>
                             <br><br>
                         </div>
                     </td>
@@ -154,6 +187,7 @@
                     <td><%= i.getMemId() %></td>
                     <td><%= i.getInqDate() %></td>
                 </tr>
+                <% } %>
                 <% } %>
                 <% } %>
                 <% } %>
