@@ -11,6 +11,7 @@
 	int startPage = pi.getStartPage();
 	int endPage = pi.getEndPage();
 	int maxPage = pi.getMaxPage();
+	
 %>
 
 <!DOCTYPE html>
@@ -77,6 +78,9 @@
         .btn-group button{
             border-color: lightgray;
         }
+        .pri {
+        	color: gray;
+        }
     </style>
 </head>
 <body>
@@ -104,19 +108,45 @@
                 </tr>
             </thead>
             <tbody id="listbody">
-                <!-- case1. 공지글 없음 -->
+                <!-- case1. 문의글 없음 -->
             	<%if(list.isEmpty()) { %>
            		<tr>
                     <td colspan="5">존재하는 문의글이 없습니다.</td>
                 </tr>
                 <% }else { %>
-                <!-- case2. 공지글 있음 -->
+                <!-- case2. 문의글 있음 -->
                 <% for(Inquiry i :list) { %>
-                <% if(i.getInqPrivate().equals("N")) { %>
                 <tr>
                     <td><%= i.getInqNo() %></td>
-                    <td style="text-align: left;">
-                        <div class="pub"><%= i.getInqName() %></div>
+                   	<td style="text-align: left;">
+                    <%if(loginUser.getMemId().equals(i.getMemId())) {%>
+                       	<div style="font-weight: bold;" class="pub">[MY]<%= i.getInqName() %></div>
+                       	<div style="display: none;">
+                            <br>
+                            [문의내용]
+                            <br><br>
+                            <%= i.getInqQuestion() %>
+                            <br><br>
+                            [답변]
+                            <br><br>
+                            <% if(i.getInqAnswer() != null){ %>
+                            	<%= i.getInqAnswer() %>
+                            <% }else { %>
+                            	<p style="color:gray;">답변대기 중 입니다.</p>
+                            <% }%>
+                            <br><br>
+                        </div>
+                    </td>
+                    <td><%= (i.getInqProcessing().equals("Y")) ? "처리완료" : "답변대기" %></td>
+                    <td><%= i.getMemId() %></td>
+                    <td><%= i.getInqDate() %></td>
+                </tr>
+                    <%}else { %>
+                   	<%if(i.getInqPrivate().equals("Y")) {%>
+                    	<div class="pri">비밀글입니다.</div>
+                    <%}else { %>
+                    	<div class="pub"><%= i.getInqName() %></div>
+                    <%} %>
                         <div style="display: none;">
                             <br>
                             [문의내용]
@@ -125,28 +155,11 @@
                             <br><br>
                             [답변]
                             <br><br>
-                            <%= i.getInqAnswer() %>
-                            <br><br>
-                        </div>
-                    </td>
-                    <td><%= (i.getInqProcessing().equals("Y")) ? "처리완료" : "답변대기" %></td>
-                    <td><%= i.getMemId() %></td>
-                    <td><%= i.getInqDate() %></td>
-                </tr>
-                <%}else {%>
-                <tr>
-                    <td><%= i.getInqNo() %></td>
-                    <td style="text-align: left; color: gray;">
-                        <div class="pri">비밀글입니다.</div>
-                        <div style="display: none;" >
-                            <br>
-                            [문의내용]
-                            <br><br>
-                            <%= i.getInqQuestion() %>
-                            <br><br>
-                            [답변]
-                            <br><br>
-                            <%= i.getInqAnswer() %>
+                            <% if(i.getInqAnswer() != null){ %>
+                            	<%= i.getInqAnswer() %>
+                            <% }else { %>
+                            	<p style="color:gray;">답변대기 중 입니다.</p>
+                            <% }%>
                             <br><br>
                         </div>
                     </td>
@@ -157,16 +170,6 @@
                 <% } %>
                 <% } %>
                 <% } %>
-				<!-- 
-                <tr>
-                    <td>x</td>
-                    <td style="text-align: left; color: gray;">비밀글입니다.</td>
-                    <td>xx</td>
-                    <td>xx</td>
-                    <td>xx</td>
-                </tr>
-                 -->
-               
             </tbody>
         </table>
         <button type="button" class="btn btn-secondary" onclick="writeInquiry();" style="margin-left: 90%;">글쓰기</button>
@@ -175,21 +178,21 @@
     <script>
     	function writeInquiry(){
     		<% if(session.getAttribute("loginUser") != null) { %>
-    		location.href = "<%= contextPath %>/writeInquiryForm.cu";
+    			location.href = "<%= contextPath %>/writeInquiryForm.cu";
     		<% }else {%>
     			alert("로그인 후 이용 가능합니다.");
+    			location.href = "<%= contextPath %>/loginForm.me";
     		<% } %>
     	}
         $(function(){
             $(".pub").click(function(){
-
-                const $p = $(this).next();
+                const $div = $(this).next();
                 
-                if($p.css("display") == "none"){
-                    $(this).siblings("p").slideUp();
-                    $p.slideDown();
+                if($div.css("display") == "none"){
+                    $(this).siblings("div").slideUp();
+                    $div.slideDown();
                 }else {
-                    $p.slideUp();
+                    $div.slideUp();
                 }
             })
         })
