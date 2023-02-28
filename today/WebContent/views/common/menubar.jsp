@@ -1,3 +1,5 @@
+<%@page import="com.todayTable.category.model.vo.CategoryNation"%>
+<%@page import="com.todayTable.category.model.vo.CategoryIngredient"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.todayTable.member.model.vo.WishList"%>
 <%@page import="com.todayTable.member.model.vo.Allergy"%>
@@ -13,6 +15,8 @@
 	ArrayList<WishList> wishList = (ArrayList<WishList>)session.getAttribute("wishList");
 	String alertMsg = (String)session.getAttribute("alertMsg");
 	String alg = "";
+	
+	
 	if(memAlg!=null){
 		for(Allergy a : memAlg){
 			alg+=a.getAlgNo();
@@ -42,12 +46,13 @@
         .nav-brand { width: 150px; }
         
     </style>
-
+    <script src="<%=application.getContextPath()%>/resources/js/mainPage.js"></script>
 	   
 </head>
 
 
 <body>
+    
 	
 	<%if(alertMsg!=null){ %>
 	<script>
@@ -61,7 +66,7 @@
 	<!-- Preloader -->
     <div id="preloader">
         <i class="circle-preloader"></i>
-        <img src="img/core-img/salad.png" alt="">
+        <img src="" alt="">
     </div>
 
     <!-- Search Wrapper -->

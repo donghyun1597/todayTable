@@ -21,59 +21,25 @@
 
         #row-510 { flex-wrap:wrap}
         
+        /* .selectbox{
+            float: left;
+            
+        } */
+        .recommend-area{
+            margin: 20px;
+            display: flex;
+        }
     </style>
+    
     
 </head>
 
 <body>
+
 	<!-- 메뉴바 가져오기 -->
 	<%@ include file="views/common/menubar.jsp" %>
 	
-	<script>
-        viewTopRecipe();
-
-		function viewTopRecipe(){
-			let contextPath = "<%=contextPath%>";
-	        let value = "";
-	        
-	    	$.ajax({
-	            url : "mainThumnail.re",
-	            success : function(list){
-	                
-	                console.log(list);
-	                
-	                console.log($("#topRecipeImg1"));
-                    for(let i=0;i<list.length;i++){
-                        value += '<div class="col-12 col-sm-6 col-lg-4" id="col-510" id="topRecipe1">'+
-                                '<div class="single-best-receipe-area mb-30">'+
-                                '<img src="/today'+list[i].recipePic+'" alt="음식2" id="topRecipeImg1">'+
-                                '<div class="receipe-content">'+
-                                    '<a href="receipe-post.html">'+
-                                        '<h5>'+list[i].recipeName+'</h5>'+
-                                    '</a>'+
-                                    '<div class="ratings">난이도'+list[i].recipeDifficulty+'<br>'+
-                                        '<i class="fa fa-star" aria-hidden="true"></i>'+
-                                        '<i class="fa fa-star" aria-hidden="true"></i>'+
-                                        '<i class="fa fa-star" aria-hidden="true"></i>'+
-                                    '<i class="fa fa-star" aria-hidden="true"></i>'+
-                                        '<i class="fa fa-star-o" aria-hidden="true"></i>'+
-                                    '</div>'+
-                                '</div>'+
-                            '</div>'+
-                        '</div>'
-                    }
-                    $("#topRecipe").html(value);
-	            },
-	            error : function(){
-	                console.log("ajax 실패!!!");
-	            }
 	
-	
-	        })
-			
-           
-		}
-    </script>
 
 	<!-- ##### Hero Area Start ##### -->
     <section class="hero-area">
@@ -126,28 +92,36 @@
     </section>
     <!-- ##### Hero Area End ##### -->
 
-
     <!-- 여기다가 랜덤박스 넣으려함 -->
-    <!-- ##### Top Catagory Area Start ##### -->
-    <section class="top-catagory-area section-padding-80-0">
+    <!-- ##### Top Catagory Area Start ##### section-padding-80-0 -->
+    <section class="recommend-area"> 
         <div class="container">
-            <div class="row">
 
-                <!-- Top Catagory Area 1 -->
-                <div class="col-12 col-lg-6">
-                    <div class="single-top-catagory">
-                        <img src="<%=contextPath%>/resources/image/bg-img/sumin.jpg" alt="">
-                        <!-- Content -->
-                        <div class="top-cta-content">
-                            <h3>동현님</h3>
-                            <h6>랜덤 &amp; 코드보내주세요</h6>
-                            <a href="receipe-post.html" class="btn delicious-btn">기다리는중...</a>
-                        </div>
-                    </div>
-                </div>
-
+            <div class="selectbox">
+				<div class="form-group">
+					<label for="sel2">을</label>
+					<select class="form-control" id="recoSel1">
+					  
+                       
+				  	</select>
+				</div>
+               
 
             </div>
+            <div>먹을래요</div>
+            
+            
+            <div class="selectbox">
+				<div class="form-group">
+					<label for="sel2">을</label>
+					<select class="form-control" id="sel2">
+					    
+				  	</select>
+				</div>
+               
+
+            </div>
+            <div>먹을래요</div>
         </div>
     </section>
     <!-- ##### Top Catagory Area End ##### -->
@@ -252,6 +226,7 @@
 
 
     <!-- ##### Best Receipe Start 22 ##### -->
+    <!--  -->
     <section class="cta-area bg-img bg-overlay">
         <div class="container h-100"> <br>
             <span class="section-heading" style="text-align: left; margin-top: auto;" >
@@ -259,7 +234,7 @@
             </span>
             <div class="row h-100 align-items-center" id="topRecipe">
                 
-               <!-- Single Best Receipe Area -->
+               <!-- Single Best Receipe Area
                 <div class="col-12 col-sm-6 col-lg-4" id="col-510" id="topRecipe1">
                     <div class="single-best-receipe-area mb-30">
                         <img src="resources/image/bg-img/sumin6.jpg" alt="음식2" id="topRecipeImg1">
@@ -279,7 +254,7 @@
                 </div>
 
 
-                                <!-- Single Best Receipe Area -->
+
                 <div class="col-12 col-sm-6 col-lg-4" id="col-510" id="topRecipe2">
                     <div class="single-best-receipe-area mb-30">
                         <img src="resources/image/bg-img/sumin6.jpg" alt="음식2">
@@ -299,7 +274,7 @@
                 </div>
 
 
-                                <!-- Single Best Receipe Area -->
+                             
                 <div class="col-12 col-sm-6 col-lg-4" id="col-510" id="topRecipe3">
                     <div class="single-best-receipe-area mb-30">
                         <img src="resources/image/bg-img/sumin6.jpg" alt="음식2">
@@ -321,7 +296,7 @@
                 
                 
                 
-                                <!-- Single Best Receipe Area -->
+                                
                 <div class="col-12 col-sm-6 col-lg-4" id="col-510" id="topRecipe4">
                     <div class="single-best-receipe-area mb-30">
                         <img src="resources/image/bg-img/sumin6.jpg" alt="음식2">
@@ -339,7 +314,7 @@
                         </div>
                     </div>
                 </div>
-                
+                 -->
                 
                 
                 
@@ -540,7 +515,7 @@
                     </div>
                     <!-- Footer Logo -->
                     <div class="footer-logo">
-                        <a href="index.html"><img src="resources/image/core-img/logo.png" alt=""></a>
+                        <a href="index.html"><img src="<%=application.getContextPath()%>/resources/image/core-img/logo.jpg" alt=""></a>
                     </div>
                     <!-- Copywrite -->
                     <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->

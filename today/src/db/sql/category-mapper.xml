@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="selectCategoryIngredientList">
+		SELECT 
+		      C_INGRE_NO
+		    , C_INGRE_NAME
+		FROM 
+		    TB_CATEGORY_INGREDIENT
+	
+	</entry>
+	<entry key="selectCategoryNationList">
+		SELECT
+		      C_NAT_NO
+		    , C_NAT_NAME
+		FROM
+		    TB_CATEGORY_NATION
+	</entry>
+
+</properties>
