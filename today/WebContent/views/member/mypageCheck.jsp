@@ -101,13 +101,18 @@
                         </tr>
                         <tr>
                             <td>PASSWORD:</td>
-                            <td><input type="password" name="checkPwd" maxlength="30" placeholder="ENTER PASSWORD" required></td>
+                            <td><input type="password" id="checkPwd"name="checkPwd" maxlength="30" placeholder="ENTER PASSWORD" required></td>
                         </tr>
                     </table>
                 </div> <br>
                 <div align="center">
-                    <button type="submit" class="btn">SUBMIT</button> <hr>
+                    <button type="submit" class="btn" onclick="passClear">SUBMIT</button> <hr>
                 </div>
+                <script>
+                	function passClear() {
+						$("#checkPwd").val("");
+					}
+                </script>
             </form>
         </div>
 

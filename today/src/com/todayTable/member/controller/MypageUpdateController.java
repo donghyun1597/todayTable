@@ -68,11 +68,11 @@ public class MypageUpdateController extends HttpServlet {
 			memAlg = new MemberService().selectAllergy(memNo);
 			session.setAttribute("loginUser", loginUser);
 			session.setAttribute("memAlg", memAlg);
-			response.sendRedirect(request.getContextPath()+"/myProfile.me");
+			response.sendRedirect(request.getContextPath()+"/views/member/mypageProfile.jsp");
 			
 		}else {
 			session.setAttribute("alertMsg", "정보수정에 실패했습니다");
-			response.sendRedirect(request.getContextPath()+"/myProfile.me");
+			response.sendRedirect(request.getContextPath()+"/views/member/mypageProfile.jsp");
 		}
 		
 		

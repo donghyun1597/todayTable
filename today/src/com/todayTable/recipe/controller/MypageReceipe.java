@@ -9,8 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.coyote.Request;
-
+import com.todayTable.member.model.vo.Member;
 import com.todayTable.recipe.model.service.RecipeService;
 import com.todayTable.recipe.model.vo.Recipe;
 
@@ -35,7 +34,8 @@ public class MypageReceipe extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// thumbnailListView.jsp상에 필요한 데이터 조회 필요
-		ArrayList<Recipe> list = new RecipeService().selectThumbnailList();
+		Member m = (Member)request.getSession().getAttribute("loginUser");
+		ArrayList<Recipe> list = new RecipeService().selectThumbnailList(m.getMemNo());
 		
 		// 레시피 페이지로 가자
 		request.setAttribute("list", list);
