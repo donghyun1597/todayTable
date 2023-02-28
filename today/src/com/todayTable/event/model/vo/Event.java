@@ -30,6 +30,16 @@ public class Event {
 		this.eventName = eventName;
 		this.eventDate = eventDate;
 	}
+	
+	
+
+	public Event(int eventNo, String eventName, Date eventDate, String eventProcessing) {
+		super();
+		this.eventNo = eventNo;
+		this.eventName = eventName;
+		this.eventDate = eventDate;
+		this.eventProcessing = eventProcessing;
+	}
 
 	public int getEventNo() {
 		return eventNo;

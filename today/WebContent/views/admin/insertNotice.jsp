@@ -18,7 +18,7 @@
 </head>
 
 <body>
-	<<div class="d-flex" id="wrapper">
+	<div class="d-flex" id="wrapper">
 		<%@ include file="adminMenubar.jsp" %>
 		<div id="page-content-wrapper">
 		

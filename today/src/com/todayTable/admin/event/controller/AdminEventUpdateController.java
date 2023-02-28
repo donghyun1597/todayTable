@@ -1,29 +1,26 @@
-package com.todayTable.admin.member.controller;
+package com.todayTable.admin.event.controller;
 
 import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import com.todayTable.admin.member.model.service.AdminService;
-import com.todayTable.member.model.vo.Member;
+import com.todayTable.admin.event.model.service.AdminEventService;
+import com.todayTable.event.model.vo.Event;
 
 /**
- * Servlet implementation class AdminLoginController
+ * Servlet implementation class AdminEventUpdateController
  */
-@WebServlet("/adminlogin.do")
-public class AdminLoginController extends HttpServlet {
+@WebServlet("/update.ev")
+public class AdminEventUpdateController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminLoginController() {
+    public AdminEventUpdateController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,19 +31,21 @@ public class AdminLoginController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
-		String adminPwd = request.getParameter("adminPwd");
+		int eventNo = Integer.parseInt(request.getParameter("num"));
 		
-		Member m = new AdminService().loginAdmin(adminPwd);
-		HttpSession session = request.getSession();
+		String title = request.getParameter("eventTitle");
+		String content = request.getParameter("eventContent");
 		
-		if (m == null) {
-			request.setAttribute("errorMsg", "비밀번호를 확인해주세요");
-			
-			RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
-			view.forward(request, response);
-		} else {
-			RequestDispatcher view = request.getRequestDispatcher("views/admin/adminIndex.jsp");
-			view.forward(request, response);
+		Event ev = new Event();
+		
+		ev.setEventNo(eventNo);
+		ev.setEventName(title);
+		ev.setEventContents(content);
+		
+		int result = new AdminEventService().updateEvent(ev);
+		
+		if(result > 0) {
+			response.sendRedirect(request.getContextPath() + "/detail.ev?num=" + eventNo);
 		}
 	}
 

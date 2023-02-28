@@ -161,7 +161,8 @@ public class NoticeDao {
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
-				n = new Notice(rset.getString("notice_name"),
+				n = new Notice(rset.getInt("notice_no"),
+							   rset.getString("notice_name"),
 							   rset.getString("notice_contents"),
 							   rset.getDate("notice_date"),
 							   rset.getString("notice_clsfc")
