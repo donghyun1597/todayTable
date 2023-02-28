@@ -106,5 +106,18 @@ public class MemberService {
 	} // ... end
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

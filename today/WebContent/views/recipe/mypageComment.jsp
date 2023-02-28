@@ -22,6 +22,9 @@
         #mypage-form table { 
             margin: auto;
         }
+        #mypage-form table { 
+            margin: auto;
+        }
 
         #mypage-form input { margin: 5px; }
 
@@ -35,21 +38,63 @@
             width: 600px;
         }
 
-        #col-510{
+        #sumin-col{
             flex:0 0 25%;
-            padding-left: 5px;
-            padding-right: 5px;
         }
 
-        #row-510{
-            flex-wrap:wrap;
+        #sumin-row {
+            flex-wrap: wrap;
         }
 
         #content-510{
             padding-left: 5%;
         }
 
+        #box-sm {
+            background-color: white;
+            border: 2px solid rgb(224, 224, 224) ;
+            width: 150px;  height: 35px;  border-radius: 20px;
+            margin: 10px;
+            margin-left: 50px;
+            text-align: center;
+            line-height: 35px;
+            
+        }
 
+        .tag{
+            box-sizing: border-box;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding-top: 20px;
+        
+        }
+
+        #tag-li {
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .counter{
+            color: gray;
+            font-size: medium;
+        }
+
+
+
+        #img-food {
+            border-radius: 20px;
+            margin: auto;
+            max-width: 100%;
+            margin-bottom: 10px;
+        }
+
+
+        .post-meta {
+            -webkit-box-align: center;
+            align-items: center;
+            justify-content: space-between;
+        }
 
     </style>
 
@@ -63,13 +108,28 @@
 
 
 
+  
     <!-- ##### Breadcumb Area Start ##### -->
     <div class="breadcumb-area bg-img bg-overlay" style="background-image: url(img/bg-img/breadcumb2.jpg);">
         <div class="container h-100">
             <div class="row h-100 align-items-center">
                 <div class="col-12">
                     <div class="breadcumb-text text-center">
-                        <h2>MyPage</h2>
+                        <h2>나의 댓글</h2> 
+                        <div class="tag">
+                            <div id="box-sm">
+                                <a href="#" id="tag-li"># 나의 댓글</a>
+                                <h5><span class="counter">100</span></h5>
+                            </div>
+                            <div id="box-sm">
+                                <a href="#" id="tag-li"># 찜한 목록</a>
+                                <h5><span class="counter">4</span></h5>
+                            </div>
+                            <div id="box-sm">
+                                <a href="#" id="tag-li"># 나의 레시피</a>
+                                <h5><span class="counter">100</span></h5>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -81,67 +141,25 @@
 
 
 
+    
 
-    <!-- ********** Progress Bars & Accordions ********** -->
-    <div class="col-12">
-        <div class="elements-title mb-80">
-            <br><br>
-            <h2 align="center">Receipe</h2>
-        </div>
-    </div>
+    <br><br>
+            <div class="row" align="center">
+                <div class="col-12">
 
+            <!-- ##### Best Receipe Area Start ##### -->
+            <section class="best-receipe-area">
+                <div class="container">
 
-    <!-- ##### Elements Area Start ##### -->
-    <section class="elements-area section-padding-80-0">
-        <div class="container">
-            <div class="row">
+                    <div class="row" id="sumin-row">
 
-               
-
-                <!-- ##### Tabs ##### -->
-                <div class="col-12 col-lg-6">
-                    <div class="delicious-tabs-content">
-                        <ul class="nav nav-tabs" id="myTab" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link" id="tab--1" data-toggle="tab" href="#tab1" role="tab" aria-controls="tab1" aria-selected="false">공개중</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" id="tab--2" data-toggle="tab" href="#tab2" role="tab" aria-controls="tab2" aria-selected="false">작성중</a>
-                            </li>
-                        </ul>
-
-                        <div class="tab-content mb-80" id="myTabContent">
-                            <div class="tab-pane fade" id="tab1" role="tabpanel" aria-labelledby="tab--1">
-                                <div class="delicious-tab-content">
-                                    <!-- Tab Text -->
-                                    <div class="delicious-tab-text">
-                                        <p>공개중인 레시피 리스트</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade show active" id="tab2" role="tabpanel" aria-labelledby="tab--2">
-                                <div class="delicious-tab-content">
-                                    <!-- Tab Text -->
-                                    <div class="delicious-tab-text">
-                                        <p>작성중인 레시피 리스트</p>
-                                    </div>
-                                </div>
-                            </div>
-            
-                        </div>
+						
+                       
+                        
                     </div>
                 </div>
-
-
-
-          
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- ***** Elements Area End ***** -->
+            </section>
+            <!-- ##### Best Receipe Area End ##### -->
 
 
            

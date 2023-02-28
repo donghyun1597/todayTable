@@ -127,7 +127,7 @@
 	
 	
 	
-<!-- 수민.회원정보수정 (미완)-->
+<!-- 수민.회원정보수정 (완) -->
 <entry key="updateMember">
 	UPDATE 
 	    TB_MEMBER

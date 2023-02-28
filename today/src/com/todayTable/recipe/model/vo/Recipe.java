@@ -3,20 +3,41 @@ package com.todayTable.recipe.model.vo;
 import java.sql.Date;
 
 public class Recipe {
-	private int recipeNo;
-	private String recipeName;
-	private String recipeTag;
-	private String recipeVideo;
-	private String recipeDifficulty;
-	private int recipePerson;
-	private int recipeTime;
-	private Date recipeDate;
-	private int memNo;
-	private String recipePic;
-	private int recipeViews;
-	private String recipeStatus;
+	private int recipeNo;	// 레시피번호
+	private String recipeName;	// 레시피 이름
+	private String recipeTag;	// 레시피 태그
+	private String recipeVideo;	// 레시피 영상
+	private String recipeDifficulty;	// 레시피 난이도
+	private int recipePerson;	// 레시피 인분
+	private int recipeTime;		// 레시피 소요시간
+	private Date recipeDate;	// 레시피 날짜
+	private int memNo;			// 회원번호
+	private String recipePic;	// 레시피 사진
+	private int recipeViews;	// 레시피 조회수
+	private String recipeStatus;	// 레시피 삭제 여부
 	
 	public Recipe() {}
+	
+	
+	
+	
+	
+	
+	// sumin 썸네일용
+	public Recipe(String recipeName, Date recipeDate,int recipeViews, String recipePic, int memNo) {
+		super();
+		this.recipeName = recipeName;
+		this.recipeDate = recipeDate;
+		this.recipeViews = recipeViews;
+		this.recipePic = recipePic;
+		this.memNo = memNo;
+	}
+
+
+
+
+
+
 
 	public Recipe(int recipeNo, String recipeName, String recipeTag, String recipeVideo, String recipeDifficulty,
 			int recipePerson, int recipeTime, Date recipeDate, int memNo, String recipePic, int recipeViews,
