@@ -12,7 +12,6 @@
 	int endPage = pi.getEndPage();
 	int maxPage = pi.getMaxPage();
 	
-	Member loginUser = (Member)request.getAttribute("loginUser");
 %>
 
 <!DOCTYPE html>
@@ -79,6 +78,9 @@
         .btn-group button{
             border-color: lightgray;
         }
+        .pri {
+        	color: gray;
+        }
     </style>
 </head>
 <body>
@@ -114,11 +116,37 @@
                 <% }else { %>
                 <!-- case2. 문의글 있음 -->
                 <% for(Inquiry i :list) { %>
-                <% if(i.getInqPrivate().equals("N")) { %>
                 <tr>
                     <td><%= i.getInqNo() %></td>
-                    <td style="text-align: left;">
-                        <div class="pub"><%= i.getInqName() %></div>
+                   	<td style="text-align: left;">
+                    <%if(loginUser.getMemId().equals(i.getMemId())) {%>
+                       	<div style="font-weight: bold;" class="pub">[MY]<%= i.getInqName() %></div>
+                       	<div style="display: none;">
+                            <br>
+                            [문의내용]
+                            <br><br>
+                            <%= i.getInqQuestion() %>
+                            <br><br>
+                            [답변]
+                            <br><br>
+                            <% if(i.getInqAnswer() != null){ %>
+                            	<%= i.getInqAnswer() %>
+                            <% }else { %>
+                            	<p style="color:gray;">답변대기 중 입니다.</p>
+                            <% }%>
+                            <br><br>
+                        </div>
+                    </td>
+                    <td><%= (i.getInqProcessing().equals("Y")) ? "처리완료" : "답변대기" %></td>
+                    <td><%= i.getMemId() %></td>
+                    <td><%= i.getInqDate() %></td>
+                </tr>
+                    <%}else { %>
+                   	<%if(i.getInqPrivate().equals("Y")) {%>
+                    	<div class="pri">비밀글입니다.</div>
+                    <%}else { %>
+                    	<div class="pub"><%= i.getInqName() %></div>
+                    <%} %>
                         <div style="display: none;">
                             <br>
                             [문의내용]
@@ -139,68 +167,9 @@
                     <td><%= i.getMemId() %></td>
                     <td><%= i.getInqDate() %></td>
                 </tr>
-                <%}else {%>
-                <%if(loginUser.getMemNo() == i.getMemNo()) { %>
-                <% if(i.getInqPrivate().equals("N")) { %>
-                <tr>
-                    <td><%= i.getInqNo() %></td>
-                    <td style="text-align: left;">
-                        <div class="pub"><%= i.getInqName() %></div>
-                        <div style="display: none;">
-                            <br>
-                            [문의내용]
-                            <br><br>
-                            <%= i.getInqQuestion() %>
-                            <br><br>
-                            [답변]
-                            <br><br>
-                            <% if(i.getInqAnswer() != null){ %>
-                            	<%= i.getInqAnswer() %>
-                            <% }else { %>
-                            	<p style="color:gray;">답변대기 중 입니다.</p>
-                            <% }%>
-                            <br><br>
-                        </div>
-                    </td>
-                    <td><%= (i.getInqProcessing().equals("Y")) ? "처리완료" : "답변대기" %></td>
-                    <td><%= i.getMemId() %></td>
-                    <td><%= i.getInqDate() %></td>
-                </tr>
-                <%}else{ %>
-                <tr>
-                    <td><%= i.getInqNo() %></td>
-                    <td style="text-align: left; color: gray;">
-                        <div class="pri">비밀글입니다.</div>
-                        <div style="display: none;" >
-                            <br>
-                            [문의내용]
-                            <br><br>
-                            <%= i.getInqQuestion() %>
-                            <br><br>
-                            [답변]
-                            <br><br>
-							<%= i.getInqAnswer() %>
-                            <br><br>
-                        </div>
-                    </td>
-                    <td><%= (i.getInqProcessing().equals("Y")) ? "처리완료" : "답변대기" %></td>
-                    <td><%= i.getMemId() %></td>
-                    <td><%= i.getInqDate() %></td>
-                </tr>
                 <% } %>
                 <% } %>
                 <% } %>
-                <% } %>
-				<!-- 
-                <tr>
-                    <td>x</td>
-                    <td style="text-align: left; color: gray;">비밀글입니다.</td>
-                    <td>xx</td>
-                    <td>xx</td>
-                    <td>xx</td>
-                </tr>
-                 -->
-               
             </tbody>
         </table>
         <button type="button" class="btn btn-secondary" onclick="writeInquiry();" style="margin-left: 90%;">글쓰기</button>
@@ -217,14 +186,13 @@
     	}
         $(function(){
             $(".pub").click(function(){
-
-                const $p = $(this).next();
+                const $div = $(this).next();
                 
-                if($p.css("display") == "none"){
-                    $(this).siblings("p").slideUp();
-                    $p.slideDown();
+                if($div.css("display") == "none"){
+                    $(this).siblings("div").slideUp();
+                    $div.slideDown();
                 }else {
-                    $p.slideUp();
+                    $div.slideUp();
                 }
             })
         })
