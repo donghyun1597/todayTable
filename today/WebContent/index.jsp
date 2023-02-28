@@ -30,34 +30,39 @@
 	<%@ include file="views/common/menubar.jsp" %>
 	
 	<script>
-		$(function(){
+        viewTopRecipe();
+
+		function viewTopRecipe(){
 			let contextPath = "<%=contextPath%>";
 	        let value = "";
+	        
 	    	$.ajax({
 	            url : "mainThumnail.re",
 	            success : function(list){
 	                
 	                console.log(list);
+	                
 	                console.log($("#topRecipeImg1"));
-                    
-	                value = '<div class="col-12 col-sm-6 col-lg-4" id="col-510" id="topRecipe1">'+
-		                    ''<div class="single-best-receipe-area mb-30">
-		                    <img src="resources/image/bg-img/sumin6.jpg" alt="음식2" id="topRecipeImg1">
-		                    <div class="receipe-content">
-		                        <a href="receipe-post.html">
-		                            <h5>레시피5</h5>
-		                        </a>
-		                        <div class="ratings">난이도
-		                            <i class="fa fa-star" aria-hidden="true"></i>
-		                            <i class="fa fa-star" aria-hidden="true"></i>
-		                            <i class="fa fa-star" aria-hidden="true"></i>
-		                            <i class="fa fa-star" aria-hidden="true"></i>
-		                            <i class="fa fa-star-o" aria-hidden="true"></i>
-		                        </div>
-		                    </div>
-		                </div>
-		            </div>
-                   
+                    for(let i=0;i<list.length;i++){
+                        value += '<div class="col-12 col-sm-6 col-lg-4" id="col-510" id="topRecipe1">'+
+                                '<div class="single-best-receipe-area mb-30">'+
+                                '<img src="/today'+list[i].recipePic+'" alt="음식2" id="topRecipeImg1">'+
+                                '<div class="receipe-content">'+
+                                    '<a href="receipe-post.html">'+
+                                        '<h5>'+list[i].recipeName+'</h5>'+
+                                    '</a>'+
+                                    '<div class="ratings">난이도'+list[i].recipeDifficulty+'<br>'+
+                                        '<i class="fa fa-star" aria-hidden="true"></i>'+
+                                        '<i class="fa fa-star" aria-hidden="true"></i>'+
+                                        '<i class="fa fa-star" aria-hidden="true"></i>'+
+                                    '<i class="fa fa-star" aria-hidden="true"></i>'+
+                                        '<i class="fa fa-star-o" aria-hidden="true"></i>'+
+                                    '</div>'+
+                                '</div>'+
+                            '</div>'+
+                        '</div>'
+                    }
+                    $("#topRecipe").html(value);
 	            },
 	            error : function(){
 	                console.log("ajax 실패!!!");
@@ -67,7 +72,7 @@
 	        })
 			
            
-		})
+		}
     </script>
 
 	<!-- ##### Hero Area Start ##### -->

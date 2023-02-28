@@ -119,12 +119,12 @@
 						</tr>
 						<tr>
 							<td id="t1">&nbsp;&nbsp;* 변경할 비밀번호</td>
-							<td id="t2"><input type="password" name="memPwd" maxlength="30" required> 
+							<td id="t2"><input type="password" name="memPwd" maxlength="30" required id="memPwd"> 
 							<span style="font-size: 10px;">* 영문 대소문자/숫자/특수문자 혼용하여 2종류 10 ~ 16자</span></td>
 						</tr>
 						<tr>
 							<td id="t1">&nbsp;&nbsp;* 비밀번호 확인</td>
-							<td id="t2"><input type="password" name="checkPwd" required></td>
+							<td id="t2"><input type="password" name="checkPwd" required id="checkPwd"></td>
 						</tr>
 						<tr>
 							<td id="t1">&nbsp;&nbsp;닉네임</td>
@@ -166,13 +166,26 @@
             		});
             	})	
             </script>
+			<script>
+				function validatePwd() {
+					const memPwd=$("#memPwd").val();
+					const checkPwd=$("#checkPwd").val()
+					console.l
+					if(memPwd==checkPwd){
+						return true;
+					}else{
+						alert("변경할 비밀번호가 일치하지 않습니다. 다시 입력해주십시오");
+						return false;
+					}
+				}
+			</script>
 					<br>
 					<br>
 
 
 					<div align="center">
 						<button type="submit" class="btn delicious-btn btn-4 m-1"
-							onclick="return validatePwd();">정보변경</button>
+							onclick="return validatePwd()">정보변경</button>
 						<a href="#" class="btn delicious-btn btn-4 m-1"
 							data-toggle="modal" data-target="#deleteModal">회원탈퇴</a>
 					</div>
@@ -181,14 +194,7 @@
 			</div>
 		</div>
 		
-		<script>
-			function validatePwd() {
-				if($("input[name = memPwd]").val() != $("input[name=checkPwd]").val()){
-					alert("변경할 비밀번호가 일치하지 않습니다. 다시 입력해주십시오");
-					return false;
-				}
-			}
-		</script>
+		
 
 
 		<!-- 회원 탈퇴용 Modal -->
