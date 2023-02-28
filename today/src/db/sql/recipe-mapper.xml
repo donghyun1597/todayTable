@@ -41,7 +41,25 @@
 	ORDER BY RECIPE_NO DESC
 	</entry>
 	
-	
+	<entry key="selectRecommnedRecipe">
+		SELECT 
+			  RECIPE_PIC
+		    , RECIPE_NAME
+		    , RECIPE_DIFFICULTY
+		    , RECIPE_VIEWS
+		FROM TB_RECIPE
+		WHERE RECIPE_NO IN (SELECT RECIPE_NO
+		                    FROM TB_CATEGORY
+		                    JOIN TB_CATEGORY_INGREDIENT USING(C_INGRE_NO)
+		                    JOIN TB_CATEGORY_NATION USING(C_NAT_NO)
+		                    WHERE C_INGRE_NAME = ?
+		                    OR C_NAT_NAME = ?
+		                    UNION
+		                    SELECT RECIPE_NO
+		                    FROM TB_RECIPE
+		                    WHERE RECIPE_PERSON =?)
+
+	</entry>
 	
 	
 	

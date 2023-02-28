@@ -10,6 +10,10 @@ import com.todayTable.recipe.model.vo.Recipe;
 
 public class RecipeService {
 	
+	/**
+	 * 조회수 높은순 레시피 조회
+	 * @return
+	 */
 	public ArrayList<Recipe> selectMainThumbnailList(){
 		Connection conn = getConnection();
 		
@@ -19,7 +23,19 @@ public class RecipeService {
 		return list;
 	}
 	
-	
+	/**
+	 * 레시피 추천 dao
+	 * @param values
+	 * @return
+	 */
+	public ArrayList<Recipe> selectMainThumbnailList(String[] values){
+		Connection conn = getConnection();
+		
+		ArrayList<Recipe> list = new RecipeDao().selectMainThumbnailList(conn,values);
+		
+		close(conn);
+		return list;
+	}
 	
 	/**
 	 * 마이페이지 - 썸네일 사진 정보 조회용

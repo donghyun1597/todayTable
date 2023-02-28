@@ -47,6 +47,17 @@ function viewTopRecipe(){
     
 }
 
+
+// function recommendRecipe(){
+//     let ingre = $("#recommendSel1 span").text();
+//     let nation = $("#recommendSel2 span").text();
+//     let people = $("#recommendSel3 span").text();
+
+//     console.log(ingre);
+//     console.log(nation);
+//     console.log(people);
+// }
+
 // function categoryList(){
 
 //     $.ajax({

@@ -26,6 +26,11 @@ public class RecipeDao {
 		
 		
 	}
+	/**
+	 * 조회수 높은순 레시피
+	 * @param conn
+	 * @return
+	 */
 	public ArrayList<Recipe> selectMainThumbnailList(Connection conn){
 		ArrayList<Recipe> list = new ArrayList<Recipe>();
 		PreparedStatement pstmt = null;
@@ -36,6 +41,50 @@ public class RecipeDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Recipe r = new Recipe();
+				r.setRecipePic(rset.getString("recipe_pic"));
+				r.setRecipeName(rset.getString("recipe_name"));
+				r.setRecipeDifficulty(rset.getString("recipe_difficulty"));
+				r.setRecipeViews(rset.getInt("recipe_views"));
+				list.add(r);
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+			
+		}
+		return list;
+		
+		
+	}
+	
+	/**
+	 * 레시피 추천 dao
+	 * @param conn
+	 * @param values
+	 * @return
+	 */
+	public ArrayList<Recipe> selectMainThumbnailList(Connection conn,String[] values){
+		ArrayList<Recipe> list = new ArrayList<Recipe>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectRecommnedRecipe");
+		System.out.println(values[0]);
+		System.out.println(values[1]);
+		System.out.println(values[2]);
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, values[0]);
+			pstmt.setString(2, values[1]);
+			pstmt.setInt(3, Integer.parseInt(values[2]));
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {

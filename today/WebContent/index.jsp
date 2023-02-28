@@ -29,6 +29,9 @@
             margin: 20px;
             display: flex;
         }
+        a:hover{
+        	cursor: pointer;
+        }
     </style>
     
     
@@ -97,32 +100,107 @@
     <section class="recommend-area"> 
         <div class="container">
 
-            <div class="selectbox">
-				<div class="form-group">
-					<label for="sel2">을</label>
-					<select class="form-control" id="recoSel1">
-					  
-                       
-				  	</select>
-				</div>
-               
-
-            </div>
-            <div>먹을래요</div>
+           
+			<div class="form-group" id="recommendSel1">
+				<label for="sel2">우리집 냉장고에는</label>
+				<select class="form-control">
+					<option>소고기</option>
+					<option>돼지고기</option>
+					<option>닭고기</option>
+					<option>해산물</option>
+					<option>채소</option>
+			  	</select>
+			</div>
+           
             
             
-            <div class="selectbox">
-				<div class="form-group">
-					<label for="sel2">을</label>
-					<select class="form-control" id="sel2">
-					    
-				  	</select>
-				</div>
+			<div class="form-group" id="recommendSel2">
+				<label for="sel2">가 있고</label>
+				<select class="form-control">
+				    <option>한국</option>
+				    <option>베트남</option>
+				    <option>중국</option>
+				    <option>이탈리아</option>
+				    <option>일본</option>
+                      
+			  	</select>
+			</div>
                
 
-            </div>
-            <div>먹을래요</div>
+            
+            
+            
+            <div class="form-group"  id="recommendSel3">
+	  			<label for="sel1">음식을</label>
+			  	<select class="form-control">
+				    <option value="2">친구</option>
+				    <option value="1">혼자</option>
+				    <option value="3">부모님</option>
+				    
+			  	</select>
+			</div>
+			<div>랑 먹을래요</div>
+			<button type="button" onclick="recommendRecipe();">추천!</button>
         </div>
+        <script>
+	        function recommendRecipe(){
+	            let ingre = $("#recommendSel1 span").text();
+	            let nation = $("#recommendSel2 span").text();
+                let value = "";
+	            let peopleValue = "";
+                switch ($("#recommendSel3 span").text()) {
+                    case '친구': 
+                        peopleValue="2";
+                            
+                        break;
+                    case '혼자': 
+                        peopleValue="1";
+                        
+                        break;
+                    case '부모님': 
+                        peopleValue="3";
+                        
+                        break;
+                }
+                $.ajax({
+                    url : "recommend.re",
+                    data : {ingre : $("#recommendSel1 span").text()
+                            ,nation : $("#recommendSel2 span").text()
+                            ,people : peopleValue},
+                    success : function(list){
+                        console.log(list);
+                        for(let i=0;i<list.length;i++){
+                            value += '<div class="col-12 col-sm-6 col-lg-4" id="col-510" id="topRecipe1">'+
+                                    '<div class="single-best-receipe-area mb-30">'+
+                                    '<img src="/today'+list[i].recipePic+'" alt="음식2" id="topRecipeImg1">'+
+                                    '<div class="receipe-content">'+
+                                        '<a href="receipe-post.html">'+
+                                            '<h5>'+list[i].recipeName+'</h5>'+
+                                        '</a>'+
+                                        '<div class="ratings">난이도'+list[i].recipeDifficulty+'<br>'+
+                                            '<i class="fa fa-star" aria-hidden="true"></i>'+
+                                            '<i class="fa fa-star" aria-hidden="true"></i>'+
+                                            '<i class="fa fa-star" aria-hidden="true"></i>'+
+                                        '<i class="fa fa-star" aria-hidden="true"></i>'+
+                                            '<i class="fa fa-star-o" aria-hidden="true"></i>'+
+                                        '</div>'+
+                                    '</div>'+
+                                '</div>'+
+                            '</div>'
+                    }
+                    $("#recommend").html(value);
+                    },
+                    error : function(){
+    				    console.log("ajax 통신 실패!!!");
+    			    }
+
+
+                });
+	            
+	            
+                
+	        }
+        </script>
     </section>
     <!-- ##### Top Catagory Area End ##### -->
 
@@ -137,7 +215,7 @@
      <section class="best-receipe-area">
         <div class="container">
 
-            <div class="row" id="row-510">
+            <div class="row" id="recommend">
                 <!-- Single Best Receipe Area -->
                 <div class="col-12 col-sm-6 col-lg-4" id="col-510">
                     <div class="single-best-receipe-area mb-30">
