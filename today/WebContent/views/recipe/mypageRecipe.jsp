@@ -1,10 +1,7 @@
 <%@page import="com.todayTable.recipe.model.vo.Recipe"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%
-	ArrayList<Recipe> list = (ArrayList<Recipe>)request.getAttribute("list");
-	Recipe myrecipe = (Recipe)session.getAttribute("myrecipe");
-%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,13 +9,10 @@
 <meta charset="UTF-8">
 <meta name="description" content="">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
 <!-- Title -->
-
-
 <title>오늘의 식탁</title>
 
 <style>
@@ -111,45 +105,7 @@
 
 <body>
 	<%@ include file="../common/menubar.jsp"%>
-
-
-
-
-
-	<!-- ##### Breadcumb Area Start ##### -->
-	<div class="breadcumb-area bg-img bg-overlay"
-		style="background-image: url(img/bg-img/breadcumb2.jpg);">
-		<div class="container h-100">
-			<div class="row h-100 align-items-center">
-				<div class="col-12">
-					<div class="breadcumb-text text-center">
-						<h2>나의 레시피</h2>
-						<div class="tag">
-							<div id="box-sm">
-								<a href="#" id="tag-li"># 나의 댓글</a>
-								<h5>
-									<span class="counter"></span>
-								</h5>
-							</div>
-							<div id="box-sm">
-								<a href="#" id="tag-li"># 찜한 목록</a>
-								<h5>
-									<span class="counter"></span>
-								</h5>
-							</div>
-							<div id="box-sm">
-								<a href="#" id="tag-li"># 나의 레시피</a>
-								<h5>
-									<span class="counter"></span>
-								</h5>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- ##### Breadcumb Area End ##### -->
+	<%@ include file="../recipe/mypageMenubar.jsp"%>
 	<br>
 	<br>
 
@@ -160,9 +116,9 @@
 			<section class="best-receipe-area">
 				<div class="container">
 
-					<p align="left" style="color: red; font-weight: 600;"><%=loginUser.getNickName()%>님</p>
+					<p align="left" style="font-weight: 600;">결과 <span style="color: red;"><em>1</em></span>건 조회</p>
 
-					<div align="right" style="padding-bottom: 5%;">
+					<div align="right" style="padding-bottom: 2%;">
 						<a href="#" class="btn-sm" id="box-sm">레시피 작성</a>
 					</div>
 
@@ -182,7 +138,7 @@
 									<div class="post-comment-share-area d-flex">
 										<div class="post-favourite">
 											<a href="#" style="color: #b5aec4; padding-right: 60px;">| <%= r.getRecipeDate() %> </a> 
-											<a href="#" style="color: #b5aec4; padding: 5px;"><i class="fa fa-heart-o" aria-hidden="true"></i><%= r.getRecipeViews() %></a>
+											<a href="#" style="color: #b5aec4; padding: 5px;"><i class="fa fa-heart-o" aria-hidden="true"></i> <%=r.getRecipeViews() %></a>
 											<a href="#" style="color: #b5aec4; padding: 5px;"><i class="fa fa-comment-o" aria-hidden="true"></i> 12</a>
 											<a href="#"> <h5 style="padding-top: 15px;"><%= r.getRecipeName() %></h5> </a>
 										</div>
@@ -195,6 +151,11 @@
 
 
 					</div>
+					
+					
+					
+					
+					
 
 				</div>
 		</div>

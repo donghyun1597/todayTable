@@ -26,9 +26,9 @@ public class RecipeService {
 	 * @author sumin
 	 * @return
 	 */
-	public ArrayList<Recipe> selectThumbnailList(){
+	public ArrayList<Recipe> selectThumbnailList(int memNo){
 		Connection conn = getConnection();
-		ArrayList<Recipe> list = new RecipeDao().selectThumbnailList(conn);
+		ArrayList<Recipe> list = new RecipeDao().selectThumbnailList(conn,memNo);
 		
 		close(conn);
 		return list;
