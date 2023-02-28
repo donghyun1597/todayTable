@@ -76,12 +76,32 @@
 
 	<entry key="selectDetailNotice">
 		SELECT
-			NOTICE_NAME
+			NOTICE_NO
+		  ,	NOTICE_NAME
 		  , NOTICE_CONTENTS
 		  , NOTICE_DATE
 		  , NOTICE_CLSFC
 	  FROM TB_NOTICE
 	  WHERE NOTICE_NO = ?
 	    AND NOTICE_STATUS = 'Y' 	
+	</entry>
+	
+	<entry key="updateNotice">
+		UPDATE
+				TB_NOTICE
+			SET
+				NOTICE_NAME = ?
+			  , NOTICE_CONTENTS = ?
+			  , NOTICE_CLSFC = ?
+		  WHERE NOTICE_NO = ?	 
+	</entry>
+	
+	<entry key="deleteNotice2">
+		UPDATE
+			TB_NOTICE
+		SET 
+			NOTICE_STATUS = 'N'
+		WHERE	
+			 NOTICE_NO = ?
 	</entry>
 </properties>

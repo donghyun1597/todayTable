@@ -9,6 +9,8 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Properties;
 
+import com.todayTable.notice.model.vo.Notice;
+
 public class AdminNoticeDao {
 	
 	private Properties prop = new Properties();
@@ -49,5 +51,48 @@ public class AdminNoticeDao {
 		}
 		 return result;
 	}
+	
+	public int updateNotice(Connection conn, Notice n) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String sql = prop.getProperty("updateNotice");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, n.getNoticeName());
+			pstmt.setString(2, n.getNoticeContents());
+			pstmt.setString(3, n.getNoticeClsfc());
+			pstmt.setInt(4, n.getNoticeNo());
+			System.out.println(n.getNoticeClsfc());
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
 
+	public int deleteNotice(Connection conn, int noticeNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = prop.getProperty("deleteNotice2");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, noticeNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
 }

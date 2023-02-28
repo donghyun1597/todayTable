@@ -5,18 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
-
-</style>
 </head>
 <body>
-	<div class="d-flex" id="wrapper">
-		<%@ include file="adminMenubar.jsp" %>
-		<div id="page-content-wrapper">
-			<div>
-				
-			</div>
-		</div>
-	</div>
+
 </body>
 </html>

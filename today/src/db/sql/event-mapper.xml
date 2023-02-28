@@ -27,5 +27,46 @@
 		 WHERE EVENT_STATUS='Y'
 	</entry>
 
-
+	<entry key="adminSelectEventList">
+		SELECT
+				EVENT_NO
+			  ,	EVENT_NAME
+			  ,	EVENT_DATE
+			  ,	EVENT_PROCESSING
+	  	FROM
+	  		TB_EVENT
+  		WHERE EVENT_STATUS = 'Y'
+  		ORDER BY EVENT_NO DESC
+	</entry>
+	
+	<entry key="selectEvent">
+		SELECT
+				EVENT_NO
+		      ,	EVENT_NAME
+			  , EVENT_CONTENTS
+			  , EVENT_DATE
+			  , EVENT_PROCESSING
+	  	FROM
+	  			TB_EVENT
+  		WHERE EVENT_STATUS = 'Y'
+		AND	  EVENT_NO = ?	 	
+	</entry>
+	
+	<entry key="updateEvent">
+		UPDATE
+				TB_EVENT
+		SET
+			  EVENT_NAME = ?
+			, EVENT_CONTENTS = ?
+		WHERE 
+			EVENT_NO = ?	
+	</entry>
+	
+	<entry key="closeEvent">
+		UPDATE 
+				TB_EVENT
+			SET
+				EVENT_PROCESSING = 'N'
+		WHERE EVENT_NO = ?
+	</entry>
 </properties>

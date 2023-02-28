@@ -131,11 +131,11 @@
 													<!-- case2. 공지글 있음 -->
 												<form action="deleteNotice.no">
 													<% for(Notice n :list) { %>
-												<tr class="notice" onclick="detailNo();">
+												<tr id="noticetr">
 													<td>
-														<input type="checkbox" class='noticeCheck' name="noticeCheck" value="<%= n.getNoticeNo()%>">
+														<input type="checkbox" name="noticeCheck" value="<%= n.getNoticeNo()%>">
 													</td>
-													<td id="noticeNo">
+													<td>
 														<%= n.getNoticeNo()%>
 													</td>
 													<td>
@@ -161,13 +161,15 @@
 						</div>
 
 						<script>
-						function detailNo(){
-							const noticeNo = document.getElementById("noticeNo").innerText;
+						$(function(){
+							$("tbody>tr").click(function(){
+								const num = $(this).children().eq(1).text();
 
-							console.log(noticeNo);
+								console.log(num);
 
-							location.href = '<%= contextPath %>/adminDetail.no?num=' + noticeNo;
-						}
+								location.href = '<%=contextPath%>/adminDetail.no?num=' + num;
+							})
+						})
 						
 
 						</script>
