@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import static com.todayTable.common.JDBCTemplate.*;
+
+import com.todayTable.recipe.model.vo.MyComment;
+import com.todayTable.recipe.model.vo.MyWishlist;
 import com.todayTable.recipe.model.vo.Recipe;
 
 public class RecipeDao {
@@ -114,12 +117,18 @@ public class RecipeDao {
 	
 	
 	
+	/**
+	 * 마이페이지_내가 만든 레시피 목록 조회
+	 * @author sm.kim
+	 * @param conn
+	 * @param memNo
+	 * @return
+	 */
 	public ArrayList<Recipe> selectThumbnailList(Connection conn,int memNo){
 		ArrayList<Recipe> list =new ArrayList<Recipe>();
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("selectThumbnailList");
 		ResultSet rset = null;
-		System.out.println("asdsadasjdkhaskjdhsajkd");
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, memNo);
@@ -145,6 +154,74 @@ public class RecipeDao {
 		System.out.println(list);
 		return list;
 	}
+	
+	
+	
+	
+	
+	/**
+	 * 마이페이지_내가 작성한 댓글 조회
+	 * @author sm.kim
+	 * @param conn
+	 * @param memNo
+	 * @return
+	 */
+	public ArrayList<MyComment> selectCommentList(Connection conn, int memNo){
+		ArrayList<MyComment> clist = new ArrayList<MyComment>();
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("selectCommentList");
+		ResultSet rset = null;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, memNo);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				MyComment c = new MyComment();
+				/*---------------------------------------------------------*/
+				
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return clist;
+	}
+	
+	
+	
+	
+	
+	
+	/**
+	 *  마이페이지_내가 찜한 목록 조회
+	 *  @author sm.kim
+	 * @param conn
+	 * @param memNo
+	 * @return
+	 */
+	public ArrayList<MyWishlist> selectWishList(Connection conn, int memNo){
+		ArrayList<MyWishlist> wlist = new ArrayList<MyWishlist>();
+		return wlist;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
 

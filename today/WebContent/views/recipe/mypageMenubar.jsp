@@ -1,3 +1,4 @@
+<%@page import="com.todayTable.member.model.vo.Member"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.todayTable.recipe.model.vo.Recipe"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -97,21 +98,7 @@
             <div class="row h-100 align-items-center">
                 <div class="col-12">
                     <div class="breadcumb-text text-center">
-                        <h2><%=loginUser.getNickName()%></h2> 
-                        <div class="tag">
-                            <div id="box-sm">
-                                <a href="#" id="tag-li"># 나의 댓글</a>
-                                <h5><span class="counter">100</span></h5>
-                            </div>
-                            <div id="box-sm">
-                                <a href="#" id="tag-li"># 찜한 목록</a>
-                                <h5><span class="counter">4</span></h5>
-                            </div>
-                            <div id="box-sm">
-                                <a href="#" id="tag-li"># 나의 레시피</a>
-                                <h5><span class="counter">100</span></h5>
-                            </div>
-                        </div>
+                        <h2>myPage</h2>
                     </div>
                 </div>
             </div>
