@@ -38,7 +38,7 @@
         }
 
         .login {
-        width: 50%;
+        width: 500px;
         height: 800px;
         background: white;
         border-radius: 20px;
@@ -77,7 +77,7 @@
 
         .login_id {
         margin-top: 20px;
-        width: 80%;
+        width: 100%;
         }
 
         .login_id input {
@@ -92,7 +92,7 @@
 
         .login_pw {
         margin-top: 20px;
-        width: 80%;
+        width: 100%;
         }
 
         .login_pw input {

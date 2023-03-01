@@ -1,0 +1,87 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Video List Bulletin Board</title>
+    <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <style>
+      /* CSS styles */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        text-align: center;
+      }
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      li {
+        display: inline-block;
+        width: 300px;
+        margin: 20px;
+        border: 1px solid #ccc;
+        box-shadow: 0 0 5px #ccc;
+        vertical-align: top;
+      }
+      li h2 {
+        margin: 10px;
+        font-size: 20px;
+        text-align: center;
+      }
+      li p {
+        margin: 10px;
+        font-size: 14px;
+      }
+      iframe {
+        display: block;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+
+    <%@ include file="views/common/menubar.jsp" %>
+
+    <h1>요리영상 모음</h1>
+    
+    <ul>
+      <li>
+        <h2>돼지고기 김치찌개</h2>
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" title="Video Title 1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <p>Description of Video 1</p>
+        <div class="ratings">난이도
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+        </div>
+      </li>
+      <li>
+        <h2>스팸 김치찌개</h2>
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" title="Video Title 2" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <p>Description of Video 2</p>
+      </li>
+      <li>
+        <h2>순두부 김치찜</h2>
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID_3" title="Video Title 3" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <p>Description of Video 3</p>
+      </li>
+      <li>
+        <h2>순대국밥</h2>
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID_3" title="Video Title 3" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <p>Description of Video 3</p>
+      </li>
+            
+    </ul>
+    
+  </body>
+</html>
