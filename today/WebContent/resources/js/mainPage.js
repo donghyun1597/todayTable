@@ -18,7 +18,7 @@ $(function(){
                 
             
                 for(let i=0;i<list.length;i++){
-                    value += '<div class="col-12 col-sm-6 col-lg-4" id="col-510" id="topRecipe1">'+
+                    value += '<div class="col-12 col-sm-6 col-lg-4" id="col-510" id="topRecipe"+(i+1)+">'+
                             '<div class="single-best-receipe-area mb-30">'+
                             '<img src="<%=contextPath%>+list[i].recipePic" alt="음식2" id="topRecipeImg1">'+
                             '<div class="receipe-content">'+

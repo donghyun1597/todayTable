@@ -46,7 +46,7 @@
         .nav-brand { width: 150px; }
         
     </style>
-    <script src="<%=application.getContextPath()%>/resources/js/mainPage.js"></script>
+   	
 	   
 </head>
 
