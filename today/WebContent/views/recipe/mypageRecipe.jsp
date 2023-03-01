@@ -59,7 +59,7 @@
 					border: 2px solid rgb(224, 224, 224);
 					width: 150px;
 					height: 35px;
-					border-radius: 20px;
+					border-radius: 10px;
 					margin: 10px;
 					margin-left: 50px;
 					text-align: center;
@@ -160,7 +160,7 @@
 
 																					<% for(Recipe r : list) {%>
 																						<input type="hidden" value="<%= r.getMemNo() %>>">
-																						<div class="col-12 col-sm-6 col-lg-4" id="sumin-col">
+																						<div class="col-12 col-sm-6 col-lg-4" id="sumin-col" style="padding-left: 0px;">
 
 																							<div class="single-best-receipe-area mb-30" style="padding-top: 5px;">
 																								<img src="<%= r.getRecipePic() %>" alt="음식 이미지" id="img-food">
