@@ -30,4 +30,13 @@ public class EventService {
 		return listCount;
 	}
 
+	public Event selectEvent(int eventNo) {
+		Connection conn = getConnection();
+		
+		Event ev = new EventDao().selectEvent(conn, eventNo);
+		
+		close(conn);
+		
+		return ev;
+	}
 }

@@ -92,5 +92,36 @@ public class EventDao {
 		return listCount;
 		
 	}
+	
+	public Event selectEvent(Connection conn, int eventNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Event ev = new Event();
+		
+		String sql = prop.getProperty("selectEvent");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, eventNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				ev.setEventNo(rset.getInt("event_no"));
+				ev.setEventName(rset.getString("event_name"));
+				ev.setEventContents(rset.getString("event_contents"));
+				ev.setEventDate(rset.getDate("event_date"));
+				ev.setEventProcessing(rset.getString("event_processing"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return ev;
+	}
 
 }

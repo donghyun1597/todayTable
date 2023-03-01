@@ -121,7 +121,17 @@
             </tbody>
         </table>
     </div>
-    
+        <!-- jQuery-2.2.4 js -->
+        <script src="resources/js/jquery/jquery-2.2.4.min.js"></script>
+    <script>
+       $(function(){
+                $("tbody>tr").click(function(){
+                    const num = $(this).children().eq(0).text();
+
+                location.href = '<%= contextPath %>/eventDetail.ev?num=' + num;
+            })
+        })
+    </script>
 	<div class="m-4" id="paging">
         <nav>
             <div class="pagination">
@@ -162,8 +172,7 @@
 
 
     <!-- ##### All Javascript Files ##### -->
-    <!-- jQuery-2.2.4 js -->
-    <script src="resources/js/jquery/jquery-2.2.4.min.js"></script>
+
     <!-- Popper js -->
     <script src="resources/js/bootstrap/popper.min.js"></script>
     <!-- Bootstrap js -->
