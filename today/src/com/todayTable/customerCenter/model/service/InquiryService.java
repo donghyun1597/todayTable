@@ -49,4 +49,29 @@ public class InquiryService {
 		return result;
 	}
 
+	public Inquiry selectInquiry(int inquiryNo) {
+		Connection conn = getConnection();
+		
+		Inquiry i = new InquiryDao().selectInquiryList(conn, inquiryNo);
+		
+		return i;
+	}
+
+	public int updateInquiry(Inquiry i) {
+		
+		Connection conn = getConnection();
+		
+		int result = new InquiryDao().updateInquiry(conn, i);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+	}
+
 }
