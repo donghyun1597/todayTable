@@ -82,6 +82,18 @@ public class Member {
 		this.warningCount = warningCount;
 		this.memImg = memImg;
 	}
+	
+	
+
+	public Member(String memId, String memPwd, String nickName, String memName, String phone) {
+		super();
+		this.memId = memId;
+		this.memPwd = memPwd;
+		this.nickName = nickName;
+		this.memName = memName;
+		this.phone = phone;
+	}
+
 
 	public int getMemNo() {
 		return memNo;

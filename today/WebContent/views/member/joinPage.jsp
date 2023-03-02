@@ -25,7 +25,7 @@
         box-shadow: 0 0 5px #ccc;
       }
       label {
-        display: ;
+        /* display: block; */
         margin-top: 10px;
         font-size: 16px;
       }
@@ -64,55 +64,55 @@
         </div>
         <h1>회원가입 페이지</h1>
         
-            <form action="<%=request.getContextPath() %>/login.me" method="post" class="joininput">
-                    <label for="userId">아이디 :</label>
-                    <input type="userId" id="userId" name="userId" required>
-                    <br>     
-                    
-                    <label for="password">비밀번호 :</label>
-                    <input type="password" id="password" name="password" required>
-                    <br>
-              
-                    <label for="password">비밀번호 확인 :</label>
-                    <input type="password" id="password" name="password" required>
-                    <br>
-              
-                    <label for="name">이름 :</label>
-                    <input type="text" id="name" name="name" required>
-                    <br>
-                    
-                    <label for="nickname">닉네임 :</label>
-                    <input type="nickname" id="nickname" name="nickname" required>
-                    <br>
-                    
-                    <label for="phone">휴대전화 :</label>
-                    <input type="phone" id="phone" name="phone" required>
-                    <br>
-              
-                    <label for="phone">알레르기 :</label>
-                    <br><br>
-              
-              
-                          <input type="checkbox" name="egg" id="egg">
-                          <label for="egg">계란</label>
-                          <input type="checkbox" name="milk" id="milk">
-                          <label for="milk">우유</label>
-                          <input type="checkbox" name="cereal" id="cereal">
-                          <label for="cereal">곡류</label>
-                          <input type="checkbox" name="crustacea" id="crustacea">
-                          <label for="crustacea">갑각류</label>
-                          <input type="checkbox" name="nut" id="nut">
-                          <label for="nut">견과류</label>
-                          <br><br>
-                          <input type="checkbox" name="fish" id="fish">
-                          <label for="fish">생선류</label>
-                          <input type="checkbox" name="sulfurous" id="sulfurous">
-                          <label for="sulfurous">아황산류</label>
-                          <input type="checkbox" name="Mollusca" id="Mollusca">
-                          <label for="Mollusca">연체류</label>
-                          <input type="checkbox" name="Meat" id="Meat">
-                          <label for="Meat">육류</label>
-                          <br><br>
+          <form action="<%=request.getContextPath() %>/login.me" method="post" class="joininput">
+            <label for="memId">아이디 :</label>
+            <input type="text" id="memId" name="memId" required>
+            <br>     
+            
+            <label for="memPwd">비밀번호 :</label>
+            <input type="password" id="memPwd" name="memPwd" required>
+            <br>
+      
+            <label for="pwdCheck">비밀번호 확인 :</label>
+            <input type="password" id="pwdCheck" name="pwdCheck" required>
+            <br>
+      
+            <label for="memName">이름 :</label>
+            <input type="text" id="memName" name="memName" required>
+            <br>
+            
+            <label for="nickname">닉네임 :</label>
+            <input type="text" id="nickname" name="nickname" required>
+            <br>
+            
+            <label for="phone">휴대전화 :</label>
+            <input type="phone" id="phone" name="phone" required>
+            <br>
+      
+            <label for="alg">알레르기 :</label>
+            <br><br>
+      
+      
+            <input type="checkbox" name="egg" id="egg">
+            <label for="egg">계란</label>
+            <input type="checkbox" name="milk" id="milk">
+            <label for="milk">우유</label>
+            <input type="checkbox" name="cereal" id="cereal">
+            <label for="cereal">곡류</label>
+            <input type="checkbox" name="crustacea" id="crustacea">
+            <label for="crustacea">갑각류</label>
+            <input type="checkbox" name="nut" id="nut">
+            <label for="nut">견과류</label>
+            <br><br>
+            <input type="checkbox" name="fish" id="fish">
+            <label for="fish">생선류</label>
+            <input type="checkbox" name="sulfurous" id="sulfurous">
+            <label for="sulfurous">아황산류</label>
+            <input type="checkbox" name="Mollusca" id="Mollusca">
+            <label for="Mollusca">연체류</label>
+            <input type="checkbox" name="Meat" id="Meat">
+            <label for="Meat">육류</label>
+            <br><br>
 
 
         </div>
@@ -126,7 +126,8 @@
             <br>
             <div>
                 <div class="checkbox" >
-                    <input type="checkbox" name="checked1" id="checked1" required>이용약관 동의(필수)
+                    <input type="checkbox" name="checked1" id="checked1" required>
+                    <label for="checked1">이용약관 동의(필수)</label>
                 </div>
 
                     <div align="center">
@@ -274,7 +275,8 @@
 
             <br>
             <div class="checkbox">
-                <input type="checkbox" name="checked2" id="checked2" required>개인정보 수집 및 이용 동의(필수)
+                <input type="checkbox" name="checked2" id="checked2" required>
+                <label for="checked2">개인정보 수집 및 이용 동의(필수)</label>
             </div>
             <div align="center">
                 <textarea name="privacy" id="privacy" style="width: 80%; resize: none;" rows="10">
