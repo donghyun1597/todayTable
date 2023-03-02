@@ -6,74 +6,49 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-    * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Noto Sans KR", sans-serif;
-    }
-
-    a {
-    text-decoration: none;
-    color: black;
-    }
-
-    .wrap {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(0, 0, 0, 0.1);
-    }
-
-    .join {
-    width: 70%;
-    height: 800px;
-    background: white;
-    border-radius: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    }
-
-    h2 {
-    color: tomato;
-    font-size: 2em;
-    }
-
-
-    .join_input {
-    width: 80%;
-    height: 40px;
-    border-radius: 30px;
-    margin-top: 10px;
-    padding: 0px 20px;
-    border: 1px solid lightgray;
-    outline: none;
-    }
-
-    .submit {
-    margin-top: 30px;
-    width: 100%;
-    }
-    
-    .submit input {
-    width: 30%;
-    height: 50px;
-    border: 0;
-    outline: none;
-    border-radius: 40px;
-    background: linear-gradient(to left, rgb(255, 77, 46), rgb(255, 155, 47));
-    color: white;
-    font-size: 1.2em;
-    letter-spacing: 2px;
-    }
-    .checkbox{
-        margin: auto;
-        width: 80%;
-    }
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f2f2f2;
+      }
+      h1 {
+        text-align: center;
+        margin-top: 50px;
+      }
+      form {
+        width: 500px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 5px #ccc;
+      }
+      label {
+        /* display: block; */
+        margin-top: 10px;
+        font-size: 16px;
+      }
+      input[type="text"], input[type="nickname"], input[type="userId"], input[type="password"], input[type="phone"] {
+        width: 90%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+      }
+      button[type="submit"], button[type="reset"] {
+        background-color: #4CAF50;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      button[type="submit"]:hover {
+        background-color: #3e8e41;
+      }
 </style>
 <style>
     #joinform{
@@ -83,96 +58,65 @@
 </style>
 </head>
 <body>
-    <div class="wrap">
-        <div class="join">
-            <img src="../../resources/image/logo.png" alt="" width="200" href="<%=request.getContextPath()%>">
-            <h2>회원 가입</h2>
-
-            <form action="<%=request.getContextPath() %>/login.me" method="post">
-                <table align="center">
-                    <tr>
-                        <td id="id">
-                            <img src="../../resources/image/userInfo/email.png" alt="" width="20" >
-                        </td>
-                        <td>
-                            <input type="text" name="memId" class="join_input" placeholder="아이디">
-                                <input type="button" name="" value="중복확인">
-                        </td>
-                    </tr> 
-                    <tr>
-                        <td id="pwd">
-                            <img src="../../resources/image/userInfo/pwd.png" alt="" width="20">
-                        </td>
-                        <td>
-                            <input type="password" name="memPwd" class="join_input"  placeholder="비밀번호">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td id="pwdCheck">
-                            <img src="../../resources/image/userInfo/pwd.png" alt="" width="20">
-                        </td>
-                        <td>
-                            <input type="password" name="checkedPwd" class="join_input" placeholder="비밀번호 확인">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td id="uName">
-                            <img src="../../resources/image/userInfo/people.png" alt="" width="20">
-                        </td>
-                        <td>
-                            <input type="text" name="nickname" class="join_input" placeholder="닉네임">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td id="name">
-                            <img src="../../resources/image/userInfo/people.png" alt="" width="20">
-                        </td>
-                        <td>
-                            <input type="text" name="memName" class="join_input" placeholder="이름">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td id="phone">
-                            <img src="../../resources/image/userInfo/phone.png" alt="" width="30">
-                        </td>
-                        <td>
-                            <input type="text" name="phone" class="join_input" placeholder="휴대전화">
-                        </td>
-                    </tr>
-                    <tr>
-                            <td id="title">
-                                알레르기
-                            </td>
-                            <td>
-                                <input type="checkbox" name="egg" id="egg">
-                                <label for="egg">계란</label>
-                                <input type="checkbox" name="milk" id="milk">
-                                <label for="milk">우유</label>
-                                <input type="checkbox" name="cereal" id="cereal">
-                                <label for="cereal">곡류</label>
-                                <br>
-                                <input type="checkbox" name="crustacea" id="crustacea">
-                                <label for="crustacea">갑각류</label>
-                                <input type="checkbox" name="nut" id="nut">
-                                <label for="nut">견과류</label>
-                                <input type="checkbox" name="fish" id="fish">
-                                <label for="fish">생선류</label>
-                                <br>
-                                <input type="checkbox" name="sulfurous" id="sulfurous">
-                                <label for="sulfurous">아황산류</label>
-                                <input type="checkbox" name="Mollusca" id="Mollusca">
-                                <label for="Mollusca">연체류</label>
-                                <input type="checkbox" name="Meat" id="Meat">
-                                <label for="Meat">육류</label>
-                            </td>
-                            
-                        </tr>
-                </table> 
-            </form>
+    <div>
+        <div align="center">
+            <img src="../../resources/image/core-img/logo.jpg" alt="오늘의식탁 로고" width="40%">
+        </div>
+        <h1>회원가입 페이지</h1>
+        
+          <form action="<%=request.getContextPath() %>/login.me" method="post" class="joininput">
+            <label for="memId">아이디 :</label>
+            <input type="text" id="memId" name="memId" required>
+            <br>     
+            
+            <label for="memPwd">비밀번호 :</label>
+            <input type="password" id="memPwd" name="memPwd" required>
+            <br>
+      
+            <label for="pwdCheck">비밀번호 확인 :</label>
+            <input type="password" id="pwdCheck" name="pwdCheck" required>
+            <br>
+      
+            <label for="memName">이름 :</label>
+            <input type="text" id="memName" name="memName" required>
+            <br>
+            
+            <label for="nickname">닉네임 :</label>
+            <input type="text" id="nickname" name="nickname" required>
+            <br>
+            
+            <label for="phone">휴대전화 :</label>
+            <input type="phone" id="phone" name="phone" required>
+            <br>
+      
+            <label for="alg">알레르기 :</label>
+            <br><br>
+      
+      
+            <input type="checkbox" name="egg" id="egg">
+            <label for="egg">계란</label>
+            <input type="checkbox" name="milk" id="milk">
+            <label for="milk">우유</label>
+            <input type="checkbox" name="cereal" id="cereal">
+            <label for="cereal">곡류</label>
+            <input type="checkbox" name="crustacea" id="crustacea">
+            <label for="crustacea">갑각류</label>
+            <input type="checkbox" name="nut" id="nut">
+            <label for="nut">견과류</label>
+            <br><br>
+            <input type="checkbox" name="fish" id="fish">
+            <label for="fish">생선류</label>
+            <input type="checkbox" name="sulfurous" id="sulfurous">
+            <label for="sulfurous">아황산류</label>
+            <input type="checkbox" name="Mollusca" id="Mollusca">
+            <label for="Mollusca">연체류</label>
+            <input type="checkbox" name="Meat" id="Meat">
+            <label for="Meat">육류</label>
+            <br><br>
 
 
         </div>
-    </div>
+
 
         <form action="<%=request.getContextPath() %>/Join.me" method="post">
             <div class="loign_id">
@@ -181,8 +125,9 @@
 
             <br>
             <div>
-                <div class="checkbox">
-                    <input type="checkbox" name="checked1" id="checked1" required>이용약관 동의(필수)
+                <div class="checkbox" >
+                    <input type="checkbox" name="checked1" id="checked1" required>
+                    <label for="checked1">이용약관 동의(필수)</label>
                 </div>
 
                     <div align="center">
@@ -330,7 +275,8 @@
 
             <br>
             <div class="checkbox">
-                <input type="checkbox" name="checked2" id="checked2" required>개인정보 수집 및 이용 동의(필수)
+                <input type="checkbox" name="checked2" id="checked2" required>
+                <label for="checked2">개인정보 수집 및 이용 동의(필수)</label>
             </div>
             <div align="center">
                 <textarea name="privacy" id="privacy" style="width: 80%; resize: none;" rows="10">
@@ -362,16 +308,13 @@
 위 개인정보의 수집 및 이용에 대한 동의를 거부할 수 있으나, 동의를 거부할 경우 회원 가입이 제한됩니다.
 
                 </textarea>
-            </div>
 
-
-            <br>
-            <div class="submit" align="center">
-                <input type="submit" name="join" class="submit" value="가입">
-                <input type="reset" name="reset" class="submit" value="취소">
-            </div>
-        </form>
-
-    </div>
+                <div align="center">
+                    <button type="submit">회원가입</button>
+                    <button type="reset">취소</button>
+                  </div>
+                </form>
+                <br>
+                
 </body>
 </html>
