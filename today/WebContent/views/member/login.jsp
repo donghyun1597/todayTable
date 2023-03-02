@@ -10,6 +10,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <title>Document</title>
     <style>
         * {
@@ -142,13 +143,15 @@
 	<%} %>
     <div class="wrap">
         <div class="login">
-            <img src="../../resources/image/logo.png" alt="" width="200" href="<%=request.getContextPath()%>">
+            <img src="<%=request.getContextPath()%>/resources/image/logo.png" alt="" width="200" onclick="location.href='<%=request.getContextPath()%>'">
             <h2>Log-in</h2>
             <div class="login_sns">
                 <li><a href=""><i class="fab fa-instagram"></i></a></li>
                 <li><a href=""><i class="fab fa-facebook-f"></i></a></li>
                 <li><a href=""><i class="fab fa-twitter"></i></a></li>
             </div>
+            <button onclick="kakaoLogin();">카카오 로그인</button>
+            <button onclick="kakaoLogout();">카카오 로그아웃</button>
             <form action="<%=request.getContextPath() %>/login.me" method="post">
                 <div class="login_id">
                     <h4>LOGIN</h4>
@@ -176,5 +179,52 @@
 
         </div>
     </div>
+    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+	<script>
+	
+	Kakao.init('bee10b69e93126c2540d83cfa3372864'); //발급받은 키 중 javascript키를 사용해준다.
+	console.log(Kakao.isInitialized()); // sdk초기화여부판단
+	//카카오로그인
+	function kakaoLogin() {
+	    Kakao.Auth.login({
+	      success: function (response) {
+	        Kakao.API.request({
+	          url: '/v2/user/me',
+	          success: function (response) {
+	        	  console.log(response)
+	        	  let kakao_account = response.kakao_account;
+                  console.log(kakao_account.profile.nickname);
+                  $.ajax({
+                    url : 'kakaologin.me',
+                    data : {kakao:kakao_account.profile.nickname},
+                    success : function(){
+                        // location.href = "<%=request.getContextPath()%>"
+                    }
+
+
+                  })
+	        	  
+	          },
+	          fail: function (error) {
+	            console.log(error)
+	          },
+	        })
+	      },
+	      fail: function (error) {
+	        console.log(error)
+	      },
+	    })
+	  }
+	  function kakaoLogout() {
+         if (!Kakao.Auth.getAccessToken()) {
+             console.log('Not logged in.');
+             return;
+         }
+         Kakao.Auth.logout(function(response) {
+             alert(response +' logout');
+             //window.location.href='/'
+         });
+     };
+	</script>
 </body>
 </html>
