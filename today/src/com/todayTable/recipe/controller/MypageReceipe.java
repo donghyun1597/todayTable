@@ -51,6 +51,7 @@ public class MypageReceipe extends HttpServlet {
 		request.setAttribute("list", list);
 		request.setAttribute("clist", clist);
 		request.setAttribute("wlist", wlist);
+		System.out.println("서블렛" + wlist );
 		request.getRequestDispatcher("views/recipe/mypageRecipe.jsp").forward(request, response);
 	}
 

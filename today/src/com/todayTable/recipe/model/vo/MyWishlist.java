@@ -2,41 +2,50 @@ package com.todayTable.recipe.model.vo;
 
 public class MyWishlist {
 	
-	
-	private int memNo;	// 회원번호
-	private int recipeNo;	//레시피번호
-	
-	public MyWishlist() {}
-	
-	public MyWishlist(int memNo, int recipeNo) {
+	 private String recipeName;
+     private String recipePic;
+     private int recipeViews;
+     
+     public MyWishlist() {}
+
+	public MyWishlist(String recipeName, String recipePic, int recipeViews) {
 		super();
-		this.memNo = memNo;
-		this.recipeNo = recipeNo;
+		this.recipeName = recipeName;
+		this.recipePic = recipePic;
+		this.recipeViews = recipeViews;
 	}
 
-	int getMemNo() {
-		return memNo;
+	public String getRecipeName() {
+		return recipeName;
 	}
 
-	void setMemNo(int memNo) {
-		this.memNo = memNo;
+	public void setRecipeName(String recipeName) {
+		this.recipeName = recipeName;
 	}
 
-	int getRecipeNo() {
-		return recipeNo;
+	public String getRecipePic() {
+		return recipePic;
 	}
 
-	void setRecipeNo(int recipeNo) {
-		this.recipeNo = recipeNo;
+	public void setRecipePic(String recipePic) {
+		this.recipePic = recipePic;
+	}
+
+	public int getRecipeViews() {
+		return recipeViews;
+	}
+
+	public void setRecipeViews(int recipeViews) {
+		this.recipeViews = recipeViews;
 	}
 
 	@Override
 	public String toString() {
-		return "MyWishlist [memNo=" + memNo + ", recipeNo=" + recipeNo + "]";
+		return "MyWishlist [recipeName=" + recipeName + ", recipePic=" + recipePic + ", recipeViews=" + recipeViews
+				+ "]";
 	}
-	
-	
-	
+     
+     
 	
 
 }

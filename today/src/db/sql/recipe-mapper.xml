@@ -2,6 +2,7 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 
+
 <entry key="selectMainThumbnailList">
 	SELECT
 	      RECIPE_PIC
@@ -23,6 +24,7 @@
 	                RECIPE_VIEWS DESC) "R")
 	WHERE RNUM BETWEEN 1 AND 4
 </entry>
+
 
 
 
@@ -54,7 +56,7 @@
     JOIN TB_RECIPE USING (MEM_NO)
     WHERE MEM_NO = ?
     AND RECIPE_STATUS = 'Y'
-	ORDER BY RECIPE_NO DESC
+	ORDER BY COM_DATE DESC
 </entry>
 
 
@@ -69,7 +71,7 @@
     JOIN TB_WISHLIST USING (MEM_NO)
     WHERE MEM_NO = ?
     AND RECIPE_STATUS = 'Y'
-	ORDER BY RECIPE_NO DESC
+	ORDER BY RECIPE_DATE DESC
 </entry>
 
 
@@ -99,6 +101,17 @@
 	                    FROM TB_RECIPE
 	                    WHERE RECIPE_PERSON =?)
 </entry>
+
+
+
+
+
+
+
+
+
+
+
 
 
 

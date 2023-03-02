@@ -1,3 +1,5 @@
+<%@page import="com.todayTable.recipe.model.vo.MyWishlist"%>
+<%@page import="com.todayTable.recipe.model.vo.MyComment"%>
 <%@page import="com.todayTable.member.model.vo.Member"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.todayTable.recipe.model.vo.Recipe"%>
@@ -5,6 +7,8 @@
 	pageEncoding="UTF-8"%>
 <%
 	ArrayList<Recipe> list = (ArrayList<Recipe>)request.getAttribute("list");
+	ArrayList<MyComment> clist = (ArrayList<MyComment>)request.getAttribute("clist");
+	ArrayList<MyWishlist> wlist = (ArrayList<MyWishlist>)request.getAttribute("wlist");
 	Recipe myrecipe = (Recipe)session.getAttribute("myrecipe");
 %>
 

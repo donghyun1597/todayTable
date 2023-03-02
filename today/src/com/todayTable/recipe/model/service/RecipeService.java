@@ -76,6 +76,7 @@ public class RecipeService {
 	public ArrayList<MyWishlist> selectWishList(int memNo){
 		Connection conn = getConnection();
 		ArrayList<MyWishlist> wlist = new RecipeDao().selectWishList(conn,memNo);
+		System.out.println("service" + wlist);
 		
 		close(conn);
 		return wlist;

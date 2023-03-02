@@ -177,8 +177,11 @@ public class RecipeDao {
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
-				MyComment c = new MyComment();
-				/*---------------------------------------------------------*/
+				clist.add(new MyComment(rset.getString("com_content"),
+										rset.getDate("com_date"),
+										rset.getString("recipe_name"),
+										rset.getString("recipe_pic"),
+										rset.getInt("recipe_views")));
 				
 				
 			}
@@ -206,6 +209,25 @@ public class RecipeDao {
 	 */
 	public ArrayList<MyWishlist> selectWishList(Connection conn, int memNo){
 		ArrayList<MyWishlist> wlist = new ArrayList<MyWishlist>();
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("selectWishList");
+		ResultSet rset = null;
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, memNo);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				wlist.add(new MyWishlist(rset.getString("recipe_name"),
+										rset.getString("recipe_pic"),
+										rset.getInt("recipe_views")));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		System.out.println("dao" + wlist);
 		return wlist;
 	}
 	
