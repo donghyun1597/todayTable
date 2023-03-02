@@ -65,12 +65,14 @@ public class InquiryController extends HttpServlet {
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 		
 		
-		// 3) 요청처리
+		// 요청처리
 		ArrayList<Inquiry> list = new InquiryService().selectInquiryList(pi);
+		Inquiry deleteNo = list.get(0);
 		
-		// 4) 문의 목록 페이지	
+		// 문의 목록 페이지	
 		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
+		request.setAttribute("deleteNo", deleteNo);
 		request.getRequestDispatcher("views/customerCenter/inquiryList.jsp").forward(request, response);
 	}
 

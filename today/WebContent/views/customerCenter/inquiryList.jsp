@@ -6,7 +6,8 @@
 <%
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	ArrayList<Inquiry> list = (ArrayList<Inquiry>)request.getAttribute("list");
-
+	Inquiry deleteNo = (Inquiry)request.getAttribute("deleteNo");
+	
 	int currentPage = pi.getCurrentPage();
 	int startPage = pi.getStartPage();
 	int endPage = pi.getEndPage();
@@ -75,7 +76,7 @@
             color: black;
             text-decoration: none;
         }
-        .btn-group button{
+        .btn-group button {
             border-color: lightgray;
         }
         .pri {
@@ -108,6 +109,7 @@
                 </tr>
             </thead>
             <tbody id="listbody">
+            	<% System.out.println(list); %>
                 <!-- case1. 문의글 없음 -->
             	<%if(list.isEmpty()) { %>
            		<tr>
@@ -132,9 +134,14 @@
                             <% if(i.getInqAnswer() != null){ %>
                             	<%= i.getInqAnswer() %>
                             <% }else { %>
-                            	<p style="color:gray;">답변대기 중 입니다.</p>
+                            	<p style="color: gray;">답변대기 중 입니다.</p>
                             <% }%>
-                            <br><br>
+                            <br><br><br>
+                            <div align="right" id="updateDelete">
+                            <a href="<%= contextPath %>/updateInquiryForm.cu?num=<%= i.getInqNo() %>" style="color: coral;">수정</a>
+                             | 
+                            <a href="<%= contextPath %>/delete.no?num=<%= i.getInqNo() %>" data-toggle="modal" data-target="#deleteModal" style="color: coral;">삭제</a>
+                            </div>
                         </div>
                     </td>
                     <td><%= (i.getInqProcessing().equals("Y")) ? "처리완료" : "답변대기" %></td>
@@ -175,6 +182,32 @@
         <button type="button" class="btn btn-secondary" onclick="writeInquiry();" style="margin-left: 90%;">글쓰기</button>
     </div>
     
+    <!-- 문의 삭제 Modal -->
+	<div class="modal" id="deleteModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+      
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">문의 삭제</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+      
+            <!-- Modal body -->
+            <div class="modal-body" align="center">
+              
+              <form action="<%= contextPath %>/deleteInquiry.cu?num=<%= deleteNo.getInqNo() %>" method="post">
+                <b>삭제 후 복구가 불가능 합니다. <br> 정말로 삭제하시겠습니까?</b><br><br>
+                <button class="btn btn-sm btn-secondary" data-dismiss="modal">취소</button>
+				<button type="submit" class="btn btn-sm btn-danger">삭제</button>                
+              </form>
+            
+            </div>
+      
+          </div>
+        </div>
+      </div>
+    
     <script>
     	function writeInquiry(){
     		<% if(session.getAttribute("loginUser") != null) { %>
@@ -196,6 +229,8 @@
                 }
             })
         })
+        
+        
     </script>
     
     <div class="m-4" id="paging">
@@ -219,7 +254,7 @@
             </div>
         </nav>
     </div>
-
+    
     <div class="col-5" style="margin:auto">
         <div class="btn-group">
             <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">제목</button>

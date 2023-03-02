@@ -120,4 +120,66 @@ public class InquiryDao {
 		return result;
 	}
 
+	public Inquiry selectInquiryList(Connection conn, int inquiryNo) {
+		
+		Inquiry i = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectInquiry");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, inquiryNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				i = new Inquiry(rset.getInt("inq_no"),
+							     rset.getString("inq_name"),
+							     rset.getString("inq_processing"),
+							     rset.getString("mem_id"),
+							     rset.getDate("inq_date"),
+							     rset.getString("inq_question"),
+							     rset.getString("inq_answer"),
+							     rset.getString("inq_private")
+							     );
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return i;
+	}
+
+	public int updateInquiry(Connection conn, Inquiry i) {
+		
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("updateInquiry");
+		
+		try {
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, i.getInqName());
+			pstmt.setString(2, i.getInqQuestion());
+			pstmt.setString(3, i.getInqPrivate());
+			pstmt.setInt(4, i.getInqNo());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
 }

@@ -62,6 +62,35 @@
 		  FROM TB_INQUIRY
 		 WHERE INQ_STATUS = 'Y'
 	</entry>
+	
+	<entry key="selectInquiry">
+	
+    SELECT 
+        INQ_NO
+      , INQ_NAME
+      , INQ_PROCESSING
+      , MEM_ID
+      , INQ_DATE
+      , INQ_QUESTION
+      , INQ_ANSWER
+      , INQ_PRIVATE
+	FROM TB_INQUIRY I
+    JOIN TB_MEMBER M ON (I.MEM_NO=M.MEM_NO)
+    WHERE INQ_NO = ?
+	
+	</entry>
+	
+	<entry key="updateInquiry">
+	
+	UPDATE
+	       TB_INQUIRY
+	   SET INQ_NAME = ?
+	     , INQ_QUESTION = ?
+	     , INQ_DATE = SYSDATE
+	     , INQ_PRIVATE = ?
+	 WHERE INQ_NO = ?
+	
+	</entry>
 
 	<entry key="adminSelectInquiry">
 		SELECT

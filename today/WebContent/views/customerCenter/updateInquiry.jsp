@@ -1,22 +1,17 @@
+<%@page import="com.todayTable.customerCenter.model.vo.Inquiry"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	Inquiry i = (Inquiry)request.getAttribute("i");
+%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    
-    <link rel="icon" href="resources/image/core-img/favicon.ico">
-	<!-- Core Stylesheet -->
-	<link rel="stylesheet" href="resources/css/style.css">
-    
-    
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
     <style>
         @import url(https://fonts.googleapis.com/css?family=Roboto:400,700,500);
         body {
@@ -56,16 +51,17 @@
     
     <div id="wrap">
         <br>
-        <h1 id="title"><b>문의 작성</b></h1>
+        <h1 id="title"><b>문의 수정</b></h1>
         <br>
-        <h6>- 문의작성을 위한 '문의작성' 페이지입니다.</h6>
+        <h6>- 문의수정을 위한 '문의수정' 페이지입니다.</h6>
         <br>
         <hr>
         <br><br>
-        <form id="wirteInquiry-form" action="<%= contextPath %>/writeInquiry.cu" method="post">
+        <form id="updateInquiry-form" action="<%= contextPath %>/updateInquiry.cu" method="post">
+        <input type="hidden" name="num" value="<%= i.getInqNo() %>">
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label"><b>제목</b></label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" name="inqName" placeholder="제목을 입력해주세요.">
+            <input type="text" class="form-control" id="exampleFormControlInput1" name="inqName" placeholder="제목을 입력해주세요." value="<%= i.getInqName() %>">
           </div>
             <div id="privateChecked">
                 <div class="form-check form-switch">
@@ -76,7 +72,7 @@
             <br><br>
           <div class="mb-3">
             <label for="exampleFormControlTextarea1" class="form-label"><b>문의내용</b></label>
-            <textarea class="form-control" name="inqQuestion" id="content" rows="3" placeholder="문의하실 내용을 입력해주세요. (500자이내)"></textarea>
+            <textarea class="form-control" name="inqQuestion" id="content" rows="3" placeholder="문의하실 내용을 입력해주세요. (500자이내)"><%= i.getInqQuestion() %></textarea>
             <span id="count">0</span>/500
           </div>
 
@@ -90,7 +86,6 @@
           </script>
 
 
-
           <div id="btn-group">
           <button type="button" class="btn btn-secondary" onclick="history.back();">돌아가기</button>
           <button type="submit" class="btn btn-primary" id="submit">작성</button>
@@ -98,17 +93,6 @@
           
         </form>
     </div>
-    
-    <!-- ##### All Javascript Files ##### -->
-    <!-- jQuery-2.2.4 js -->
-    <script src="resources/js/jquery/jquery-2.2.4.min.js"></script>
-    <!-- Popper js -->
-    <script src="resources/js/bootstrap/popper.min.js"></script>
-    <!-- Bootstrap js -->
-    <script src="resources/js/bootstrap/bootstrap.min.js"></script>
-    <!-- All Plugins js -->
-    <script src="resources/js/plugins/plugins.js"></script>
-    <!-- Active js -->
-    <script src="resources/js/active.js"></script>
+
 </body>
 </html>
