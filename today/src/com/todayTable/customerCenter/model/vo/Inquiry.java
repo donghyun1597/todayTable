@@ -42,6 +42,21 @@ public class Inquiry {
 		this.inqPrivate = inqPrivate;
 		this.inqStatus = inqStatus;
 	}
+	
+	
+
+	public Inquiry(int inqNo, int memNo, String inqName, String inqQuestion, Date inqDate, String inqAnswer,
+			String inqProcessing, String inqPrivate) {
+		super();
+		this.inqNo = inqNo;
+		MemNo = memNo;
+		this.inqName = inqName;
+		this.inqQuestion = inqQuestion;
+		this.inqDate = inqDate;
+		this.inqAnswer = inqAnswer;
+		this.inqProcessing = inqProcessing;
+		this.inqPrivate = inqPrivate;
+	}
 
 	public int getInqNo() {
 		return inqNo;
