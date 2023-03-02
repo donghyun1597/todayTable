@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import static com.todayTable.common.JDBCTemplate.*;
 
 import com.todayTable.recipe.model.dao.RecipeDao;
+import com.todayTable.recipe.model.vo.MyComment;
+import com.todayTable.recipe.model.vo.MyWishlist;
 import com.todayTable.recipe.model.vo.Recipe;
 
 public class RecipeService {
@@ -38,7 +40,7 @@ public class RecipeService {
 	}
 	
 	/**
-	 * 마이페이지 - 썸네일 사진 정보 조회용
+	 * 마이페이지 - 내가 만든 레시피 목록 조회
 	 * @author sumin
 	 * @return
 	 */
@@ -49,5 +51,51 @@ public class RecipeService {
 		close(conn);
 		return list;
 	}
+	
+	
+	
+	/**
+	 * 마이페이지_내가 만든 레시피 목록 조회
+	 * @author sm.kim
+	 * @return
+	 */
+	public ArrayList<MyComment> selectCommentList(int memNo){
+		Connection conn = getConnection();
+		ArrayList<MyComment> clist = new RecipeDao().selectCommentList(conn,memNo);
+		
+		close(conn);
+		return clist;
+	}
+	
+	
+	/**
+	 * 마이페이지_마이페이지_내가 찜한 목록 조회
+	 * @author sm.kim
+	 * @return
+	 */
+	public ArrayList<MyWishlist> selectWishList(int memNo){
+		Connection conn = getConnection();
+		ArrayList<MyWishlist> wlist = new RecipeDao().selectWishList(conn,memNo);
+		System.out.println("service" + wlist);
+		
+		close(conn);
+		return wlist;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
