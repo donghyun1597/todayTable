@@ -13,11 +13,13 @@
 		      , EVENT_NAME
 		      , EVENT_DATE
 			FROM TB_EVENT
+			WHERE EVENT_STATUS = 'Y'
 			ORDER
 			   BY EVENT_NO DESC)
 	           A
 	           )
 	           WHERE RNUM BETWEEN ? AND ?
+	           
 	</entry>
 	
 	<entry key="eventSelectListCount">
@@ -67,6 +69,14 @@
 				TB_EVENT
 			SET
 				EVENT_PROCESSING = 'N'
+		WHERE EVENT_NO = ?
+	</entry>
+	
+	<entry key="deleteEvent">
+		UPDATE
+				TB_EVENT
+			SET
+				EVENT_STATUS = 'N'
 		WHERE EVENT_NO = ?
 	</entry>
 </properties>

@@ -59,4 +59,18 @@ public class AdminEventService {
 		
 		return result;
 	}
+	
+	public int deleteEvent(int eventNo) {
+		Connection conn = getConnection();
+		
+		int result = new AdminEventDao().deleteEvent(conn, eventNo);
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		return result;
+	}
 }

@@ -33,19 +33,26 @@
 </head>
 
 <body>
+	<% if(alertMsg != null) { %>
+	<script>
+		alert("<%= alertMsg %>");
+	</script>
+	<% session.removeAttribute("alertMsg"); %>
+	<% } %>
 	
 		<!-- Sidebar-->
 		<div class="border-end bg-white" id="sidebar-wrapper">
 			<div class="sidebar-heading bg-light" style="width: 180px; margin: auto; padding: 0px;">
-				<a href="/adminMain.ad"><img src="<%= contextPath %>/resources/image/logo.png" alt="" style="box-sizing: border-box; width: 100%; height: 100%;"></a>
+				<a href="<%= contextPath %>/adminMain.ad"><img src="<%= contextPath %>/resources/image/logo.png" alt="" style="box-sizing: border-box; width: 100%; height: 100%;"></a>
 			</div>
 			<div class="list-group list-group-flush">
-				<a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!" style="border-top: 1px solid #dee2e6;"><span>메인사진변경</span></a>
+				<a class="list-group-item list-group-item-action list-group-item-light p-3" href="<%= contextPath %>/adminMain.pic" style="border-top: 1px solid #dee2e6;"><span>메인사진변경</span></a>
 				<a class="list-group-item list-group-item-action list-group-item-light p-3"	href="<%= contextPath %>/adminSelectMember.mem"><span>회원관리</span></a>
 				<a class="list-group-item list-group-item-action list-group-item-light p-3"	href="#"><span>게시글관리</span></a>
 				<a class="list-group-item list-group-item-action list-group-item-light p-3"	href="<%= contextPath %>/adminNotice.no"><span>공지사항관리</span></a>
 				<a class="list-group-item list-group-item-action list-group-item-light p-3"	href="<%= contextPath %>/adminEvent.ev"><span>이벤트관리</span></a> 
-				<a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!"><span>문의/신고관리</span></a>
+				<a class="list-group-item list-group-item-action list-group-item-light p-3" href="<%= contextPath %>/adminInquiryForm.iq"><span>문의관리</span></a>
+				<a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!"><span>신고관리</span></a>
 				<a class="list-group-item list-group-item-action list-group-item-light p-3" href="<%= contextPath %>/adminLogout.me"><span>로그아웃</span></a>
 			</div>
 		</div>

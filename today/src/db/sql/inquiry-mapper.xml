@@ -63,5 +63,18 @@
 		 WHERE INQ_STATUS = 'Y'
 	</entry>
 
-
+	<entry key="adminSelectInquiry">
+		SELECT
+				INQ_NO
+			  , MEM_NO
+			  , INQ_NAME
+			  , INQ_QUESTION
+			  , INQ_DATE	
+			  , INQ_ANSWER
+			  , INQ_PROCESSING
+			  , INQ_PRIVATE
+		  FROM
+		  		TB_INQUIRY
+  		WHERE INQ_STATUS = 'Y'
+	</entry>
 </properties>
