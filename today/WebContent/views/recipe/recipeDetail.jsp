@@ -1,5 +1,17 @@
+<%@page import="com.todayTable.recipe.model.vo.IngreClass"%>
+<%@page import="com.todayTable.recipe.model.vo.Recipe"%>
+<%@page import="java.util.HashMap"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	HashMap<String,Object> list =(HashMap<String,Object>)request.getAttribute("list");
+	Recipe recipe = (Recipe)list.get("recipe");
+	ArrayList<IngreClass> ingreClass = (ArrayList<IngreClass>)list.get("ingreClass");
+	list.get("ingredients");
+	list.get("category");
+	list.get("cookingOrders");
+
+%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,9 +62,8 @@
             <div class="row">
                 <div class="col-12">
                     <div class="receipe-slider owl-carousel">
-                        <img src="<%=contextPath%>/resources/image/bg-img/sumin.jpg" alt="">
-                        <img src="<%=contextPath%>/resources/image/bg-img/sumin.jpg" alt="">
-                        <img src="<%=contextPath%>/resources/image/bg-img/sumin.jpg" alt="">
+                        <img src="<%=contextPath+recipe.getRecipePic()%>" alt="">
+                        
                     </div>
                 </div>
             </div>

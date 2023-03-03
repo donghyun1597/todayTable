@@ -7,6 +7,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="<%=application.getContextPath()%>/resources/css/style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+	 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  
     
     <style>
    
@@ -145,7 +150,7 @@
 
             <div class="row align-items-center" id="recommend">
                 <!-- Single Best Receipe Area -->
-                <div class="col-12 col-sm-6 col-lg-4" id="col-510">
+                <!-- <div class="col-12 col-sm-6 col-lg-4" id="col-510">
                     <div class="single-best-receipe-area mb-30">
                         <img src="resources/image/bg-img/sumin6.jpg" alt="음식1">
                         <div class="receipe-content">
@@ -161,9 +166,11 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             
             </div>
+            
+            
         </div>
     </section>
     <!-- ##### Best Receipe Area End ##### -->
@@ -425,11 +432,12 @@
 		            url : "mainThumnail.re",
 		            success : function(list){
 		                for(let i=0;i<list.length;i++){
-		                    value += '<div class="col-12 col-sm-6 col-lg-4" id="col-510" id="topRecipe"+(i+1)+">'+
+		                	console.log(list[i].recipeNo);
+		                    value += '<div class="col-12 col-sm-6 col-lg-4" id="col-510">'+
 		                            '<div class="single-best-receipe-area mb-30">'+
-		                            '<img src="<%=contextPath%>'+list[i].recipePic+'" alt="음식2" id="topRecipeImg1">'+
+		                            '<img src="<%=contextPath%>'+list[i].recipePic+'" alt="음식2">'+
 		                            '<div class="receipe-content">'+
-		                                '<a href="<%=contextPath%>/recipeView.rc">'+
+		                                '<a href="<%=contextPath%>/recipeView.rc?recipeNo='+list[i].recipeNo +'">'+
 		                                    '<h5>'+list[i].recipeName+'</h5>'+
 		                                '</a>'+
 		                                '<div class="ratings">난이도'+list[i].recipeDifficulty+'<br>'+
@@ -439,9 +447,11 @@
 		                                '<i class="fa fa-star" aria-hidden="true"></i>'+
 		                                    '<i class="fa fa-star-o" aria-hidden="true"></i>'+
 		                                '</div>'+
+                                        '조회수 : ' + list[i].recipeViews+
 		                            '</div>'+
 		                        '</div>'+
 		                    '</div>'
+		                    
 		                }
 		                $("#topRecipe").html(value);
 		            },
@@ -480,15 +490,15 @@
 		                    ,people : peopleValue},
 		            success : function(list){
 		                console.log(list);
-		                for(let i=0;i<list.length;i++){
-		                    value += '<div class="col-12 col-sm-6 col-lg-4" id="col-510" id="topRecipe1">'+
+		                for(let i=1;i<list.length+1;i++){
+		                    value += '<div class="col-12 col-sm-6 col-lg-4" id="col-510">'+
 		                            '<div class="single-best-receipe-area mb-30">'+
-		                            '<img src="/today'+list[i].recipePic+'" alt="음식2" id="topRecipeImg1">'+
+		                            '<img src="/today'+list[i-1].recipePic+'" alt="음식2">'+
 		                            '<div class="receipe-content">'+
 		                                '<a href="<%=contextPath%>/recipeView.rc">'+
-		                                    '<h5>'+list[i].recipeName+'</h5>'+
+		                                    '<h5>'+list[i-1].recipeName+'</h5>'+
 		                                '</a>'+
-		                                '<div class="ratings">난이도'+list[i].recipeDifficulty+'<br>'+
+		                                '<div class="ratings">난이도'+list[i-1].recipeDifficulty+'<br>'+
 		                                    '<i class="fa fa-star" aria-hidden="true"></i>'+
 		                                    '<i class="fa fa-star" aria-hidden="true"></i>'+
 		                                    '<i class="fa fa-star" aria-hidden="true"></i>'+
@@ -497,7 +507,15 @@
 		                                '</div>'+
 		                            '</div>'+
 		                        '</div>'+
-		                    '</div>'
+		                    '</div>';
+                            // if(i%4==0){
+		                		
+                            //     $("#recommend").append($('<div></div>').addClass('carousel-item active').html(value));
+                            //     value="";
+		                	// }
+                            
+                            // console.log(i!=0&&i%4);
+		                    
 		                }
 		            	$("#recommend").html(value);
 		            	},

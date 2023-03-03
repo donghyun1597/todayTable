@@ -2,10 +2,15 @@ package com.todayTable.recipe.model.service;
 
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import static com.todayTable.common.JDBCTemplate.*;
 
+import com.todayTable.category.model.vo.Category;
 import com.todayTable.recipe.model.dao.RecipeDao;
+import com.todayTable.recipe.model.vo.CookingOrder;
+import com.todayTable.recipe.model.vo.IngreClass;
+import com.todayTable.recipe.model.vo.Ingredient;
 import com.todayTable.recipe.model.vo.MyComment;
 import com.todayTable.recipe.model.vo.MyWishlist;
 import com.todayTable.recipe.model.vo.Recipe;
@@ -82,6 +87,33 @@ public class RecipeService {
 		return wlist;
 	}
 	
+	public HashMap<String, Object> selectRecipeDetail(int recipeNo){
+		Connection conn = getConnection();
+		Recipe recipe = new RecipeDao().selectDetailRecipe(conn, recipeNo);
+		ArrayList<IngreClass> ingreClass = new RecipeDao().selectDetailIngreClass(conn, recipeNo);
+		ArrayList<Ingredient> ingredients = new RecipeDao().selectDetailIngredient(conn, recipeNo);
+		Category category = new RecipeDao().selectDetailCategory(conn, recipeNo);
+		ArrayList<CookingOrder> cookingOrders = new RecipeDao().selectDetailCookingOrder(conn, recipeNo);
+		HashMap<String, Object> list = new HashMap<String, Object>();
+		
+		System.out.println(recipe);
+		System.out.println(ingreClass);
+		System.out.println(ingredients);
+		System.out.println(category);
+		System.out.println(cookingOrders);
+		list.put("recipe", recipe);
+		list.put("ingreClass", ingreClass);
+		list.put("ingredients", ingredients);
+		list.put("category", category);
+		list.put("cookingOrders", cookingOrders);
+		
+		System.out.println(list);
+		
+		close(conn);
+		
+		return list;
+		
+	}
 	
 	
 	

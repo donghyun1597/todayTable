@@ -186,6 +186,7 @@
 	console.log(Kakao.isInitialized()); // sdk초기화여부판단
 	//카카오로그인
 	function kakaoLogin() {
+		
 	    Kakao.Auth.login({
 	      success: function (response) {
 	        Kakao.API.request({
@@ -216,12 +217,17 @@
 	    })
 	  }
 	  function kakaoLogout() {
+		  //  초기화
+		 Kakao.isInitialized();
+		 
          if (!Kakao.Auth.getAccessToken()) {
              console.log('Not logged in.');
              return;
          }
          Kakao.Auth.logout(function(response) {
              alert(response +' logout');
+             response.session.
+             
              //window.location.href='/'
          });
      };

@@ -5,15 +5,26 @@ public class Ingredient {
 	private int ingreCno;
 	private String ingreName;
 	private String ingreAmount;
+	private String ingreCname;
 	
 	public Ingredient() {}
 
-	public Ingredient(int ingreNo, int ingreCno, String ingreName, String ingreAmount) {
+	public Ingredient(int ingreNo, int ingreCno, String ingreName, String ingreAmount, String ingreCname) {
 		super();
 		this.ingreNo = ingreNo;
 		this.ingreCno = ingreCno;
 		this.ingreName = ingreName;
 		this.ingreAmount = ingreAmount;
+		this.ingreCname = ingreCname;
+		
+	}
+
+	public String getIngreCname() {
+		return ingreCname;
+	}
+
+	public void setIngreCname(String ingreCname) {
+		this.ingreCname = ingreCname;
 	}
 
 	public int getIngreNo() {

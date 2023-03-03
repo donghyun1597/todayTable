@@ -5,7 +5,8 @@
 
 <entry key="selectMainThumbnailList">
 	SELECT
-	      RECIPE_PIC
+		  RECIPE_No
+	    , RECIPE_PIC
 	    , RECIPE_NAME
 	    , RECIPE_DIFFICULTY
 	    , RECIPE_VIEWS
@@ -14,7 +15,8 @@
 	         , R.*
 	        FROM 
 	            (SELECT
-	                  RECIPE_PIC
+	            	  RECIPE_No
+	                , RECIPE_PIC
 	                , RECIPE_NAME
 	                , RECIPE_DIFFICULTY
 	                , RECIPE_VIEWS
@@ -102,6 +104,93 @@
 	                    WHERE RECIPE_PERSON =?)
 </entry>
 
+<!-- 레시피 상세 조회 sql -->
+<entry key="selectDetailRecipe">
+	SELECT
+	      RECIPE_NO
+	    , RECIPE_NAME
+	    , RECIPE_TAG
+	    , RECIPE_VIDEO
+	    , RECIPE_DIFFICULTY
+	    , RECIPE_PERSON
+	    , RECIPE_TIME
+	    , RECIPE_DATE
+	    , MEM_NO
+	    , RECIPE_PIC
+	    , RECIPE_VIEWS
+	FROM 
+	    TB_RECIPE
+	WHERE
+	    RECIPE_NO = ?
+
+</entry>
+
+<entry key="selectDetailIngreClass">
+	SELECT
+	    INGRE_C_NAME
+	FROM 
+	    TB_INGRE_CLASS
+	WHERE 
+	    RECIPE_NO = ?
+</entry>
+
+<entry key="selectDetailIngredient">
+	SELECT 
+	      INGRE_NO
+	    , INGRE_C_NAME
+	    , INGRE_NAME
+	    , INGRE_AMOUNT
+	FROM 
+	    TB_INGREDIENT
+	JOIN 
+	    TB_INGRE_CLASS USING(INGRE_C_NO)
+	WHERE
+	    INGRE_C_NO IN (SELECT
+	                        INGRE_C_NO
+	                    FROM 
+	                        TB_INGRE_CLASS
+	                    WHERE 
+	                        RECIPE_NO = ?)
+</entry>
+
+<entry key="selectDetailCategory">
+	SELECT 
+	      C_INGRE_NAME
+	    , C_KIND_NAME
+	    , C_NAT_NAME
+	    , C_STEP_NAME
+	    , C_THEME_NAME
+	    , C_TOOL_NAME
+	FROM
+	    TB_CATEGORY
+	JOIN 
+	    TB_CATEGORY_INGREDIENT USING(C_INGRE_NO)
+	JOIN 
+	    TB_CATEGORY_KIND USING(C_KIND_NO)
+	JOIN 
+	    TB_CATEGORY_NATION USING(C_NAT_NO)
+	JOIN 
+	    TB_CATEGORY_STEP USING(C_STEP_NO)
+	JOIN 
+	    TB_CATEGORY_THEME USING(C_THEME_NO)
+	JOIN 
+	    TB_CATEGORY_TOOL USING(C_TOOL_NO)
+	WHERE
+	    RECIPE_NO = ?
+</entry>
+
+<entry key="selectDetailCookingOrder">
+	SELECT
+	      CO_NO
+	    , CO_STEP
+	    , CO_CONTENT
+	    , ORDIMG_IMGURL
+	FROM 
+	    TB_COOKING_ORDER
+	JOIN
+	    TB_COOKING_ORDER_IMG USING(CO_NO)
+	WHERE RECIPE_NO = ?
+</entry>
 
 
 

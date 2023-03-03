@@ -11,6 +11,10 @@ import java.util.Properties;
 
 import static com.todayTable.common.JDBCTemplate.*;
 
+import com.todayTable.category.model.vo.Category;
+import com.todayTable.recipe.model.vo.CookingOrder;
+import com.todayTable.recipe.model.vo.IngreClass;
+import com.todayTable.recipe.model.vo.Ingredient;
 import com.todayTable.recipe.model.vo.MyComment;
 import com.todayTable.recipe.model.vo.MyWishlist;
 import com.todayTable.recipe.model.vo.Recipe;
@@ -48,6 +52,7 @@ public class RecipeDao {
 			
 			while(rset.next()) {
 				Recipe r = new Recipe();
+				r.setRecipeNo(rset.getInt("recipe_no"));
 				r.setRecipePic(rset.getString("recipe_pic"));
 				r.setRecipeName(rset.getString("recipe_name"));
 				r.setRecipeDifficulty(rset.getString("recipe_difficulty"));
@@ -233,7 +238,179 @@ public class RecipeDao {
 	
 	
 	
+	public Recipe selectDetailRecipe(Connection conn, int recipeNo){
+		Recipe r = new Recipe();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectDetailRecipe");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, recipeNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				r.setRecipeNo(rset.getInt("RECIPE_NO"));
+				r.setRecipeName(rset.getString("recipe_name"));
+				r.setRecipeTag(rset.getString("recipe_tag"));
+				r.setRecipeVideo(rset.getString("recipe_video"));
+				r.setRecipeDifficulty(rset.getString("recipe_difficulty"));
+				r.setRecipePerson(rset.getInt("recipe_person"));
+				r.setRecipeTime(rset.getInt("recipe_time"));
+				r.setRecipeDate(rset.getDate("recipe_date"));
+				r.setMemNo(rset.getInt("mem_no"));
+				r.setRecipePic(rset.getString("recipe_pic"));
+				r.setRecipeViews(rset.getInt("recipe_views"));
+			}
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return r;
+		
+		
+	}
 	
+	public ArrayList<IngreClass> selectDetailIngreClass(Connection conn,int recipeNo){
+		ArrayList<IngreClass> list = new ArrayList<IngreClass>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectDetailIngreClass");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, recipeNo);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				IngreClass ic = new IngreClass();
+				
+				ic.setIngreCname(rset.getString("ingre_c_name"));
+				list.add(ic);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+		
+		
+	}
+	
+	public ArrayList<Ingredient> selectDetailIngredient(Connection conn,int recipeNo){
+		ArrayList<Ingredient> list = new ArrayList<Ingredient>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectDetailIngredient");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, recipeNo);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Ingredient i = new Ingredient();
+				
+				i.setIngreCno(rset.getInt("ingre_no"));
+				i.setIngreCname(rset.getString("ingre_c_name"));
+				i.setIngreName(rset.getString("ingre_name"));
+				i.setIngreAmount(rset.getString("ingre_amount"));
+				list.add(i);
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+		
+		
+	
+	}
+	
+	public Category selectDetailCategory(Connection conn,int recipeNo) {
+		Category c = new Category();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectDetailCategory");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, recipeNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				c.setcIngreName(rset.getString("c_ingre_name"));
+				c.setcKindName(rset.getString("c_kind_name"));
+				c.setcNatName(rset.getString("c_nat_name"));
+				c.setcStepName(rset.getString("c_step_name"));
+				c.setcThemeName(rset.getString("c_theme_name"));
+				c.setcToolName(rset.getString("c_tool_name"));
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+			
+		}
+		return c;
+		
+		
+	}
+	
+	public ArrayList<CookingOrder> selectDetailCookingOrder(Connection conn,int recipeNo){
+		ArrayList<CookingOrder> list = new ArrayList<CookingOrder>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectDetailCookingOrder");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, recipeNo);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				CookingOrder co = new CookingOrder();
+				
+				co.setCoNo(rset.getInt("co_no"));
+				co.setCoStep(rset.getString("co_step"));
+				co.setCoContent(rset.getString("co_content"));
+				co.setOrdImgImgurl(rset.getString("ordimg_imgurl"));
+				
+				list.add(co);
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+			
+		}
+		return list;
+	
+	}
 	
 	
 	
