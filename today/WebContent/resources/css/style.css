@@ -954,7 +954,7 @@ textarea:focus {
 .quote-area {
   position: relative;
   z-index: 1;
-  border: 10px solid #40ba37;
+  border: 5px solid #40ba37;
   padding: 40px 25px;
   margin-bottom: 80px;
 }

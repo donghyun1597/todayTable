@@ -136,17 +136,21 @@
 						</tr>
 						<tr>
 							<td id="t1">&nbsp;&nbsp;알러지정보</td>
-							<td id="t2" colspan="2"><input type="checkbox"
-								name="agllergy" id="ag" value="A1"> <label for="ag">난류</label>
-								<input type="checkbox" name="agllergy" id="ag" value="A2">
-								<label for="ag">우유</label> <input type="checkbox"
-								name="agllergy" id="ag" value="A3"> <label for="ag">곡류</label>
-								<input type="checkbox" name="agllergy" id="ag" value="A4">
-								<label for="ag">갑각류</label> <input type="checkbox"
-								name="agllergy" id="ag" value="A5"> <label for="ag">견과류</label>
+							<td id="t2" colspan="2">
+								<input type="checkbox" name="agllergy" id="ag" value="A1"><label for="ag">난류</label>
+								<input type="checkbox" name="agllergy" id="ag" value="A2"><label for="ag">우유</label>
+								<input type="checkbox" name="agllergy" id="ag" value="A3"> <label for="ag">곡류</label>
+								<input type="checkbox" name="agllergy" id="ag" value="A4"><label for="ag">갑각류</label>
+								<input type="checkbox" name="agllergy" id="ag" value="A5"> <label for="ag">견과류</label>
+								<input type="checkbox" name="agllergy" id="ag" value="A6"> <label for="ag">생선류</label>
+								<input type="checkbox" name="agllergy" id="ag" value="A7"> <label for="ag">아황산류</label>
+								<input type="checkbox" name="agllergy" id="ag" value="A8"> <label for="ag">연체류</label>
+								<input type="checkbox" name="agllergy" id="ag" value="A9"> <label for="ag">육류</label>
+
 							</td>
 						</tr>
 					</table>
+
 
 					<!--02-10 스크립트 태그를 쓰는 게 나음 -->
 					<script>
@@ -187,7 +191,7 @@
 						<button type="submit" class="btn delicious-btn btn-4 m-1"
 							onclick="return validatePwd()">정보변경</button>
 						<a href="#" class="btn delicious-btn btn-4 m-1"
-							data-toggle="modal" data-target="#deleteModal">회원탈퇴</a>
+							data-toggle="modal" data-target="#deleteModal">기능준비중</a>
 					</div>
 
 				</form>
@@ -214,7 +218,8 @@
 						<form action="<%= contextPath %>/delete.me" method="post">
 							<b>탈퇴 후 복구가 불가능 합니다. <br> 정말로 탈퇴 하시겠습니까?
 							</b> <br>
-							<br> 비밀번호: <input type="password" name="userPwd" required>
+							<br> 비밀번호: 
+							<input type="password" name="userPwd" required>
 							<input type="hidden" name="userId" value="<%= memId%>"><br>
 							<br>
 							<button type="submit" class="btn btn-sm btn-danger">탈퇴하기</button>
@@ -223,6 +228,9 @@
 				</div>
 			</div>
 		</div>
+
+
+
 	</section>
 	<!-- ##### About Area End ##### -->
 
