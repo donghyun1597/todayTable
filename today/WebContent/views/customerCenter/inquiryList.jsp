@@ -109,7 +109,6 @@
                 </tr>
             </thead>
             <tbody id="listbody">
-            	<% System.out.println(list); %>
                 <!-- case1. 문의글 없음 -->
             	<%if(list.isEmpty()) { %>
            		<tr>
@@ -140,7 +139,10 @@
                             <div align="right" id="updateDelete">
                             <a href="<%= contextPath %>/updateInquiryForm.cu?num=<%= i.getInqNo() %>" style="color: coral;">수정</a>
                              | 
-                            <a href="<%= contextPath %>/delete.no?num=<%= i.getInqNo() %>" data-toggle="modal" data-target="#deleteModal" style="color: coral;">삭제</a>
+                            <a style="color:coral;" data-toggle="modal" href="#deleteModal" class="deleteInquiry">
+                            <input type="hidden" value="<%= i.getInqNo() %>">
+                            삭제
+                            </a>
                             </div>
                         </div>
                     </td>
@@ -182,7 +184,7 @@
         <button type="button" class="btn btn-secondary" onclick="writeInquiry();" style="margin-left: 90%;">글쓰기</button>
     </div>
     
-    <!-- 문의 삭제 Modal -->
+	<!-- 문의 삭제 Modal -->
 	<div class="modal" id="deleteModal">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -194,19 +196,20 @@
             </div>
       
             <!-- Modal body -->
-            <div class="modal-body" align="center">
-              
-              <form action="<%= contextPath %>/deleteInquiry.cu?num=<%= deleteNo.getInqNo() %>" method="post">
-                <b>삭제 후 복구가 불가능 합니다. <br> 정말로 삭제하시겠습니까?</b><br><br>
-                <button class="btn btn-sm btn-secondary" data-dismiss="modal">취소</button>
-				<button type="submit" class="btn btn-sm btn-danger">삭제</button>                
-              </form>
-            
+            <div class="modal-body" id="deleteBody" align="center">
+              	<form action="<%= contextPath %>/deleteInquiry.cu?num=<%= %>" method="post">
+              		<input type="hidden" id="deleteNumber" name="deleteNum">
+	                <b>삭제 후 복구가 불가능 합니다. <br> 정말로 삭제하시겠습니까?</b><br><br>
+	                <button class="btn btn-sm btn-secondary" data-dismiss="modal">취소</button>
+					<button type="submit" class="btn btn-sm btn-danger">삭제</button>
+            	</form>
             </div>
       
           </div>
         </div>
       </div>
+    
+
     
     <script>
     	function writeInquiry(){
@@ -228,10 +231,15 @@
                     $div.slideUp();
                 }
             })
+            $(".deleteInquiry").click(function(){
+            	var num = $(this).children().val();
+            	$("#deleteNumber").val(num);
+            })
         })
-        
-        
+
     </script>
+    
+
     
     <div class="m-4" id="paging">
         <nav>
