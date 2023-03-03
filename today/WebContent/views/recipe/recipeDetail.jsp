@@ -1,3 +1,6 @@
+<%@page import="com.todayTable.recipe.model.vo.CookingOrder"%>
+<%@page import="com.todayTable.category.model.vo.Category"%>
+<%@page import="com.todayTable.recipe.model.vo.Ingredient"%>
 <%@page import="com.todayTable.recipe.model.vo.IngreClass"%>
 <%@page import="com.todayTable.recipe.model.vo.Recipe"%>
 <%@page import="java.util.HashMap"%>
@@ -7,9 +10,9 @@
 	HashMap<String,Object> list =(HashMap<String,Object>)request.getAttribute("list");
 	Recipe recipe = (Recipe)list.get("recipe");
 	ArrayList<IngreClass> ingreClass = (ArrayList<IngreClass>)list.get("ingreClass");
-	list.get("ingredients");
-	list.get("category");
-	list.get("cookingOrders");
+	ArrayList<Ingredient> ingredients = (ArrayList<Ingredient>)list.get("ingredients");
+	Category category =  (Category)list.get("category");
+	ArrayList<CookingOrder> cookingOrders =  (ArrayList<CookingOrder>)list.get("cookingOrders");
 
 %>
 <!DOCTYPE html>
@@ -40,7 +43,7 @@
     <!-- ##### Header Area End ##### -->
 
     <!-- ##### Breadcumb Area Start ##### -->
-    <div class="breadcumb-area bg-img bg-overlay" style="background-image: url(img/bg-img/breadcumb3.jpg);">
+    <div class="breadcumb-area bg-img bg-overlay" style="background-image: url("");">
         <div class="container h-100">
             <div class="row h-100 align-items-center">
                 <div class="col-12">
@@ -59,14 +62,9 @@
 
         <!-- Receipe Slider -->
         <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="receipe-slider owl-carousel">
-                        <img src="<%=contextPath+recipe.getRecipePic()%>" alt="">
-                        
-                    </div>
-                </div>
-            </div>
+			<div class="col-12">
+			    <img src="<%=contextPath+recipe.getRecipePic()%>" alt="" style="height: 500px; width: 100%;">
+			</div>
         </div>
 
         <!-- Receipe Content Area -->
@@ -76,12 +74,12 @@
                 <div class="row">
                     <div class="col-12 col-md-8">
                         <div class="receipe-headline my-5">
-                            <span>April 05, 2018</span>
-                            <h2>돼지고기 김치찌개 달인이 되는 황금레시피</h2>
+                            <span><%=recipe.getRecipeDate() %></span>
+                            <h2><%=recipe.getRecipeName() %></h2>
                             <div class="receipe-duration">
-                                <span>인분: 15 mins</span>
-                                <span>조리시간: 30 mins</span>
-                                <span>난이도: 8 Servings</span>
+                                <span>인분: <%=recipe.getRecipePerson() %></span>
+                                <span>조리시간: <%=recipe.getRecipeTime() %></span>
+                                <span>난이도: <%=recipe.getRecipeDifficulty() %></span>
                             </div>
                         </div>
                     </div>
@@ -102,111 +100,52 @@
 
                 <div class="row">
                     <div class="col-12 col-lg-8">
+                    	<%for(int i=0;i<cookingOrders.size();i++){ %>
                         <!-- Single Preparation Step -->
-                        <div class="single-preparation-step d-flex">
-                            <h5>STEP 1</h5><br>
-                            <p>키친타올로 고기 핏물을 제거하고 먹기 좋은 크기로 숭덩숭덩 잘라주세요. </p>
-                        </div>
-                        <!-- Single Preparation Step -->
-                        <div class="single-preparation-step d-flex">
-                            <h5>STEP 2</h5>
-                            <p> 김치도 먹기 좋은 크기로 쫑쫑 썹니다.</p>
-                        </div>
-                        <!-- Single Preparation Step -->
-                        <div class="single-preparation-step d-flex">
-                            <h5>STEP 3</h5>
-                            <p>냄비에 들기름 2수저와 된장 1수저 넣고 수저로 섞어주세요. </p>
-                        </div>
-                        <!-- Single Preparation Step -->
-                        <div class="single-preparation-step d-flex">
-                            <h5>STEP 4</h5>
-                            <p>섞은 양념은 약불에서 짙은 갈색이 될때까지 볶아줍니다.</p>
-                        </div>
-                        <div class="single-preparation-step d-flex">
-                            <h5>STEP 5</h5>
-                            <p>썰어놓은 고기와 설탕 1/2수저 넣고 중불로 올려 볶아주세요.</p>
-                        </div>
-                        <div class="single-preparation-step d-flex">
-                            <h5>STEP 6</h5>
-                            <p>고기 겉면이 익을 때까지 잘 볶아주세요.</p>
-                        </div>
-                        <div class="single-preparation-step d-flex">
-                            <h5>STEP 7</h5>
-                            <p>썰어놓은 김치를 넣고 열심히 볶아주세요.</p>
-                        </div>
+                        <div>
+	                       	<h5>STEP <%=i+1 %></h5>
+	                    </div>
+	                    <div style="display:flex;">
+	                        <div style="width: 70%">
+	                         	<p><%=cookingOrders.get(i).getCoContent() %></p>
+	                     	</div>
+	                     	<div style="width: 30%">
+	                     		<img alt="" src="<%= contextPath+recipe.getRecipePic()%>">
+	                     	</div>
+                     	</div>
+                        
+                        <%} %>
 
                     </div>
+                   
 
                     <!-- Ingredients -->
-                    <div class="col-12 col-lg-4">
+                    <div class="col-12 col-lg-4" style="margin-left:50px">
                         <div class="ingredients">
-                            <h4>재료</h4>
+                        	<%for(int i=0;i<ingreClass.size();i++){ %>
+                            <h4><%=ingreClass.get(i).getIngreCname() %></h4>
 
                             <!-- Custom Checkbox -->
-                            <div class="custom-control custom-checkbox">
-                                
-                                <label class="custom-control-label" for="customCheck1">돼지고기 앞다리살</label>
-                            </div>
-
-                            <!-- Custom Checkbox -->
-                            <div class="custom-control custom-checkbox">
-                                <label class="custom-control-label" for="customCheck2">배추김치</label>
-                            </div>
-
-                            <!-- Custom Checkbox -->
-                            <div class="custom-control custom-checkbox">
-                                <label class="custom-control-label" for="customCheck3">대파 </label>
-                            </div>
-
-                            <!-- Custom Checkbox -->
-                            <div class="custom-control custom-checkbox">
-                                <label class="custom-control-label" for="customCheck4">청양고추</label>
-                            </div>
-
-                            <!-- Custom Checkbox -->
-                            <div class="custom-control custom-checkbox">
-                                <label class="custom-control-label" for="customCheck5">물</label>
-                            </div>
+	                            <%for(int j=0;j<ingredients.size();j++){%>
+		                            <%if(ingreClass.get(i).getIngreCname().equals(ingredients.get(j).getIngreCname())){ %>
+		                            <div class="">
+		                                
+		                                <label style="font-size: 17px;"><%=ingredients.get(j).getIngreName() %></label>
+		                            </div>
+									<%} %>
+								<%} %>
+							<%} %>
+                           
                         
                         </div>
 
-                        <div class="ingredients">
-                            <h4>[양념]</h4>
-
-                            <!-- Custom Checkbox -->
-                            <div class="custom-control custom-checkbox">
-                                
-                                <label class="custom-control-label" for="customCheck1">된장</label>
-                            </div>
-
-                            <!-- Custom Checkbox -->
-                            <div class="custom-control custom-checkbox">
-                                <label class="custom-control-label" for="customCheck2">들기름 or 참기름</label>
-                            </div>
-
-                            <!-- Custom Checkbox -->
-                            <div class="custom-control custom-checkbox">
-                                <label class="custom-control-label" for="customCheck3">설탕 </label>
-                            </div>
-
-                            <!-- Custom Checkbox -->
-                            <div class="custom-control custom-checkbox">
-                                <label class="custom-control-label" for="customCheck4">다진마늘</label>
-                            </div>
-
-                            <!-- Custom Checkbox -->
-                            <div class="custom-control custom-checkbox">
-                                <label class="custom-control-label" for="customCheck5">후추</label>
-                            </div>
-                        
-                        </div>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-12">
                         <div class="section-heading text-left">
-                            <h3>Leave a comment</h3>
+                            <h3>댓글을 남겨보세요!</h3>
                         </div>
                     </div>
                 </div>
@@ -215,19 +154,15 @@
                     <div class="col-12">
                         <div class="contact-form-area">
                             <form action="#" method="post">
-                                <div class="row">
-                                    <div class="col-12 col-lg-6">
-                                        <input type="text" class="form-control" id="name" placeholder="Name">
-                                    </div>
-                                    <div class="col-12 col-lg-6">
-                                        <input type="email" class="form-control" id="email" placeholder="E-mail">
-                                    </div>
+                                <div class="">
                                     <div class="col-12">
                                         <input type="text" class="form-control" id="subject" placeholder="Subject">
                                     </div>
+                                    <br>
                                     <div class="col-12">
                                         <textarea name="message" class="form-control" id="message" cols="30" rows="10" placeholder="Message"></textarea>
                                     </div>
+                                    <br>
                                     <div class="col-12">
                                         <button class="btn delicious-btn mt-30" type="submit">Post Comments</button>
                                     </div>
@@ -236,6 +171,7 @@
                         </div>
                     </div>
                 </div>
+                
             </div>
         </div>
     </div>

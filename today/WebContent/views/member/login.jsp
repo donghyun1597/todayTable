@@ -150,8 +150,8 @@
                 <li><a href=""><i class="fab fa-facebook-f"></i></a></li>
                 <li><a href=""><i class="fab fa-twitter"></i></a></li>
             </div>
-            <button onclick="kakaoLogin();">카카오 로그인</button>
-            <button onclick="kakaoLogout();">카카오 로그아웃</button>
+            <button type="button" onclick="kakaoLogin();">카카오 로그인</button>
+            <button type="button" onclick="kakaoLogout();">카카오 로그아웃</button>
             <form action="<%=request.getContextPath() %>/login.me" method="post">
                 <div class="login_id">
                     <h4>LOGIN</h4>
@@ -226,7 +226,7 @@
          }
          Kakao.Auth.logout(function(response) {
              alert(response +' logout');
-             response.session.
+             
              
              //window.location.href='/'
          });

@@ -87,7 +87,8 @@
 	
 <entry key="selectRecommnedRecipe">
 	SELECT 
-		  RECIPE_PIC
+		  RECIPE_NO
+		, RECIPE_PIC
 	    , RECIPE_NAME
 	    , RECIPE_DIFFICULTY
 	    , RECIPE_VIEWS
