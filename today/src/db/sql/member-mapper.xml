@@ -23,7 +23,25 @@
 	</entry>
 
 	<entry key="insertMember">
-
+	INSERT
+	    INTO TB_MEMBER
+	    (
+	    MEM_NO
+	    , MEM_ID
+	    , MEM_PWD
+	    , NICKNAME
+	    , MEM_NAME
+	    , PHONE
+	    )
+	    VLAUES
+	    (
+	    SEQ_MEM_NO.NEXTVAL
+	    , ?
+	    , ?
+	    , ?
+	    , ?
+	    , ?
+	    )
 	</entry>
 
 	<entry key="loginAdmin">
@@ -164,27 +182,7 @@
 	    MEM_NO=?
 </entry>	
 
-<entry key="insertMember">
-INSERT
-    INTO TB_MEMBER
-    (
-    MEM_NO
-    , MEM_ID
-    , MEM_PWD
-    , NICKNAME
-    , MEM_NAME
-    , PHONE
-    )
-    VLAUES
-    (
-    SEQ_MEM_NO.NEXTVAL
-    , ?
-    , ?
-    , ?
-    , ?
-    , ?
-    )
-</entry>
+
 	
 	
 	
