@@ -10,6 +10,7 @@
 	ArrayList<MyComment> clist = (ArrayList<MyComment>)request.getAttribute("clist");
 	ArrayList<MyWishlist> wlist = (ArrayList<MyWishlist>)request.getAttribute("wlist");
 	Recipe myrecipe = (Recipe)session.getAttribute("myrecipe");
+	
 %>
 
 <!DOCTYPE html>
@@ -108,6 +109,29 @@
 	align-items: center;
 	justify-content: space-between;
 }
+
+.info_set {
+	width: 42px;
+    height: 42px;
+}
+
+.info_pic .info_set {
+	display: inline-block;
+    vertical-align: top;
+	position: relative;
+    top: -180px;
+    left: 80px;
+}
+
+.widget_title > h6 {
+    background: #fee2d9;
+    height: 40px;
+    width: 90%;
+    line-height: 40px;
+    border-radius: 2px;
+    margin-bottom: 30px;
+}
+
 </style>
 
 
@@ -134,7 +158,7 @@
 <!-- ----------------------------------------------------------------------------------------------------- -->
 
 
-	<div class="row" align="center">
+	<div class="row" align="center" >
 		<div class="col-12">
 			<!-- ##### Best Receipe Area Start ##### -->
 			<section class="best-receipe-area">
@@ -162,6 +186,7 @@
 
 													<!-- ##### Best Receipe Area Start ##### -->
 													<div class="container"> <br>
+
 														<div align="right">
 															<a href="#" class="btn btn-success" role="button"> 레시피 작성</a>
 														</div> <br>
@@ -178,9 +203,8 @@
 																	<div class="receipe-content" style="padding-top: 5px;">
 																		<div class="post-comment-share-area d-flex">
 																			<div class="post-favourite">
-																				<a href="#" style="color: #b5aec4; padding-right: 60px;"> | <%= r.getRecipeDate()%> </a> 
-																				<a href="#" style="color: #b5aec4; padding: 5px;"> <i class="fa fa-heart-o" aria-hidden="true"></i> <%=r.getRecipeViews()%></a> 
-																				<a href="#" style="color: #b5aec4; padding: 5px;"> <i class="fa fa-comment-o" aria-hidden="true"></i> 12 </a> 
+																				<a href="#" style="color: #b5aec4; padding: 10px;"> | <%= r.getRecipeDate()%> </a> 
+																				<a href="#" style="color: #b5aec4; padding-left: 5px;"> <i class="fa fa-heart-o" aria-hidden="true"></i> <%=r.getRecipeViews()%></a> 
 																				<a href="#"> <h5 style="padding-top: 15px;"> <%= r.getRecipeName()%> </h5> </a>
 																			</div>
 																		</div>
@@ -196,63 +220,99 @@
 												</div>
 											</div>
 										</div>
-									<!-- ------------------------------------------------------------------------------------ -->
+					<!-- ------------------------------------------------------------------------------------ -->
 
 					
 
-									<!-- ------------------------------------------------------------------------------------ -->
-										<div class="tab-pane fade" id="comment">
-											<div class="container">
-												<table class="table table-hover"> <br>
-													<% if (clist.isEmpty()) {%>
-													<p>작성된 댓글이 없습니다.</p>
-													<%} else {%>
-														<% for (MyComment c : clist) {%>
-													<a href="#" target="_blank" class="board-list"> 
-														<thead></thead>
-													<tbody>
-														<tr>
-															<td style="width: 5%; padding-top: 20px; padding-left: 20px;">
-																<div class="only_box">
-																	<div class="FormInputCheck">
-																		<input id="check_comment_100" type="checkbox" class="input_check">
-																		<label for="check_comment_100" class="label">
-																			<span class="blind"></span>
-																		</label>
-																	</div>
-																</div>
-															</td>
-												
-
-															<td style="width: 70%; padding-top: 20px; ">
-																<a href="#" target="_blank" class="board-list">
-																	<div class="inner_list" style="font-weight: 400;">
-																		<strong class="article">
-																			<%=c.getComContent()%>
-																		</strong>
-																	</div>
-																</a>
-																<div class="comment_date"  style="color: gray; font-size: small;">
-																	<%=c.getComDate()%>
-																</div>
-																<div class="comment_title" style="color: gray; font-size: small;"> 
-																	<%=c.getRecipeName()%>
-																	<span class="cmt" style="color: red;">[<em><%=c.getRecipeViews()%></em>]</span>
-																</div>
-															</td>
-															
-															<td style="width: 25%;" align="center">
-																<img src="<%=c.getRecipePic() %>" style="width: 120px; height: 90px; border-radius: 10px;">
-															</td>
-														</tr>
-													</tbody>
+					<!-- ------------------------------------------------------------------------------------ -->
+					<div class="tab-pane fade" id="comment">
+						<div class="container">
+							<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px; margin-top: 15px;">
+								<div style="margin-left: 20px; margin-top: 20px;" >
+								  <input type="checkbox" name="ckComment" value="selectall" onclick="selectAll(this)"/> 전체
+								</div>
+								<div>
+									<a href="#" class="btn btn-danger" role="button" onclick="deleteSelected()">삭제하기</a>
+								</div>
+							  </div>
+							<table class="table table-hover"> <br>
+								<% if (clist.isEmpty()) {%>
+									<p>작성된 댓글이 없습니다.</p>
+								<%} else {%>
+									<% for (MyComment c : clist) {%>
+									<a href="#" target="_blank" class="board-list"> 
+										<thead></thead>
+										<tbody>
+											<tr>
+												<td style="width: 5%; padding-top: 20px; padding-left: 20px;">
+													<div class="only_box">
+														<div class="FormInputCheck">
+															<input id="check_comment_100" type="checkbox" class="input_check" name="ckComment">
+															<label for="check_comment_100" class="label">
+																<span class="blind"></span>
+															</label>
+														</div>
+													</div>
+												</td>
+												<td style="width: 70%; padding-top: 20px; ">
+													<a href="#" target="_blank" class="board-list">
+														<div class="inner_list" style="font-weight: 400;">
+															<strong class="article">
+																<%=c.getComContent()%>
+															</strong>
+														</div>
 													</a>
-												<%}%>
-											<%}%>
-									
-												</table>
-											</div>
-										</div>
+													<div class="comment_date"  style="color: gray; font-size: small;">
+														<%=c.getComDate()%>
+													</div>
+													<div class="comment_title" style="color: gray; font-size: small;"> 
+														<%=c.getRecipeName()%>
+														<span class="cmt" style="color: red;">[<em><%=c.getRecipeViews()%></em>]</span>
+													</div>
+												</td>
+												<td style="width: 25%;" align="center">
+													<img src="<%=c.getRecipePic() %>" style="width: 120px; height: 90px; border-radius: 10px;">
+												</td>
+											</tr>
+										</tbody>
+									</a>
+									<%}%>
+								<%}%>
+							</table>
+						</div>
+					</div>
+					
+					<script>
+						// 전체 선택
+						function selectAll(source) {
+							var checkboxes = document.getElementsByName('ckComment');
+							for(var i=0, n=checkboxes.length;i<n;i++) {
+								checkboxes[i].checked = source.checked;
+							}
+						}
+
+						// 삭제 버튼 클릭 시 삭제하기
+						function deleteSelected() {
+							var checkboxes = document.getElementsByName('ckComment');
+							var checked = [];
+							for (var i = 0, n = checkboxes.length; i < n; i++) {
+							if (checkboxes[i].checked) {
+								checked.push(checkboxes[i].value);
+							}
+							}
+							if (checked.length > 0) {
+							// TODO: 삭제 로직 구현
+							console.log(checked);
+							} else {
+							alert('삭제할 댓글을 선택해 주세요.');
+						}
+						}
+
+
+					</script>
+					
+
+										
 							<!-- ------------------------------------------------------------------------------------ -->
 
 
@@ -262,7 +322,11 @@
 							<!-- ------------------------------------------------------------------------------------ -->
 										<div class="tab-pane fade" id="wish">
 											<div class="container">
-												<table class="table table-hover"> <br><br>
+
+												<div align="right"> <br>
+													<a href="#" class="btn btn-danger" role="button"> 삭제하기</a>
+												</div> 
+												<table class="table table-hover"> <br>
 													<% if (wlist.isEmpty()) {%>
 														<p>찜한 목록이 없습니다.</p>
 														<%} else {%>
@@ -281,6 +345,10 @@
 																	</div>
 																</div>
 															</td>
+															
+															<td style="width: 25%;" align="center;">
+																<img src="<%= w.getRecipePic() %>" style="width: 120px; height: 90px; border-radius: 10px;">
+															</td>
 
 															<td style="width: 70%; padding-top: 20px;">
 																 <a href="#" target="_blank" class="board-list">
@@ -290,9 +358,9 @@
 																</a>
 															</td>
 
-															<td style="width: 25%;" align="center;">
-																<img src="<%= w.getRecipePic() %>" style="width: 120px; height: 90px; border-radius: 10px;">
-															</td>
+
+
+
 														</tr>
 													</tbody>
 													</a>
@@ -305,7 +373,35 @@
 							<!-- ------------------------------------------------------------------------------------ -->
 										</div>
 							<!-------------------------------------------------------------------------------------------------------------->
+						</div>
+						<!-- side_bar -->
+						<div class="col-12 col-lg-4">
+							<div class="blog-sidebar-area">
+								<!-- Widget start -->
+								<div class="widget_title">
+									<h6>about me</h6>
+								</div>
+								<div class="single-widget mb-80" style="max-width: 200px;">
+									<div class="text-center">
+										<div class="info_pic">
+											<a href="javascript:void(0);" onclick="$('#vProfileImageModal').modal('show')">
+												<img src="<%=loginUser.getMemImg() %>" style="border-radius: 50%;"></a>
+											<a href="javascript:void(0);" class="info_set" onclick="$('#vProfileImageModal').modal('show')" >
+												<img src="https://recipe1.ezmember.co.kr/img/mobile/icon_camera2.png" alt="사진변경"></a>
+												<p style="font-size: 20px; font-weight: 600; color: #51545f;" ><%= loginUser.getNickName() %></p>
+										</div>
+										<div class="date-comments d-flex justify-content-between">
+											<div class="mycount" align="left" style="font-size: 16px; color: #51545f; font-weight: 600;"> 
+												<span class="comments" >내 레시피: 20 </span>
+												<span class="comments" style="padding-left: 20px;">내 댓글: 10 </span>
+											</div> 
+										</div>
 									</div>
+								</div>
+								<!-- widget end -->
+							</div>
+						</div>
+						<!-- side_bar end -->
 								
 								
 							</div>
@@ -316,6 +412,8 @@
 	
 	<!-- ##### Best Receipe Area End ##### -->
 <!-- ----------------------------------------------------------------------------------------------------- -->
+				
+
 
 
 
