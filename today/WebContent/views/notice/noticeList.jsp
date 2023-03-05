@@ -86,14 +86,25 @@
 <%@ include file = "../common/menubar.jsp" %>
 
 <div id="wrap">
-    <br><br>
-    <div id="notice">
-    <h1 class="foot"><b>공지사항</b></h1>
-    <br>
-    <h6>- 오늘의식탁 운영관련 글을 공지하는 '공지사항' 페이지입니다.</h6>
-    <br>
-    <hr>
-    <br><br>
+
+<!-- ----------------------------------------------------------------------------------------------------- -->
+	<!-- ##### Breadcumb Area Start ##### -->
+	<div class="breadcumb-area bg-img bg-overlay"
+    style="background-image: url(img/bg-img/breadcumb2.jpg);">
+    <div class="container h-100">
+        <div class="row h-100 align-items-center">
+            <div class="col-12">
+                <div class="breadcumb-text text-center">
+                    <h2>공지사항</h2>
+                    <br>
+                    <h6 style="color: white;">- 오늘의식탁 운영관련 글을 공지하는 '공지사항' 페이지입니다.</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <br><br>
+<!-- ##### Breadcumb Area End ##### -->
+<!-- ----------------------------------------------------------------------------------------------------- -->
     <div class="m-4" id="noticeList">
         <table class="table table-striped"  style="width: 800px;">
             <thead>

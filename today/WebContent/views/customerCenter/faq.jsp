@@ -57,11 +57,24 @@
 
 <div id="wrap">
     <br><br>
-    <h1 id="title"><b>자주 묻는 질문</b></h1>
-    <br>
-    <h6>- 회원님들이 자주 궁금해하시는 내용을 모아놓은 '자주 묻는 질문' 페이지입니다.</h6><br>
-    <hr>
-    <br><br><br>
+<!-- ----------------------------------------------------------------------------------------------------- -->
+	<!-- ##### Breadcumb Area Start ##### -->
+	<div class="breadcumb-area bg-img bg-overlay"
+		style="background-image: url(img/bg-img/breadcumb2.jpg);">
+		<div class="container h-100">
+			<div class="row h-100 align-items-center">
+				<div class="col-12">
+					<div class="breadcumb-text text-center">
+						<h2>자주 묻는 질문</h2>
+            <br>
+            <h6 style="color: white;">- 회원님들이 자주 궁금해하시는 내용을 모아놓은 '자주 묻는 질문' 페이지입니다.</h6>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div> <br><br>
+	<!-- ##### Breadcumb Area End ##### -->
+<!-- ----------------------------------------------------------------------------------------------------- -->
 
     <div class="accordion" id="accordionExample">
         <div class="accordion-item">
