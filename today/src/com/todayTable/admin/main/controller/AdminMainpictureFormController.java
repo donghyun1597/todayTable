@@ -1,11 +1,20 @@
-package com.todayTable.admin.main;
+package com.todayTable.admin.main.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
+
+import com.todayTable.admin.main.model.service.AdminMainService;
+import com.todayTable.member.model.vo.MainImg;
 
 /**
  * Servlet implementation class AdminMainpictureFormController
@@ -26,6 +35,11 @@ public class AdminMainpictureFormController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		ArrayList<MainImg> list = new AdminMainService().selectMainpic();
+		
+		request.setAttribute("mainImgList", list);
+		
 		request.getRequestDispatcher("views/admin/adminUpdateMainPic.jsp").forward(request, response);
 	}
 
