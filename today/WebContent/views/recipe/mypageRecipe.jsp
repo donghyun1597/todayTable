@@ -10,8 +10,12 @@
 	ArrayList<MyComment> clist = (ArrayList<MyComment>)request.getAttribute("clist");
 	ArrayList<MyWishlist> wlist = (ArrayList<MyWishlist>)request.getAttribute("wlist");
 	Recipe myrecipe = (Recipe)session.getAttribute("myrecipe");
-	
 %>
+<% if (request.getAttribute("updateModal") != null && (boolean)request.getAttribute("updateModal")) { %>
+    <script>
+        $('#updateModal').modal('show');
+    </script>
+<% } %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -132,6 +136,13 @@
     margin-bottom: 30px;
 }
 
+.modal-content {
+	z-index: 1055;
+}
+
+
+
+
 </style>
 
 
@@ -229,7 +240,7 @@
 						<div class="container">
 							<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px; margin-top: 15px;">
 								<div style="margin-left: 20px; margin-top: 20px;" >
-								  <input type="checkbox" name="ckComment" value="selectall" onclick="selectAll(this)"/> 전체
+								  <input type="checkbox" name="ckComment" value="selectall" onclick="selectAll(this)"/> 전체선택
 								</div>
 								<div>
 									<a href="#" class="btn btn-danger" role="button" onclick="deleteSelected()">삭제하기</a>
@@ -322,10 +333,21 @@
 							<!-- ------------------------------------------------------------------------------------ -->
 										<div class="tab-pane fade" id="wish">
 											<div class="container">
-
-												<div align="right"> <br>
-													<a href="#" class="btn btn-danger" role="button"> 삭제하기</a>
-												</div> 
+												<div class="row">
+													<div class="col-md-6" style="width: 5%; padding-top: 35px; text-align: left; margin-left: 20px;">
+														<div class="only_box">
+															<div class="formInputCheck">
+																<input type="checkbox" id="checkAll" name="ckWish" value="wishSelecAll" class="input_check" onclick="wishSelectAll()">
+																<label for="checkAll" class="label">
+																	<span class="blind">전체선택</span>
+																</label>
+															</div>
+														</div>
+													</div>
+													<div class="col-md-6" align="right" style="width: 5%; padding-top: 20px; ">
+														<a href="#" class="btn btn-danger" role="button"> 삭제하기</a>
+													</div> 
+												</div>
 												<table class="table table-hover"> <br>
 													<% if (wlist.isEmpty()) {%>
 														<p>찜한 목록이 없습니다.</p>
@@ -338,8 +360,8 @@
 															<td style="width: 5%; padding-top: 20px; padding-left: 20px;">
 																<div class="only_box">
 																	<div class="FormInputCheck">
-																		<input id="check_comment_100" type="checkbox" class="input_check"> 
-																		<label for="check_comment_100" class="label"> 
+																		<input id="check_wishlist_100" type="checkbox" class="input_check" name="ckWishlist"> 
+																		<label for="check_wishlist_100" class="label"> 
 																			<span class="blind"></span>
 																		</label>
 																	</div>
@@ -370,6 +392,18 @@
 
 												</div>
 											</div>
+
+											<script>
+												// 전체선택
+												function wishSelectAll(source){
+													var checkboxes = document.getElementsByName('ckWishlist');
+													for(var i=0, n=checkboxes.length; i<n; i++){
+														checkboxes[i].checked = source.checked;
+													}
+												}
+											</script>
+
+
 							<!-- ------------------------------------------------------------------------------------ -->
 										</div>
 							<!-------------------------------------------------------------------------------------------------------------->
@@ -384,9 +418,9 @@
 								<div class="single-widget mb-80" style="max-width: 200px;">
 									<div class="text-center">
 										<div class="info_pic">
-											<a href="javascript:void(0);" onclick="$('#vProfileImageModal').modal('show')">
+											<a data-toggle="modal" data-target="#updateModal">
 												<img src="<%=loginUser.getMemImg() %>" style="border-radius: 50%;"></a>
-											<a href="javascript:void(0);" class="info_set" onclick="$('#vProfileImageModal').modal('show')" >
+											<a class="info_set" data-toggle="modal" data-target="#updateModal">
 												<img src="https://recipe1.ezmember.co.kr/img/mobile/icon_camera2.png" alt="사진변경"></a>
 												<p style="font-size: 20px; font-weight: 600; color: #51545f;" ><%= loginUser.getNickName() %></p>
 										</div>
@@ -402,7 +436,6 @@
 							</div>
 						</div>
 						<!-- side_bar end -->
-								
 								
 							</div>
 						</div>
@@ -465,9 +498,29 @@
 		</div>
 	</footer>
 	<!-- ##### Footer Area Start ##### -->
-
-
 </body>
+
+						<!-- 대표이미지 변경 모달 -->
+						<div class="modal" id="updateModal" style="position:absolute;">
+							<div class="modal-dialog">
+							  <div class="modal-content" style="z-index: 1055px; flex-direction: column; flex-wrap: wrap;" >
+						  
+								<div class="modal-header">
+								  <h6 class="modal-title">대표 이미지 변경</h6>
+								</div>
+						  
+								<div class="modal-body" style="text-align: center;">
+								  <form action="<%= contextPath%>/updateImg.me" method="post">
+									<input type="file" name="updateImg" value="updateImg"> <br><br>
+									<button type="submit" class="btn btn-sm btn-secondary" onclick="return validateImg();">확인</button>
+								  </form>
+								</div>
+							  </div>
+							</div>
+						  </div>
+						<!-- 대표이미지 변경 모달 end-->
+
+
 
 <!-- ##### All Javascript Files ##### -->
 <!-- jQuery-2.2.4 js -->
@@ -483,7 +536,6 @@
 <script defer
 	src="<%=application.getContextPath()%>/resources/js/plugins/plugins.js"></script>
 <!-- Active js -->
-<script defer
-	src="<%=application.getContextPath()%>/resources/js/active.js"></script>
+<script defer src="<%=application.getContextPath()%>/resources/js/active.js"></script>
 
 </html>
