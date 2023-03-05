@@ -63,7 +63,7 @@
         <!-- Receipe Slider -->
         <div class="container">
 			<div class="col-12">
-			    <img src="<%=contextPath+recipe.getRecipePic()%>" alt="" style="height: 500px; width: 100%;">
+			    <img src="<%=contextPath+recipe.getRecipePic()%>"style="height: 500px; width: 100%;">
 			</div>
         </div>
 
@@ -110,7 +110,7 @@
 	                         	<p><%=cookingOrders.get(i).getCoContent() %></p>
 	                     	</div>
 	                     	<div style="width: 30%">
-	                     		<img alt="" src="<%= contextPath+recipe.getRecipePic()%>">
+	                     		<img alt="" src="<%= contextPath+cookingOrders.get(i).getOrdImgImgurl()%>">
 	                     	</div>
                      	</div>
                         
