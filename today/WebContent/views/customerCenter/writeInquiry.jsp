@@ -53,15 +53,28 @@
 <body>
 
 <%@ include file = "../common/menubar.jsp" %>
-    
+
+<!-- ----------------------------------------------------------------------------------------------------- -->
+	<!-- ##### Breadcumb Area Start ##### -->
+	<div class="breadcumb-area bg-img bg-overlay"
+    style="background-image: url(img/bg-img/breadcumb2.jpg);">
+    <div class="container h-100">
+        <div class="row h-100 align-items-center">
+            <div class="col-12">
+                <div class="breadcumb-text text-center">
+                    <h2>문의 작성</h2>
+                    <br>
+                    <h6 style="color: white;">- 문의작성을 위한 '문의작성' 페이지입니다.</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <br><br>
+<!-- ##### Breadcumb Area End ##### -->
+<!-- ----------------------------------------------------------------------------------------------------- -->
+
     <div id="wrap">
-        <br>
-        <h1 id="title"><b>문의 작성</b></h1>
-        <br>
-        <h6>- 문의작성을 위한 '문의작성' 페이지입니다.</h6>
-        <br>
-        <hr>
-        <br><br>
+
         <form id="wirteInquiry-form" action="<%= contextPath %>/writeInquiry.cu" method="post">
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label"><b>제목</b></label>
@@ -98,7 +111,7 @@
           
         </form>
     </div>
-    
+
     <!-- ##### All Javascript Files ##### -->
     <!-- jQuery-2.2.4 js -->
     <script src="resources/js/jquery/jquery-2.2.4.min.js"></script>

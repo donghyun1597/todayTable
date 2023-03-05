@@ -91,12 +91,25 @@
 <div id="wrap">
     <br><br>
     <div id="notice">
-    <h1 class="foot"><b>1:1 문의</b></h1>
-    <br>
-    <h6>- 회원님들의 궁금한 점을 등록하여 답변받을 수 있는 '1:1문의' 페이지입니다.</h6>
-    <br>
-    <hr>
-    <br><br>
+<!-- ----------------------------------------------------------------------------------------------------- -->
+	<!-- ##### Breadcumb Area Start ##### -->
+	<div class="breadcumb-area bg-img bg-overlay"
+		style="background-image: url(img/bg-img/breadcumb2.jpg);">
+		<div class="container h-100">
+			<div class="row h-100 align-items-center">
+				<div class="col-12">
+					<div class="breadcumb-text text-center">
+						<h2>1:1문의</h2>
+                        <br>
+                        <h6 style="color: white;">- 회원님들의 궁금한 점을 등록하여 답변받을 수 있는 '1:1문의' 페이지입니다.</h6>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div> <br><br>
+	<!-- ##### Breadcumb Area End ##### -->
+<!-- ----------------------------------------------------------------------------------------------------- -->
+
     <div class="m-4" id="noticeList">
         <table class="table table-striped"  style="width: 800px;">
             <thead>
@@ -197,11 +210,11 @@
       
             <!-- Modal body -->
             <div class="modal-body" id="deleteBody" align="center">
-              	<form action="<%= contextPath %>/deleteInquiry.cu?num=<%= %>" method="post">
+              	<form action="" method="post" id="deleteInquiryForm">
               		<input type="hidden" id="deleteNumber" name="deleteNum">
 	                <b>삭제 후 복구가 불가능 합니다. <br> 정말로 삭제하시겠습니까?</b><br><br>
 	                <button class="btn btn-sm btn-secondary" data-dismiss="modal">취소</button>
-					<button type="submit" class="btn btn-sm btn-danger">삭제</button>
+					<button type="submit" class="btn btn-sm btn-danger" id="deleteBtn">삭제</button>
             	</form>
             </div>
       
@@ -234,6 +247,7 @@
             $(".deleteInquiry").click(function(){
             	var num = $(this).children().val();
             	$("#deleteNumber").val(num);
+                $("#deleteInquiryForm").attr("action", "<%= contextPath %>/deleteInquiry.cu?num="+num);
             })
         })
 
@@ -265,11 +279,9 @@
     
     <div class="col-5" style="margin:auto">
         <div class="btn-group">
-            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">제목</button>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">내용</a></li>
-                <li><a class="dropdown-item" href="#">제목+내용</a></li>
-            </ul>
+            <select type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="select">제목</select>
+                <option><a class="dropdown-item" href="#">내용</a></option>
+                <option><a class="dropdown-item" href="#">제목+내용</a></option>
                 <input type="text" class="form-control" placeholder="검색어 입력">
             <button type="button" class="btn btn-secondary">
                 <i class="bi-search"></i>
@@ -278,6 +290,7 @@
     </div>
 </div>
 </div>
+
 
     <!-- ##### All Javascript Files ##### -->
     <!-- jQuery-2.2.4 js -->
