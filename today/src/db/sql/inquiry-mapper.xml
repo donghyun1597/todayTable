@@ -48,7 +48,8 @@
 		      , INQ_ANSWER
 		      , INQ_PRIVATE
 			FROM TB_INQUIRY I
-		       JOIN TB_MEMBER M ON (I.MEM_NO=M.MEM_NO)
+		    JOIN TB_MEMBER M ON (I.MEM_NO=M.MEM_NO)
+		    WHERE INQ_STATUS = 'Y'
 			ORDER
 			   BY INQ_NO DESC)
 		       A
@@ -106,4 +107,12 @@
 		  		TB_INQUIRY
   		WHERE INQ_STATUS = 'Y'
 	</entry>
+	
+	<entry key="deleteInquiry">
+		UPDATE
+		       TB_INQUIRY
+		   SET INQ_STATUS = 'N'
+		 WHERE INQ_NO = ?
+	</entry>
+	
 </properties>
