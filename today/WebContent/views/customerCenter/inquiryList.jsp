@@ -83,6 +83,14 @@
         	color: gray;
         }
     </style>
+
+    <script>
+        $(document).ready( function() {
+        $("#searchSelect").attr("style","display:inline");
+        $(".nice-select").remove("div")
+      });
+    </script>
+
 </head>
 <body>
 
@@ -91,12 +99,25 @@
 <div id="wrap">
     <br><br>
     <div id="notice">
-    <h1 class="foot"><b>1:1 문의</b></h1>
-    <br>
-    <h6>- 회원님들의 궁금한 점을 등록하여 답변받을 수 있는 '1:1문의' 페이지입니다.</h6>
-    <br>
-    <hr>
-    <br><br>
+<!-- ----------------------------------------------------------------------------------------------------- -->
+	<!-- ##### Breadcumb Area Start ##### -->
+	<div class="breadcumb-area bg-img bg-overlay"
+		style="background-image: url(img/bg-img/breadcumb2.jpg);">
+		<div class="container h-100">
+			<div class="row h-100 align-items-center">
+				<div class="col-12">
+					<div class="breadcumb-text text-center">
+						<h2>1:1문의</h2>
+                        <br>
+                        <h6 style="color: white;">- 회원님들의 궁금한 점을 등록하여 답변받을 수 있는 '1:1문의' 페이지입니다.</h6>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div> <br><br>
+	<!-- ##### Breadcumb Area End ##### -->
+<!-- ----------------------------------------------------------------------------------------------------- -->
+
     <div class="m-4" id="noticeList">
         <table class="table table-striped"  style="width: 800px;">
             <thead>
@@ -109,7 +130,6 @@
                 </tr>
             </thead>
             <tbody id="listbody">
-            	<% System.out.println(list); %>
                 <!-- case1. 문의글 없음 -->
             	<%if(list.isEmpty()) { %>
            		<tr>
@@ -140,7 +160,10 @@
                             <div align="right" id="updateDelete">
                             <a href="<%= contextPath %>/updateInquiryForm.cu?num=<%= i.getInqNo() %>" style="color: coral;">수정</a>
                              | 
-                            <a href="<%= contextPath %>/delete.no?num=<%= i.getInqNo() %>" data-toggle="modal" data-target="#deleteModal" style="color: coral;">삭제</a>
+                            <a style="color:coral;" data-toggle="modal" href="#deleteModal" class="deleteInquiry">
+                            <input type="hidden" value="<%= i.getInqNo() %>">
+                            삭제
+                            </a>
                             </div>
                         </div>
                     </td>
@@ -182,7 +205,7 @@
         <button type="button" class="btn btn-secondary" onclick="writeInquiry();" style="margin-left: 90%;">글쓰기</button>
     </div>
     
-    <!-- 문의 삭제 Modal -->
+	<!-- 문의 삭제 Modal -->
 	<div class="modal" id="deleteModal">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -194,19 +217,20 @@
             </div>
       
             <!-- Modal body -->
-            <div class="modal-body" align="center">
-              
-              <form action="<%= contextPath %>/deleteInquiry.cu?num=<%= deleteNo.getInqNo() %>" method="post">
-                <b>삭제 후 복구가 불가능 합니다. <br> 정말로 삭제하시겠습니까?</b><br><br>
-                <button class="btn btn-sm btn-secondary" data-dismiss="modal">취소</button>
-				<button type="submit" class="btn btn-sm btn-danger">삭제</button>                
-              </form>
-            
+            <div class="modal-body" id="deleteBody" align="center">
+              	<form action="" method="post" id="deleteInquiryForm">
+              		<input type="hidden" id="deleteNumber" name="deleteNum">
+	                <b>삭제 후 복구가 불가능 합니다. <br> 정말로 삭제하시겠습니까?</b><br><br>
+	                <button class="btn btn-sm btn-secondary" data-dismiss="modal">취소</button>
+					<button type="submit" class="btn btn-sm btn-danger" id="deleteBtn">삭제</button>
+            	</form>
             </div>
       
           </div>
         </div>
       </div>
+    
+
     
     <script>
     	function writeInquiry(){
@@ -228,10 +252,16 @@
                     $div.slideUp();
                 }
             })
+            $(".deleteInquiry").click(function(){
+            	var num = $(this).children().val();
+            	$("#deleteNumber").val(num);
+                $("#deleteInquiryForm").attr("action", "<%= contextPath %>/deleteInquiry.cu?num="+num);
+            })
         })
-        
-        
+
     </script>
+    
+
     
     <div class="m-4" id="paging">
         <nav>
@@ -256,20 +286,27 @@
     </div>
     
     <div class="col-5" style="margin:auto">
+        <form action="test" method="post">
         <div class="btn-group">
-            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">제목</button>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">내용</a></li>
-                <li><a class="dropdown-item" href="#">제목+내용</a></li>
-            </ul>
-                <input type="text" class="form-control" placeholder="검색어 입력">
-            <button type="button" class="btn btn-secondary">
+            <select name="#" id="searchSelect" class="btn dropdown-toggle">
+                <option value="title">제목</option>
+                <option value="content">내용</option>
+                <option value="titleContent">제목+내용</option>
+            </select>
+            <input type="text" class="form-control" placeholder="검색어 입력">
+            <button type="submit" class="btn btn-secondary">
                 <i class="bi-search"></i>
             </button>
         </div>
+        </form>
     </div>
 </div>
 </div>
+
+<script>
+    
+</script>
+
 
     <!-- ##### All Javascript Files ##### -->
     <!-- jQuery-2.2.4 js -->

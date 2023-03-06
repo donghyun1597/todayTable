@@ -1289,6 +1289,7 @@ textarea:focus {
 .ingredients h4 {
   color: #474747;
   margin-bottom: 30px;
+  margin-top : 30px;
 }
 .ingredients .custom-checkbox .custom-control-label::before {
   border-radius: 0;

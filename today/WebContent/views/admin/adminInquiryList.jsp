@@ -18,7 +18,7 @@
 
 <link rel="icon" href="resources/image/core-img/favicon.ico">
 <!-- Core Stylesheet -->
-<link rel="stylesheet" href="resources/css/style.css">
+<!-- <link rel="stylesheet" href="resources/css/style.css"> -->
 
 <style>
     @import url(https://fonts.googleapis.com/css?family=Roboto:400,700,500);

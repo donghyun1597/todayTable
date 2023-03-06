@@ -16,7 +16,7 @@ import com.todayTable.member.model.vo.Member;
 /**
  * Servlet implementation class MemberInsertController
  */
-@WebServlet("/insert.me")
+@WebServlet("/insertMem.me")
 public class MemberInsertController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
