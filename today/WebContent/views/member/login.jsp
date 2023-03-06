@@ -139,7 +139,7 @@
         font-size: 1.2em;
         letter-spacing: 2px;
         }
-        
+
     </style>
 </head>
 <body>
@@ -176,7 +176,7 @@
             </form>
             <div class="login_etc">
                 <div class="forgot_id">
-                    <a href="#">아이디 찾기</a>
+                    <a href="<%=request.getContextPath()%>/searchMemId.me">아이디 찾기</a>
                 </div>
                 <div class="forgot_pw">
                     <a href="#">비밀번호 찾기</a>

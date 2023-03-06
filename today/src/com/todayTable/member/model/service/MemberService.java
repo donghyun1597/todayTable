@@ -121,6 +121,29 @@ public class MemberService {
 		return result;
 	}
 	
+public Member searchMemId(String memberName, String phone) {
+		
+		Connection conn = getConnection();
+		MemberDao dao = new MemberDao();
+		Member m = dao.searchMemId(conn, memberName, phone);
+		close(conn);
+		
+		System.out.println("m : " + m);
+		return m;
+	}
+	
+	//비밀번호 찾기
+	public Member searchMemPw(String memberId, String memberName) {
+		Connection conn = getConnection();
+		MemberDao dao = new MemberDao();
+		Member m = dao.searchMemPw(conn, memberId, memberName);
+		close(conn);
+		
+
+		System.out.println("service : " + m);
+		return m;
+	}
+	
 	
 	
 	
