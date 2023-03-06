@@ -384,9 +384,9 @@
 								<div class="single-widget mb-80" style="max-width: 200px;">
 									<div class="text-center">
 										<div class="info_pic">
-											<a href="javascript:void(0);" onclick="$('#vProfileImageModal').modal('show')">
+											<a href="javascript:void(0);" onclick="$('#imageModal').modal('show')">
 												<img src="<%=loginUser.getMemImg() %>" style="border-radius: 50%;"></a>
-											<a href="javascript:void(0);" class="info_set" onclick="$('#vProfileImageModal').modal('show')" >
+											<a href="javascript:void(0);" class="info_set" onclick="$('#imageModal').modal('show')" >
 												<img src="https://recipe1.ezmember.co.kr/img/mobile/icon_camera2.png" alt="사진변경"></a>
 												<p style="font-size: 20px; font-weight: 600; color: #51545f;" ><%= loginUser.getNickName() %></p>
 										</div>
@@ -402,6 +402,18 @@
 							</div>
 						</div>
 						<!-- side_bar end -->
+
+						<script>
+							$(document).ready(function(){
+							  $('#imageModal').on('show.bs.modal', function (event) {
+								var button = $(event.relatedTarget) // 클릭한 버튼
+								var recipient = button.data('whatever') // 버튼에 있는 데이터 가져오기
+						  
+								var modal = $(this)
+								modal.find('.modal-body input').val(recipient)
+							  })
+							});
+						  </script>
 								
 								
 							</div>
