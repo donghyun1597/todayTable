@@ -20,12 +20,10 @@
   </style>
 </head>
 <body>
-
+  <form action="">
 	<div>
         <div id="divMainPhotoUpload" class="cont_pic2">
-          <input type="hidden" name="main_photo" id="main_photo" value="">
-          <input type="hidden" name="new_main_photo" id="new_main_photo" value="">
-          <input type="hidden" name="del_main_photo" id="del_main_photo" value="">
+          
           <div style="position:absolute;left:-3000px"><input type="file" name="q_main_file" id="q_main_file" file_gubun="main" accept="jpeg,png,gif" style="display:;width:0px;height:0px;font-size:0px;" text=""></div>
           <div id="divMainPhotoBox" is_over="0">
               <img id="mainPhotoHolder" onclick="browseMainFile()" src="https://recipe1.ezmember.co.kr/img/pic_none4.gif" style="width: 250px; height: 250px; cursor:pointer">
@@ -43,10 +41,7 @@
         
   
         <div class="cont_line pad_b_25"><p class="cont_tit4">동영상</p>
-            <input type="hidden" name="video_photo" id="video_photo" value="">
-            <input type="hidden" name="new_video_photo" id="new_video_photo" value="">
-            <input type="hidden" name="del_video_photo" id="del_video_photo" value="">
-            <input type="hidden" name="cok_video_src" id="cok_video_src" value="">
+            
             <textarea name="cok_video_url" id="cok_video_url" class="form-control step_cont" prev_url="" placeholder="동영상이 있으면 주소를 입력하세요.(Youtube,네이버tvcast,다음tvpot 만 가능) 예)http://youtu.be/lA0Bxo3IZmM" style="height:100px; width:380px; resize:none;"></textarea>
             <div style="position:absolute;left:-3000px"><input type="file" name="q_video_file" id="q_video_file" file_gubun="video" accept="jpeg,png,gif" style="display:;width:0px;height:0px;font-size:0px;" text=""></div>
             <div id="divVideoPhotoBox" is_over="0" class="thumb_m">
@@ -175,9 +170,9 @@
         <span class="guide mag_b_15" style="width:100%;">재료가 남거나 부족하지 않도록 정확한 계량정보를 적어주세요.</span>
 		<div class="ingre_class" id="defIngre">
         
-        <input type="text" value="재료" style="font-weight:bold;font-size:18px;width:210px;">
+        <input type="text" value="재료" style="font-weight:bold;font-size:18px;width:210px;" class="ingre_class_name">
         
-        <ul id="divMaterialArea_1" class="ui-sortable">
+        <ul id="divMaterialArea_1" class="ingre_ul">
           <li id="ingreNum1_1">
             <input type="text" style="width:330px;" placeholder="예) 돼지고기">
             <input type="text" style="width:280px;" placeholder="예) 300g">
@@ -248,8 +243,7 @@
             let addHtml=$("#defIngre").html();
             
             $("#addIngreClass").click(function(){
-              // console.log($(".ingre_class").html());
-              // console.log($('<div class="ingre_class"><button>묶음삭제</button><div>').html(addHtml));
+              
               $add=$('<div class="ingre_class"></div>').html(addHtml);
               console.log($add.children());
               $add.children('input').after('<button class="delClass">묶음삭제</button>');
@@ -327,12 +321,55 @@
     </div>
 
     <div style="padding:0 0 20px 180px; width:820px;">
-      <button type="button" onclick="addStep()" class="btn btn-default"><span class="glyphicon glyphicon-plus-sign"></span>순서추가</button></div>
+      <button type="button" onclick="addStep()" class="btn btn-default">
+        순서추가
+      </button>
+    </div>
+    <script>
+      $(function(){
+
+
+
+      })
+
+
+    </script>
     
       <div class="regi_btm">
-        <button type="button" onclick="doSubmit('save')" class="btn-lg btn-primary">작성하기</button>
+        <button type="submit" onclick="doSubmit()" class="btn-lg btn-primary">작성하기</button>
         
         <button type="button" onclick="history.back();" class="btn-lg btn-default">취소</button>
       </div>
+    </form>
+      <script>
+          
+          // function doSubmit(){
+          //   let ingreForm=$('<form action="/today/ingreIn.re" method="POST"><form>');
+          //   let ingreClass = [];
+          //   let ingre = [];
+          //   let i = 1;
+          //   $(".ingre_class").each(function(){
+          //     ingreClass.push($('<input type="text" name="ingreClass">').val($(this).children('.ingre_class_name').val()));
+          //     $(this).find('.ingre_ul input').each(function(){
+          //       ingre.push($('<input type="text" name="ingre'+i+'">').val($(this).val()));
+          //     })
+          //     i++;
+          //    });
+          //    ingreForm.append(ingreClass);
+          //    ingreForm.append(ingre);
+             
+          //    $('body').append(ingreForm);
+          //    ingreForm.submit();
+          //   // });
+          //   // $(".ui-sortable input").each(function(){
+          //   //     console.log($(this).val());
+
+          //   //   });
+
+          // }
+
+        
+
+      </script>
 </body>
 </html>

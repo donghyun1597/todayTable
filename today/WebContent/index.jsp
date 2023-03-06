@@ -435,10 +435,10 @@
 		                	console.log(list[i].recipeNo);
 		                    value += '<div class="col-12 col-sm-6 col-lg-4" id="col-510">'+
 		                            '<div class="single-best-receipe-area mb-30">'+
-		                            '<img src="<%=contextPath%>'+list[i].recipePic+'" alt="음식2">'+
+		                            '<img src="<%=contextPath%>'+list[i].recipePic+'" alt="음식2" style="width:100%; height:100%">'+
 		                            '<div class="receipe-content">'+
 		                                '<a href="<%=contextPath%>/recipeView.rc?recipeNo='+list[i].recipeNo +'">'+
-		                                    '<h5>'+list[i].recipeName+'</h5>'+
+		                                    '<h5>'+list[i].recipeName+'</h5>'+ 
 		                                '</a>'+
 		                                '<div class="ratings">난이도'+list[i].recipeDifficulty+'<br>'+
 		                                    '<i class="fa fa-star" aria-hidden="true"></i>'+
