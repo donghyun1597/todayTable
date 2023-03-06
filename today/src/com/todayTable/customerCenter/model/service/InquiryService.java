@@ -74,4 +74,21 @@ public class InquiryService {
 		return result;
 	}
 
+	public int deleteInquiry(int inqNo) {
+		
+		Connection conn = getConnection();
+		
+		int result = new InquiryDao().deleteInquiry(conn, inqNo);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+	}
+
 }

@@ -83,6 +83,14 @@
         	color: gray;
         }
     </style>
+
+    <script>
+        $(document).ready( function() {
+        $("#searchSelect").attr("style","display:inline");
+        $(".nice-select").remove("div")
+      });
+    </script>
+
 </head>
 <body>
 
@@ -278,18 +286,26 @@
     </div>
     
     <div class="col-5" style="margin:auto">
+        <form action="test" method="post">
         <div class="btn-group">
-            <select type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="select">제목</select>
-                <option><a class="dropdown-item" href="#">내용</a></option>
-                <option><a class="dropdown-item" href="#">제목+내용</a></option>
-                <input type="text" class="form-control" placeholder="검색어 입력">
-            <button type="button" class="btn btn-secondary">
+            <select name="#" id="searchSelect" class="btn dropdown-toggle">
+                <option value="title">제목</option>
+                <option value="content">내용</option>
+                <option value="titleContent">제목+내용</option>
+            </select>
+            <input type="text" class="form-control" placeholder="검색어 입력">
+            <button type="submit" class="btn btn-secondary">
                 <i class="bi-search"></i>
             </button>
         </div>
+        </form>
     </div>
 </div>
 </div>
+
+<script>
+    
+</script>
 
 
     <!-- ##### All Javascript Files ##### -->
