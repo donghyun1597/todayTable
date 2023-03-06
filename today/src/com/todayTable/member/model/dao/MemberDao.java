@@ -346,9 +346,66 @@ public class MemberDao {
 		
 		return result;
 		
+	}
+	
+public Member searchMemId(Connection conn, String memberName, String phone) {
 		
-		
-		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = "select * from member where member_name=? and phone=?";
+		Member m = null;
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, memberName);
+			pstmt.setString(2, phone);
+			rset = pstmt.executeQuery();
+			while(rset.next()){
+				m = new Member();
+				m.setMemId(rset.getString("memId"));
+				m.setMemPwd(rset.getString("memPwd"));
+				m.setMemName(rset.getString("memName"));
+				m.setPhone(rset.getString("phone"));
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			close(pstmt);
+			close(rset);
+	}	
+	
+		return m;
+	}
+	
+	//비밀번호찾기 (분실시)
+	public Member searchMemPw(Connection conn, String memberId, String memberName) {
+	
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = "select * from member where member_id=? and member_name=?";
+		Member m = null;
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, memberId);
+			pstmt.setString(2, memberName);
+			rset = pstmt.executeQuery();
+			while(rset.next()){
+				m = new Member();
+				m.setMemId(rset.getString("memId"));
+				m.setMemPwd(rset.getString("memPwd"));
+				m.setMemName(rset.getString("memName"));
+				m.setPhone(rset.getString("phone"));
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			close(pstmt);
+			close(rset);
+	}	
+		return m;
 	}
 	
 

@@ -28,10 +28,6 @@ public class Member {
 		
 	}
 
-	
-
-	
-
 
 	public String[] getAlgNo() {
 		return algNo;
@@ -91,6 +87,15 @@ public class Member {
 		this.memPwd = memPwd;
 		this.nickName = nickName;
 		this.memName = memName;
+		this.phone = phone;
+	}
+	
+	
+
+
+	public Member(String memId, String phone) {
+		super();
+		this.memId = memId;
 		this.phone = phone;
 	}
 
