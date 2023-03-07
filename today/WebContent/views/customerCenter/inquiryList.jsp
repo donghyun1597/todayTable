@@ -97,7 +97,6 @@
 <%@ include file = "../common/menubar.jsp" %>
 
 <div id="wrap">
-    <br><br>
     <div id="notice">
 <!-- ----------------------------------------------------------------------------------------------------- -->
 	<!-- ##### Breadcumb Area Start ##### -->
@@ -288,24 +287,21 @@
     <div class="col-5" style="margin:auto">
         <form action="test" method="post">
         <div class="btn-group">
-            <select name="#" id="searchSelect" class="btn dropdown-toggle">
+            <select name="#" id="searchSelect" class="btn btn-outline-secondary" style="border-color: darkgray;">
                 <option value="title">제목</option>
                 <option value="content">내용</option>
                 <option value="titleContent">제목+내용</option>
             </select>
-            <input type="text" class="form-control" placeholder="검색어 입력">
-            <button type="submit" class="btn btn-secondary">
+            <input type="text" class="form-control" placeholder="검색어 입력" style="border-color: rgb(108, 117, 125); border-radius: 0%;">
+            <button type="submit" class="btn btn-primary">
                 <i class="bi-search"></i>
             </button>
         </div>
         </form>
     </div>
-</div>
-</div>
 
-<script>
-    
-</script>
+</div>
+</div>
 
 
     <!-- ##### All Javascript Files ##### -->

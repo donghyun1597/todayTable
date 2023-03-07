@@ -56,7 +56,6 @@
 <%@ include file = "../common/menubar.jsp" %>
 
 <div id="wrap">
-    <br><br>
 <!-- ----------------------------------------------------------------------------------------------------- -->
 	<!-- ##### Breadcumb Area Start ##### -->
 	<div class="breadcumb-area bg-img bg-overlay"
