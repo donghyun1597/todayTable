@@ -58,6 +58,9 @@
 </style>
 </head>
 <body>
+
+  <!-- Favicon -->
+<link rel="icon" href="img/core-img/favicon.ico">
     <div>
         <div align="center">
             <img src="../../resources/image/core-img/logo.jpg" alt="오늘의식탁 로고" width="40%">
