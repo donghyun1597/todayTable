@@ -115,7 +115,7 @@
 		 WHERE INQ_NO = ?
 	</entry>
 	
-	<entry key="searchTitle">
+	<entry key="searchInquiryTitle">
 		SELECT *
 		    FROM
 		    (SELECT ROWNUM RNUM, A.*
@@ -140,7 +140,7 @@
 			       WHERE RNUM BETWEEN ? AND ?
 	</entry>
 	
-	<entry key="searchContent">
+	<entry key="searchInquiryContent">
 	SELECT *
 	    FROM
 	    (SELECT ROWNUM RNUM, A.*
@@ -165,8 +165,29 @@
 		       WHERE RNUM BETWEEN ? AND ?
 	</entry>
 	
-	<entry key="searchTitleContent">
-		
+	<entry key="searchInquiryTitleContent">
+			SELECT *
+	    FROM
+	    (SELECT ROWNUM RNUM, A.*
+	    FROM(
+	        SELECT 
+		        INQ_NO
+		      , INQ_NAME
+		      , INQ_PROCESSING
+		      , MEM_ID USER_ID
+		      , INQ_DATE
+		      , INQ_QUESTION
+		      , INQ_ANSWER
+		      , INQ_PRIVATE
+			FROM TB_INQUIRY I
+		    JOIN TB_MEMBER M ON (I.MEM_NO=M.MEM_NO)
+		    WHERE INQ_STATUS = 'Y'
+              AND (INQ_NAME LIKE '%'|| ? ||'%' OR INQ_QUESTION LIKE '%'|| ? ||'%')
+			ORDER
+			   BY INQ_NO DESC)
+		       A
+		       )
+		       WHERE RNUM BETWEEN ? AND ?
 	</entry>
 	
 </properties>

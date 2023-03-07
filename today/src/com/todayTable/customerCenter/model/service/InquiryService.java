@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import com.todayTable.common.model.vo.PageInfo;
 import com.todayTable.customerCenter.model.dao.InquiryDao;
 import com.todayTable.customerCenter.model.vo.Inquiry;
+import com.todayTable.member.model.vo.Member;
 
 public class InquiryService {
 
@@ -89,6 +90,17 @@ public class InquiryService {
 		close(conn);
 		
 		return result;
+	}
+
+	public ArrayList<Inquiry> searchInquiryTitle(String searchText, PageInfo pi) {
+		
+		Connection conn = getConnection();
+		
+		ArrayList<Inquiry> list = new InquiryDao().selectInquiryList(conn, searchText, pi);
+		
+		close(conn);
+		
+		return list;
 	}
 
 }
