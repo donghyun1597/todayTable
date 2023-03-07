@@ -25,7 +25,7 @@ public class RecipeImageRenamePolicy implements FileRenamePolicy {
 		
 		//3.원본파일 확장자(String ext)
 		String ext = originNmae.substring(originNmae.lastIndexOf(".")); //".png"
-		String changeName = currentTime + ranNum + ext;
+		String changeName = currentTime + ranNum +"recipe" + ext;
 				
 				
 		return new File(originFile.getParent(),changeName);
