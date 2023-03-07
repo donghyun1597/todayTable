@@ -42,6 +42,8 @@
     
     <style>
     
+    
+    
         /* 로고 이미지 영역 수정했음 */
         .nav-brand { width: 150px; }
         
