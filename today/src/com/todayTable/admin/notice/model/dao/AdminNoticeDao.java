@@ -6,6 +6,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
 
@@ -65,7 +66,6 @@ public class AdminNoticeDao {
 			pstmt.setString(2, n.getNoticeContents());
 			pstmt.setString(3, n.getNoticeClsfc());
 			pstmt.setInt(4, n.getNoticeNo());
-			System.out.println(n.getNoticeClsfc());
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -94,5 +94,29 @@ public class AdminNoticeDao {
 		}
 		
 		return result;
+	}
+	
+	public int selectListCount(Connection conn) {
+		int listCount = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("noticeSelectListCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				listCount = rset.getInt("count");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return listCount;
 	}
 }

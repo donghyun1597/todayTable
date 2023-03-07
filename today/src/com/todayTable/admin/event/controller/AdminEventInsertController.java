@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletResponse;
 import com.todayTable.admin.event.model.service.AdminEventService;
 
 /**
- * Servlet implementation class AdminEventCloseController
+ * Servlet implementation class AdminEventInsertController
  */
-@WebServlet("/close.ev")
-public class AdminEventCloseController extends HttpServlet {
+@WebServlet("/insert.ev")
+public class AdminEventInsertController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminEventCloseController() {
+    public AdminEventInsertController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,12 +28,15 @@ public class AdminEventCloseController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int eventNo = Integer.parseInt(request.getParameter("eno"));
+		request.setCharacterEncoding("UTF-8");
 		
-		int result = new AdminEventService().closeEvent(eventNo);
+		String eventTitle = request.getParameter("eventTitle");
+		String eventContent = request.getParameter("eventContent");
+		
+		int result = new AdminEventService().insertEvent(eventTitle, eventContent);
 		
 		if(result > 0) {
-			
+			request.getSession().setAttribute("alertMsg", "이벤트 등록 완료");
 			response.sendRedirect(request.getContextPath() + "/adminEvent.ev?cpage=1");
 		}
 	}

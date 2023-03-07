@@ -19,4 +19,30 @@ public class AdminInquiryService {
 		
 		return list;
 	}
+	
+	public Inquiry selectInquiry(int iNo) {
+		Connection conn = getConnection();
+		
+		Inquiry iq = new AdminInquiryDao().selectInquiry(conn, iNo);
+		
+		close(conn);
+		
+		return iq;
+	}
+	
+	public int insertAnswer(int iqNo, String answer) {
+		Connection conn = getConnection();
+		
+		int result = new AdminInquiryDao().insertAnswer(conn, iqNo, answer);
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+	}
 }

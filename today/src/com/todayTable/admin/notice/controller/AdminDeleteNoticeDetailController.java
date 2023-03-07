@@ -35,7 +35,7 @@ public class AdminDeleteNoticeDetailController extends HttpServlet {
 		if(result > 0) {
 			request.getSession().setAttribute("alertMsg", "삭제 완료");
 			
-			response.sendRedirect(request.getContextPath() + "/adminNotice.no");
+			response.sendRedirect(request.getContextPath() + "/adminNotice.no?cpage=1");
 		}
 	}
 

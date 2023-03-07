@@ -1,9 +1,17 @@
+<%@page import="com.todayTable.common.model.vo.PageInfo"%>
 <%@page import="com.todayTable.event.model.vo.Event"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
 	ArrayList<Event> list = (ArrayList<Event>)request.getAttribute("list");
+
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	
+	int currentPage = pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
 %>
 <!DOCTYPE html>
 <html>
@@ -67,6 +75,10 @@
 	tbody tr{
 		cursor: pointer;
 	}
+
+	#eventHead {
+		color: white;
+	}
 </style>
 </head>
 <body>
@@ -75,15 +87,18 @@
 		<div id="page-content-wrapper">
 			<br><br>
 			<div id="notice">
-				<h1 class="foot"><b>이벤트</b></h1>
-				<br>
-				<h6>- 오늘의식탁의 이벤트 관련 글을 공지하는 '이벤트' 페이지입니다.</h6>
-				<br>
+				<div id="eventHead" style="background-color: rgb(240, 225, 210);">
+					<br>
+					<h1 class="foot"><b>이벤트</b></h1>
+					<br>
+					<h6 style="color: white; font-weight: bold;">- 오늘의식탁의 이벤트 관련 글을 공지하는 '이벤트' 페이지입니다.</h6>
+					<br>
+				</div>
 				<div class="m-4" id="noticeList">
 					<table class="table table-striped" style="width: 800px;">
 						<thead>
 							<tr>
-								<td colspan="4" align="right"><a href="#" class="btn btn-sm btn-secondary"><b>이벤트 등록</b></a></td>
+								<td colspan="4" align="right"><a href="<%= contextPath %>/insertForm.ev" class="btn btn-sm btn-secondary"><b>이벤트 등록</b></a></td>
 							</tr>
 							<tr>
 								<th style="width: 10%;">글번호</th>
@@ -120,7 +135,29 @@
 							})
 						})
 					</script>
+
 				</div>
+			</div>
+			<div class="m-4" id="paging">
+				<nav>
+					<div class="pagination">
+						<%if(currentPage != 1) { %>
+						<button onclick="location.href='<%=contextPath%>/adminEvent.ev?cpage=<%= currentPage -1 %>';" class="page-link"> &lt; </button>
+						<% } %>
+						
+						<%for(int p = startPage; p<=endPage; p++) { %>
+							<% if(p == currentPage){ %>
+								<button style="color: orange" disabled><%=p %></button>
+							<%}else{ %>
+								<button onclick="location.href = '<%= contextPath%>/adminEvent.ev?cpage=<%=p%>';" class="page-link"><%=p %></button>
+							<%} %>
+						<%} %>
+						
+						<%if(currentPage != maxPage) {%>
+							<button onclick="location.href='<%=contextPath%>/adminEvent.ev?cpage=<%= currentPage +1 %>';" class="page-link"> &gt; </button>
+						<%} %>
+					</div>
+				</nav>
 			</div>
 		</div>
 		

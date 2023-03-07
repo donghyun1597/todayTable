@@ -77,6 +77,7 @@
 	FROM TB_INQUIRY I
     JOIN TB_MEMBER M ON (I.MEM_NO=M.MEM_NO)
     WHERE INQ_NO = ?
+    AND INQ_STATUS = 'Y'
 	
 	</entry>
 	
@@ -95,15 +96,28 @@
 	<entry key="adminSelectInquiry">
 		SELECT
 				INQ_NO
-			  , MEM_NO
 			  , INQ_NAME
-			  , INQ_QUESTION
-			  , INQ_DATE	
-			  , INQ_ANSWER
 			  , INQ_PROCESSING
+			  , MEM_ID
+			  , INQ_DATE	
+			  , INQ_QUESTION
+			  , INQ_ANSWER
 			  , INQ_PRIVATE
 		  FROM
 		  		TB_INQUIRY
+  		  JOIN
+  		  		TB_MEMBER USING(MEM_NO)
   		WHERE INQ_STATUS = 'Y'
+  		ORDER BY INQ_PROCESSING ASC, INQ_NO DESC 
+	</entry>
+	
+	<entry key="insertAnswer">
+		UPDATE
+				TB_INQUIRY
+			SET
+				INQ_ANSWER = ?
+			  , INQ_PROCESSING = 'Y'
+	  	WHERE
+	  	 	  INQ_NO = ?	
 	</entry>
 </properties>

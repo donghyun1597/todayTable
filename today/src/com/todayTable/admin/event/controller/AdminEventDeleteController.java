@@ -38,7 +38,7 @@ public class AdminEventDeleteController extends HttpServlet {
 			
 			session.setAttribute("alertMsg", "삭제가 완료되었습니다.");
 			
-			response.sendRedirect(request.getContextPath() + "/adminEvent.ev");
+			response.sendRedirect(request.getContextPath() + "/adminEvent.ev?cpage=1");
 		}
 	}
 

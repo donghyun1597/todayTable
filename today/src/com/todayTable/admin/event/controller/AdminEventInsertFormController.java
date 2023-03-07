@@ -7,19 +7,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.todayTable.admin.event.model.service.AdminEventService;
-
 /**
- * Servlet implementation class AdminEventCloseController
+ * Servlet implementation class AdminEventInsertFormController
  */
-@WebServlet("/close.ev")
-public class AdminEventCloseController extends HttpServlet {
+@WebServlet("/insertForm.ev")
+public class AdminEventInsertFormController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminEventCloseController() {
+    public AdminEventInsertFormController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,14 +26,7 @@ public class AdminEventCloseController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int eventNo = Integer.parseInt(request.getParameter("eno"));
-		
-		int result = new AdminEventService().closeEvent(eventNo);
-		
-		if(result > 0) {
-			
-			response.sendRedirect(request.getContextPath() + "/adminEvent.ev?cpage=1");
-		}
+		request.getRequestDispatcher("/views/admin/adminEventInsertView.jsp").forward(request, response);
 	}
 
 	/**

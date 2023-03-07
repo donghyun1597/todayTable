@@ -65,16 +65,22 @@ public class NoticeDao {
 		
 	}
 	
-	public ArrayList<Notice> adminSelectNotice(Connection conn) {
+	public ArrayList<Notice> adminSelectNotice(Connection conn, PageInfo pi) {
 		ArrayList<Notice> list = new ArrayList<Notice>();
 
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
-		String sql = prop.getProperty("adminSelectNoticeList");
+		String sql = prop.getProperty("selectNoticeList");
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
+			
+			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
 			
 			rset = pstmt.executeQuery();
 			
@@ -155,8 +161,6 @@ public class NoticeDao {
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setInt(1, noticeNo);
-			
-			System.out.println(noticeNo);
 			
 			rset = pstmt.executeQuery();
 			

@@ -7,6 +7,7 @@
 			, MAINIMG_IMG
 	FROM
 			TB_MAINIMG
+	ORDER BY 1
 	
 </entry>
 
@@ -17,8 +18,14 @@
 		(
 			SEQ_MAINIMG_NO.NEXTVAL
 		   , ?
-		   ,null
+		   
 		)
 </entry>
 
+<entry key="deletePic">
+	DELETE
+		FROM TB_MAINIMG
+	WHERE
+		MAINIMG_NO = ?
+</entry>
 </properties>
