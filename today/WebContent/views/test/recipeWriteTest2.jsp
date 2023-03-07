@@ -124,21 +124,21 @@
         
         <ul id="divMaterialArea_1" class="ingre_ul">
           <li id="ingreNum1_1">
-            <input type="text" style="width:330px;" class="ingre1" name="ingre1" placeholder="예) 돼지고기">
-            <input type="text" style="width:280px;" class="ingre1" name="ingre1" placeholder="예) 300g">
+            <input type="text" style="width:330px;" class="ingre1"  name="ingre1" placeholder="예) 돼지고기">
+            <input type="text" style="width:280px;" class="ingre1"  name="ingre1" placeholder="예) 300g">
           </li>
           <li id="ingreNum1_2">
-            <input type="text" style="width:330px;" class="ingre1" name="ingre1" placeholder="예) 양배추">
-            <input type="text" style="width:280px;" class="ingre1" name="ingre1" placeholder="예) 1/2개">
+            <input type="text" style="width:330px;" class="ingre1"  name="ingre1" placeholder="예) 양배추">
+            <input type="text" style="width:280px;" class="ingre1"  name="ingre1" placeholder="예) 1/2개">
           </li>
           <li id="ingreNum1_3">
-            <input type="text" style="width:330px;" class="ingre1" name="ingre1" placeholder="예) 참기름">
-            <input type="text" style="width:280px;" class="ingre1" name="ingre1" placeholder="예) 1T">
+            <input type="text" style="width:330px;" class="ingre1"  name="ingre1" placeholder="예) 참기름">
+            <input type="text" style="width:280px;" class="ingre1"  name="ingre1" placeholder="예) 1T">
           </li>
         </ul>
 
         <div class="btn_add" style="padding:0 0 20px 350px; width:800px;">
-          <button type="button" class="btn btn-default add_ingre">
+          <button type="button" id="btn1" class="btn btn-default add_ingre">
             추가
           </button>
           <button type="button" id="delBtn" class="btn btn-default del_ingre">
@@ -149,7 +149,7 @@
         
     </div>
     <script>
-       let ingreNum = 1;
+       let ingreNum = 2;
       $(function(){
 
      
@@ -159,10 +159,11 @@
           
           
           let ingre = $('<li><input type="text" style="width:330px;"><input type="text" style="width:280px;"></li>');
-          ingre.children().attr("name","ingre"+ingreNum);
+          ingre.children().attr("name","ingre"+$(this).attr("id").substr(3));
           $(this).parent().prev().append(ingre);
+          
          
-          ingreNum++;
+          
 
         })
 
@@ -201,18 +202,33 @@
               
               $add=$('<div class="ingre_class"></div>').html(addHtml);
               $add.find("#delBtn1").removeAttr("id");
-              console.log($add.children());
+              
               $add.children('input').after('<button class="delClass">묶음삭제</button>');
-              console.log($add);
+              $add.find(".ingre_ul input").each(function(){
+                $(this).attr("name","ingre"+ingreNum);
+              })
+              $add.find('#btn1').attr("id","btn"+ingreNum);
             
               $(".ingreDiv").append($add);
               ingreNum++;
             })
 
             $(document).on("click",".delClass",function(){
-              console.log($(this).parent());
-              $(this).parent().remove(".ingre_class");
               ingreNum--;
+
+              $(this).parent().remove(".ingre_class");
+              console.log($("#defIngre").siblings(".ingre_class"));
+              let i=2;
+              $("#defIngre").siblings(".ingre_class").each(function(){
+                
+                $(this).find(".ingre_ul input").each(function(){
+                  $(this).attr("name","ingre"+i);
+                })
+                $(this).find(".add_ingre").attr("id","btn"+i);
+                i++;
+
+              })
+              
             })
           })
           
