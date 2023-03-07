@@ -11,6 +11,7 @@ import com.todayTable.recipe.model.dao.RecipeDao;
 import com.todayTable.recipe.model.vo.CookingOrder;
 import com.todayTable.recipe.model.vo.IngreClass;
 import com.todayTable.recipe.model.vo.Ingredient;
+import com.todayTable.recipe.model.vo.MemImg;
 import com.todayTable.recipe.model.vo.MyComment;
 import com.todayTable.recipe.model.vo.MyWishlist;
 import com.todayTable.recipe.model.vo.Recipe;
@@ -87,6 +88,10 @@ public class RecipeService {
 		return wlist;
 	}
 	
+	
+	
+	
+	
 	public HashMap<String, Object> selectRecipeDetail(int recipeNo){
 		Connection conn = getConnection();
 		Recipe recipe = new RecipeDao().selectDetailRecipe(conn, recipeNo);
@@ -96,18 +101,17 @@ public class RecipeService {
 		ArrayList<CookingOrder> cookingOrders = new RecipeDao().selectDetailCookingOrder(conn, recipeNo);
 		HashMap<String, Object> list = new HashMap<String, Object>();
 		
-		System.out.println(recipe);
-		System.out.println(ingreClass);
-		System.out.println(ingredients);
-		System.out.println(category);
-		System.out.println(cookingOrders);
+		//System.out.println(recipe);
+		//System.out.println(ingreClass);
+		//System.out.println(ingredients);
+		//System.out.println(category);
+		//System.out.println(cookingOrders);
 		list.put("recipe", recipe);
 		list.put("ingreClass", ingreClass);
 		list.put("ingredients", ingredients);
 		list.put("category", category);
 		list.put("cookingOrders", cookingOrders);
 		
-		System.out.println(list);
 		
 		close(conn);
 		
@@ -116,6 +120,28 @@ public class RecipeService {
 	}
 	
 	
+	
+	
+	/**
+	 * @param mi
+	 * @author sm.kim
+	 * @return
+	 */
+	public int updateMemImg(MemImg mi) {
+		Connection conn = getConnection();
+		
+		int result = new RecipeDao().updateMemImg(conn, mi);
+		
+		if(result > 0) {
+			commit(conn);
+			System.out.println("service 이거 되나");
+		}else {
+			rollback(conn);
+			System.out.println("service 이거 안!!! 되나");
+		}
+		close(conn);
+		return result;
+	}
 	
 	
 	

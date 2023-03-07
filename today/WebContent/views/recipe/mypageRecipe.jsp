@@ -10,12 +10,15 @@
 	ArrayList<MyComment> clist = (ArrayList<MyComment>)request.getAttribute("clist");
 	ArrayList<MyWishlist> wlist = (ArrayList<MyWishlist>)request.getAttribute("wlist");
 	Recipe myrecipe = (Recipe)session.getAttribute("myrecipe");
+	
+	int myrecipeCount = list.size();
+	int mycommentCount = clist.size();
 %>
-<% if (request.getAttribute("updateModal") != null && (boolean)request.getAttribute("updateModal")) { %>
+
     <script>
         $('#updateModal').modal('show');
     </script>
-<% } %>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -138,6 +141,13 @@
 
 .modal-content {
 	z-index: 1055;
+}
+
+#imgPreview {
+    max-width: 100%;
+    max-height: 200px;
+    display: none;
+    margin: 0 auto;
 }
 
 
@@ -345,7 +355,7 @@
 														</div>
 													</div>
 													<div class="col-md-6" align="right" style="width: 5%; padding-top: 20px; ">
-														<a href="#" class="btn btn-danger" role="button"> 삭제하기</a>
+														<a href="#" class="btn btn-danger" role="button" onclick="deleteSelected()">삭제하기</a>
 													</div> 
 												</div>
 												<table class="table table-hover"> <br>
@@ -380,9 +390,6 @@
 																</a>
 															</td>
 
-
-
-
 														</tr>
 													</tbody>
 													</a>
@@ -395,12 +402,30 @@
 
 											<script>
 												// 전체선택
-												function wishSelectAll(source){
+												function wishSelectAll(){
 													var checkboxes = document.getElementsByName('ckWishlist');
 													for(var i=0, n=checkboxes.length; i<n; i++){
-														checkboxes[i].checked = source.checked;
+														checkboxes[i].checked = document.getElementById('checkAll').checked;
 													}
 												}
+
+
+												function deleteSelected() {
+													var checkboxes = document.getElementsByName("ckWishlist");
+													var selected = [];
+													for (var i = 0; i < checkboxes.length; i++) {
+														if (checkboxes[i].checked) {
+														selected.push(checkboxes[i].id.split("_")[2]); // extract recipeNo value from checkbox id and add to selected array
+														}
+													}
+													if (selected.length == 0) {
+														alert("삭제할 항목을 선택해주세요.");
+														return;
+													}
+													deleteWishlist(selected); // call deleteWishlist function with selected recipeNo values
+													}
+
+												
 											</script>
 
 
@@ -418,16 +443,16 @@
 								<div class="single-widget mb-80" style="max-width: 200px;">
 									<div class="text-center">
 										<div class="info_pic">
-											<a data-toggle="modal" data-target="#updateModal">
-												<img src="<%=loginUser.getMemImg() %>" style="border-radius: 50%;"></a>
-											<a class="info_set" data-toggle="modal" data-target="#updateModal">
+											<a href="javascript:void(0);" onclick="$('#updateModal').modal('show');$('html, body').animate({scrollTop:0}, 'slow');">
+												<img src="<%=contextPath+loginUser.getMemImg() %>" style="border-radius: 50%;"></a>
+											<a href="javascript:void(0);" class="info_set" onclick="$('#updateModal').modal('show');$('html, body').animate({scrollTop:0}, 'slow');" >
 												<img src="https://recipe1.ezmember.co.kr/img/mobile/icon_camera2.png" alt="사진변경"></a>
 												<p style="font-size: 20px; font-weight: 600; color: #51545f;" ><%= loginUser.getNickName() %></p>
 										</div>
 										<div class="date-comments d-flex justify-content-between">
 											<div class="mycount" align="left" style="font-size: 16px; color: #51545f; font-weight: 600;"> 
-												<span class="comments" >내 레시피: 20 </span>
-												<span class="comments" style="padding-left: 20px;">내 댓글: 10 </span>
+												<span class="comments" >내 레시피: <%= myrecipeCount %>   </span>
+												<span class="comments" style="padding-left: 20px;">내 댓글:  <%= mycommentCount %></span>
 											</div> 
 										</div>
 									</div>
@@ -436,6 +461,33 @@
 							</div>
 						</div>
 						<!-- side_bar end -->
+
+						<script>
+							$(document).ready(function(){
+							  $('#imageModal').on('show.bs.modal', function (event) {
+								var button = $(event.relatedTarget) // 클릭한 버튼
+								var recipient = button.data('whatever') // 버튼에 있는 데이터 가져오기
+						  
+								var modal = $(this)
+								modal.find('.modal-body input').val(recipient)
+							  })
+							});
+
+
+
+
+
+
+							function validateImg() {
+								// 파일 유효성 검사 등을 수행
+								if(inputFile.files.length == 1)/* 유효한 파일이 선택되었다면 */ {
+									return true;  // 확인 버튼을 누르면 폼이 서버로 제출됨
+								} else {
+									alert('유효한 파일을 선택해주세요.');
+									return false;  // 확인 버튼을 눌러도 폼이 제출되지 않음
+								}
+								}
+						  </script>
 								
 							</div>
 						</div>
@@ -500,25 +552,46 @@
 	<!-- ##### Footer Area Start ##### -->
 </body>
 
-						<!-- 대표이미지 변경 모달 -->
-						<div class="modal" id="updateModal" style="position:absolute;">
-							<div class="modal-dialog">
-							  <div class="modal-content" style="z-index: 1055px; flex-direction: column; flex-wrap: wrap;" >
-						  
-								<div class="modal-header">
-								  <h6 class="modal-title">대표 이미지 변경</h6>
-								</div>
-						  
-								<div class="modal-body" style="text-align: center;">
-								  <form action="<%= contextPath%>/updateImg.me" method="post">
-									<input type="file" name="updateImg" value="updateImg"> <br><br>
-									<button type="submit" class="btn btn-sm btn-secondary" onclick="return validateImg();">확인</button>
-								  </form>
-								</div>
-							  </div>
-							</div>
-						  </div>
-						<!-- 대표이미지 변경 모달 end-->
+<!-- 대표이미지 변경 모달 -->
+<div class="modal" id="updateModal" style="position:absolute;">
+    <div class="modal-dialog">
+        <div class="modal-content" style="z-index: 1055px; flex-direction: column; flex-wrap: wrap;">
+            <div class="modal-header">
+                <h6 class="modal-title">대표 이미지 변경</h6>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body" style="text-align: center;">
+                <form action="<%= contextPath%>/UpdateImg.me" method="post" enctype="multipart/form-data">
+                    <div>
+                        <img id="imgPreview" src="#" alt="이미지 미리보기" style="max-width: 100%; max-height: 200px; display: none;">
+                    </div><br>
+                    <input type="file" name="updateImg" value="updateImg" onchange="previewImage(this);">
+                    <br><br>
+                    <button type="submit" class="btn btn-sm btn-secondary" onclick="return validateImg();">확인</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function previewImage(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $('#imgPreview').attr('src', e.target.result);
+            $('#imgPreview').css('display', 'block');
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+</script>
+
+
+
+
+
+
 
 
 
