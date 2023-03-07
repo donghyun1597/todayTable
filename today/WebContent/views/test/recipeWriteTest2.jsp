@@ -15,16 +15,20 @@
         margin: 0 2px 0 0;
         border-radius: 4px;
     }
+    ul{
+      list-style: none;
+    }
+    
 
 
   </style>
 </head>
 <body>
   
-
+  <div>
   <form action="<%=request.getContextPath()%>/insert.rc" method="post" enctype="multipart/form-data">
 
-	<div>
+	<div align="center">
         <div id="divMainPhotoUpload" class="cont_pic2">
           
           <div style="display: none;">
@@ -44,8 +48,8 @@
           
         </div>
         
-  
-        <div class="cont_line pad_b_25"><p class="cont_tit4">동영상</p>
+        <p class="cont_tit4">동영상</p>
+        <div class="cont_line pad_b_25">
             
             <textarea name="recipe_video" id="cok_video_url" class="form-control step_cont" prev_url="" placeholder="동영상이 있으면 주소를 입력하세요.(Youtube,네이버tvcast,다음tvpot 만 가능) 예)http://youtu.be/lA0Bxo3IZmM" style="height:100px; width:380px; resize:none;"></textarea>
             <div style="position:absolute;left:-3000px">
@@ -120,7 +124,7 @@
         <span class="guide mag_b_15" style="width:100%;">재료가 남거나 부족하지 않도록 정확한 계량정보를 적어주세요.</span>
 		<div class="ingre_class" id="defIngre">
         
-        <input type="text" value="재료" style="font-weight:bold;font-size:18px;width:210px;" name="">
+        <input type="text" value="재료" style="font-weight:bold;font-size:18px;width:210px;" name="ingrClass">
         
         <ul id="divMaterialArea_1" class="ingre_ul">
           <li id="ingreNum1_1">
@@ -201,7 +205,7 @@
             $("#addIngreClass").click(function(){
               
               $add=$('<div class="ingre_class"></div>').html(addHtml);
-              $add.find("#delBtn1").removeAttr("id");
+              $add.find("#delBtn").removeAttr("id");
               
               $add.children('input').after('<button class="delClass">묶음삭제</button>');
               $add.find(".ingre_ul input").each(function(){
@@ -340,6 +344,9 @@
       }
 
       function delStep(){
+        if(no==2){
+          return;
+        }
         $("#divStepArea").children().last().remove();
         no--;
 
@@ -355,6 +362,7 @@
         <button type="button" onclick="history.back();" class="btn-lg btn-default">취소</button>
       </div>
     </form>
+    </div>
       <script>
         function insertRecipe(){
 

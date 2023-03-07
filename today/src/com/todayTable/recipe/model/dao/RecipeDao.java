@@ -98,6 +98,7 @@ public class RecipeDao {
 			
 			while(rset.next()) {
 				Recipe r = new Recipe();
+				r.setRecipeNo(rset.getInt("recipe_no"));
 				r.setRecipePic(rset.getString("recipe_pic"));
 				r.setRecipeName(rset.getString("recipe_name"));
 				r.setRecipeDifficulty(rset.getString("recipe_difficulty"));

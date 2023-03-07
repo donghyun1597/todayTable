@@ -26,9 +26,25 @@
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title -->
-    <title>Delicious - Food Blog Template | Receipe Post</title>
+    <title><%=recipe.getRecipeName() %></title>
 
-    
+    <style>
+    	img{
+            border-radius: 10px;
+            
+        }
+        
+        .receipe-duration div{
+        	margin-right: 20px;
+        	display: inline-block;
+        }
+        .recipe_content{
+        	margin-right:50px;
+        	font-size: 15px;
+        	color:#808080;
+        
+        }
+    </style>
 
 </head>
 
@@ -62,8 +78,8 @@
 
         <!-- Receipe Slider -->
         <div class="container">
-			<div class="col-12">
-			    <img src="<%=contextPath+recipe.getRecipePic()%>"style="height: 500px; width: 100%;">
+			<div class="col-12"  align="center">
+			    <img src="<%=contextPath+recipe.getRecipePic()%>"style="height: 500px; width: 70%;">
 			</div>
         </div>
 
@@ -76,10 +92,10 @@
                         <div class="receipe-headline my-5">
                             <span><%=recipe.getRecipeDate() %></span>
                             <h2><%=recipe.getRecipeName() %></h2>
-                            <div class="receipe-duration">
-                                <span>인분: <%=recipe.getRecipePerson() %></span>
-                                <span>조리시간: <%=recipe.getRecipeTime() %></span>
-                                <span>난이도: <%=recipe.getRecipeDifficulty() %></span>
+                            <div class="receipe-duration" style="text-align: center;">
+                                <div>인분: <%=recipe.getRecipePerson() %></div>
+                                <div>조리시간: <%=recipe.getRecipeTime() %></div>
+                                <div>난이도: <%=recipe.getRecipeDifficulty() %></div>
                             </div>
                         </div>
                     </div>
@@ -93,7 +109,7 @@
                                 <i class="fa fa-star" aria-hidden="true"></i>
                                 <i class="fa fa-star-o" aria-hidden="true"></i>
                             </div>
-                            <a href="#" class="btn delicious-btn">For Begginers</a>
+                            <a href="#" class="btn delicious-btn">찜하기</a>
                         </div>
                     </div>
                 </div>
@@ -106,10 +122,10 @@
 	                       	<h5>STEP <%=i+1 %></h5>
 	                    </div>
 	                    <div style="display:flex;">
-	                        <div style="width: 70%">
-	                         	<p><%=cookingOrders.get(i).getCoContent() %></p>
+	                        <div style="width: 65%; height: 150px" class="recipe_content">
+	                         	<%=cookingOrders.get(i).getCoContent() %>
 	                     	</div>
-	                     	<div style="width: 30%">
+	                     	<div style="width: 35%">
 	                     		<img alt="" src="<%= contextPath+cookingOrders.get(i).getOrdImgImgurl()%>">
 	                     	</div>
                      	</div>
