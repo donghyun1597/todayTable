@@ -78,6 +78,12 @@
 
 
 
+<!-- 수민: 마이페이지 대표 이미지 변경 -->
+<entry key="updateImg">
+	UPDATE TB_MEMBER
+	SET MEM_IMG = ?
+	WHERE MEM_ID = ?
+</entry>
 
 
 
