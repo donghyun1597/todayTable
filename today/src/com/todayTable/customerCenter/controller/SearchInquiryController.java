@@ -90,11 +90,13 @@ public class SearchInquiryController extends HttpServlet {
 		
 		request.setAttribute("list", list);
 		Inquiry deleteNo = list.get(0);
+		int search = 1;
 		
 		// 문의 목록 페이지	
 		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
 		request.setAttribute("deleteNo", deleteNo);
+		request.setAttribute("search", search);
 		request.getRequestDispatcher("views/customerCenter/inquiryList.jsp").forward(request, response);
 		
 	
