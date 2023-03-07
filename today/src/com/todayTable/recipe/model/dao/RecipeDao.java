@@ -15,6 +15,7 @@ import com.todayTable.category.model.vo.Category;
 import com.todayTable.recipe.model.vo.CookingOrder;
 import com.todayTable.recipe.model.vo.IngreClass;
 import com.todayTable.recipe.model.vo.Ingredient;
+import com.todayTable.recipe.model.vo.MemImg;
 import com.todayTable.recipe.model.vo.MyComment;
 import com.todayTable.recipe.model.vo.MyWishlist;
 import com.todayTable.recipe.model.vo.Recipe;
@@ -85,9 +86,9 @@ public class RecipeDao {
 		ResultSet rset = null;
 		
 		String sql = prop.getProperty("selectRecommnedRecipe");
-		System.out.println(values[0]);
-		System.out.println(values[1]);
-		System.out.println(values[2]);
+		//System.out.println(values[0]);
+		//System.out.println(values[1]);
+		//System.out.println(values[2]);
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, values[0]);
@@ -418,7 +419,35 @@ public class RecipeDao {
 	
 	
 	
-	
+	public int updateMemImg(Connection conn, MemImg mi) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("updateImg");
+		System.out.println("Dao 이거 되나");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, "/resources/image/mem-img/" + mi.getMemImg());
+			pstmt.setString(2, mi.getMemId());
+			
+			result = pstmt.executeUpdate();
+			System.out.println("Dao 이거 되나: " + result);
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close (pstmt);
+		}
+		return result;
+		
+		
+		
+		
+	}
 	
 	
 
