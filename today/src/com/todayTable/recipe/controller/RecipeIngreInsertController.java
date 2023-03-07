@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class RecipeIngreInsertController
  */
-@WebServlet("/ingreIn.re")
+@WebServlet("/ingreIn.rc")
 public class RecipeIngreInsertController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
