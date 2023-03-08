@@ -53,8 +53,11 @@ public class MemberInsertController extends HttpServlet {
 			
 		}else {
 			request.setAttribute("errorMsg", "회원가입에 실패했습니다.");
-			response.sendRedirect(request.getContextPath()+"/views/common/errorPage.jsp");
+			RequestDispatcher view = request.getRequestDispatcher("views/common/memErrorPage.jsp");
+			view.forward(request, response);
 		}
+		
+		
 		
 		
 		

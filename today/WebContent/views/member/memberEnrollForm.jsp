@@ -77,27 +77,27 @@ String contextPath = request.getContextPath(); // /jsp
     </tr>
     <tr>
       <td><input type="text" name="memId" maxlength="12" required></td>
-      <td><button type="button" onclick="idCheck();">중복확인</button></td>
+      <!-- <td><button type="button" onclick="idCheck();">중복확인</button></td> -->
     </tr>
     <tr>
       <td>* 비밀번호 :</td>
     </tr>
     <tr>
-      <td><input type="password" name="memPwd" maxlength="15" required></td>
+      <td><input type="password" name="memPwd" id="userPwd1" required></td>
       <td></td>
     </tr>
     <tr>
       <td>* 비밀번호확인 :</td>
     </tr>
     <tr>
-      <td><input type="password" maxlength="15" required></td>
+      <td><input type="password" name="PwdCheck" id="userPwd2" required></td>
       <td></td>
     </tr>
     <tr>
       <td>* 닉네임 :</td>
     </tr>
     <tr>
-      <td><input type="text" name="nickName" maxlength="6" required></td>
+      <td><input type="text" name="nickName" maxlength="10" required></td>
       <td></td>
     </tr>
     <tr>
@@ -346,16 +346,27 @@ String contextPath = request.getContextPath(); // /jsp
   </div>
 
   <div align="center">
-    <button type="submit" >회원가입</button>
-    <button type="reset" >취소</button>
+    <button type="submit" onclick="validate();" >회원가입</button>
+    <button type="reset" onclick="readonlyFalse();">취소</button>
   </div>
   <br>
 
   </form>
-<!-- 
 
-onclick="readonlyFalse();"
+
   <script>
+ function validate(){
+  const pwdInput1 = document.querySelector("#userPwd1"); /// 선택자가 나와야한다.
+  const pwdInput2 = document.querySelector("#userPwd2");
+  
+  if(pwdInput1.value != pwdInput2.value){
+    alert("동일한 비밀번호를 입력해주세요!");
+    pwdInput2.value=""; // 잘못 입력햇을 시 pwd 창을 공백으로 만들어준다.
+    pwdInput2.focus();
+    return false;
+  }
+  
+  
 	function readonlyFalse(){
 		const $idInput = $("#enroll-form input[name=userId]");
 		$idInput.removeAttr("readonly").focus();
@@ -393,7 +404,6 @@ onclick="readonlyFalse();"
 	}
 
   </script>
-   -->
 
 
                 
