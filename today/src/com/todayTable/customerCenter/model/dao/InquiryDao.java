@@ -205,4 +205,49 @@ public class InquiryDao {
 		return result;
 	}
 
+	public ArrayList<Inquiry> selectInquiryList(Connection conn, String searchText, PageInfo pi) {
+		ArrayList<Inquiry> list = new ArrayList<>();
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("searchInquiryTitle");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			
+			pstmt.setString(1, searchText);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Inquiry(rset.getInt("inq_no"),
+									rset.getString("inq_name"),
+									rset.getString("inq_processing"),
+									rset.getString("user_id"),
+									rset.getDate("inq_date"),
+									rset.getString("inq_question"),
+									rset.getString("inq_answer"),
+									rset.getString("inq_private")
+									));
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+		
+		
+	}
+
 }
