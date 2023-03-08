@@ -4,27 +4,27 @@
 
 
 <entry key="selectMainThumbnailList">
-	SELECT
-		  RECIPE_No
-	    , RECIPE_PIC
-	    , RECIPE_NAME
-	    , RECIPE_DIFFICULTY
-	    , RECIPE_VIEWS
-	FROM (SELECT
-	           ROWNUM "RNUM"
-	         , R.*
-	        FROM 
-	            (SELECT
-	            	  RECIPE_No
-	                , RECIPE_PIC
-	                , RECIPE_NAME
-	                , RECIPE_DIFFICULTY
-	                , RECIPE_VIEWS
-	            FROM 
-	                TB_RECIPE
-	            ORDER BY 
-	                RECIPE_VIEWS DESC) "R")
-	WHERE RNUM BETWEEN 1 AND 4
+   SELECT
+        RECIPE_No
+       , RECIPE_PIC
+       , RECIPE_NAME
+       , RECIPE_DIFFICULTY
+       , RECIPE_VIEWS
+   FROM (SELECT
+              ROWNUM "RNUM"
+            , R.*
+           FROM 
+               (SELECT
+                    RECIPE_No
+                   , RECIPE_PIC
+                   , RECIPE_NAME
+                   , RECIPE_DIFFICULTY
+                   , RECIPE_VIEWS
+               FROM 
+                   TB_RECIPE
+               ORDER BY 
+                   RECIPE_VIEWS DESC) "R")
+   WHERE RNUM BETWEEN 1 AND 4
 </entry>
 
 
@@ -34,22 +34,23 @@
 
 <!-- 수민: 마이페이지_내가 만든 레시피 목록 조회-->
 <entry key="selectThumbnailList">
-	SELECT
-	   RECIPE_NAME
-	   , RECIPE_DATE
-	   , RECIPE_VIEWS
-	   , RECIPE_PIC
-	FROM TB_RECIPE
-	WHERE MEM_NO = ?
-	AND RECIPE_STATUS = 'Y'
-	ORDER BY RECIPE_NO DESC
+   SELECT
+      RECIPE_NAME
+      , RECIPE_DATE
+      , RECIPE_VIEWS
+      , RECIPE_PIC
+   FROM TB_RECIPE
+   WHERE MEM_NO = ?
+   AND RECIPE_STATUS = 'Y'
+   ORDER BY RECIPE_NO DESC
 </entry>
 
 
 <!-- 수민: 마이페이지_내가 작성한 댓글 조회-->
 <entry key="selectCommentList">
     SELECT
-        COM_CONTENT
+       COM_NO
+        , COM_CONTENT
         , COM_DATE
         , RECIPE_NAME
         , RECIPE_PIC
@@ -57,15 +58,15 @@
     FROM TB_COMMENT
     JOIN TB_RECIPE USING (MEM_NO)
     WHERE MEM_NO = ?
-    AND RECIPE_STATUS = 'Y'
-	ORDER BY COM_DATE DESC
+    AND COM_STATUS = 'Y'
+   ORDER BY COM_DATE DESC
 </entry>
 
 
 
 <!-- 수민: 마이페이지_내가 찜한 목록 조회-->
 <entry key="selectWishList">
-	    SELECT
+       SELECT
         RECIPE_NAME
         , RECIPE_PIC
         , RECIPE_VIEWS
@@ -73,145 +74,139 @@
     JOIN TB_WISHLIST USING (MEM_NO)
     WHERE MEM_NO = ?
     AND RECIPE_STATUS = 'Y'
-	ORDER BY RECIPE_DATE DESC
+   ORDER BY RECIPE_DATE DESC
 </entry>
 
 
 
 <!-- 수민: 마이페이지 대표 이미지 변경 -->
 <entry key="updateImg">
-	UPDATE TB_MEMBER
-	SET MEM_IMG = ?
-	WHERE MEM_ID = ?
+   UPDATE TB_MEMBER
+   SET MEM_IMG = ?
+   WHERE MEM_ID = ?
 </entry>
 
 
 
-<!-- 수민: 마이페이지 회원 선택값 삭제하기 -->
+<!-- 수민: 마이페이지 체크박스 삭제 -->
 <entry key="deleteComment">
-	
+         UPDATE
+         TB_COMMENT
+      SET 
+         COM_STATUS = 'N'
+      WHERE   
+          COM_NO IN (
 </entry>
 
-
-
-
-
-
-
-
-
-
-
-
-	
-	
-	
+   
+   
+   
 <entry key="selectRecommnedRecipe">
-	SELECT 
-		  RECIPE_NO
-		, RECIPE_PIC
-	    , RECIPE_NAME
-	    , RECIPE_DIFFICULTY
-	    , RECIPE_VIEWS
-	FROM TB_RECIPE
-	WHERE RECIPE_NO IN (SELECT RECIPE_NO
-	                    FROM TB_CATEGORY
-	                    JOIN TB_CATEGORY_INGREDIENT USING(C_INGRE_NO)
-	                    JOIN TB_CATEGORY_NATION USING(C_NAT_NO)
-	                    WHERE C_INGRE_NAME = ?
-	                    OR C_NAT_NAME = ?
-	                    UNION
-	                    SELECT RECIPE_NO
-	                    FROM TB_RECIPE
-	                    WHERE RECIPE_PERSON =?)
+   SELECT 
+        RECIPE_NO
+      , RECIPE_PIC
+       , RECIPE_NAME
+       , RECIPE_DIFFICULTY
+       , RECIPE_VIEWS
+   FROM TB_RECIPE
+   WHERE RECIPE_NO IN (SELECT RECIPE_NO
+                       FROM TB_CATEGORY
+                       JOIN TB_CATEGORY_INGREDIENT USING(C_INGRE_NO)
+                       JOIN TB_CATEGORY_NATION USING(C_NAT_NO)
+                       WHERE C_INGRE_NAME = ?
+                       OR C_NAT_NAME = ?
+                       UNION
+                       SELECT RECIPE_NO
+                       FROM TB_RECIPE
+                       WHERE RECIPE_PERSON =?)
 </entry>
 
 <!-- 레시피 상세 조회 sql -->
 <entry key="selectDetailRecipe">
-	SELECT
-	      RECIPE_NO
-	    , RECIPE_NAME
-	    , RECIPE_TAG
-	    , RECIPE_VIDEO
-	    , RECIPE_DIFFICULTY
-	    , RECIPE_PERSON
-	    , RECIPE_TIME
-	    , RECIPE_DATE
-	    , MEM_NO
-	    , RECIPE_PIC
-	    , RECIPE_VIEWS
-	FROM 
-	    TB_RECIPE
-	WHERE
-	    RECIPE_NO = ?
+   SELECT
+         RECIPE_NO
+       , RECIPE_NAME
+       , RECIPE_TAG
+       , RECIPE_VIDEO
+       , RECIPE_DIFFICULTY
+       , RECIPE_PERSON
+       , RECIPE_TIME
+       , RECIPE_DATE
+       , MEM_NO
+       , RECIPE_PIC
+       , RECIPE_VIEWS
+   FROM 
+       TB_RECIPE
+   WHERE
+       RECIPE_NO = ?
 
 </entry>
 
 <entry key="selectDetailIngreClass">
-	SELECT
-	    INGRE_C_NAME
-	FROM 
-	    TB_INGRE_CLASS
-	WHERE 
-	    RECIPE_NO = ?
+   SELECT
+       INGRE_C_NAME
+   FROM 
+       TB_INGRE_CLASS
+   WHERE 
+       RECIPE_NO = ?
 </entry>
 
 <entry key="selectDetailIngredient">
-	SELECT 
-	      INGRE_NO
-	    , INGRE_C_NAME
-	    , INGRE_NAME
-	    , INGRE_AMOUNT
-	FROM 
-	    TB_INGREDIENT
-	JOIN 
-	    TB_INGRE_CLASS USING(INGRE_C_NO)
-	WHERE
-	    INGRE_C_NO IN (SELECT
-	                        INGRE_C_NO
-	                    FROM 
-	                        TB_INGRE_CLASS
-	                    WHERE 
-	                        RECIPE_NO = ?)
+   SELECT 
+         INGRE_NO
+       , INGRE_C_NAME
+       , INGRE_NAME
+       , INGRE_AMOUNT
+   FROM 
+       TB_INGREDIENT
+   JOIN 
+       TB_INGRE_CLASS USING(INGRE_C_NO)
+   WHERE
+       INGRE_C_NO IN (SELECT
+                           INGRE_C_NO
+                       FROM 
+                           TB_INGRE_CLASS
+                       WHERE 
+                           RECIPE_NO = ?)
 </entry>
 
 <entry key="selectDetailCategory">
-	SELECT 
-	      C_INGRE_NAME
-	    , C_KIND_NAME
-	    , C_NAT_NAME
-	    , C_STEP_NAME
-	    , C_THEME_NAME
-	    , C_TOOL_NAME
-	FROM
-	    TB_CATEGORY
-	JOIN 
-	    TB_CATEGORY_INGREDIENT USING(C_INGRE_NO)
-	JOIN 
-	    TB_CATEGORY_KIND USING(C_KIND_NO)
-	JOIN 
-	    TB_CATEGORY_NATION USING(C_NAT_NO)
-	JOIN 
-	    TB_CATEGORY_STEP USING(C_STEP_NO)
-	JOIN 
-	    TB_CATEGORY_THEME USING(C_THEME_NO)
-	JOIN 
-	    TB_CATEGORY_TOOL USING(C_TOOL_NO)
-	WHERE
-	    RECIPE_NO = ?
+   SELECT 
+         C_INGRE_NAME
+       , C_KIND_NAME
+       , C_NAT_NAME
+       , C_STEP_NAME
+       , C_THEME_NAME
+       , C_TOOL_NAME
+   FROM
+       TB_CATEGORY
+   JOIN 
+       TB_CATEGORY_INGREDIENT USING(C_INGRE_NO)
+   JOIN 
+       TB_CATEGORY_KIND USING(C_KIND_NO)
+   JOIN 
+       TB_CATEGORY_NATION USING(C_NAT_NO)
+   JOIN 
+       TB_CATEGORY_STEP USING(C_STEP_NO)
+   JOIN 
+       TB_CATEGORY_THEME USING(C_THEME_NO)
+   JOIN 
+       TB_CATEGORY_TOOL USING(C_TOOL_NO)
+   WHERE
+       RECIPE_NO = ?
 </entry>
 
 <entry key="selectDetailCookingOrder">
-	SELECT
-	      CO_NO
-	    , CO_STEP
-	    , CO_CONTENT
-	    , ORDIMG_IMGURL
-	FROM 
-	    TB_COOKING_ORDER
-	JOIN
-	    TB_COOKING_ORDER_IMG USING(CO_NO)
-	WHERE RECIPE_NO = ?
+   SELECT
+         CO_NO
+       , CO_STEP
+       , CO_CONTENT
+       , ORDIMG_IMGURL
+   FROM 
+       TB_COOKING_ORDER
+   JOIN
+       TB_COOKING_ORDER_IMG USING(CO_NO)
+   WHERE RECIPE_NO = ?
 </entry>
 
 
@@ -227,14 +222,14 @@
 
 
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
 </properties>
