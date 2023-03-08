@@ -278,8 +278,6 @@ public class InquiryDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
-		System.out.println("111111 : " + searchOption);
-		
 		String sql = null;
 		
 		switch (searchOption) {

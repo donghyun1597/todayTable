@@ -85,8 +85,8 @@
     </style>
 
     <script>
-        $(document).ready( function() {
-        $("#searchSelect").attr("style","display:inline");
+        $(document).ready(function() {
+        $(".searchSelect").attr("style","display:inline");
         $(".nice-select").remove("div")
       });
     </script>
@@ -287,7 +287,7 @@
     <div class="col-5" style="margin:auto">
         <form action="searchInquiry.cu?cpage=1" method="post">
         <div class="btn-group">
-            <select name="searchOption" id="searchSelect" class="btn btn-outline-secondary" style="border-color: darkgray;">
+            <select name="searchOption" class="btn btn-outline-secondary searchSelect" style="border-color: darkgray;">
                 <option value="title">제목&nbsp;&nbsp;&nbsp;</option>
                 <option value="content">내용&nbsp;&nbsp;&nbsp;</option>
                 <option value="titleContent">제목+내용&nbsp;&nbsp;</option>

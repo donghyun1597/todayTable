@@ -41,8 +41,6 @@
         ORDER
            BY NOTICE_NO DESC
     </entry>
-	
-	
 
 	<entry key="insertNotice">
 	INSERT
@@ -104,4 +102,89 @@
 		WHERE	
 			 NOTICE_NO = ?
 	</entry>
+	
+	<entry key="searchNoticeTitle">
+		SELECT *
+		FROM
+		(SELECT ROWNUM RNUM, A.*
+		    FROM(
+		        SELECT
+		            NOTICE_NO
+		        ,   NOTICE_CLSFC
+		        ,   NOTICE_NAME
+		        ,   NOTICE_DATE
+		        FROM TB_NOTICE
+		        WHERE NOTICE_STATUS = 'Y'
+                  AND NOTICE_NAME LIKE '%'|| ? ||'%'
+		        ORDER
+		        BY NOTICE_NO DESC)
+		        A
+		        )
+		        WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="searchNoticeContent">
+		SELECT *
+		FROM
+		(SELECT ROWNUM RNUM, A.*
+		    FROM(
+		        SELECT
+		            NOTICE_NO
+		        ,   NOTICE_CLSFC
+		        ,   NOTICE_NAME
+		        ,   NOTICE_DATE
+		        FROM TB_NOTICE
+		        WHERE NOTICE_STATUS = 'Y'
+                  AND NOTICE_CONTENTS LIKE '%'|| ? ||'%'
+		        ORDER
+		        BY NOTICE_NO DESC)
+		        A
+		        )
+		        WHERE RNUM BETWEEN ? AND ?
+	</entry>
+
+	<entry key="searchNoticeTitleContent">
+		SELECT *
+		FROM
+		(SELECT ROWNUM RNUM, A.*
+		    FROM(
+		        SELECT
+		            NOTICE_NO
+		        ,   NOTICE_CLSFC
+		        ,   NOTICE_NAME
+		        ,   NOTICE_DATE
+		        FROM TB_NOTICE
+		        WHERE NOTICE_STATUS = 'Y'
+                  AND (NOTICE_NAME LIKE '%'|| ? ||'%' OR NOTICE_CONTENTS LIKE '%'|| ? ||'%')
+		        ORDER
+		        BY NOTICE_NO DESC)
+		        A
+		        )
+		        WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="searchNoticeTitleCount">
+	    SELECT
+		       COUNT(*) count
+		  FROM TB_NOTICE
+		 WHERE NOTICE_STATUS = 'Y'
+		   AND NOTICE_NAME LIKE '%'|| ? ||'%'
+	</entry>
+	
+	<entry key="searchNoticeContentCount">
+	    SELECT
+		       COUNT(*) count
+		  FROM TB_NOTICE
+		 WHERE NOTICE_STATUS = 'Y'
+		   AND NOTICE_CONTENTS LIKE '%'|| ? ||'%'
+	</entry>
+
+	<entry key="searchNoticeTitleContentCount">
+	    SELECT
+		       COUNT(*) count
+		  FROM TB_NOTICE
+		 WHERE NOTICE_STATUS = 'Y'
+		   AND (NOTICE_NAME LIKE '%'|| ? ||'%' OR NOTICE_CONTENTS LIKE '%'|| ? ||'%')
+	</entry>
+	
 </properties>

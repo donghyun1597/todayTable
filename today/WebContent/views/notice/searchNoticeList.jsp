@@ -6,7 +6,10 @@
 <%
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	ArrayList<Notice> list = (ArrayList<Notice>)request.getAttribute("list");
-
+	
+	String searchOption = (String)request.getAttribute("searchOption");
+	String searchText = (String)request.getAttribute("searchText");
+	
 	int currentPage = pi.getCurrentPage();
 	int startPage = pi.getStartPage();
 	int endPage = pi.getEndPage();
@@ -135,11 +138,7 @@
                 <% for(Notice n :list) { %>
                 <tr onclick="detailNo(<%= n.getNoticeNo() %>);">
                     <td id="detailNo<%=i++%>"><%= n.getNoticeNo() %></td>
-                    <% if(n.getNoticeClsfc().equals("일반")) {%>
                     <td><%= n.getNoticeClsfc() %></td>
-                    <%} else{ %>
-                    <td style="color: red"><%= n.getNoticeClsfc() %></td>
-                    <%} %>
                     <td style="text-align: left;"><%= n.getNoticeName() %></td>
                     <td><%= n.getNoticeDate() %></td>
                 </tr>
@@ -151,7 +150,6 @@
 
     <script>
     	function detailNo(noticeNo){
-			console.log(noticeNo);
             location.href = '<%= contextPath %>/detail.no?num=' + noticeNo;
         }
     </script>
@@ -159,20 +157,20 @@
     <div class="m-4" id="paging">
         <nav>
             <div class="pagination">
-            	<%if(currentPage != 1) { %>
-                <button onclick="location.href='<%=contextPath%>/noticeList.no?cpage=<%= currentPage -1 %>';" class="page-link"> &lt; </button>
+		        <%if(currentPage != 1) { %>
+                <button onclick="location.href='<%=contextPath%>/searchNotice.no?cpage=<%= currentPage -1 %>&searchOption=<%= searchOption %>&searchText=<%= searchText %>';" class="page-link"> &lt; </button>
                 <% } %>
                 
                 <%for(int p = startPage; p<=endPage; p++) { %>
                 	<% if(p == currentPage){ %>
                 		<button style="color: orange" disabled><%=p %></button>
                 	<%}else{ %>
-                	    <button onclick="location.href = '<%= contextPath%>/noticeList.no?cpage=<%=p%>';" class="page-link"><%=p %></button>
+                	    <button onclick="location.href='<%= contextPath%>/searchNotice.no?cpage=<%=p%>&searchOption=<%= searchOption %>&searchText=<%= searchText %>';" class="page-link"><%=p %></button>
 		        	<%} %>
 		        <%} %>
 		        
 		        <%if(currentPage != maxPage) {%>
-		        	<button onclick="location.href='<%=contextPath%>/noticeList.no?cpage=<%= currentPage +1 %>';" class="page-link"> &gt; </button>
+		        	<button onclick="location.href='<%=contextPath%>/searchNotice.no?cpage=<%= currentPage +1 %>&searchOption=<%= searchOption %>&searchText=<%= searchText %>';" class="page-link"> &gt; </button>
 		        <%} %>
             </div>
         </nav>
