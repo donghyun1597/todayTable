@@ -41,8 +41,9 @@
   <body>
    <div class="wrap">
 
-   <div id="userName">[<%= member.getMemName()%>]님의 아이디</div><br>
-   <div id="userId">[<%= member.getMemId()%>] 입니다.</div>
+
+   <div id="userName">[<%= member.getMemId() %> ]님의 아이디</div><br>
+   <div id="userId">[<%= member.getMemId() %> ] 입니다.</div>
    <button id="button" class="btn btn-outline-info " onclick="location.href='/views/member/login.jsp'">로그인 하러가기</button>
    </div>
 </body>
