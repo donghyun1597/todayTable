@@ -155,6 +155,7 @@
 				FROM TB_INQUIRY I
 			    JOIN TB_MEMBER M ON (I.MEM_NO=M.MEM_NO)
 			    WHERE INQ_STATUS = 'Y'
+			      AND INQ_PRIVATE = 'N'
 	              AND INQ_NAME LIKE '%'|| ? ||'%'
 				ORDER
 				   BY INQ_NO DESC)
@@ -180,6 +181,7 @@
 			FROM TB_INQUIRY I
 		    JOIN TB_MEMBER M ON (I.MEM_NO=M.MEM_NO)
 		    WHERE INQ_STATUS = 'Y'
+		      AND INQ_PRIVATE = 'N'
               AND INQ_QUESTION LIKE '%'|| ? ||'%'
 			ORDER
 			   BY INQ_NO DESC)
@@ -205,12 +207,40 @@
 			FROM TB_INQUIRY I
 		    JOIN TB_MEMBER M ON (I.MEM_NO=M.MEM_NO)
 		    WHERE INQ_STATUS = 'Y'
+		      AND INQ_PRIVATE = 'N'
               AND (INQ_NAME LIKE '%'|| ? ||'%' OR INQ_QUESTION LIKE '%'|| ? ||'%')
 			ORDER
 			   BY INQ_NO DESC)
 		       A
 		       )
 		       WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="searchInquiryTitleCount">
+		SELECT
+		       COUNT(*) count
+		  FROM TB_INQUIRY
+		 WHERE INQ_STATUS = 'Y'
+		   AND INQ_PRIVATE = 'N'
+		   AND INQ_NAME LIKE '%'|| ? ||'%'
+	</entry>
+	
+	<entry key="searchInquiryContentCount">
+		SELECT
+		       COUNT(*) count
+		  FROM TB_INQUIRY
+		 WHERE INQ_STATUS = 'Y'
+		   AND INQ_PRIVATE = 'N'
+		   AND INQ_QUESTION LIKE '%'|| ? ||'%'
+	</entry>
+	
+	<entry key="searchInquiryTitleContentCount">
+		SELECT
+		       COUNT(*) count
+		  FROM TB_INQUIRY
+		 WHERE INQ_STATUS = 'Y'
+		   AND INQ_PRIVATE = 'N'
+		   AND (INQ_NAME LIKE '%'|| ? ||'%' OR INQ_QUESTION LIKE '%'|| ? ||'%')
 	</entry>
 	
 </properties>
