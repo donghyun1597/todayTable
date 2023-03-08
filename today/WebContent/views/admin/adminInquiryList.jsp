@@ -1,3 +1,4 @@
+<%@page import="com.todayTable.common.model.vo.PageInfo"%>
 <%@page import="com.todayTable.customerCenter.model.vo.Inquiry"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -5,6 +6,13 @@
     
 <%
 	ArrayList<Inquiry> list = (ArrayList<Inquiry>)request.getAttribute("list");
+
+    PageInfo pi = (PageInfo)request.getAttribute("pi");
+	
+	int currentPage = pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
 %>
 <!DOCTYPE html>
 <html>
@@ -26,7 +34,7 @@
         font-family: "Roboto", sans-serif;
     }
     #wrap {
-        height: 1000px;
+        height: auto;
     }
     #paging {
       display: flex;
@@ -77,6 +85,11 @@
         color: white;
         font-weight: 900;
         margin-top: 50px;
+    }
+
+    #inquiryWrap>h6{
+        color: white;
+        font-weight: 900;
     }
 
     tr>td, tr>.needAnswer{
@@ -137,6 +150,27 @@
                     </table>
                 </div>
             </div>
+            <div class="m-4" id="paging">
+				<nav>
+					<div class="pagination">
+						<%if(currentPage != 1) { %>
+						<button onclick="location.href='<%=contextPath%>/adminInquiryForm.iq?cpage=<%= currentPage -1 %>';" class="page-link"> &lt; </button>
+						<% } %>
+						
+						<%for(int p = startPage; p<=endPage; p++) { %>
+							<% if(p == currentPage){ %>
+								<button style="color: orange" disabled><%=p %></button>
+							<%}else{ %>
+								<button onclick="location.href = '<%= contextPath%>/adminInquiryForm.iq?cpage=<%=p%>';" class="page-link"><%=p %></button>
+							<%} %>
+						<%} %>
+						
+						<%if(currentPage != maxPage) {%>
+							<button onclick="location.href='<%=contextPath%>/adminInquiryForm.iq?cpage=<%= currentPage +1 %>';" class="page-link"> &gt; </button>
+						<%} %>
+					</div>
+				</nav>
+			</div>
 		</div>
 
         <script>

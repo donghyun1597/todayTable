@@ -53,10 +53,10 @@
 					</tr>
 					<tr>
 						<input type="hidden" name="iqNo" value="<%= iq.getInqNo() %>">
-						<td><pre name="iqContent"><%= iq.getInqAnswer() %></pre></td>
+						<td colspan="2"><textarea rows="10" style="resize:none; width:100%;" placeholder="답변 내용 작성" name="answer"><%= iq.getInqAnswer() %></textarea></td>
 					</tr>
 					<tr>
-						<td><input type="submit" value="답변수정" class="btn btn-sm btn-primary"></td>
+						<td colspan="2" align="right"><input type="submit" value="답변수정" class="btn btn-sm btn-primary"></td>
 					</tr>
 				</form>	
 			</table>

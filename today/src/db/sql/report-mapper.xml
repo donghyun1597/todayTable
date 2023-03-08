@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+<entry key="reportSelectListCount">
+	SELECT
+		       COUNT(*) count
+		  FROM TB_REPORT
+	 WHERE REP_STATUS = 'Y'
+</entry>
+
+<entry key="selectReportList">
+
+ SELECT *
+	    FROM
+	    (SELECT ROWNUM RNUM, A.*
+	        FROM(
+	          SELECT 
+		          REP_NO
+				, MEM_ID
+				, REP_CONTENTS
+				, REP_DATE
+				, REP_CLSFC
+				, REP_PROCESSING
+				, REP_STATUS
+			FROM TB_REPORT
+			JOIN TB_MEMBER USING (MEM_NO)
+			WHERE REP_STATUS = 'Y'
+			ORDER
+			   BY REP_PROCESSING , REP_NO DESC)
+	           A
+	           )
+	           WHERE RNUM BETWEEN ? AND ?
+</entry>
+
+<entry key="selectReport">
+	SELECT
+			REP_NO
+		  , MEM_ID
+		  , REP_CONTENTS
+		  , REP_DATE
+		  , REP_CLSFC
+		  , REP_PROCESSING
+	  FROM
+	  		TB_REPORT	
+	  JOIN TB_MEMBER USING (MEM_NO)
+	  WHERE
+	  		REP_NO = ?
+  		AND REP_STATUS = 'Y'
+</entry>
+</properties>
