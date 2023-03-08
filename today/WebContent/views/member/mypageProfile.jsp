@@ -191,7 +191,7 @@
 						<button type="submit" class="btn delicious-btn btn-4 m-1"
 							onclick="return validatePwd()">정보변경</button>
 						<a href="#" class="btn delicious-btn btn-4 m-1"
-							data-toggle="modal" data-target="#deleteModal">기능준비중</a>
+							data-toggle="modal" data-target="#deleteModal">탈퇴하기</a>
 					</div>
 
 				</form>

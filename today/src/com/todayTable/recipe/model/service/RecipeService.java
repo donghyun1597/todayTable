@@ -123,6 +123,7 @@ public class RecipeService {
 	
 	
 	/**
+	 * 대표이미지 변경하기
 	 * @param mi
 	 * @author sm.kim
 	 * @return
@@ -151,6 +152,13 @@ public class RecipeService {
 	
 	
 	
+	/**
+	 * 선택된 게시글 삭제하기
+	 * @author sm.kim
+	 * @param checkInt
+	 * @return
+	 */
+
 	
 	
 	

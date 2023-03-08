@@ -343,20 +343,9 @@
 							<!-- ------------------------------------------------------------------------------------ -->
 										<div class="tab-pane fade" id="wish">
 											<div class="container">
-												<div class="row">
-													<div class="col-md-6" style="width: 5%; padding-top: 35px; text-align: left; margin-left: 20px;">
-														<div class="only_box">
-															<div class="formInputCheck">
-																<input type="checkbox" id="checkAll" name="ckWish" value="wishSelecAll" class="input_check" onclick="wishSelectAll()">
-																<label for="checkAll" class="label">
-																	<span class="blind">전체선택</span>
-																</label>
-															</div>
-														</div>
-													</div>
-													<div class="col-md-6" align="right" style="width: 5%; padding-top: 20px; ">
-														<a href="#" class="btn btn-danger" role="button" onclick="deleteSelected()">삭제하기</a>
-													</div> 
+												<div class="row" id="rowRight" style="justify-content: flex-end; padding-top: 45px; padding-right: 10px; margin-bottom: 0px;">
+													<img src="https://ottogi.okitchen.co.kr/images/category/sort_check.gif" alt="sort_check" style="width: 10px; height: 10px;">
+													<h6 style="color: gray; font-weight: 400; padding-left: 5px; font-size: 13px;">최신순 기준</h6>
 												</div>
 												<table class="table table-hover"> <br>
 													<% if (wlist.isEmpty()) {%>
@@ -367,17 +356,7 @@
 														<thead></thead>
 														<tbody>
 														<tr>
-															<td style="width: 5%; padding-top: 20px; padding-left: 20px;">
-																<div class="only_box">
-																	<div class="FormInputCheck">
-																		<input id="check_wishlist_100" type="checkbox" class="input_check" name="ckWishlist"> 
-																		<label for="check_wishlist_100" class="label"> 
-																			<span class="blind"></span>
-																		</label>
-																	</div>
-																</div>
-															</td>
-															
+																												
 															<td style="width: 25%;" align="center;">
 																<img src="<%= w.getRecipePic() %>" style="width: 120px; height: 90px; border-radius: 10px;">
 															</td>
@@ -399,34 +378,6 @@
 
 												</div>
 											</div>
-
-											<script>
-												// 전체선택
-												function wishSelectAll(){
-													var checkboxes = document.getElementsByName('ckWishlist');
-													for(var i=0, n=checkboxes.length; i<n; i++){
-														checkboxes[i].checked = document.getElementById('checkAll').checked;
-													}
-												}
-
-
-												function deleteSelected() {
-													var checkboxes = document.getElementsByName("ckWishlist");
-													var selected = [];
-													for (var i = 0; i < checkboxes.length; i++) {
-														if (checkboxes[i].checked) {
-														selected.push(checkboxes[i].id.split("_")[2]); // extract recipeNo value from checkbox id and add to selected array
-														}
-													}
-													if (selected.length == 0) {
-														alert("삭제할 항목을 선택해주세요.");
-														return;
-													}
-													deleteWishlist(selected); // call deleteWishlist function with selected recipeNo values
-													}
-
-												
-											</script>
 
 
 							<!-- ------------------------------------------------------------------------------------ -->

@@ -4,11 +4,11 @@ import java.sql.Date;
 
 public class MyComment {
 	
-    private String comContent;
-    private Date comDate;
-    private String recipeName;
-    private String recipePic;
-    private int recipeViews;
+    private String comContent;	// 댓글 내용
+    private Date comDate;	// 댓글 쓴 날짜
+    private String recipeName;	// 레시피 제목
+    private String recipePic;	// 레시피 대표 이미지
+    private int recipeViews;	// 레시피 조회수
     
     public MyComment () {}
 
