@@ -96,4 +96,13 @@
  				, ?		
  			)
 	</entry>
+	
+	<entry key="countEvent">
+	SELECT 
+        COUNT(*) COUNT
+    FROM
+        TB_EVENT
+	WHERE
+        EVENT_STATUS = 'Y' AND EVENT_PROCESSING = 'Y'
+	</entry>
 </properties>

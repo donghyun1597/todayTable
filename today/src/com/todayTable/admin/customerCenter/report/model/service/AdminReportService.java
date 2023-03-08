@@ -41,4 +41,14 @@ public class AdminReportService {
 		
 		return r;
 	}
+	
+	public int countReport() {
+		Connection conn = getConnection();
+		
+		int reportCount = new AdminReportDao().countReport(conn);
+		
+		close(conn);
+		
+		return reportCount;
+	}
 }

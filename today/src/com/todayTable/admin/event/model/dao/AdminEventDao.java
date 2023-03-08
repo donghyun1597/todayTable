@@ -204,4 +204,29 @@ public class AdminEventDao {
 		return listCount;
 		
 	}
+	
+	public int countEvent(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int eventCount = 0;
+		
+		String sql = prop.getProperty("countEvent");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				eventCount = rset.getInt("count");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return eventCount;
+		
+	}
 }

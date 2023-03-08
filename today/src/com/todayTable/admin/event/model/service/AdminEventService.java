@@ -105,4 +105,13 @@ public class AdminEventService {
 		return listCount;
 	}
 
+	public int countEvent() {
+		Connection conn = getConnection();
+		
+		int eventCount = new AdminEventDao().countEvent(conn);
+		
+		close(conn);
+		
+		return eventCount;
+	}
 }

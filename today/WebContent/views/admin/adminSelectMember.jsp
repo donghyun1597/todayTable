@@ -54,7 +54,7 @@
 						<% } %>
 					</tbody>
 				</table>
-				<div align="right" style="margin-right: 250px;">
+				<div align="right" style="margin-right: 25%;">
 					<br>
 					
 					<button class="btn btn-sm btn-primary">삭제</button>

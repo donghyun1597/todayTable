@@ -188,4 +188,30 @@ public class AdminInquiryDao {
 		
 		return listCount;
 	}
+	
+	public int countInquiry(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		int inquiryCount = 0;
+		
+		String sql = prop.getProperty("countInquiry");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				inquiryCount = rset.getInt("count");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return inquiryCount;
+	}
 }
