@@ -2,7 +2,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	Member member = (Member)request.getAttribute("members"); 
+	Member member = (Member)request.getAttribute("member");
+	String contextPath = request.getContextPath(); // /jsp	
+
 %>
 <!DOCTYPE html>
 <html lang="en">

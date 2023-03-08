@@ -121,6 +121,15 @@ public class MemberService {
 		return result;
 	}
 	
+	public int idCheck(String checkId) {
+		Connection conn = getConnection();
+		
+		int count = new MemberDao().idCheck(conn, checkId);
+		
+		close(conn);
+		return count;
+	}
+	
 	public Member searchMemId(String memName, String phone) {
 		
 		Connection conn = getConnection();

@@ -43,14 +43,14 @@ public class MemberSearchIdController extends HttpServlet {
 
 				//4.뷰 처리
 				if(member != null) {
-					RequestDispatcher rd = request.getRequestDispatcher("views/member/searchMemId2.jsp");
+					RequestDispatcher rd = request.getRequestDispatcher("/views/member/searchMemId.jsp");
 					request.setAttribute("members", member);
 					rd.forward(request, response);
 					
 				}else {
 					request.setAttribute("msg", "정확한 정보를 입력해 주세요!");
 					request.setAttribute("loc", "/");
-					RequestDispatcher rd = request.getRequestDispatcher("views/common/errorPage.jsp");
+					RequestDispatcher rd = request.getRequestDispatcher("/views/common/errorPage.jsp");
 					rd.forward(request, response);
 				}
 	}

@@ -16,7 +16,7 @@ import com.todayTable.member.model.vo.Member;
 /**
  * Servlet implementation class MemberInsertController
  */
-@WebServlet("/insertMem.me")
+@WebServlet("/insert.me")
 public class MemberInsertController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -48,11 +48,16 @@ public class MemberInsertController extends HttpServlet {
 		if(result>0) {
 			HttpSession session = request.getSession();
 			session.setAttribute("alertMsg", "회원가입이 완료되었습니다.");
+			
+			response.sendRedirect(request.getContextPath());
+			
 		}else {
 			request.setAttribute("errorMsg", "회원가입에 실패했습니다.");
-			RequestDispatcher view = request.getRequestDispatcher("/views/common/errorPage.jsp");
+			RequestDispatcher view = request.getRequestDispatcher("views/common/memErrorPage.jsp");
 			view.forward(request, response);
 		}
+		
+		
 		
 		
 		
