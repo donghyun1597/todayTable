@@ -1,26 +1,27 @@
-package com.todayTable.admin.customerCenter.controller;
+package com.todayTable.admin.customerCenter.report.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.todayTable.admin.customerCenter.model.service.AdminInquiryService;
-import com.todayTable.customerCenter.model.vo.Inquiry;
+import com.todayTable.admin.customerCenter.report.model.service.AdminReportService;
+import com.todayTable.customerCenter.model.vo.Report;
 
 /**
- * Servlet implementation class AdminInquiryUpdateAnswerController
+ * Servlet implementation class AdminReportDetailViewFormController
  */
-@WebServlet("/adminUpdate.iq")
-public class AdminInquiryUpdateAnswerController extends HttpServlet {
+@WebServlet("/detail.re")
+public class AdminReportDetailViewFormController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminInquiryUpdateAnswerController() {
+    public AdminReportDetailViewFormController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,17 +32,15 @@ public class AdminInquiryUpdateAnswerController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
-		int iqNo = Integer.parseInt(request.getParameter("iqNo"));
-		String iqContent = request.getParameter("answer");
+		int rNo = Integer.parseInt(request.getParameter("num"));
 		
+		Report r = new AdminReportService().selectReport(rNo);
 		
-		int result = new AdminInquiryService().updateAnswer(iqNo, iqContent);
+		request.setAttribute("r", r);
 		
-		if(result > 0) {
-			request.getSession().setAttribute("alertMsg", "답변 수정 완료");
-			response.sendRedirect(request.getContextPath() + "/detail.iq?num=" + iqNo);
+		if(r != null) {
+			request.getRequestDispatcher("views/admin/adminReportDetailView.jsp").forward(request, response);
 		}
-		
 	}
 
 	/**

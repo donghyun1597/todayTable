@@ -8,6 +8,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 <style>
 	
 </style>
@@ -24,7 +27,7 @@
 					<hr>
 				</div>
 
-				<table align="center" class="table-area">
+				<table align="center" class="table table-striped" style="width:800px">
 					<thead>
 						<tr style="text-align: center;">
 							<th>선택</th>
@@ -40,7 +43,7 @@
 					<tbody>
 						<% for(Member m : list) { %>
 						<tr style="text-align: center;">
-							<td width="40"><input type="checkbox" name="checkMember" value="<%= m.getMemNo() %>"></td>
+							<td width="50"><input type="checkbox" name="checkMember" value="<%= m.getMemNo() %>"></td>
 							<td width="80"><%= m.getMemNo() %></td>
 							<td width="60"><%= m.getMemId() %></td>
 							<td width="100"><%= m.getNickName() %></td>
@@ -51,7 +54,7 @@
 						<% } %>
 					</tbody>
 				</table>
-				<div align="right" style="margin-right: 180px;">
+				<div align="right" style="margin-right: 250px;">
 					<br>
 					
 					<button class="btn btn-sm btn-primary">삭제</button>

@@ -1,4 +1,4 @@
-package com.todayTable.admin.customerCenter.controller;
+package com.todayTable.admin.customerCenter.report.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,21 +9,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.todayTable.admin.customerCenter.model.service.AdminInquiryService;
+import com.todayTable.admin.customerCenter.report.model.service.AdminReportService;
 import com.todayTable.common.model.vo.PageInfo;
-import com.todayTable.customerCenter.model.vo.Inquiry;
+import com.todayTable.customerCenter.model.vo.Report;
 
 /**
- * Servlet implementation class AdminInquiryListFormController
+ * Servlet implementation class AdminReportListViewController
  */
-@WebServlet("/adminInquiryForm.iq")
-public class AdminInquiryListFormController extends HttpServlet {
+@WebServlet("/adminReportForm.re")
+public class AdminReportListViewController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminInquiryListFormController() {
+    public AdminReportListViewController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -43,7 +43,7 @@ public class AdminInquiryListFormController extends HttpServlet {
 		int startPage;
 		int endPage;
 		
-		listCount = new AdminInquiryService().inquirySelectListCount();
+		listCount = new AdminReportService().reportSelectListCount();
 		
 		currentPage = Integer.parseInt(request.getParameter("cpage"));
 		
@@ -62,16 +62,12 @@ public class AdminInquiryListFormController extends HttpServlet {
 		}
 		
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
-		
-		ArrayList<Inquiry> list = new AdminInquiryService().selectInquiryList(pi);
+		ArrayList<Report> list = new AdminReportService().selectReportList(pi);
 		
 		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
 		
-		if(list != null) {
-			request.getRequestDispatcher("views/admin/adminInquiryList.jsp").forward(request, response);
-		}
-		
+		request.getRequestDispatcher("views/admin/adminReportList.jsp").forward(request, response);
 	}
 
 	/**

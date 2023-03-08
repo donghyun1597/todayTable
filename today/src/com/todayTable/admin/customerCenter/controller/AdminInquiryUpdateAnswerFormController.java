@@ -32,7 +32,7 @@ public class AdminInquiryUpdateAnswerFormController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 		String answer = request.getParameter("answer");
-		int iqNo = Integer.parseInt(request.getParameter("iqNo"));
+		int iqNo = Integer.parseInt(request.getParameter("num"));
 		
 		Inquiry iq = new AdminInquiryService().selectInquiry(iqNo);
 		

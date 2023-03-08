@@ -31,6 +31,12 @@
         margin-top: 50px;
     }
 
+    #eventHead {
+		color: white;
+        text-align: center;
+
+	}
+
 </style>
 </head>
 <body>
@@ -39,7 +45,15 @@
 		<div id="page-content-wrapper">
             <div>
                 <!-- Page content-->
-			<div class="container-fluid" style="width: 100%; height: 100%;">
+			<div class="container-fluid" style="width: 100%; height: 100%; padding: 0px;">
+                <br><br>
+                <div id="eventHead" style="background-color: rgb(240, 225, 210);">
+					<br>
+					<h1 class="foot"><b>이벤트</b></h1>
+					<br>
+					<h6 style="color: white; font-weight: bold;">- 오늘의식탁의 이벤트 관련 글을 공지하는 '이벤트' 페이지입니다.</h6>
+					<br>
+				</div>
 				
 				<div class="notice-wrap" align="center">
                     <table class="notice-area table-active" width="800px" style="background-color: #e9ecef;">

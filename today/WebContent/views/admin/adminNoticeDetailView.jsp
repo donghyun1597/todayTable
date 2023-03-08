@@ -34,6 +34,16 @@
         margin-top: 50px;
     }
 
+	#noticeHead{
+		background-color: rgb(240, 225, 210);
+        text-align: center;
+	}
+	
+	#noticeHead *{
+		color: white;
+		font-weight: bold;
+        
+	}
 
 </style>
 </head>
@@ -43,7 +53,16 @@
 		<div id="page-content-wrapper">
             <div>
                 <!-- Page content-->
-			<div class="container-fluid" style="width: 100%; height: 100%;">
+			<div class="container-fluid" style="width: 100%; height: 100%; padding: 0px;">
+                <br><br>
+                <div id="noticeHead">
+                    <br>
+                    <h1 class="foot"><b>공지사항</b></h1>
+                    <br>
+                    <h6>- 오늘의식탁 운영관련 글을 공지하는 '공지사항' 페이지입니다.</h6>
+                    <br>
+                </div>
+                
 				
 				<div class="notice-wrap" align="center">
                     <table class="notice-area table-active" width="800px" style="background-color: #e9ecef;">
