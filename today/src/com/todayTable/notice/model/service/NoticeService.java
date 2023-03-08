@@ -1,6 +1,8 @@
 package com.todayTable.notice.model.service;
 
 import com.todayTable.common.model.vo.PageInfo;
+import com.todayTable.customerCenter.model.dao.InquiryDao;
+import com.todayTable.customerCenter.model.vo.Inquiry;
 import com.todayTable.notice.model.dao.NoticeDao;
 import com.todayTable.notice.model.vo.Notice;
 
@@ -63,6 +65,29 @@ public class NoticeService {
 		close(conn);
 		
 		return n;
+	}
+
+	public ArrayList<Notice> searchNotice(String searchOption, String searchText, PageInfo pi) {
+		
+		Connection conn = getConnection();
+		
+		ArrayList<Notice> list = new NoticeDao().searchNotice(conn, searchOption, searchText, pi);
+		
+		close(conn);
+		
+		return list;
+	}
+
+	public int searchNoticeCount(String searchOption, String searchText) {
+		
+		Connection conn = getConnection();
+		
+		int listCount = new NoticeDao().searchNoticeCount(conn, searchOption, searchText);
+		
+		close(conn);
+		
+		return listCount;
+	
 	}
 
 }

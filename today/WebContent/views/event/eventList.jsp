@@ -78,9 +78,9 @@
     </style>
 
     <script>
-        $(document).ready( function() {
-        $("#searchSelect").attr("style","display:inline");
-        $(".nice-select").remove("div")
+        $(document).ready(function() {
+            $(".searchSelect").attr("style","display:inline");
+            $(".nice-select").remove("div");
     });
     </script>
 
@@ -90,6 +90,7 @@
 <%@ include file = "../common/menubar.jsp" %>
 
 <div id="wrap">
+    <div id="notice">
     <!-- ----------------------------------------------------------------------------------------------------- -->
 	<!-- ##### Breadcumb Area Start ##### -->
 	<div class="breadcumb-area bg-img bg-overlay"
@@ -172,20 +173,21 @@
     </div>
 
     <div class="col-5" style="margin:auto">
-        <form action="test" method="post">
+        <form action="searchEvent.ev?cpage=1" method="post">
         <div class="btn-group">
-            <select name="#" id="searchSelect" class="btn btn-outline-secondary" >
-                <option value="title">제목</option>
-                <option value="content">내용</option>
-                <option value="titleContent">제목+내용</option>
+            <select name="searchOption" id="searchSelect" class="btn btn-outline-secondary searchSelect" style="border-color: darkgray;">
+                <option value="title">제목&nbsp;&nbsp;&nbsp;</option>
+                <option value="content">내용&nbsp;&nbsp;&nbsp;</option>
+                <option value="titleContent">제목+내용&nbsp;&nbsp;</option>
             </select>
-            <input type="text" class="form-control" placeholder="검색어 입력" style="border-color: gray; border-radius: 0%;">
+            <input type="text" name="searchText" class="form-control" placeholder="검색어 입력" style="border-color: rgb(108, 117, 125); border-radius: 0%;">
             <button type="submit" class="btn btn-primary">
                 <i class="bi-search"></i>
             </button>
         </div>
-        </form>
+    </form>
     </div>
+
 </div>
 </div>
 
