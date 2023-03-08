@@ -202,10 +202,14 @@
                                                                         <li><a href="#">간단자취</a></li>
                                                                         <li><a href="#">편의점꿀조합</a></li>
                                                                         <li><a href="#">반려동물위한</a></li>
+                                                                        <li><a href="#">파티요리</a></li>
+                                                                        <li><a href="#">기타</a></li>
                                                                     </ul>
                                                                 </li>
                                                                 <li><a href="#">도구별</a>
                                                                     <ul class="dropdown">
+                                                                        <li><a href="#">냄비</a></li>
+                                                                        <li><a href="#">프라이팬</a></li>
                                                                         <li><a href="#">전자레인지</a></li>
                                                                         <li><a href="#">오븐</a></li>
                                                                         <li><a href="#">에어프라이어</a></li>
@@ -229,22 +233,30 @@
                                                                         <li><a href="#">볶음</a></li>
                                                                         <li><a href="#">무침</a></li>
                                                                         <li><a href="#">튀김</a></li>
-                                                                        <li><a href="#">찌개</a></li>
+                                                                        <li><a href="#">끓이기</a></li>
+                                                                        <li><a href="#">기타</a></li>
                                                                     </ul>
                                                                 </li>
                                                                 <li><a href="#">종류별</a>
                                                                     <ul class="dropdown">
                                                                         <li><a href="#">안주</a></li>
                                                                         <li><a href="#">반찬</a></li>
+                                                                        <li><a href="#">국/탕</a></li>
+                                                                        <li><a href="#">샐러드</a></li>
                                                                         <li><a href="#">디저트</a></li>
+                                                                        <li><a href="#">김치/젓갈</a></li>
+                                                                        <li><a href="#">차/음료/술</a></li>
+                                                                        <li><a href="#">면</a></li>
+                                                                        <li><a href="#">기타</a></li>
                                                                     </ul>
                                                                 </li>
                                                                 <li><a href="#">국가별</a>
                                                                     <ul class="dropdown">
-                                                                        <li><a href="#">한식</a></li>
-                                                                        <li><a href="#">양식</a></li>
-                                                                        <li><a href="#">일식</a></li>
-                                                                        <li><a href="#">중식</a></li>
+                                                                        <li><a href="#">한국</a></li>
+                                                                        <li><a href="#">베트남</a></li>
+                                                                        <li><a href="#">중국</a></li>
+                                                                        <li><a href="#">이탈리아</a></li>
+                                                                        <li><a href="#">일본</a></li>
                                                                     </ul>
                                                                 </li>
                                                             </ul>
