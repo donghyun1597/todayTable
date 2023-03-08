@@ -18,10 +18,11 @@
 		<div id="page-content-wrapper">
 		
 			<!-- Page content-->
-			<div class="container-fluid" style="width:1000px; height:800px;">
-				<br><br>
-				<h2 align="center">회원조회</h2>
-				<hr>
+				<div style="background-color: rgb(240, 225, 210); margin-top: 50px;">
+					<br>
+					<h2 align="center" style="color:white; font-weight: bold;">회원조회</h2>
+					<hr>
+				</div>
 
 				<table align="center" class="table-area">
 					<thead>
@@ -67,7 +68,6 @@
 					</form>
 				</div>
 			</div>
-		</div>
 	</div>
 </body>
 </html>

@@ -36,14 +36,13 @@ public class AdminInquiryDao {
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
-				Inquiry i = null;
 				list.add(new Inquiry(rset.getInt("inq_no"),
-									 rset.getInt("mem_no"),
 									 rset.getString("inq_name"),
-									 rset.getString("inq_question"),
-									 rset.getDate("inq_date"),
-									 rset.getString("inq_answer"),
 									 rset.getString("inq_processing"),
+									 rset.getString("mem_id"),
+									 rset.getDate("inq_date"),
+									 rset.getString("inq_question"),
+									 rset.getString("inq_answer"),
 									 rset.getString("inq_private")));
 			}
 		} catch (SQLException e) {
@@ -55,5 +54,82 @@ public class AdminInquiryDao {
 		
 		return list;
 		
+	}
+	
+	public Inquiry selectInquiry(Connection conn, int iNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Inquiry iq = new Inquiry();
+		
+		String sql = prop.getProperty("selectInquiry");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, iNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				iq.setInqNo(rset.getInt("inq_no"));
+				iq.setInqName(rset.getString("inq_name"));
+				iq.setInqProcessing(rset.getString("inq_processing"));
+				iq.setMemId(rset.getString("mem_id"));
+				iq.setInqDate(rset.getDate("inq_date"));
+				iq.setInqQuestion(rset.getString("inq_question"));
+				iq.setInqAnswer(rset.getString("inq_answer"));
+				iq.setInqPrivate(rset.getString("inq_private"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return iq;
+	}
+	
+	public int insertAnswer(Connection conn, int iqNo, String answer) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String sql = prop.getProperty("insertAnswer");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, answer);
+			pstmt.setInt(2, iqNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	public int updateAnswer(Connection conn, int iqNo, String iqContent) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String sql = prop.getProperty("updateAnswer");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, iqContent);
+			pstmt.setInt(2, iqNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
 	}
 }

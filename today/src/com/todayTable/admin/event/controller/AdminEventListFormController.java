@@ -37,9 +37,38 @@ public class AdminEventListFormController extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
-		ArrayList<Event> list = new AdminEventService().selectEventList();
+		int listCount;
+		int currentPage;
+		int pageLimit;
+		int boardLimit;
+		
+		int maxPage;
+		int startPage;
+		int endPage;
+		
+		listCount = new AdminEventService().eventSelectListCount();
+		
+		currentPage = Integer.parseInt(request.getParameter("cpage"));
+		
+		pageLimit = 10;
+		
+		boardLimit = 10;
+		
+		maxPage = (int)Math.ceil((double)listCount / boardLimit);
+		
+		startPage = (currentPage - 1) / pageLimit * pageLimit + 1;
+		
+		endPage = startPage + pageLimit - 1;
+		
+		if(endPage > maxPage) {
+			endPage = maxPage;
+		}
+		
+		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
+		ArrayList<Event> list = new AdminEventService().selectEventList(pi);
 		
 		request.setAttribute("list", list);
+		request.setAttribute("pi", pi);
 		
 		request.getRequestDispatcher("views/admin/adminEvent.jsp").forward(request, response);
 	}

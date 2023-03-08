@@ -32,7 +32,7 @@ public class AdminUpdateFormController extends HttpServlet {
 		int noticeNo = Integer.parseInt(request.getParameter("num"));
 		
 		Notice n = new NoticeService().selectNotice(noticeNo);
-		
+
 		request.setAttribute("n", n);
 		
 		request.getRequestDispatcher("views/admin/adminUpdateNotice.jsp").forward(request, response);

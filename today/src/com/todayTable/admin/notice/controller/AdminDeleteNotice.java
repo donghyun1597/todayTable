@@ -36,7 +36,7 @@ public class AdminDeleteNotice extends HttpServlet {
 		if (check == null) {
 			request.getSession().setAttribute("alertMsg", "삭제할 항목을 선택해주세요.");
 			
-			response.sendRedirect(request.getContextPath() + "/adminNotice.no");
+			response.sendRedirect(request.getContextPath() + "/adminNotice.no?cpage=1");
 		} else {
 			int[] checkInt = new int[check.length];
 
@@ -50,7 +50,7 @@ public class AdminDeleteNotice extends HttpServlet {
 			if (result > 0) {
 				request.getSession().setAttribute("alertMsg", "삭제가 완료되었습니다.");
 				
-				response.sendRedirect(request.getContextPath() + "/adminNotice.no");
+				response.sendRedirect(request.getContextPath() + "/adminNotice.no?cpage=1");
 			}
 
 		}

@@ -1,7 +1,16 @@
+<%@page import="com.todayTable.common.model.vo.PageInfo"%>
 <%@page import="com.todayTable.notice.model.vo.Notice" %>
 <%@page import="java.util.ArrayList" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<% ArrayList<Notice> list = (ArrayList<Notice>)request.getAttribute("list");%>
+<%
+	ArrayList<Notice> list = (ArrayList<Notice>)request.getAttribute("list");
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	
+	int currentPage = pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
+%>
 
 <!-- contextPath = localhost:8002/today -->
 <!DOCTYPE html>
@@ -76,35 +85,40 @@
 		border-color: lightgray;
 	}
 
-	tr{
+	.content{
             cursor: pointer;
     }
+
+	#noticeHead{
+		background-color: rgb(240, 225, 210);
+	}
 	
+	#noticeHead *{
+		color: white;
+		font-weight: bold;
+	}
 </style>
 </head>
 
 <body>
 	<div class="d-flex" id="wrapper">
 	<%@ include file="adminMenubar.jsp" %>
-	<% if(alertMsg !=null) { %>
-		<script>
-			alert("<%= alertMsg %>");
-		</script>
-		<% session.removeAttribute("alertMsg"); %>
-			<% } %>
+	
 		<!-- Page content wrapper-->
 		<div id="page-content-wrapper">
 
 			<!-- Page content-->
-			<div class="container-fluid">
 				<div id="wrap">
 					<br>
 					<br>
 					<div id="notice">
-						<h1 class="foot"><b>공지사항</b></h1>
-						<br>
-						<h6>- 오늘의식탁 운영관련 글을 공지하는 '공지사항' 페이지입니다.</h6>
-						<br>
+						<div id="noticeHead">
+							<br>
+							<h1 class="foot"><b>공지사항</b></h1>
+							<br>
+							<h6>- 오늘의식탁 운영관련 글을 공지하는 '공지사항' 페이지입니다.</h6>
+							<br>
+						</div>
 						<div class="notice-wrapper">
 							<div class="m-4" id="noticeList">
 								<table class="table table-striped" style="width: 800px;">
@@ -141,7 +155,7 @@
 													<td>
 														<%= n.getNoticeClsfc()%>
 													</td>
-													<td style="text-align: left;">
+													<td style="text-align: left;"  class="content">
 															<%= n.getNoticeName()%>
 													</td>
 													<td>
@@ -162,8 +176,8 @@
 
 						<script>
 						$(function(){
-							$("tbody>tr").click(function(){
-								const num = $(this).children().eq(1).text();
+							$(".content").click(function(){
+								const num = $(this).siblings().eq(1).text();
 
 								console.log(num);
 
@@ -174,54 +188,30 @@
 					
 						</script>
 							
-						<div class="m-4" id="paging">
-							<nav>
-								<ul class="pagination">
-									<li class="page-item"><a href="#"
-											class="page-link">
-											&lt; </a></li>
-									<li class="page-item"><a href="#"
-											class="page-link">1</a>
-									</li>
-									<li class="page-item"><a href="#"
-											class="page-link">2</a>
-									</li>
-									<li class="page-item"><a href="#"
-											class="page-link">3</a>
-									</li>
-									<li class="page-item"><a href="#"
-											class="page-link">4</a>
-									</li>
-									<li class="page-item"><a href="#"
-											class="page-link">5</a>
-									</li>
-									<li class="page-item"><a href="#"
-											class="page-link">
-											&gt; </a></li>
-								</ul>
-							</nav>
-						</div>
-
-						<div class="col-5" style="margin: auto">
-							<div class="btn-group">
-								<button type="button"
-									class="btn btn-primary dropdown-toggle"
-									data-bs-toggle="dropdown">제목</button>
-								<ul class="dropdown-menu">
-									<li><a class="dropdown-item" href="#">내용</a>
-									</li>
-									<li><a class="dropdown-item" href="#">제목+내용</a>
-									</li>
-								</ul>
-								<input type="text" class="form-control"
-									placeholder="검색어 입력">
-								<button type="button" class="btn btn-secondary">
-									<i class="bi-search"></i>
-								</button>
+							<div class="m-4" id="paging">
+								<nav>
+									<div class="pagination">
+										<%if(currentPage != 1) { %>
+										<button onclick="location.href='<%=contextPath%>/adminNotice.no?cpage=<%= currentPage -1 %>';" class="page-link"> &lt; </button>
+										<% } %>
+										
+										<%for(int p = startPage; p<=endPage; p++) { %>
+											<% if(p == currentPage){ %>
+												<button style="color: orange" disabled><%=p %></button>
+											<%}else{ %>
+												<button onclick="location.href = '<%= contextPath%>/adminNotice.no?cpage=<%=p%>';" class="page-link"><%=p %></button>
+											<%} %>
+										<%} %>
+										
+										<%if(currentPage != maxPage) {%>
+											<button onclick="location.href='<%=contextPath%>/adminNotice.no?cpage=<%= currentPage +1 %>';" class="page-link"> &gt; </button>
+										<%} %>
+									</div>
+								</nav>
 							</div>
-						</div>
+
+						
 					</div>
-				</div>
 
 			</div>
 		</div>

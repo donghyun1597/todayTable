@@ -49,7 +49,7 @@ public class Inquiry {
 			String inqProcessing, String inqPrivate) {
 		super();
 		this.inqNo = inqNo;
-		MemNo = memNo;
+		this.MemNo = memNo;
 		this.inqName = inqName;
 		this.inqQuestion = inqQuestion;
 		this.inqDate = inqDate;

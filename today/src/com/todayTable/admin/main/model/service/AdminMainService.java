@@ -34,4 +34,19 @@ public class AdminMainService {
 		return result;
 	}
 
+	public int deletePic(int imgNo) {
+		Connection conn = getConnection();
+		
+		int result = new AdminMainDao().deletePic(conn, imgNo);
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+	}
 }
