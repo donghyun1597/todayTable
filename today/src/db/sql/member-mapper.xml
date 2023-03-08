@@ -192,7 +192,14 @@ SELECT
 </entry>
 
 
-	
+
+
+<!-- 회원삭제 -->
+<entry key="deleteMem">
+	UPDATE TB_MEMBER
+	SET MEM_STATUS = 'N'
+	WHERE MEM_ID = ?
+</entry>
 	
 	
 	

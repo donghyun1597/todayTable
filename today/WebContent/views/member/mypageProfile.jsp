@@ -188,10 +188,8 @@
 
 
                <div align="center">
-                  <button type="submit" class="btn delicious-btn btn-4 m-1"
-                     onclick="return validatePwd()">정보변경</button>
-                  <a href="#" class="btn delicious-btn btn-4 m-1"
-                     data-toggle="modal" data-target="#deleteModal">회원탈퇴</a>
+                  <button type="submit" class="btn btn-outline-success btn-primary" onclick="return validatePwd()">정보변경</button>
+                  <button type="button" class="btn btn-outline-danger btn-primary" data-toggle="modal" data-target="#deleteModal" style="margin-left: 10px;">회원탈퇴</button>
                </div>
 
             </form>
@@ -208,21 +206,24 @@
 
                <!-- Modal Header -->
                <div class="modal-header">
-                  <h4 class="modal-title">회원탈퇴</h4>
+                  <h5 class="modal-title" style="text-align: center;">회원탈퇴</h5>
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
                </div>
 
                <!-- Modal body -->
-               <div class="modal-body" align="center">
-                  <!-- 입력받고 싶은 내용 -->
+               <div class="modal-body" style="text-align: left;">
                   <form action="<%= contextPath %>/delete.me" method="post">
-                     <b>탈퇴 후 복구가 불가능 합니다. <br> 정말로 탈퇴 하시겠습니까?
-                     </b> <br>
-                     <br> 비밀번호: 
-                     <input type="password" name="userPwd" required>
-                     <input type="hidden" name="userId" value="<%= memId%>"><br>
-                     <br>
-                     <button type="submit" class="btn btn-sm btn-danger">탈퇴하기</button>
+                     <div style="margin-left: 10px; font-size: 12px; font-weight: 300;">
+                        <b style="color: #999;">
+                           * 탈퇴하면 앞으로 이 계정으로 로그인할 수 없고 이 계정을 다시 복구할 수 없습니다.<br>
+                           * 가입정보를 변경하고 싶다면 회원정보수정에서 변경할 수 있습니다. <br>
+                           * 게시물은 탈퇴 후에도 자동 삭제되지 않습니다 <br>
+                           * 삭제하고 싶은 게시물은 반드시 직접 삭제하신 후 탈퇴해 주시기 바랍니다. <br>
+                        </b><br><br>
+                     </div>
+                     <div style="text-align: center;">
+                     <button type="submit" class="btn btn-outline-danger btn-sm" style="margin-left: 20px;">탈퇴하기</button> <br><br>
+                  </div>
                   </form>
                </div>
             </div>

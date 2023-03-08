@@ -153,6 +153,8 @@
 
 
 
+
+
 </style>
 
 
@@ -209,7 +211,7 @@
                                        <div class="container"> <br>
 
                                           <div align="right">
-                                             <a href="#" class="btn btn-success" role="button"> 레시피 작성</a>
+                                             <a href="#" class="btn btn-outline-success btn-sm" role="button"> 레시피 작성</a>
                                           </div> <br>
 
                                           <div class="row" id="sumin-row">
@@ -251,13 +253,8 @@
                         <div class="tab-pane fade" id="comment">
                            <form action="deleteComment.me">
                               <div class="container">
-                                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; margin-top: 15px;">
-                                    <div style="margin-left: 20px; margin-top: 20px;">
-                                       <input type="checkbox" name="commentCheck" value="selectall" onclick="selectAll(this)" /> 전체선택
-                                    </div>
-                                    <div>
-                                       <button type="submit" id="checkDelete" class="btn btn-danger" onclick="return confirm('선택된 게시물을 삭제하시겠습니까?');">삭제하기</button>
-                                    </div>
+                                 <div  align="right" style="padding-top: 20px;">
+                                    <button type="submit" id="checkDelete" class="btn btn-outline-danger btn-sm" onclick="return confirm('선택된 게시물을 삭제하시겠습니까?');">삭제하기</button>
                                  </div>
 
                                  <table class="table table-hover">
@@ -340,10 +337,7 @@
 
                      <!-- ------------------------------------------------------------------------------------ -->
                               <div class="tab-pane fade" id="wish">
-                                 <div class="container">
-                                    <div class="row">
-
-                                    </div>
+                                 <div class="container" style="padding-top: 50px;">
                                     <table class="table table-hover"> <br>
                                        <% if (wlist.isEmpty()) {%>
                                           <p>찜한 목록이 없습니다.</p>
@@ -354,14 +348,7 @@
                                           <tbody>
                                           <tr>
                                              <td style="width: 5%; padding-top: 20px; padding-left: 20px;">
-                                                <div class="only_box">
-                                                   <div class="FormInputCheck">
-                                                      <input id="check_wishlist_100" type="checkbox" class="input_check" name="ckWishlist"> 
-                                                      <label for="check_wishlist_100" class="label"> 
-                                                         <span class="blind"></span>
-                                                      </label>
-                                                   </div>
-                                                </div>
+            
                                              </td>
                                              
                                              <td style="width: 25%;" align="center;">
@@ -385,10 +372,6 @@
 
                                     </div>
                                  </div>
-
-
-
-
                      <!-- ------------------------------------------------------------------------------------ -->
                               </div>
                      <!-------------------------------------------------------------------------------------------------------------->
