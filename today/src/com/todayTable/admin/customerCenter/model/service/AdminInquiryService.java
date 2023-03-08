@@ -45,4 +45,20 @@ public class AdminInquiryService {
 		
 		return result;
 	}
+	
+	public int updateAnswer(int iqNo, String iqContent) {
+		Connection conn = getConnection();
+		
+		int result = new AdminInquiryDao().updateAnswer(conn, iqNo, iqContent);
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+	}
 }

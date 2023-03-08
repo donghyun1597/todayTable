@@ -120,4 +120,13 @@
 	  	WHERE
 	  	 	  INQ_NO = ?	
 	</entry>
+	
+	<entry key="updateAnswer">
+		UPDATE
+				TB_INQUIRY
+			SET
+				INQ_ANSWER = ?
+			WHERE
+				INQ_NO = ?
+	</entry>
 </properties>

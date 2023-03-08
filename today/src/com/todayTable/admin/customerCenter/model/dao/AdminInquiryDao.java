@@ -110,4 +110,26 @@ public class AdminInquiryDao {
 		}
 		return result;
 	}
+	
+	public int updateAnswer(Connection conn, int iqNo, String iqContent) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String sql = prop.getProperty("updateAnswer");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, iqContent);
+			pstmt.setInt(2, iqNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
 }
