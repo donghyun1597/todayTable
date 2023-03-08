@@ -61,7 +61,7 @@ public class RecipeService {
 	
 	
 	/**
-	 * 마이페이지_내가 만든 레시피 목록 조회
+	 * 마이페이지_내가 작성한 댓글 목록 조회
 	 * @author sm.kim
 	 * @return
 	 */
@@ -82,7 +82,7 @@ public class RecipeService {
 	public ArrayList<MyWishlist> selectWishList(int memNo){
 		Connection conn = getConnection();
 		ArrayList<MyWishlist> wlist = new RecipeDao().selectWishList(conn,memNo);
-		System.out.println("service" + wlist);
+		
 		
 		close(conn);
 		return wlist;
@@ -123,8 +123,8 @@ public class RecipeService {
 	
 	
 	/**
-	 * @param mi
 	 * @author sm.kim
+	 * @param mi
 	 * @return
 	 */
 	public int updateMemImg(MemImg mi) {
@@ -134,10 +134,10 @@ public class RecipeService {
 		
 		if(result > 0) {
 			commit(conn);
-			System.out.println("service 이거 되나");
+			
 		}else {
 			rollback(conn);
-			System.out.println("service 이거 안!!! 되나");
+			
 		}
 		close(conn);
 		return result;
@@ -145,7 +145,26 @@ public class RecipeService {
 	
 	
 	
-	
+	/**
+	 * 마이페이지 댓글게시글 삭제하기
+	 * @author sm.kim
+	 * @param checkInt
+	 * @return
+	 */
+	public int deleteComment(int[] checkInt) {
+		
+		Connection conn = getConnection();
+		int result = new RecipeDao().deleteComment(conn, checkInt);
+		System.out.println("service");
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
 	
 	
 	

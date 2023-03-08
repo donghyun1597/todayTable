@@ -49,7 +49,8 @@
 <!-- 수민: 마이페이지_내가 작성한 댓글 조회-->
 <entry key="selectCommentList">
     SELECT
-        COM_CONTENT
+    	COM_NO
+        , COM_CONTENT
         , COM_DATE
         , RECIPE_NAME
         , RECIPE_PIC
@@ -57,7 +58,7 @@
     FROM TB_COMMENT
     JOIN TB_RECIPE USING (MEM_NO)
     WHERE MEM_NO = ?
-    AND RECIPE_STATUS = 'Y'
+    AND COM_STATUS = 'Y'
 	ORDER BY COM_DATE DESC
 </entry>
 
@@ -87,6 +88,15 @@
 
 
 
+<!-- 수민: 마이페이지 체크박스 삭제 -->
+<entry key="deleteComment">
+			UPDATE
+			TB_COMMENT
+		SET 
+			COM_STATUS = 'N'
+		WHERE	
+			 COM_NO IN (
+</entry>
 
 	
 	

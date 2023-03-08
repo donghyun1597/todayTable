@@ -138,14 +138,14 @@
 							<td id="t1">&nbsp;&nbsp;알러지정보</td>
 							<td id="t2" colspan="2">
 								<input type="checkbox" name="agllergy" id="ag" value="A1"><label for="ag">난류</label>
-								<input type="checkbox" name="agllergy" id="ag" value="A2"><label for="ag">우유</label>
-								<input type="checkbox" name="agllergy" id="ag" value="A3"> <label for="ag">곡류</label>
-								<input type="checkbox" name="agllergy" id="ag" value="A4"><label for="ag">갑각류</label>
-								<input type="checkbox" name="agllergy" id="ag" value="A5"> <label for="ag">견과류</label>
-								<input type="checkbox" name="agllergy" id="ag" value="A6"> <label for="ag">생선류</label>
-								<input type="checkbox" name="agllergy" id="ag" value="A7"> <label for="ag">아황산류</label>
-								<input type="checkbox" name="agllergy" id="ag" value="A8"> <label for="ag">연체류</label>
-								<input type="checkbox" name="agllergy" id="ag" value="A9"> <label for="ag">육류</label>
+								<input type="checkbox" name="agllergy" id="milk" value="A2"><label for="milk">우유</label>
+								<input type="checkbox" name="agllergy" id="cereal" value="A3"> <label for="cereal">곡류</label>
+								<input type="checkbox" name="agllergy" id="crustaceans" value="A4"><label for="crustaceans">갑각류</label>
+								<input type="checkbox" name="agllergy" id="Nuts" value="A5"> <label for="Nuts">견과류</label>
+								<input type="checkbox" name="agllergy" id="fish" value="A6"> <label for="fish">생선류</label>
+								<input type="checkbox" name="agllergy" id="sulphuricAcid" value="A7"> <label for="sulphuricAcid">아황산류</label>
+								<input type="checkbox" name="agllergy" id="molluscs" value="A8"> <label for="molluscs">연체류</label>
+								<input type="checkbox" name="agllergy" id="Meat" value="A9"> <label for="Meat">육류</label>
 
 							</td>
 						</tr>
@@ -191,7 +191,7 @@
 						<button type="submit" class="btn delicious-btn btn-4 m-1"
 							onclick="return validatePwd()">정보변경</button>
 						<a href="#" class="btn delicious-btn btn-4 m-1"
-							data-toggle="modal" data-target="#deleteModal">기능준비중</a>
+							data-toggle="modal" data-target="#deleteModal">회원탈퇴</a>
 					</div>
 
 				</form>

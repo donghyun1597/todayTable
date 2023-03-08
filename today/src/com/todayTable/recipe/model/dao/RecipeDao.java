@@ -183,7 +183,8 @@ public class RecipeDao {
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
-				clist.add(new MyComment(rset.getString("com_content"),
+				clist.add(new MyComment(rset.getString("com_no"),
+										rset.getString("com_content"),
 										rset.getDate("com_date"),
 										rset.getString("recipe_name"),
 										rset.getString("recipe_pic"),
@@ -443,11 +444,60 @@ public class RecipeDao {
 			close (pstmt);
 		}
 		return result;
-		
-		
-		
-		
 	}
+	
+	
+	
+	
+	
+	/**
+	 * 마이페이지 댓글 삭제하기
+	 * @author sm.kim
+	 * @param conn
+	 * @param checkInt
+	 * @return
+	 */
+	public int deleteComment(Connection conn , int[] checkInt) {
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("deleteComment");
+		
+		for(int i=0; i<checkInt.length; i++) {
+			sql += "?,";
+		}
+		sql = sql.substring(0, sql.length()-1) + ")";
+		
+		System.out.println("Dao" + sql);
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			for(int i=1; i<=checkInt.length; i++) {
+				pstmt.setInt(i, checkInt[i-1]);
+			}
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 

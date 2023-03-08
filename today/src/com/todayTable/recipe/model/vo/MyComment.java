@@ -4,6 +4,7 @@ import java.sql.Date;
 
 public class MyComment {
 	
+	private String comNo;
     private String comContent;
     private Date comDate;
     private String recipeName;
@@ -12,13 +13,26 @@ public class MyComment {
     
     public MyComment () {}
 
-	public MyComment(String comContent, Date comDate, String recipeName, String recipePic, int recipeViews) {
+	public MyComment(String comNo, String comContent, Date comDate, String recipeName, String recipePic, int recipeViews) {
 		super();
+		this.comNo = comNo;
 		this.comContent = comContent;
 		this.comDate = comDate;
 		this.recipeName = recipeName;
 		this.recipePic = recipePic;
 		this.recipeViews = recipeViews;
+	}
+
+	
+	
+	
+	
+	public String getComNo() {
+		return comNo;
+	}
+
+	public void setComNo(String comNo) {
+		this.comNo = comNo;
 	}
 
 	public String getComContent() {
@@ -60,12 +74,14 @@ public class MyComment {
 	public void setRecipeViews(int recipeViews) {
 		this.recipeViews = recipeViews;
 	}
+	
 
 	@Override
 	public String toString() {
-		return "MyComment [comContent=" + comContent + ", comDate=" + comDate + ", recipeName=" + recipeName
-				+ ", recipePic=" + recipePic + ", recipeViews=" + recipeViews + "]";
+		return "MyComment [comNo=" + comNo + ", comContent=" + comContent + ", comDate=" + comDate + ", recipeName="
+				+ recipeName + ", recipePic=" + recipePic + ", recipeViews=" + recipeViews + "]";
 	}
+
     
     
 

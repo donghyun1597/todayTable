@@ -46,6 +46,7 @@ public class AdminNoticeService {
 		return result;
 	}
 	
+	
 	public int deleteNotice(int noticeNo) {
 		Connection conn = getConnection();
 		

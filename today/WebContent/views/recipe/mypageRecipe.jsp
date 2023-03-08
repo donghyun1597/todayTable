@@ -239,6 +239,7 @@
 
 													</div>
 												</div>
+					
 											</div>
 										</div>
 					<!-- ------------------------------------------------------------------------------------ -->
@@ -246,92 +247,89 @@
 					
 
 					<!-- ------------------------------------------------------------------------------------ -->
-					<div class="tab-pane fade" id="comment">
-						<div class="container">
-							<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px; margin-top: 15px;">
-								<div style="margin-left: 20px; margin-top: 20px;" >
-								  <input type="checkbox" name="ckComment" value="selectall" onclick="selectAll(this)"/> 전체선택
+
+								<div class="tab-pane fade" id="comment">
+									<form action="deleteComment.me">
+										<div class="container">
+											<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; margin-top: 15px;">
+												<div style="margin-left: 20px; margin-top: 20px;">
+													<input type="checkbox" name="commentCheck" value="selectall" onclick="selectAll(this)" /> 전체선택
+												</div>
+												<div>
+													<button type="submit" id="checkDelete" class="btn btn-danger" onclick="return confirm('선택된 게시물을 삭제하시겠습니까?');">삭제하기</button>
+												</div>
+											</div>
+
+											<table class="table table-hover">
+												<br>
+												<%
+													if (clist.isEmpty()) {
+												%>
+												<p>작성된 댓글이 없습니다.</p>
+												<%
+													} else {
+												%>
+												<%
+													for (MyComment c : clist) {
+												%>
+												<div class="comment-row">
+													<thead></thead>
+													<tbody>
+														<tr>
+															<td style="width: 5%; padding-top: 20px; padding-left: 20px;">
+																<div class="only_box">
+																	<div class="FormInputCheck">
+																		<input id="checkbox" type="checkbox" class="input_check" name="commentCheck" value="<%=c.getComNo()%>">
+																		<label for="checkbox" class="label"> <span class="blind"></span></label>
+																	</div>
+																</div>
+															</td>
+															<td style="width: 70%; padding-top: 20px;">
+																<div class="comment-content" style="font-weight: 400;">
+																	<strong class="article"><%=c.getComContent()%></strong>
+																</div>
+																<div class="comment-info" style="color: gray; font-size: small;">
+																	<%=c.getComDate()%>
+																</div>
+																<div class="comment-info" style="color: gray; font-size: small;">
+																	<%=c.getRecipeName()%>
+																	<span class="cmt" style="color: red;">[<em><%=c.getRecipeViews()%></em>]
+																	</span>
+																</div>
+															</td>
+															<td style="width: 25%;" align="center"><img
+																src="<%=c.getRecipePic()%>"
+																style="width: 120px; height: 90px; border-radius: 10px;"></td>
+														</tr>
+													</tbody>
+												</div>
+												<%
+													}
+												%>
+												<%
+													}
+												%>
+
+											</table>
+										</div>
+
+									</form>
 								</div>
-								<div>
-									<a href="#" class="btn btn-danger" role="button" onclick="deleteSelected()">삭제하기</a>
-								</div>
-							  </div>
-							<table class="table table-hover"> <br>
-								<% if (clist.isEmpty()) {%>
-									<p>작성된 댓글이 없습니다.</p>
-								<%} else {%>
-									<% for (MyComment c : clist) {%>
-									<a href="#" target="_blank" class="board-list"> 
-										<thead></thead>
-										<tbody>
-											<tr>
-												<td style="width: 5%; padding-top: 20px; padding-left: 20px;">
-													<div class="only_box">
-														<div class="FormInputCheck">
-															<input id="check_comment_100" type="checkbox" class="input_check" name="ckComment">
-															<label for="check_comment_100" class="label">
-																<span class="blind"></span>
-															</label>
-														</div>
-													</div>
-												</td>
-												<td style="width: 70%; padding-top: 20px; ">
-													<a href="#" target="_blank" class="board-list">
-														<div class="inner_list" style="font-weight: 400;">
-															<strong class="article">
-																<%=c.getComContent()%>
-															</strong>
-														</div>
-													</a>
-													<div class="comment_date"  style="color: gray; font-size: small;">
-														<%=c.getComDate()%>
-													</div>
-													<div class="comment_title" style="color: gray; font-size: small;"> 
-														<%=c.getRecipeName()%>
-														<span class="cmt" style="color: red;">[<em><%=c.getRecipeViews()%></em>]</span>
-													</div>
-												</td>
-												<td style="width: 25%;" align="center">
-													<img src="<%=c.getRecipePic() %>" style="width: 120px; height: 90px; border-radius: 10px;">
-												</td>
-											</tr>
-										</tbody>
-									</a>
-									<%}%>
-								<%}%>
-							</table>
-						</div>
-					</div>
-					
-					<script>
-						// 전체 선택
-						function selectAll(source) {
-							var checkboxes = document.getElementsByName('ckComment');
-							for(var i=0, n=checkboxes.length;i<n;i++) {
-								checkboxes[i].checked = source.checked;
-							}
-						}
-
-						// 삭제 버튼 클릭 시 삭제하기
-						function deleteSelected() {
-							var checkboxes = document.getElementsByName('ckComment');
-							var checked = [];
-							for (var i = 0, n = checkboxes.length; i < n; i++) {
-							if (checkboxes[i].checked) {
-								checked.push(checkboxes[i].value);
-							}
-							}
-							if (checked.length > 0) {
-							// TODO: 삭제 로직 구현
-							console.log(checked);
-							} else {
-							alert('삭제할 댓글을 선택해 주세요.');
-						}
-						}
 
 
-					</script>
-					
+								
+								<script>
+									// 전체 선택
+									function selectAll(source) {
+										var checkboxes = document.getElementsByName('commentCheck');
+										for(var i=0, n=checkboxes.length;i<n;i++) {
+											checkboxes[i].checked = source.checked;
+										}
+									}
+
+
+							</script>
+							
 
 										
 							<!-- ------------------------------------------------------------------------------------ -->
@@ -344,19 +342,7 @@
 										<div class="tab-pane fade" id="wish">
 											<div class="container">
 												<div class="row">
-													<div class="col-md-6" style="width: 5%; padding-top: 35px; text-align: left; margin-left: 20px;">
-														<div class="only_box">
-															<div class="formInputCheck">
-																<input type="checkbox" id="checkAll" name="ckWish" value="wishSelecAll" class="input_check" onclick="wishSelectAll()">
-																<label for="checkAll" class="label">
-																	<span class="blind">전체선택</span>
-																</label>
-															</div>
-														</div>
-													</div>
-													<div class="col-md-6" align="right" style="width: 5%; padding-top: 20px; ">
-														<a href="#" class="btn btn-danger" role="button" onclick="deleteSelected()">삭제하기</a>
-													</div> 
+
 												</div>
 												<table class="table table-hover"> <br>
 													<% if (wlist.isEmpty()) {%>
@@ -400,33 +386,7 @@
 												</div>
 											</div>
 
-											<script>
-												// 전체선택
-												function wishSelectAll(){
-													var checkboxes = document.getElementsByName('ckWishlist');
-													for(var i=0, n=checkboxes.length; i<n; i++){
-														checkboxes[i].checked = document.getElementById('checkAll').checked;
-													}
-												}
 
-
-												function deleteSelected() {
-													var checkboxes = document.getElementsByName("ckWishlist");
-													var selected = [];
-													for (var i = 0; i < checkboxes.length; i++) {
-														if (checkboxes[i].checked) {
-														selected.push(checkboxes[i].id.split("_")[2]); // extract recipeNo value from checkbox id and add to selected array
-														}
-													}
-													if (selected.length == 0) {
-														alert("삭제할 항목을 선택해주세요.");
-														return;
-													}
-													deleteWishlist(selected); // call deleteWishlist function with selected recipeNo values
-													}
-
-												
-											</script>
 
 
 							<!-- ------------------------------------------------------------------------------------ -->
@@ -444,14 +404,14 @@
 									<div class="text-center">
 										<div class="info_pic">
 											<a href="javascript:void(0);" onclick="$('#updateModal').modal('show');$('html, body').animate({scrollTop:0}, 'slow');">
-												<img src="<%=contextPath+loginUser.getMemImg() %>" style="border-radius: 50%;"></a>
+												<img src="<%=contextPath+loginUser.getMemImg() %>" style="border-radius: 50%; width: 200px; height: 200px;"></a>
 											<a href="javascript:void(0);" class="info_set" onclick="$('#updateModal').modal('show');$('html, body').animate({scrollTop:0}, 'slow');" >
 												<img src="https://recipe1.ezmember.co.kr/img/mobile/icon_camera2.png" alt="사진변경"></a>
-												<p style="font-size: 20px; font-weight: 600; color: #51545f;" ><%= loginUser.getNickName() %></p>
+											<p style="font-size: 20px; font-weight: 600; color: #51545f;"><%= loginUser.getNickName() %></p>
 										</div>
 										<div class="date-comments d-flex justify-content-between">
 											<div class="mycount" align="left" style="font-size: 16px; color: #51545f; font-weight: 600;"> 
-												<span class="comments" >내 레시피: <%= myrecipeCount %>   </span>
+												<span class="comments" >내 레시피: <%= myrecipeCount %></span>
 												<span class="comments" style="padding-left: 20px;">내 댓글:  <%= mycommentCount %></span>
 											</div> 
 										</div>
