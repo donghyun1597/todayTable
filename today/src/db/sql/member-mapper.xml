@@ -191,6 +191,7 @@ SELECT
     AND PHONE = ?
 </entry>
 
+
 <entry key="countMember">
 	SELECT
 		COUNT(*) COUNT
@@ -199,7 +200,17 @@ SELECT
 	WHERE
 		MEM_STATUS = 'Y' AND MEM_ID != 'admin'
 </entry>
-	
+
+
+
+
+<!-- 회원삭제 -->
+<entry key="deleteMem">
+	UPDATE TB_MEMBER
+	SET MEM_STATUS = 'N'
+	WHERE MEM_ID = ?
+</entry>
+
 	
 	
 	
