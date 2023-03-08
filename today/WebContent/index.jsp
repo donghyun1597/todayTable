@@ -41,6 +41,10 @@
             border-radius: 10px;
             
         }
+        div[id~=divRecipeThum]{
+            width: 300px !important;
+            height: 415px !important;
+        }
         
     </style>
     
@@ -154,24 +158,7 @@
         <div class="container">
 
             <div class="row align-items-center" id="recommend">
-                <!-- Single Best Receipe Area -->
-                <!-- <div class="col-12 col-sm-6 col-lg-4" id="col-510">
-                    <div class="single-best-receipe-area mb-30">
-                        <img src="resources/image/bg-img/sumin6.jpg" alt="음식1">
-                        <div class="receipe-content">
-                            <a href="<%=contextPath%>/recipeView.rc">
-                                <h5>레시피1</h5>
-                            </a>
-                            <div class="ratings">난이도
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
+                
             
             </div>
             
@@ -182,14 +169,38 @@
 
         <script>
             $(function(){
-                let recipeDivNum=1;
+                let recipeDivSnum=1;
+                let recipeDivEnum=5;
                 $(".btnNext").click(function(){
-                    for(let i=1;i<5;i++){
+                    console.log($("#recommend").children("div[display=none]"));
+                    
+                    for(let i=recipeDivSnum;i<recipeDivEnum;i++){
                         console.log(i);
                         $("#divRecipeThum"+i).attr("style","display:none");
+                        $("#divRecipeThum"+(recipeDivEnum+i-1)).css("display","block");
                         
                     }
-                    $("#divRecipeThum"+5).css("display","block");
+                    recipeDivSnum = recipeDivSnum+4;
+                    recipeDivEnum = recipeDivEnum+4;
+                })
+                $(".btnPrev").click(function(){
+                    if(recipeDivSnum==1){return;}
+                    
+                    console.log(recipeDivSnum);
+                    console.log(recipeDivEnum);
+
+                    for(let i=recipeDivSnum;i<recipeDivEnum;i++){
+                        console.log(i);
+                        $("#divRecipeThum"+i).attr("style","display:none");
+                        $("#divRecipeThum"+(i-4)).css("display","block");
+                        
+                    }
+                    
+                        recipeDivSnum = recipeDivSnum-4;
+                        recipeDivEnum = recipeDivEnum-4;
+                    
+                    
+
                 })
             })
 
@@ -207,28 +218,6 @@
                 <h3>OUR RECIPES</h3>
             </span>
             <div class="row h-100 align-items-center" id="topRecipe">
-                
-               <!-- Single Best Receipe Area
-                <div class="col-12 col-sm-6 col-lg-4" id="col-510" id="topRecipe1">
-                    <div class="single-best-receipe-area mb-30">
-                        <img src="resources/image/bg-img/sumin6.jpg" alt="음식2" id="topRecipeImg1">
-                        <div class="receipe-content">
-                            <a href="receipe-post.html">
-                                <h5>레시피5</h5>
-                            </a>
-                            <div class="ratings">난이도
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                 -->
-                
-                
                 
                 
             </div>
@@ -520,9 +509,9 @@
 		                console.log(list);
                         $("#recommend").children().remove();
 		                for(let i=0;i<list.length;i++){
-                            let divThum=$('<div style="width:300px; height:415px;" id="divRecipeThum'+(i+1)+'">' +
+                            let divThum=$('<div style="width:300px; height:415px; display:block;" id="divRecipeThum'+(i+1)+'">' +
                                     '<div style="margin-right: 30px;">'+
-		                                '<div class="single-best-receipe-area mb-30"><div style="width:250px; height:250px;">'+
+		                                '<div><div style="width:250px; height:250px;">'+
                                             '<a href="<%=contextPath%>/recipeView.rc?recipeNo='+list[i].recipeNo +'">'+
                                                 '<img src="<%=contextPath%>'+list[i].recipePic+'" alt="음식2" style="width:100%; height:100%;"></div></a>'+
 		                                    '<div style="margin-top: 10px;">'+

@@ -397,7 +397,7 @@ public class RecipeDao {
 				co.setCoNo(rset.getInt("co_no"));
 				co.setCoStep(rset.getString("co_step"));
 				co.setCoContent(rset.getString("co_content"));
-				co.setOrdImgImgurl(rset.getString("ordimg_imgurl"));
+				co.setCoImg(rset.getString("co_img"));
 				
 				list.add(co);
 				

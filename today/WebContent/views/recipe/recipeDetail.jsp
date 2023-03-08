@@ -126,7 +126,7 @@
 	                         	<%=cookingOrders.get(i).getCoContent() %>
 	                     	</div>
 	                     	<div style="width: 35%">
-	                     		<img alt="" src="<%= contextPath+cookingOrders.get(i).getOrdImgImgurl()%>">
+	                     		<img alt="" src="<%= contextPath+cookingOrders.get(i).getCoImg()%>">
 	                     	</div>
                      	</div>
                         

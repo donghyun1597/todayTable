@@ -5,7 +5,7 @@ public class CookingOrder {
 	private int recipeNo;
 	private String coStep;
 	private String coContent;
-	private String ordImgImgurl;
+	private String coImg;
 	
 	public CookingOrder() {}
 
@@ -19,12 +19,14 @@ public class CookingOrder {
 	}
 	
 	
-	public String getOrdImgImgurl() {
-		return ordImgImgurl;
+	
+
+	public String getCoImg() {
+		return coImg;
 	}
 
-	public void setOrdImgImgurl(String ordImgImgurl) {
-		this.ordImgImgurl = ordImgImgurl;
+	public void setCoImg(String coImg) {
+		this.coImg = coImg;
 	}
 
 	public int getCoNo() {

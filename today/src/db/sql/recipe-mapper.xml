@@ -191,11 +191,11 @@
 	      CO_NO
 	    , CO_STEP
 	    , CO_CONTENT
-	    , ORDIMG_IMGURL
+	    , CO_IMG
+	   
 	FROM 
 	    TB_COOKING_ORDER
-	JOIN
-	    TB_COOKING_ORDER_IMG USING(CO_NO)
+
 	WHERE RECIPE_NO = ?
 </entry>
 
