@@ -64,14 +64,13 @@ String contextPath = request.getContextPath(); // /jsp
 <body>
 
   <div align="center">
-    <img src="<%= contextPath %>/resources/image/core-img/logo.jpg" alt="오늘의식탁 로고" width="20%">
+    <a class="nav-brand" href="index.jsp" ><img src="<%=request.getContextPath()%>/resources/image/logo.png" width="15%" align="center"></a>
+    <h1>회원가입 페이지</h1>
   </div>
-
-  <h1>회원가입 페이지</h1>
 
   <form id="enroll-form" action="<%= contextPath %>/insert.me" method="post">
 
-  <table>
+  <table align="center">
     <tr>
       <td>* 아이디 :</td>
     </tr>
@@ -83,14 +82,14 @@ String contextPath = request.getContextPath(); // /jsp
       <td>* 비밀번호 :</td>
     </tr>
     <tr>
-      <td><input type="password" name="memPwd" id="userPwd1" required></td>
+      <td><input type="password" name="memPwd" id="userPwd" required></td>
       <td></td>
     </tr>
     <tr>
       <td>* 비밀번호확인 :</td>
     </tr>
     <tr>
-      <td><input type="password" name="PwdCheck" id="userPwd2" required></td>
+      <td><input type="password" name="PwdCheck" id="checkPwd" required></td>
       <td></td>
     </tr>
     <tr>
@@ -356,8 +355,8 @@ String contextPath = request.getContextPath(); // /jsp
 
   <script>
  function validate(){
-  const pwdInput1 = document.querySelector("#userPwd1"); /// 선택자가 나와야한다.
-  const pwdInput2 = document.querySelector("#userPwd2");
+  const pwdInput1 = document.getElementById("userPwd"); /// 선택자가 나와야한다.
+  const pwdInput2 = document.getElementById("checkPwd");
   
   if(pwdInput1.value != pwdInput2.value){
     alert("동일한 비밀번호를 입력해주세요!");
@@ -365,6 +364,7 @@ String contextPath = request.getContextPath(); // /jsp
     pwdInput2.focus();
     return false;
   }
+}
   
   
 	function readonlyFalse(){

@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+String contextPath = request.getContextPath(); // /jsp	
+
+%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -57,7 +61,7 @@
             return;
          }
          
-         var url = "<%=request.getContextPath()%>/searchMemId.me"; // 요청 서블릿 url
+         var url = "<%= request.contextPath()%>/searchMemId.me"; // 요청 서블릿 url
          
          var title ="searchMemId"; //윈도우 창 이름
          
@@ -70,7 +74,7 @@
          
          searchFrm.target = title;//popup창과 form태그를 연결
          //action,method설정 후 form태그 submit
-         searchFrm.action ="searchMemId2.jsp";
+         searchFrm.action ="/searchMemId.jsp";
          searchFrm.method="post";
          
          searchFrm.submit();

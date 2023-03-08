@@ -155,7 +155,7 @@
 	<%} %>
     <div class="wrap">
         <div class="login">
-            <a class="nav-brand" href="index.jsp"><img src="<%=request.getContextPath()%>/resources/image/logo.png" width="40%" align="center"></a>
+            <a class="nav-brand" href="index.jsp" align="center"><img src="<%=request.getContextPath()%>/resources/image/logo.png" width="40%" align="center"></a>
             <h2>Log-in</h2>
             <div class="login_sns">
                 <li><a href=""><img src="<%=request.getContextPath()%>/resources/image/userInfo/2023-03-05 221015.png" alt="" width="30px" onclick="kakaoLogin();"></a></li>

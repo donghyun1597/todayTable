@@ -10,6 +10,7 @@
 
 	<div align="center" style="color:red"><%= request.getAttribute("errorMsg") %></div>
 	
+	<button>뒤로가기</button>
 	
 </body>
 </html>
