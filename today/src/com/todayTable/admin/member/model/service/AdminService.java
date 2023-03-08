@@ -41,5 +41,14 @@ public class AdminService {
 		return list;
 	}
 	
+	public int countMember() {
+		Connection conn = getConnection();
+		
+		int memCount = new AdminDao().countMember(conn);
+		
+		close(conn);
+		
+		return memCount;
+	}
 	
 }

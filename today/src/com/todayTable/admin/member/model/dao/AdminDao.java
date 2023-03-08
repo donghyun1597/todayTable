@@ -127,5 +127,29 @@ public class AdminDao {
 		return list;
 	}
 	
+	public int countMember(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int memCount = 0;
+		
+		String sql = prop.getProperty("countMember");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				memCount = rset.getInt("count");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return memCount;
+	}
 	
 }

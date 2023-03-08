@@ -11,6 +11,7 @@ public class Report {
 	private String repProcessing;
 	private String repStatus;
 	private String memId;
+	private String repUrl;
 	
 	public Report() {}
 
@@ -27,6 +28,7 @@ public class Report {
 	}
 	
 	
+	
 
 	public Report(int repNo, String memId, String repContents, Date repDate, String repClsfc, String repProcessing) {
 		super();
@@ -36,6 +38,17 @@ public class Report {
 		this.repDate = repDate;
 		this.repClsfc = repClsfc;
 		this.repProcessing = repProcessing;
+	}
+
+	public Report(int repNo, String memId, String repContents, Date repDate, String repClsfc, String repProcessing, String repUrl) {
+		super();
+		this.repNo = repNo;
+		this.memId = memId;
+		this.repContents = repContents;
+		this.repDate = repDate;
+		this.repClsfc = repClsfc;
+		this.repProcessing = repProcessing;
+		this.repUrl = repUrl;
 	}
 
 	public int getRepNo() {
@@ -102,6 +115,16 @@ public class Report {
 
 	public void setMemId(String memId) {
 		this.memId = memId;
+	}
+	
+	
+
+	public String getRepUrl() {
+		return repUrl;
+	}
+
+	public void setRepUrl(String repUrl) {
+		this.repUrl = repUrl;
 	}
 
 	@Override

@@ -10,6 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.todayTable.admin.customerCenter.model.service.AdminInquiryService;
+import com.todayTable.admin.customerCenter.report.model.service.AdminReportService;
+import com.todayTable.admin.event.model.service.AdminEventService;
+import com.todayTable.admin.main.model.vo.Count;
 import com.todayTable.admin.member.model.service.AdminService;
 import com.todayTable.member.model.vo.Member;
 
@@ -45,6 +49,19 @@ public class AdminLoginController extends HttpServlet {
 			RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
 			view.forward(request, response);
 		} else {
+			Count c = new Count();
+			int memCount = new AdminService().countMember();
+			int reportCount = new AdminReportService().countReport();
+			int inquiryCount = new AdminInquiryService().countInquiry();
+			int eventCount = new AdminEventService().countEvent();
+			
+			c.setMemCount(memCount);
+			c.setReportCount(reportCount);
+			c.setInquiryCount(inquiryCount);
+			c.setEventCount(eventCount);
+			
+			request.setAttribute("c", c);
+			
 			RequestDispatcher view = request.getRequestDispatcher("views/admin/adminIndex.jsp");
 			view.forward(request, response);
 		}

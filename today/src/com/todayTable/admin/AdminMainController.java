@@ -7,6 +7,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.todayTable.admin.customerCenter.model.service.AdminInquiryService;
+import com.todayTable.admin.customerCenter.report.model.service.AdminReportService;
+import com.todayTable.admin.event.model.service.AdminEventService;
+import com.todayTable.admin.main.model.vo.Count;
+import com.todayTable.admin.member.model.service.AdminService;
+
 /**
  * Servlet implementation class AdminMainController
  */
@@ -26,7 +32,25 @@ public class AdminMainController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		
+		Count c = new Count();
+		int memCount = new AdminService().countMember();
+		int reportCount = new AdminReportService().countReport();
+		int inquiryCount = new AdminInquiryService().countInquiry();
+		int eventCount = new AdminEventService().countEvent();
+		
+		c.setMemCount(memCount);
+		c.setReportCount(reportCount);
+		c.setInquiryCount(inquiryCount);
+		c.setEventCount(eventCount);
+		
+		request.setAttribute("c", c);
+		
+		
 		request.getRequestDispatcher("views/admin/adminIndex.jsp").forward(request, response);
+			
+	
 	}
 
 	/**

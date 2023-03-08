@@ -41,11 +41,21 @@
 		  , REP_DATE
 		  , REP_CLSFC
 		  , REP_PROCESSING
+		  , REP_URL
 	  FROM
 	  		TB_REPORT	
 	  JOIN TB_MEMBER USING (MEM_NO)
 	  WHERE
 	  		REP_NO = ?
   		AND REP_STATUS = 'Y'
+</entry>
+
+<entry key="countReport">
+SELECT
+        COUNT(*) COUNT
+    FROM
+        TB_REPORT
+WHERE 
+       REP_STATUS = 'Y' AND REP_PROCESSING = 'N'
 </entry>
 </properties>

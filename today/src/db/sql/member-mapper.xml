@@ -192,6 +192,16 @@ SELECT
 </entry>
 
 
+<entry key="countMember">
+	SELECT
+		COUNT(*) COUNT
+	FROM
+		TB_MEMBER
+	WHERE
+		MEM_STATUS = 'Y' AND MEM_ID != 'admin'
+</entry>
+
+
 
 
 <!-- 회원삭제 -->
@@ -200,6 +210,7 @@ SELECT
 	SET MEM_STATUS = 'N'
 	WHERE MEM_ID = ?
 </entry>
+
 	
 	
 	
