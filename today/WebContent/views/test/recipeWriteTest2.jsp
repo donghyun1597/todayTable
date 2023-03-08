@@ -15,16 +15,26 @@
         margin: 0 2px 0 0;
         border-radius: 4px;
     }
+    ul{
+      list-style: none;
+    }
+    
 
 
   </style>
+  <script>
+    $(document).ready( function() {
+      $(".defSelect").attr("style","display:inline");
+      $(".nice-select").remove("div")
+    });
+  </script>
 </head>
 <body>
-  
-
+  <%@ include file="../common/menubar.jsp" %>
+  <div>
   <form action="<%=request.getContextPath()%>/insert.rc" method="post" enctype="multipart/form-data">
 
-	<div>
+	<div align="center">
         <div id="divMainPhotoUpload" class="cont_pic2">
           
           <div style="display: none;">
@@ -44,8 +54,8 @@
           
         </div>
         
-  
-        <div class="cont_line pad_b_25"><p class="cont_tit4">동영상</p>
+        <p class="cont_tit4">동영상</p>
+        <div class="cont_line pad_b_25">
             
             <textarea name="recipe_video" id="cok_video_url" class="form-control step_cont" prev_url="" placeholder="동영상이 있으면 주소를 입력하세요.(Youtube,네이버tvcast,다음tvpot 만 가능) 예)http://youtu.be/lA0Bxo3IZmM" style="height:100px; width:380px; resize:none;"></textarea>
             <div style="position:absolute;left:-3000px">
@@ -57,7 +67,7 @@
         </div>
   
         <div class="cont_line"><p class="cont_tit4">카테고리</p>
-          <select name="c_theme_no" id="cok_sq_category_4" text="테마별">
+          <select name="c_theme_no" id="cok_sq_category_4" text="테마별" class="defSelect">
             <option value="">테마별</option>
             <option value="TM1">건강식</option>
             <option value="TM2">캠핑요리</option>
@@ -67,7 +77,7 @@
             <option value="TM6">파티요리</option>
             
           </select>
-          <select name="c_tool_no" id="cok_sq_category_2" text="도구별">
+          <select name="c_tool_no" id="cok_sq_category_2" text="도구별" class="defSelect">
             <option value="">도구별</option>
             <option value="T1">냄비</option>
             <option value="T2">프라이팬</option>
@@ -76,7 +86,7 @@
             <option value="T5">에어프라이어</option>
            
           </select>
-          <select name="c_ingre_no" id="cok_sq_category_1" text="재료별">
+          <select name="c_ingre_no" id="cok_sq_category_1" text="재료별" class="defSelect">
             <option value="">재료별</option>
             <option value="I1">소고기</option>
             <option value="I2">돼기괴</option>
@@ -85,7 +95,7 @@
             <option value="I6">채소</option>
             
             </select>
-          <select name="c_step_no" id="cok_sq_category_3" text="방법별">
+          <select name="c_step_no" id="cok_sq_category_3" text="방법별" class="defSelect">
             <option value="">방법별</option>
             <option value="S1">구이</option>
             <option value="S2">찜</option>
@@ -93,7 +103,7 @@
             <option value="S4">무침</option>
             <option value="S5">튀김</option>
           </select>
-          <select name="c_kind_no" id="cok_sq_category_3" text="종류별">
+          <select name="c_kind_no" id="cok_sq_category_3" text="종류별" class="defSelect">
             <option value="">종류별</option>
             <option value="K1">안주</option>
             <option value="K2">반찬</option>
@@ -103,7 +113,7 @@
             <option value="K6">김치/젓갈</option>
             <option value="K7">차/음료/술</option>
           </select>
-          <select name="c_nat_no" id="cok_sq_category_3" text="국가별">
+          <select name="c_nat_no" id="cok_sq_category_3" text="국가별" class="defSelect">
             <option value="">국가별</option>
             <option value="N1">한국</option>
             <option value="N2">베트남</option>
@@ -120,25 +130,25 @@
         <span class="guide mag_b_15" style="width:100%;">재료가 남거나 부족하지 않도록 정확한 계량정보를 적어주세요.</span>
 		<div class="ingre_class" id="defIngre">
         
-        <input type="text" value="재료" style="font-weight:bold;font-size:18px;width:210px;" name="">
+        <input type="text" value="재료" style="font-weight:bold;font-size:18px;width:210px;" name="ingreClass">
         
         <ul id="divMaterialArea_1" class="ingre_ul">
           <li id="ingreNum1_1">
-            <input type="text" style="width:330px;" class="ingre1" name="ingre1" placeholder="예) 돼지고기">
-            <input type="text" style="width:280px;" class="ingre1" name="ingre1" placeholder="예) 300g">
+            <input type="text" style="width:330px;" class="ingre1"  name="ingre1" placeholder="예) 돼지고기">
+            <input type="text" style="width:280px;" class="ingre1"  name="ingre1" placeholder="예) 300g">
           </li>
           <li id="ingreNum1_2">
-            <input type="text" style="width:330px;" class="ingre1" name="ingre1" placeholder="예) 양배추">
-            <input type="text" style="width:280px;" class="ingre1" name="ingre1" placeholder="예) 1/2개">
+            <input type="text" style="width:330px;" class="ingre1"  name="ingre1" placeholder="예) 양배추">
+            <input type="text" style="width:280px;" class="ingre1"  name="ingre1" placeholder="예) 1/2개">
           </li>
           <li id="ingreNum1_3">
-            <input type="text" style="width:330px;" class="ingre1" name="ingre1" placeholder="예) 참기름">
-            <input type="text" style="width:280px;" class="ingre1" name="ingre1" placeholder="예) 1T">
+            <input type="text" style="width:330px;" class="ingre1"  name="ingre1" placeholder="예) 참기름">
+            <input type="text" style="width:280px;" class="ingre1"  name="ingre1" placeholder="예) 1T">
           </li>
         </ul>
 
         <div class="btn_add" style="padding:0 0 20px 350px; width:800px;">
-          <button type="button" class="btn btn-default add_ingre">
+          <button type="button" id="btn1" class="btn btn-default add_ingre">
             추가
           </button>
           <button type="button" id="delBtn" class="btn btn-default del_ingre">
@@ -149,7 +159,7 @@
         
     </div>
     <script>
-       let ingreNum = 1;
+       let ingreNum = 2;
       $(function(){
 
      
@@ -159,10 +169,11 @@
           
           
           let ingre = $('<li><input type="text" style="width:330px;"><input type="text" style="width:280px;"></li>');
-          ingre.children().attr("name","ingre"+ingreNum);
+          ingre.children().attr("name","ingre"+$(this).attr("id").substr(3));
           $(this).parent().prev().append(ingre);
+          
          
-          ingreNum++;
+          
 
         })
 
@@ -200,19 +211,34 @@
             $("#addIngreClass").click(function(){
               
               $add=$('<div class="ingre_class"></div>').html(addHtml);
-              $add.find("#delBtn1").removeAttr("id");
-              console.log($add.children());
+              $add.find("#delBtn").removeAttr("id");
+              
               $add.children('input').after('<button class="delClass">묶음삭제</button>');
-              console.log($add);
+              $add.find(".ingre_ul input").each(function(){
+                $(this).attr("name","ingre"+ingreNum);
+              })
+              $add.find('#btn1').attr("id","btn"+ingreNum);
             
               $(".ingreDiv").append($add);
               ingreNum++;
             })
 
             $(document).on("click",".delClass",function(){
-              console.log($(this).parent());
-              $(this).parent().remove(".ingre_class");
               ingreNum--;
+
+              $(this).parent().remove(".ingre_class");
+              console.log($("#defIngre").siblings(".ingre_class"));
+              let i=2;
+              $("#defIngre").siblings(".ingre_class").each(function(){
+                
+                $(this).find(".ingre_ul input").each(function(){
+                  $(this).attr("name","ingre"+i);
+                })
+                $(this).find(".add_ingre").attr("id","btn"+i);
+                i++;
+
+              })
+              
             })
           })
           
@@ -226,7 +252,7 @@
   </div>
     <div class="cont_line"><p class="cont_tit4">요리정보</p>
       인원
-        <select name="cok_portion" id="cok_portion" text="인원">
+        <select name="cok_portion" id="cok_portion" text="인원" class="defSelect">
           <option value="">인원</option><option value="1">1인분</option>
           <option value="2">2인분</option>
           <option value="3">3인분</option>
@@ -236,7 +262,7 @@
         </select>
 
         <span class="pad_l_30">시간 </span>
-        <select name="cok_time" id="cok_time" text="요리시간">
+        <select name="cok_time" id="cok_time" text="요리시간" class="defSelect">
           <option value="">시간</option>
           <option value="5">5분이내</option>
           <option value="10">10분이내</option>
@@ -247,7 +273,7 @@
           <option value="90">60분이상</option>
         </select>
         <span class="pad_l_30">난이도 </span>
-        <select name="cok_degree" id="cok_degree" text="난이도">
+        <select name="cok_degree" id="cok_degree" text="난이도" class="defSelect">
           <option value="">난이도</option>
           <option value="1">상</option>
           <option value="2">중</option>
@@ -324,6 +350,9 @@
       }
 
       function delStep(){
+        if(no==2){
+          return;
+        }
         $("#divStepArea").children().last().remove();
         no--;
 
@@ -339,6 +368,7 @@
         <button type="button" onclick="history.back();" class="btn-lg btn-default">취소</button>
       </div>
     </form>
+    </div>
       <script>
         function insertRecipe(){
 

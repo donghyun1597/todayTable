@@ -34,7 +34,7 @@ public class AdminEventCloseController extends HttpServlet {
 		
 		if(result > 0) {
 			
-			response.sendRedirect(request.getContextPath() + "/adminEvent.ev");
+			response.sendRedirect(request.getContextPath() + "/adminEvent.ev?cpage=1");
 		}
 	}
 

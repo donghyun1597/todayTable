@@ -19,10 +19,10 @@ public class NoticeService {
 		return list;
 	}
 	
-	public ArrayList<Notice> adminSelectNotice() {
+	public ArrayList<Notice> adminSelectNotice(PageInfo pi) {
 		Connection conn = getConnection();
 		
-		ArrayList<Notice> list = new NoticeDao().adminSelectNotice(conn);
+		ArrayList<Notice> list = new NoticeDao().adminSelectNotice(conn, pi);
 		
 		close(conn);
 		

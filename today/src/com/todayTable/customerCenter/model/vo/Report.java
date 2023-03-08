@@ -10,6 +10,7 @@ public class Report {
 	private String repClsfc;
 	private String repProcessing;
 	private String repStatus;
+	private String memId;
 	
 	public Report() {}
 
@@ -23,6 +24,18 @@ public class Report {
 		this.repClsfc = repClsfc;
 		this.repProcessing = repProcessing;
 		this.repStatus = repStatus;
+	}
+	
+	
+
+	public Report(int repNo, String memId, String repContents, Date repDate, String repClsfc, String repProcessing) {
+		super();
+		this.repNo = repNo;
+		this.memId = memId;
+		this.repContents = repContents;
+		this.repDate = repDate;
+		this.repClsfc = repClsfc;
+		this.repProcessing = repProcessing;
 	}
 
 	public int getRepNo() {
@@ -79,6 +92,16 @@ public class Report {
 
 	public void setRepStatus(String repStatus) {
 		this.repStatus = repStatus;
+	}
+
+	
+	
+	public String getMemId() {
+		return memId;
+	}
+
+	public void setMemId(String memId) {
+		this.memId = memId;
 	}
 
 	@Override

@@ -45,7 +45,7 @@ public class AdminNoticeInsertController extends HttpServlet {
 		if(result > 0) {
 			request.getSession().setAttribute("alertMsg", "등록완료");
 			
-			response.sendRedirect(request.getContextPath() + "/adminNotice.no");
+			response.sendRedirect(request.getContextPath() + "/adminNotice.no?cpage=1");
 		} else {
 			request.getSession().setAttribute("alertMsg", "등록실패");
 			

@@ -37,6 +37,15 @@
         a:hover{
         	cursor: pointer;
         }
+        img{
+            border-radius: 10px;
+            
+        }
+        div[id~=divRecipeThum]{
+            width: 300px !important;
+            height: 415px !important;
+        }
+        
     </style>
     
     <!-- <script src="<%=application.getContextPath()%>/resources/js/mainPage.js"></script> -->
@@ -149,29 +158,53 @@
         <div class="container">
 
             <div class="row align-items-center" id="recommend">
-                <!-- Single Best Receipe Area -->
-                <!-- <div class="col-12 col-sm-6 col-lg-4" id="col-510">
-                    <div class="single-best-receipe-area mb-30">
-                        <img src="resources/image/bg-img/sumin6.jpg" alt="음식1">
-                        <div class="receipe-content">
-                            <a href="<%=contextPath%>/recipeView.rc">
-                                <h5>레시피1</h5>
-                            </a>
-                            <div class="ratings">난이도
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
+                
             
             </div>
             
             
         </div>
+        <button type="button" class="btnPrev">이전</button>
+        <button type="button" class="btnNext">다음</button>
+
+        <script>
+            $(function(){
+                let recipeDivSnum=1;
+                let recipeDivEnum=5;
+                $(".btnNext").click(function(){
+                    console.log($("#recommend").children("div[display=none]"));
+                    
+                    for(let i=recipeDivSnum;i<recipeDivEnum;i++){
+                        console.log(i);
+                        $("#divRecipeThum"+i).attr("style","display:none");
+                        $("#divRecipeThum"+(recipeDivEnum+i-1)).css("display","block");
+                        
+                    }
+                    recipeDivSnum = recipeDivSnum+4;
+                    recipeDivEnum = recipeDivEnum+4;
+                })
+                $(".btnPrev").click(function(){
+                    if(recipeDivSnum==1){return;}
+                    
+                    console.log(recipeDivSnum);
+                    console.log(recipeDivEnum);
+
+                    for(let i=recipeDivSnum;i<recipeDivEnum;i++){
+                        console.log(i);
+                        $("#divRecipeThum"+i).attr("style","display:none");
+                        $("#divRecipeThum"+(i-4)).css("display","block");
+                        
+                    }
+                    
+                        recipeDivSnum = recipeDivSnum-4;
+                        recipeDivEnum = recipeDivEnum-4;
+                    
+                    
+
+                })
+            })
+
+        </script>
     </section>
     <!-- ##### Best Receipe Area End ##### -->
 
@@ -185,28 +218,6 @@
                 <h3>OUR RECIPES</h3>
             </span>
             <div class="row h-100 align-items-center" id="topRecipe">
-                
-               <!-- Single Best Receipe Area
-                <div class="col-12 col-sm-6 col-lg-4" id="col-510" id="topRecipe1">
-                    <div class="single-best-receipe-area mb-30">
-                        <img src="resources/image/bg-img/sumin6.jpg" alt="음식2" id="topRecipeImg1">
-                        <div class="receipe-content">
-                            <a href="receipe-post.html">
-                                <h5>레시피5</h5>
-                            </a>
-                            <div class="ratings">난이도
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                 -->
-                
-                
                 
                 
             </div>
@@ -431,26 +442,32 @@
 		        $.ajax({
 		            url : "mainThumnail.re",
 		            success : function(list){
-		                for(let i=0;i<list.length;i++){
+		                for(let i=0;i<list.length;i++){ 
+                            if(list[i].recipeName.length>30){
+                                list[i].recipeName = list[i].recipeName.substr(0,30)+"...";
+                            }
 		                	console.log(list[i].recipeNo);
-		                    value += '<div class="col-12 col-sm-6 col-lg-4" id="col-510">'+
-		                            '<div class="single-best-receipe-area mb-30">'+
-		                            '<img src="<%=contextPath%>'+list[i].recipePic+'" alt="음식2" style="width:100%; height:100%">'+
-		                            '<div class="receipe-content">'+
-		                                '<a href="<%=contextPath%>/recipeView.rc?recipeNo='+list[i].recipeNo +'">'+
-		                                    '<h5>'+list[i].recipeName+'</h5>'+ 
-		                                '</a>'+
-		                                '<div class="ratings">난이도'+list[i].recipeDifficulty+'<br>'+
-		                                    '<i class="fa fa-star" aria-hidden="true"></i>'+
-		                                    '<i class="fa fa-star" aria-hidden="true"></i>'+
-		                                    '<i class="fa fa-star" aria-hidden="true"></i>'+
-		                                '<i class="fa fa-star" aria-hidden="true"></i>'+
-		                                    '<i class="fa fa-star-o" aria-hidden="true"></i>'+
+		                    value +='<div style="width:300px; height:415px;">' +
+                                    '<div style="margin-right: 30px;">'+
+		                                '<div class="single-best-receipe-area mb-30"><div style="width:250px; height:250px;">'+
+                                            '<a href="<%=contextPath%>/recipeView.rc?recipeNo='+list[i].recipeNo +'">'+
+                                                '<img src="<%=contextPath%>'+list[i].recipePic+'" alt="음식2" style="width:100%; height:100%;"></div></a>'+
+		                                    '<div style="margin-top: 10px;">'+
+                                                '<div style="font-size:17px;">'
+		                                        +list[i].recipeName+ 
+                                                '</div>'+
+                                                '<div class="ratings">난이도'+list[i].recipeDifficulty+'<br>'+
+                                                    '<i class="fa fa-star" aria-hidden="true"></i>'+
+                                                    '<i class="fa fa-star" aria-hidden="true"></i>'+
+                                                    '<i class="fa fa-star" aria-hidden="true"></i>'+
+                                                    '<i class="fa fa-star" aria-hidden="true"></i>'+
+                                                    '<i class="fa fa-star-o" aria-hidden="true"></i>'+
+		                                        '</div>'+
+                                                '조회수 : ' + list[i].recipeViews+
+		                                    '</div>'+
 		                                '</div>'+
-                                        '조회수 : ' + list[i].recipeViews+
 		                            '</div>'+
-		                        '</div>'+
-		                    '</div>'
+                                    '</div>'
 		                    
 		                }
 		                $("#topRecipe").html(value);
@@ -490,34 +507,58 @@
 		                    ,people : peopleValue},
 		            success : function(list){
 		                console.log(list);
-		                for(let i=1;i<list.length+1;i++){
-		                    value += '<div class="col-12 col-sm-6 col-lg-4" id="col-510">'+
-		                            '<div class="single-best-receipe-area mb-30">'+
-		                            '<img src="/today'+list[i-1].recipePic+'" alt="음식2">'+
-		                            '<div class="receipe-content">'+
-		                                '<a href="<%=contextPath%>/recipeView.rc">'+
-		                                    '<h5>'+list[i-1].recipeName+'</h5>'+
-		                                '</a>'+
-		                                '<div class="ratings">난이도'+list[i-1].recipeDifficulty+'<br>'+
-		                                    '<i class="fa fa-star" aria-hidden="true"></i>'+
-		                                    '<i class="fa fa-star" aria-hidden="true"></i>'+
-		                                    '<i class="fa fa-star" aria-hidden="true"></i>'+
-		                                '<i class="fa fa-star" aria-hidden="true"></i>'+
-		                                    '<i class="fa fa-star-o" aria-hidden="true"></i>'+
+                        $("#recommend").children().remove();
+		                for(let i=0;i<list.length;i++){
+                            let divThum=$('<div style="width:300px; height:415px; display:block;" id="divRecipeThum'+(i+1)+'">' +
+                                    '<div style="margin-right: 30px;">'+
+		                                '<div><div style="width:250px; height:250px;">'+
+                                            '<a href="<%=contextPath%>/recipeView.rc?recipeNo='+list[i].recipeNo +'">'+
+                                                '<img src="<%=contextPath%>'+list[i].recipePic+'" alt="음식2" style="width:100%; height:100%;"></div></a>'+
+		                                    '<div style="margin-top: 10px;">'+
+                                                '<div style="font-size:17px;">'
+		                                        +list[i].recipeName+ 
+                                                '</div>'+
+                                                '<div class="ratings">난이도'+list[i].recipeDifficulty+'<br>'+
+                                                    '<i class="fa fa-star" aria-hidden="true"></i>'+
+                                                    '<i class="fa fa-star" aria-hidden="true"></i>'+
+                                                    '<i class="fa fa-star" aria-hidden="true"></i>'+
+                                                    '<i class="fa fa-star" aria-hidden="true"></i>'+
+                                                    '<i class="fa fa-star-o" aria-hidden="true"></i>'+
+		                                        '</div>'+
+                                                '조회수 : ' + list[i].recipeViews+
+		                                    '</div>'+
 		                                '</div>'+
 		                            '</div>'+
-		                        '</div>'+
-		                    '</div>';
-                            // if(i%4==0){
-		                		
-                            //     $("#recommend").append($('<div></div>').addClass('carousel-item active').html(value));
-                            //     value="";
-		                	// }
-                            
-                            // console.log(i!=0&&i%4);
+                                    '</div>');
+                                    if(i>3){
+                                        divThum.css("display","none");
+                                    }
+                                    $("#recommend").append(divThum);
+                            // value +='<div style="width:300px; height:415px;">' +
+                            //         '<div style="margin-right: 30px;">'+
+		                    //             '<div class="single-best-receipe-area mb-30"><div style="width:250px; height:250px;">'+
+                            //                 '<a href="<%=contextPath%>/recipeView.rc?recipeNo='+list[i].recipeNo +'">'+
+                            //                     '<img src="<%=contextPath%>'+list[i].recipePic+'" alt="음식2" style="width:100%; height:100%;"></div></a>'+
+		                    //                 '<div style="margin-top: 10px;">'+
+                            //                     '<div style="font-size:17px;">'
+		                    //                     +list[i].recipeName+ 
+                            //                     '</div>'+
+                            //                     '<div class="ratings">난이도'+list[i].recipeDifficulty+'<br>'+
+                            //                         '<i class="fa fa-star" aria-hidden="true"></i>'+
+                            //                         '<i class="fa fa-star" aria-hidden="true"></i>'+
+                            //                         '<i class="fa fa-star" aria-hidden="true"></i>'+
+                            //                         '<i class="fa fa-star" aria-hidden="true"></i>'+
+                            //                         '<i class="fa fa-star-o" aria-hidden="true"></i>'+
+		                    //                     '</div>'+
+                            //                     '조회수 : ' + list[i].recipeViews+
+		                    //                 '</div>'+
+		                    //             '</div>'+
+		                    //         '</div>'+
+                            //         '</div>'
+		                   
 		                    
 		                }
-		            	$("#recommend").html(value);
+		            	// $("#recommend").html(value);
 		            	},
 		            	error : function(){
 		            	    console.log("ajax 통신 실패!!!");

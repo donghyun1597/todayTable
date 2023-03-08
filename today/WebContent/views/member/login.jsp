@@ -140,9 +140,15 @@
         letter-spacing: 2px;
         }
 
+
     </style>
 </head>
 <body>
+
+    <!-- Favicon -->
+<link rel="icon" href="../../resources/image/core-img/favicon.ico">
+
+
 	<%if(alertMsg!=null){ %>
 	<script>
 		alert("<%=alertMsg%>");
@@ -151,7 +157,7 @@
 	<%} %>
     <div class="wrap">
         <div class="login">
-            <img src="<%=request.getContextPath()%>/resources/image/logo.png" alt="" width="200" onclick="location.href='<%=request.getContextPath()%>'">
+            <a class="nav-brand" href="index.jsp"><img src="<%=request.getContextPath()%>/resources/image/logo.png" width="40%" align="center"></a>
             <h2>Log-in</h2>
             <div class="login_sns">
                 <li><a href=""><img src="<%=request.getContextPath()%>/resources/image/userInfo/2023-03-05 221015.png" alt="" width="30px" onclick="kakaoLogin();"></a></li>
@@ -169,20 +175,20 @@
                     <input type="password" name="memPwd" placeholder="비밀번호">
                 </div>
                 <div class="submit">
-                    <input type="submit" value="로그인">
-                    <input type="reset" value="취소">
+                    <input type="submit" value="로그인" name="btn">
+                    <input type="reset" value="취소" name="btn">
                     
                 </div>    
             </form>
             <div class="login_etc">
                 <div class="forgot_id">
-                    <a href="<%=request.getContextPath()%>/searchMemId.me">아이디 찾기</a>
+                    <a href="<%=request.getContextPath()%>/views/member/searchMemId.jsp">아이디 찾기</a>
                 </div>
                 <div class="forgot_pw">
-                    <a href="#">비밀번호 찾기</a>
+                    <a href="<%=request.getContextPath()%>/views/member/searchMemPw.jsp">비밀번호 찾기</a>
                 </div>
                 <div class="join">
-                    <a href="#">회원가입</a>
+                    <a href="<%=request.getContextPath()%>/views/member/joinPage.jsp">회원가입</a>
                 </div>
             </div>
 

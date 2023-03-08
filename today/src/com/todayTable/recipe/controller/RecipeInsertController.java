@@ -1,6 +1,8 @@
 package com.todayTable.recipe.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,6 +13,7 @@ import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.todayTable.common.model.RecipeImageRenamePolicy;
+import com.todayTable.recipe.model.vo.CookingOrder;
 
 /**
  * Servlet implementation class RecipeInsertController
@@ -47,9 +50,32 @@ public class RecipeInsertController extends HttpServlet {
 			MultipartRequest multiRequest = new MultipartRequest(request, savePath, maxSize, "utf-8", new RecipeImageRenamePolicy());
 			System.out.println(multiRequest.getParameter("recipeName"));
 			System.out.println(multiRequest.getParameter("recipeTag"));
+			System.out.println(multiRequest.getParameter("c_theme_no"));
+			System.out.println(multiRequest.getParameter("c_tool_no"));
+			System.out.println(multiRequest.getParameter("c_ingre_no"));
+			System.out.println(multiRequest.getParameter("c_step_no"));
+			System.out.println(multiRequest.getParameter("c_kind_no"));
+			System.out.println(multiRequest.getParameter("c_nat_no"));
+			System.out.println(multiRequest.getParameter("cok_portion"));
+			System.out.println(multiRequest.getParameter("cok_time"));
+			System.out.println(multiRequest.getParameter("cok_degree"));
 			//3. db에 기록할 값 뽑기
 			//Board insert
 			System.out.println(multiRequest.getOriginalFileName("file0"));
+			
+			int ingreNum = 1;
+			while(multiRequest.getParameterValues("ingre"+ingreNum)!=null) {
+				System.out.println(multiRequest.getParameterValues("ingre"+ingreNum));
+				ingreNum++;
+				
+			}
+			System.out.println(multiRequest.getParameterValues("ingreClass"));
+			String recipeOrder[] =  multiRequest.getParameterValues("recipeOrder");
+			ArrayList<CookingOrder> cList = new ArrayList<CookingOrder>();
+			for(int i=0;i<recipeOrder.length;i++) {
+				System.out.println(recipeOrder[i]);
+			}
+			
 		}
 			
 	}

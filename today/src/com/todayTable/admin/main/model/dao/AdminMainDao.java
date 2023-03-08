@@ -75,4 +75,25 @@ public class AdminMainDao {
 		
 		return result;
 	}
+	
+	public int deletePic(Connection conn, int imgNo) {
+		PreparedStatement pstmt = null;
+		
+		int result = 0;
+		String sql = prop.getProperty("deletePic");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, imgNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
 }

@@ -42,6 +42,8 @@
     
     <style>
     
+    
+    
         /* 로고 이미지 영역 수정했음 */
         .nav-brand { width: 150px; }
         
@@ -110,6 +112,8 @@
                         <div class="top-social-info text-right">
                         
                         <%if(loginUser!= null){ %>	<!-- 로그인에 성공했을때, -->
+                            <!-- 레시피 작성하기 -->
+                            <a href="<%=contextPath%>/recipeWrite.rc">레시피 작성하러가기</a>
                         	<!-- sm.회원정보 수정페이지로 보내기 -->
                         	<a href="<%=contextPath%>/check.me"><%=loginUser.getMemName()%>님<i class="login" aria-hidden="true"></i></a>
                         	<!-- sm.마이페이지 화면으로 보내기 -->

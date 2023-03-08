@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import static com.todayTable.common.JDBCTemplate.*;
+
+import com.todayTable.common.model.vo.PageInfo;
 import com.todayTable.event.model.vo.Event;
 
 public class AdminEventDao {
@@ -24,25 +26,30 @@ public class AdminEventDao {
 		}
 	}
 	
-	public ArrayList<Event> selectEventList(Connection conn) {
+	public ArrayList<Event> selectEventList(Connection conn, PageInfo pi) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		ArrayList<Event> list = new ArrayList<Event>();
 		
-		String sql = prop.getProperty("adminSelectEventList");
+		String sql = prop.getProperty("selectEventList");
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
+			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
-				Event e = null;
-				
 				list.add(new Event(rset.getInt("event_no"),
-								   rset.getString("event_name"),
-								   rset.getDate("event_date"),
-								   rset.getString("event_processing")));
+						   rset.getString("event_processing"),
+						   rset.getString("event_name"),
+						   rset.getDate("event_date")
+							));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -147,5 +154,54 @@ public class AdminEventDao {
 		}
 		
 		return result;
+	}
+	
+	public int insertEvent(Connection conn, String EventTitle, String EventContent) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String sql = prop.getProperty("insertEvent");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, EventTitle);
+			pstmt.setString(2, EventContent);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
+	public int eventSelectListCount(Connection conn) {
+		
+		int listCount = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("eventSelectListCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				listCount = rset.getInt("count");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(conn);
+			close(pstmt);
+		}
+		
+		return listCount;
+		
 	}
 }

@@ -180,7 +180,16 @@
 	    TB_MEM_ALLERGY
 	WHERE
 	    MEM_NO=?
-</entry>	
+</entry>
+
+<entry key="searchMemberId">
+SELECT 
+    MEM_NAME
+    , MEM_ID
+    FROM TB_MEMBER
+    WHERE MEM_NAME = ?
+    AND PHONE = ?
+</entry>
 
 
 	

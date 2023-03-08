@@ -1,3 +1,4 @@
+<%@page import="com.todayTable.common.model.vo.PageInfo"%>
 <%@page import="com.todayTable.customerCenter.model.vo.Inquiry"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -5,6 +6,13 @@
     
 <%
 	ArrayList<Inquiry> list = (ArrayList<Inquiry>)request.getAttribute("list");
+
+    PageInfo pi = (PageInfo)request.getAttribute("pi");
+	
+	int currentPage = pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
 %>
 <!DOCTYPE html>
 <html>
@@ -26,7 +34,7 @@
         font-family: "Roboto", sans-serif;
     }
     #wrap {
-        height: 1000px;
+        height: auto;
     }
     #paging {
       display: flex;
@@ -71,6 +79,22 @@
     .pri {
         color: gray;
     }
+
+    #inquiryWrap{
+        background-color: rgb(240, 225, 210);
+        color: white;
+        font-weight: 900;
+        margin-top: 50px;
+    }
+
+    #inquiryWrap>h6{
+        color: white;
+        font-weight: 900;
+    }
+
+    tr>td, tr>.needAnswer{
+        cursor: pointer;
+    }
 </style>
 </head>
 <body>
@@ -78,19 +102,23 @@
 		<%@ include file="adminMenubar.jsp" %>
 		<div id="page-content-wrapper" align="center">
             <div id="wrap">
-                <br><br>
-                <h1 class="foot"><b>1:1 문의</b></h1>
-                <br>
-                <hr>
-                <br><br>
+                <div id="inquiryWrap">
+                    <br>
+                    <h1 class="foot"><b>1:1 문의</b></h1>
+                    <hr>
+                    <h6>- 회원님들의 궁금한 점을 등록하여 답변받을 수 있는 '1:1문의' 페이지입니다.</h6>
+                    <br>
+                </div>
                 <div class="m-4" id="noticeList">
-                    <table class="table table-striped" style="width: 800px;">
+                    <table class="table table-striped" style="width: 800px; text-align:center;">
                         <thead>
-                            <th style="width: 10%;">글번호</th>
-                            <th style="width: 50%;">제목</th>
-                            <th style="width: 15%;">답변여부</th>
-                            <th style="width: 10%;">작성자</th>
-                            <th style="width: 15%;">작성일</th>
+                            <tr>
+                                <th style="width: 10%;">글번호</th>
+                                <th style="width: 50%;">제목</th>
+                                <th style="width: 15%;">답변여부</th>
+                                <th style="width: 10%;">작성자</th>
+                                <th style="width: 15%;">작성일</th>
+                            </tr>
                         </thead>
                         <tbody id="listbody">
                             <% if(list.isEmpty()) { %>
@@ -99,19 +127,63 @@
                             	</tr>
                             <% } else { %>
                             	<% for(Inquiry i : list) { %>
-                            	<tr>
-                            		<td><%= i.getInqNo() %></td>
-                            		<td><%= i.getInqName() %></td>
-                            		<td><%= i.getInqProcessing() %></td>
-                            		<td><%= i.getMemNo() %></td>
-                            		<td><%= i.getInqDate() %></td>
+                            		<% if(i.getInqProcessing().equals("N")) { %>
+	                            		<tr>
+		                            		<th class="needAnswer"><%= i.getInqNo() %></th>
+		                            		<th class="needAnswer"><%= i.getInqName() %></th>
+		                            		<th class="needAnswer"><%= (i.getInqProcessing().equals("Y")) ? "처리완료" : "처리대기" %></th>
+		                            		<th class="needAnswer"><%= i.getMemId() %></th>
+		                            		<th class="needAnswer"><%= i.getInqDate() %></th>
+		                            	</tr>
+                            		<% } else { %>
+		                            	<tr>
+		                            		<td><%= i.getInqNo() %></td>
+		                            		<td><%= i.getInqName() %></td>
+		                            		<td><%= (i.getInqProcessing().equals("Y")) ? "처리완료" : "처리대기" %></td>
+		                            		<td><%= i.getMemId() %></td>
+		                            		<td><%= i.getInqDate() %></td>
+		                            	</tr>
+	                            		<% } %>
                             		<% } %>
                            		<% } %>
                         </tbody>
                     </table>
                 </div>
             </div>
+            <div class="m-4" id="paging">
+				<nav>
+					<div class="pagination">
+						<%if(currentPage != 1) { %>
+						<button onclick="location.href='<%=contextPath%>/adminInquiryForm.iq?cpage=<%= currentPage -1 %>';" class="page-link"> &lt; </button>
+						<% } %>
+						
+						<%for(int p = startPage; p<=endPage; p++) { %>
+							<% if(p == currentPage){ %>
+								<button style="color: orange" disabled><%=p %></button>
+							<%}else{ %>
+								<button onclick="location.href = '<%= contextPath%>/adminInquiryForm.iq?cpage=<%=p%>';" class="page-link"><%=p %></button>
+							<%} %>
+						<%} %>
+						
+						<%if(currentPage != maxPage) {%>
+							<button onclick="location.href='<%=contextPath%>/adminInquiryForm.iq?cpage=<%= currentPage +1 %>';" class="page-link"> &gt; </button>
+						<%} %>
+					</div>
+				</nav>
+			</div>
 		</div>
+
+        <script>
+            $(function(){
+                $("tbody>tr").click(function(){
+                    const num = $(this).children().eq(0).text();
+
+                    console.log(num);
+
+                    location.href = "<%= contextPath %>/detail.iq?num=" + num;
+                })
+            })
+        </script>
 		
 	</div>
 </body>

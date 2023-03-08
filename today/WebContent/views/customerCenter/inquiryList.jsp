@@ -8,6 +8,11 @@
 	ArrayList<Inquiry> list = (ArrayList<Inquiry>)request.getAttribute("list");
 	Inquiry deleteNo = (Inquiry)request.getAttribute("deleteNo");
 	
+	int search = 0;
+	if((int)request.getAttribute("search") == 1){
+		search = (int)request.getAttribute("search");
+	}
+	
 	int currentPage = pi.getCurrentPage();
 	int startPage = pi.getStartPage();
 	int endPage = pi.getEndPage();
@@ -97,7 +102,6 @@
 <%@ include file = "../common/menubar.jsp" %>
 
 <div id="wrap">
-    <br><br>
     <div id="notice">
 <!-- ----------------------------------------------------------------------------------------------------- -->
 	<!-- ##### Breadcumb Area Start ##### -->
@@ -266,6 +270,7 @@
     <div class="m-4" id="paging">
         <nav>
             <div class="pagination">
+            	<%if(search != 1) {%>
             	<%if(currentPage != 1) { %>
                 <button onclick="location.href='<%=contextPath%>/inquiry.cu?cpage=<%= currentPage -1 %>';" class="page-link"> &lt; </button>
                 <% } %>
@@ -281,31 +286,45 @@
 		        <%if(currentPage != maxPage) {%>
 		        	<button onclick="location.href='<%=contextPath%>/inquiry.cu?cpage=<%= currentPage +1 %>';" class="page-link"> &gt; </button>
 		        <%} %>
+		        <%} else{%>
+		        <%if(currentPage != 1) { %>
+                <button onclick="location.href='<%=contextPath%>/SearchInquiry.cu?cpage=<%= currentPage -1 %>';" class="page-link"> &lt; </button>
+                <% } %>
+                
+                <%for(int p = startPage; p<=endPage; p++) { %>
+                	<% if(p == currentPage){ %>
+                		<button style="color: orange" disabled><%=p %></button>
+                	<%}else{ %>
+                	    <button onclick="location.href = '<%= contextPath%>/SearchInquiry.cu?cpage=<%=p%>';" class="page-link"><%=p %></button>
+		        	<%} %>
+		        <%} %>
+		        
+		        <%if(currentPage != maxPage) {%>
+		        	<button onclick="location.href='<%=contextPath%>/SearchInquiry.cu?cpage=<%= currentPage +1 %>';" class="page-link"> &gt; </button>
+		        <%} %>
+		        <%} %>
             </div>
         </nav>
     </div>
     
     <div class="col-5" style="margin:auto">
-        <form action="test" method="post">
+        <form action="SearchInquiry.cu?cpage=1" method="post">
         <div class="btn-group">
-            <select name="#" id="searchSelect" class="btn dropdown-toggle">
-                <option value="title">제목</option>
-                <option value="content">내용</option>
-                <option value="titleContent">제목+내용</option>
+            <select name="searchOption" id="searchSelect" class="btn btn-outline-secondary" style="border-color: darkgray;">
+                <option value="title">제목&nbsp;&nbsp;&nbsp;</option>
+                <option value="content">내용&nbsp;&nbsp;&nbsp;</option>
+                <option value="titleContent">제목+내용&nbsp;&nbsp;</option>
             </select>
-            <input type="text" class="form-control" placeholder="검색어 입력">
-            <button type="submit" class="btn btn-secondary">
+            <input type="text" name="searchText" class="form-control" placeholder="검색어 입력" style="border-color: rgb(108, 117, 125); border-radius: 0%;">
+            <button type="submit" class="btn btn-primary">
                 <i class="bi-search"></i>
             </button>
         </div>
         </form>
     </div>
-</div>
-</div>
 
-<script>
-    
-</script>
+</div>
+</div>
 
 
     <!-- ##### All Javascript Files ##### -->

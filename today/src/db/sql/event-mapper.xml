@@ -79,4 +79,21 @@
 				EVENT_STATUS = 'N'
 		WHERE EVENT_NO = ?
 	</entry>
+	
+	<entry key="insertEvent">
+		INSERT
+			 INTO
+			 	TB_EVENT
+			 	(
+			 	 EVENT_NO
+			   , EVENT_NAME
+			   , EVENT_CONTENTS
+   			 	)
+ 			VALUES
+ 			(
+ 				SEQ_EVENT_NO.NEXTVAL
+ 				, ?
+ 				, ?		
+ 			)
+	</entry>
 </properties>

@@ -62,4 +62,14 @@ public class AdminNoticeService {
 		
 		return result;
 	}
+	
+	public int selectListCount() {
+		Connection conn = getConnection();
+		
+		int listCount = new AdminNoticeDao().selectListCount(conn);
+		
+		close(conn);
+		
+		return listCount;
+	}
 }

@@ -51,7 +51,7 @@
 		    JOIN TB_MEMBER M ON (I.MEM_NO=M.MEM_NO)
 		    WHERE INQ_STATUS = 'Y'
 			ORDER
-			   BY INQ_NO DESC)
+			   BY INQ_PROCESSING, INQ_NO DESC)
 		       A
 		       )
 		       WHERE RNUM BETWEEN ? AND ?
@@ -78,6 +78,7 @@
 	FROM TB_INQUIRY I
     JOIN TB_MEMBER M ON (I.MEM_NO=M.MEM_NO)
     WHERE INQ_NO = ?
+    AND INQ_STATUS = 'Y'
 	
 	</entry>
 	
@@ -96,16 +97,38 @@
 	<entry key="adminSelectInquiry">
 		SELECT
 				INQ_NO
-			  , MEM_NO
 			  , INQ_NAME
-			  , INQ_QUESTION
-			  , INQ_DATE	
-			  , INQ_ANSWER
 			  , INQ_PROCESSING
+			  , MEM_ID
+			  , INQ_DATE	
+			  , INQ_QUESTION
+			  , INQ_ANSWER
 			  , INQ_PRIVATE
 		  FROM
 		  		TB_INQUIRY
+  		  JOIN
+  		  		TB_MEMBER USING(MEM_NO)
   		WHERE INQ_STATUS = 'Y'
+  		ORDER BY INQ_PROCESSING ASC, INQ_NO DESC 
+	</entry>
+	
+	<entry key="insertAnswer">
+		UPDATE
+				TB_INQUIRY
+			SET
+				INQ_ANSWER = ?
+			  , INQ_PROCESSING = 'Y'
+	  	WHERE
+	  	 	  INQ_NO = ?	
+	</entry>
+	
+	<entry key="updateAnswer">
+		UPDATE
+				TB_INQUIRY
+			SET
+				INQ_ANSWER = ?
+			WHERE
+				INQ_NO = ?
 	</entry>
 	
 	<entry key="deleteInquiry">
@@ -115,7 +138,7 @@
 		 WHERE INQ_NO = ?
 	</entry>
 	
-	<entry key="searchTitle">
+	<entry key="searchInquiryTitle">
 		SELECT *
 		    FROM
 		    (SELECT ROWNUM RNUM, A.*
@@ -140,7 +163,7 @@
 			       WHERE RNUM BETWEEN ? AND ?
 	</entry>
 	
-	<entry key="searchContent">
+	<entry key="searchInquiryContent">
 	SELECT *
 	    FROM
 	    (SELECT ROWNUM RNUM, A.*
@@ -157,7 +180,7 @@
 			FROM TB_INQUIRY I
 		    JOIN TB_MEMBER M ON (I.MEM_NO=M.MEM_NO)
 		    WHERE INQ_STATUS = 'Y'
-              AND INQ_QUESTION LIKE '%레시피%'
+              AND INQ_QUESTION LIKE '%'|| ? ||'%'
 			ORDER
 			   BY INQ_NO DESC)
 		       A
@@ -165,8 +188,29 @@
 		       WHERE RNUM BETWEEN ? AND ?
 	</entry>
 	
-	<entry key="searchTitleContent">
-		
+	<entry key="searchInquiryTitleContent">
+			SELECT *
+	    FROM
+	    (SELECT ROWNUM RNUM, A.*
+	    FROM(
+	        SELECT 
+		        INQ_NO
+		      , INQ_NAME
+		      , INQ_PROCESSING
+		      , MEM_ID USER_ID
+		      , INQ_DATE
+		      , INQ_QUESTION
+		      , INQ_ANSWER
+		      , INQ_PRIVATE
+			FROM TB_INQUIRY I
+		    JOIN TB_MEMBER M ON (I.MEM_NO=M.MEM_NO)
+		    WHERE INQ_STATUS = 'Y'
+              AND (INQ_NAME LIKE '%'|| ? ||'%' OR INQ_QUESTION LIKE '%'|| ? ||'%')
+			ORDER
+			   BY INQ_NO DESC)
+		       A
+		       )
+		       WHERE RNUM BETWEEN ? AND ?
 	</entry>
 	
 </properties>

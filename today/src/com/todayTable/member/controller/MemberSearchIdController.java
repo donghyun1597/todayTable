@@ -34,17 +34,16 @@ public class MemberSearchIdController extends HttpServlet {
 		//1.인코딩
 				request.setCharacterEncoding("utf-8");
 				//2.변수저장
-				String memberName = request.getParameter("name");
+				String memName = request.getParameter("memName");
 				String phone = request.getParameter("phone");
 				//3.비지니스로직
-				MemberService service = new MemberService();
-				Member member = service.searchMemId(memberName,phone);
+				Member member = new MemberService().searchMemId(memName,phone);
 				
 				System.out.println("member : " + member);
 
 				//4.뷰 처리
 				if(member != null) {
-					RequestDispatcher rd = request.getRequestDispatcher("views/member/searchMemId.jsp");
+					RequestDispatcher rd = request.getRequestDispatcher("views/member/searchMemId2.jsp");
 					request.setAttribute("members", member);
 					rd.forward(request, response);
 					
