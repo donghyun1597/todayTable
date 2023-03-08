@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
+	String contextPath = request.getContextPath(); // /jsp	
+
 	String alertMsg = (String)session.getAttribute("alertMsg");
 
 %>
@@ -145,10 +147,6 @@
 </head>
 <body>
 
-    <!-- Favicon -->
-<link rel="icon" href="../../resources/image/core-img/favicon.ico">
-
-
 	<%if(alertMsg!=null){ %>
 	<script>
 		alert("<%=alertMsg%>");
@@ -188,12 +186,19 @@
                     <a href="<%=request.getContextPath()%>/views/member/searchMemPw.jsp">비밀번호 찾기</a>
                 </div>
                 <div class="join">
-                    <a href="<%=request.getContextPath()%>/views/member/joinPage.jsp">회원가입</a>
+                    <button type="button" onclick="enrollPage();">회원가입</button>
                 </div>
             </div>
 
         </div>
     </div>
+    
+	<script>
+	function enrollPage(){
+		location.href = "<%= contextPath %>/enrollForm.me";
+	}
+	</script>     
+    
 
     
     <script src="https://developers.kakao.com/sdk/js/kakao.js"></script> 

@@ -33,7 +33,7 @@
 	    , MEM_NAME
 	    , PHONE
 	    )
-	    VLAUES
+	    VALUES
 	    (
 	    SEQ_MEM_NO.NEXTVAL
 	    , ?
@@ -43,6 +43,14 @@
 	    , ?
 	    )
 	</entry>
+	
+	<entry key="idCheck">
+	SELECT
+	       COUNT(*) "COUNT"
+	  FROM TB_MEMBER
+	 WHERE MEM_ID = ?
+	</entry>
+	
 
 	<entry key="loginAdmin">
 		SELECT
