@@ -91,16 +91,31 @@ public class InquiryService {
 		
 		return result;
 	}
-
-	public ArrayList<Inquiry> searchInquiryTitle(String searchText, PageInfo pi) {
+	
+	public int searchInquiryCount(String searchOption, String searchText) {
 		
 		Connection conn = getConnection();
 		
-		ArrayList<Inquiry> list = new InquiryDao().selectInquiryList(conn, searchText, pi);
+		int listCount = new InquiryDao().searchInquiryCount(conn, searchOption, searchText);
+		
+		close(conn);
+		
+		return listCount;
+	}
+
+	public ArrayList<Inquiry> searchInquiry(String searchOption, String searchText, PageInfo pi) {
+		
+		Connection conn = getConnection();
+		
+		ArrayList<Inquiry> list = new InquiryDao().searchInquiry(conn, searchOption, searchText, pi);
 		
 		close(conn);
 		
 		return list;
 	}
+
+
+
+
 
 }

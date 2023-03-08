@@ -17,7 +17,7 @@ import com.todayTable.member.model.vo.Member;
 /**
  * Servlet implementation class SearchInquiryController
  */
-@WebServlet("/SearchInquiry.cu")
+@WebServlet("/searchInquiry.cu")
 public class SearchInquiryController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -38,6 +38,10 @@ public class SearchInquiryController extends HttpServlet {
 		// 인코딩
 		request.setCharacterEncoding("utf-8");
 		
+		//
+		String searchOption = request.getParameter("searchOption");
+		String searchText = request.getParameter("searchText");
+		
 		// ---------------- 페이징 처리 ------------------
 		int listCount;
 		int currentPage;
@@ -48,7 +52,7 @@ public class SearchInquiryController extends HttpServlet {
 		int startPage;
 		int endPage;
 		
-		listCount = new InquiryService().inquirySelectListCount();
+		listCount = new InquiryService().searchInquiryCount(searchOption, searchText);
 		
 		currentPage = Integer.parseInt(request.getParameter("cpage"));
 		
@@ -65,25 +69,21 @@ public class SearchInquiryController extends HttpServlet {
 		}
 		
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
-		
-		
-		// 요청처리
-		String searchOption = request.getParameter("searchOption");
-		String searchText = request.getParameter("searchText");
+
 		
 		ArrayList<Inquiry> list = null;
 		
 		switch (searchOption) {
 		case "title":
-			list = new InquiryService().searchInquiryTitle(searchText, pi);
+			list = new InquiryService().searchInquiry(searchOption, searchText, pi);
 			break;
 			
 		case "content":
-			
+			list = new InquiryService().searchInquiry(searchOption, searchText, pi);
 			break;
 			
 		case "titleContent":
-			
+			list = new InquiryService().searchInquiry(searchOption, searchText, pi);
 			break;
 			
 		}
@@ -97,7 +97,11 @@ public class SearchInquiryController extends HttpServlet {
 		request.setAttribute("list", list);
 		request.setAttribute("deleteNo", deleteNo);
 		request.setAttribute("search", search);
-		request.getRequestDispatcher("views/customerCenter/inquiryList.jsp").forward(request, response);
+		
+		request.setAttribute("searchOption", searchOption);
+		request.setAttribute("searchText", searchText);
+		
+		request.getRequestDispatcher("views/customerCenter/searchInquiryList.jsp").forward(request, response);
 		
 	
 	}

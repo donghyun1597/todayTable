@@ -8,11 +8,6 @@
 	ArrayList<Inquiry> list = (ArrayList<Inquiry>)request.getAttribute("list");
 	Inquiry deleteNo = (Inquiry)request.getAttribute("deleteNo");
 	
-	int search = 0;
-	if((int)request.getAttribute("search") == 1){
-		search = (int)request.getAttribute("search");
-	}
-	
 	int currentPage = pi.getCurrentPage();
 	int startPage = pi.getStartPage();
 	int endPage = pi.getEndPage();
@@ -270,7 +265,6 @@
     <div class="m-4" id="paging">
         <nav>
             <div class="pagination">
-            	<%if(search != 1) {%>
             	<%if(currentPage != 1) { %>
                 <button onclick="location.href='<%=contextPath%>/inquiry.cu?cpage=<%= currentPage -1 %>';" class="page-link"> &lt; </button>
                 <% } %>
@@ -279,36 +273,19 @@
                 	<% if(p == currentPage){ %>
                 		<button style="color: orange" disabled><%=p %></button>
                 	<%}else{ %>
-                	    <button onclick="location.href = '<%= contextPath%>/inquiry.cu?cpage=<%=p%>';" class="page-link"><%=p %></button>
+                	    <button onclick="location.href='<%= contextPath%>/inquiry.cu?cpage=<%=p%>';" class="page-link"><%=p %></button>
 		        	<%} %>
 		        <%} %>
 		        
 		        <%if(currentPage != maxPage) {%>
 		        	<button onclick="location.href='<%=contextPath%>/inquiry.cu?cpage=<%= currentPage +1 %>';" class="page-link"> &gt; </button>
 		        <%} %>
-		        <%} else{%>
-		        <%if(currentPage != 1) { %>
-                <button onclick="location.href='<%=contextPath%>/SearchInquiry.cu?cpage=<%= currentPage -1 %>';" class="page-link"> &lt; </button>
-                <% } %>
-                
-                <%for(int p = startPage; p<=endPage; p++) { %>
-                	<% if(p == currentPage){ %>
-                		<button style="color: orange" disabled><%=p %></button>
-                	<%}else{ %>
-                	    <button onclick="location.href = '<%= contextPath%>/SearchInquiry.cu?cpage=<%=p%>';" class="page-link"><%=p %></button>
-		        	<%} %>
-		        <%} %>
-		        
-		        <%if(currentPage != maxPage) {%>
-		        	<button onclick="location.href='<%=contextPath%>/SearchInquiry.cu?cpage=<%= currentPage +1 %>';" class="page-link"> &gt; </button>
-		        <%} %>
-		        <%} %>
             </div>
         </nav>
     </div>
     
     <div class="col-5" style="margin:auto">
-        <form action="SearchInquiry.cu?cpage=1" method="post">
+        <form action="searchInquiry.cu?cpage=1" method="post">
         <div class="btn-group">
             <select name="searchOption" id="searchSelect" class="btn btn-outline-secondary" style="border-color: darkgray;">
                 <option value="title">제목&nbsp;&nbsp;&nbsp;</option>
