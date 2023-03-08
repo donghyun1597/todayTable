@@ -12,6 +12,7 @@ import java.util.Properties;
 import static com.todayTable.common.JDBCTemplate.*;
 
 import com.todayTable.common.model.vo.PageInfo;
+import com.todayTable.customerCenter.model.vo.Inquiry;
 import com.todayTable.notice.model.vo.Notice;
 
 public class NoticeDao {
@@ -181,5 +182,113 @@ public class NoticeDao {
 		
 		return n;
 		
+	}
+
+	public ArrayList<Notice> searchNotice(Connection conn, String searchOption, String searchText, PageInfo pi) {
+		ArrayList<Notice> list = new ArrayList<>();
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = null;
+		
+		switch (searchOption) {
+		case "title":
+			sql = prop.getProperty("searchNoticeTitle");
+			break;
+			
+		case "content":
+			sql = prop.getProperty("searchNoticeContent");
+			break;
+		
+		case "titleContent":
+			sql = prop.getProperty("searchNoticeTitleContent");
+			break;
+		}
+		
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			
+			if(searchOption.equals("titleContent")) {
+				pstmt.setString(1, searchText);
+				pstmt.setString(2, searchText);
+				pstmt.setInt(3, startRow);
+				pstmt.setInt(4, endRow);
+			}else {
+				pstmt.setString(1, searchText);
+				pstmt.setInt(2, startRow);
+				pstmt.setInt(3, endRow);
+			}
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Notice(rset.getInt("notice_no"),
+									rset.getString("notice_clsfc"),
+									rset.getString("notice_name"),
+									rset.getDate("notice_date")));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+	}
+
+	public int searchNoticeCount(Connection conn, String searchOption, String searchText) {
+		
+		int listCount = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = null;
+		
+		switch (searchOption) {
+		case "title":
+			sql = prop.getProperty("searchNoticeTitleCount");
+			break;
+			
+		case "content":
+			sql = prop.getProperty("searchNoticeContentCount");
+			break;
+			
+		case "titleContent":
+			sql = prop.getProperty("searchNoticeTitleContentCount");
+			break;
+		}
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			if(searchOption.equals("titleContent")) {
+				pstmt.setString(1, searchText);
+				pstmt.setString(2, searchText);
+			} else {
+				pstmt.setString(1, searchText);
+			}
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				listCount = rset.getInt("count");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return listCount;
+		
+	
 	}
 }

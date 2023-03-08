@@ -38,13 +38,25 @@
     <div id="wrap">
    	    <br><br>
     	<div id="notice">
-            <h1 class="foot"><b>이벤트</b></h1>
-            <br>
-            <h6>- 오늘의식탁의 이벤트 관련 글을 공지하는 '이벤트' 페이지입니다.</h6>
-            <br>
-            <hr>
-            <br><br>
-        </div>
+            <!-- ----------------------------------------------------------------------------------------------------- -->
+            <!-- ##### Breadcumb Area Start ##### -->
+            <div class="breadcumb-area bg-img bg-overlay"
+            style="background-image: url(img/bg-img/breadcumb2.jpg);">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center">
+                    <div class="col-12">
+                        <div class="breadcumb-text text-center">
+                            <h2>이벤트</h2>
+                            <br>
+                            <h6 style="color: white;">- 이벤트를 공유하는 '이벤트' 페이지입니다.</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div> <br><br>
+            <!-- ##### Breadcumb Area End ##### -->
+            <!-- ----------------------------------------------------------------------------------------------------- -->
+        
         <div class="notice-wrap" align="center">
             <table class="notice-area table-active" width="800px">
                 <tr>
@@ -65,5 +77,6 @@
             <a href="<%=contextPath%>/eventList.ev?cpage=1" class="btn btn-sm btn-primary">목록으로</a>
         </div>
     </div>
+</div>
 </body>
 </html>

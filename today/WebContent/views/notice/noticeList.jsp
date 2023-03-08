@@ -82,9 +82,9 @@
     </style>
 
     <script>
-        $(document).ready( function() {
-        $("#searchSelect").attr("style","display:inline");
-        $(".nice-select").remove("div")
+        $(document).ready(function() {
+        $(".searchSelect").attr("style","display:inline");
+        $(".nice-select").remove("div");
     });
     </script>
 
@@ -94,7 +94,7 @@
 <%@ include file = "../common/menubar.jsp" %>
 
 <div id="wrap">
-
+    <div id="notice">
 <!-- ----------------------------------------------------------------------------------------------------- -->
 	<!-- ##### Breadcumb Area Start ##### -->
 	<div class="breadcumb-area bg-img bg-overlay"
@@ -135,7 +135,11 @@
                 <% for(Notice n :list) { %>
                 <tr onclick="detailNo(<%= n.getNoticeNo() %>);">
                     <td id="detailNo<%=i++%>"><%= n.getNoticeNo() %></td>
+                    <% if(n.getNoticeClsfc().equals("일반")) {%>
                     <td><%= n.getNoticeClsfc() %></td>
+                    <%} else{ %>
+                    <td style="color: red"><%= n.getNoticeClsfc() %></td>
+                    <%} %>
                     <td style="text-align: left;"><%= n.getNoticeName() %></td>
                     <td><%= n.getNoticeDate() %></td>
                 </tr>
@@ -146,13 +150,10 @@
     </div>
 
     <script>
-
     	function detailNo(noticeNo){
 			console.log(noticeNo);
             location.href = '<%= contextPath %>/detail.no?num=' + noticeNo;
         }
-
-
     </script>
 
     <div class="m-4" id="paging">
@@ -178,14 +179,14 @@
     </div>
 
     <div class="col-5" style="margin:auto">
-        <form action="test" method="post">
+        <form action="searchNotice.no?cpage=1" method="post">
         <div class="btn-group">
-            <select name="#" id="searchSelect" class="btn btn-outline-secondary" style="border-color: darkgray;">
-                <option value="title">제목</option>
-                <option value="content">내용</option>
-                <option value="titleContent">제목+내용</option>
+            <select name="searchOption" class="btn btn-outline-secondary searchSelect" style="border-color: darkgray;">
+                <option value="title">제목&nbsp;&nbsp;&nbsp;</option>
+                <option value="content">내용&nbsp;&nbsp;&nbsp;</option>
+                <option value="titleContent">제목+내용&nbsp;&nbsp;</option>
             </select>
-            <input type="text" class="form-control" placeholder="검색어 입력" style="border-color: rgb(108, 117, 125); border-radius: 0%;">
+            <input type="text" name="searchText" class="form-control" placeholder="검색어 입력" style="border-color: rgb(108, 117, 125); border-radius: 0%;">
             <button type="submit" class="btn btn-primary">
                 <i class="bi-search"></i>
             </button>

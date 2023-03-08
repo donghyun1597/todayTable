@@ -205,13 +205,28 @@ public class InquiryDao {
 		return result;
 	}
 
-	public ArrayList<Inquiry> selectInquiryList(Connection conn, String searchText, PageInfo pi) {
+	public ArrayList<Inquiry> searchInquiry(Connection conn, String searchOption, String searchText, PageInfo pi) {
 		ArrayList<Inquiry> list = new ArrayList<>();
 		
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
-		String sql = prop.getProperty("searchInquiryTitle");
+		String sql = null;
+		
+		switch (searchOption) {
+		case "title":
+			sql = prop.getProperty("searchInquiryTitle");
+			break;
+			
+		case "content":
+			sql = prop.getProperty("searchInquiryContent");
+			break;
+		
+		case "titleContent":
+			sql = prop.getProperty("searchInquiryTitleContent");
+			break;
+		}
+		
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -219,9 +234,16 @@ public class InquiryDao {
 			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
 			int endRow = startRow + pi.getBoardLimit() - 1;
 			
-			pstmt.setString(1, searchText);
-			pstmt.setInt(2, startRow);
-			pstmt.setInt(3, endRow);
+			if(searchOption.equals("titleContent")) {
+				pstmt.setString(1, searchText);
+				pstmt.setString(2, searchText);
+				pstmt.setInt(3, startRow);
+				pstmt.setInt(4, endRow);
+			}else {
+				pstmt.setString(1, searchText);
+				pstmt.setInt(2, startRow);
+				pstmt.setInt(3, endRow);
+			}
 			
 			rset = pstmt.executeQuery();
 			
@@ -248,6 +270,55 @@ public class InquiryDao {
 		return list;
 		
 		
+	}
+
+	public int searchInquiryCount(Connection conn, String searchOption, String searchText) {
+		
+		int listCount = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = null;
+		
+		switch (searchOption) {
+		case "title":
+			sql = prop.getProperty("searchInquiryTitleCount");
+			break;
+		
+		case "content":
+			sql = prop.getProperty("searchInquiryContentCount");
+			break;
+			
+		case "titleContent":
+			sql = prop.getProperty("searchInquiryTitleContentCount");
+			break;
+		}
+		
+		
+		try {
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			if(searchOption.equals("titleContent")) {
+				pstmt.setString(1, searchText);
+				pstmt.setString(2, searchText);
+			} else {
+				pstmt.setString(1, searchText);
+			}
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				listCount = rset.getInt("count");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return listCount;
 	}
 
 }
