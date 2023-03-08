@@ -8,6 +8,11 @@
 	ArrayList<Inquiry> list = (ArrayList<Inquiry>)request.getAttribute("list");
 	Inquiry deleteNo = (Inquiry)request.getAttribute("deleteNo");
 	
+	int search = (int)request.getAttribute("search");
+	
+	String searchOption = (String)request.getAttribute("searchOption");
+	String searchText = (String)request.getAttribute("searchText");
+	
 	int currentPage = pi.getCurrentPage();
 	int startPage = pi.getStartPage();
 	int endPage = pi.getEndPage();
@@ -265,20 +270,20 @@
     <div class="m-4" id="paging">
         <nav>
             <div class="pagination">
-            	<%if(currentPage != 1) { %>
-                <button onclick="location.href='<%=contextPath%>/inquiry.cu?cpage=<%= currentPage -1 %>';" class="page-link"> &lt; </button>
+		        <%if(currentPage != 1) { %>
+                <button onclick="location.href='<%=contextPath%>/searchInquiry.cu?cpage=<%= currentPage -1 %>&searchOption=<%= searchOption %>&searchText=<%= searchText %>';" class="page-link"> &lt; </button>
                 <% } %>
                 
                 <%for(int p = startPage; p<=endPage; p++) { %>
                 	<% if(p == currentPage){ %>
                 		<button style="color: orange" disabled><%=p %></button>
                 	<%}else{ %>
-                	    <button onclick="location.href='<%= contextPath%>/inquiry.cu?cpage=<%=p%>';" class="page-link"><%=p %></button>
+                	    <button onclick="location.href='<%= contextPath%>/searchInquiry.cu?cpage=<%=p%>&searchOption=<%= searchOption %>&searchText=<%= searchText %>';" class="page-link"><%=p %></button>
 		        	<%} %>
 		        <%} %>
 		        
 		        <%if(currentPage != maxPage) {%>
-		        	<button onclick="location.href='<%=contextPath%>/inquiry.cu?cpage=<%= currentPage +1 %>';" class="page-link"> &gt; </button>
+		        	<button onclick="location.href='<%=contextPath%>/searchInquiry.cu?cpage=<%= currentPage +1 %>&searchOption=<%= searchOption %>&searchText=<%= searchText %>';" class="page-link"> &gt; </button>
 		        <%} %>
             </div>
         </nav>
