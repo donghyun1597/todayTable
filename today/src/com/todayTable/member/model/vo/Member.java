@@ -92,11 +92,10 @@ public class Member {
 	
 	
 
-
-	public Member(String memId, String phone) {
+	public Member(String memId, String memName) {
 		super();
 		this.memId = memId;
-		this.phone = phone;
+		this.memName = memName;
 	}
 
 

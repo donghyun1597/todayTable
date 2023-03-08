@@ -121,11 +121,11 @@ public class MemberService {
 		return result;
 	}
 	
-public Member searchMemId(String memberName, String phone) {
+	public Member searchMemId(String memName, String phone) {
 		
 		Connection conn = getConnection();
 		MemberDao dao = new MemberDao();
-		Member m = dao.searchMemId(conn, memberName, phone);
+		Member m = dao.searchMemId(conn, memName, phone);
 		close(conn);
 		
 		System.out.println("m : " + m);

@@ -140,9 +140,15 @@
         letter-spacing: 2px;
         }
 
+
     </style>
 </head>
 <body>
+
+    <!-- Favicon -->
+<link rel="icon" href="img/core-img/favicon.ico">
+
+
 	<%if(alertMsg!=null){ %>
 	<script>
 		alert("<%=alertMsg%>");
@@ -169,14 +175,14 @@
                     <input type="password" name="memPwd" placeholder="비밀번호">
                 </div>
                 <div class="submit">
-                    <input type="submit" value="로그인">
-                    <input type="reset" value="취소">
+                    <input type="submit" value="로그인" name="btn">
+                    <input type="reset" value="취소" name="btn">
                     
                 </div>    
             </form>
             <div class="login_etc">
                 <div class="forgot_id">
-                    <a href="<%=request.getContextPath()%>/searchMemId.me">아이디 찾기</a>
+                    <a href="<%=request.getContextPath()%>/views/member/searchMemId.jsp">아이디 찾기</a>
                 </div>
                 <div class="forgot_pw">
                     <a href="#">비밀번호 찾기</a>

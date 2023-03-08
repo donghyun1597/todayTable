@@ -348,23 +348,26 @@ public class MemberDao {
 		
 	}
 	
-public Member searchMemId(Connection conn, String memberName, String phone) {
-		
+public Member searchMemId(Connection conn, String memName, String phone) {
+		Member m = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		String query = "select * from member where member_name=? and phone=?";
-		Member m = null;
+		
+		String sql = prop.getProperty("searchMemberId");
+		
+		
 		try {
-			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, memberName);
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, memName);
 			pstmt.setString(2, phone);
+
 			rset = pstmt.executeQuery();
-			while(rset.next()){
-				m = new Member();
-				m.setMemId(rset.getString("memId"));
-				m.setMemPwd(rset.getString("memPwd"));
-				m.setMemName(rset.getString("memName"));
-				m.setPhone(rset.getString("phone"));
+			
+			if(rset.next()) {
+				
+				m = new Member(rset.getString("memId")
+							, rset.getString("memName"));
 			}
 			
 		} catch (SQLException e) {
