@@ -63,7 +63,7 @@
 <link rel="icon" href="img/core-img/favicon.ico">
     <div>
         <div align="center">
-            <img src="../../resources/image/core-img/logo.jpg" alt="오늘의식탁 로고" width="40%">
+            <img src="../../resources/image/core-img/logo.jpg" alt="오늘의식탁 로고" width="20%">
         </div>
         <h1>회원가입 페이지</h1>
         

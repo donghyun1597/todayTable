@@ -124,24 +124,29 @@ public class MemberService {
 	public Member searchMemId(String memName, String phone) {
 		
 		Connection conn = getConnection();
-		MemberDao dao = new MemberDao();
-		Member m = dao.searchMemId(conn, memName, phone);
+		
+		Member member = new MemberDao().searchMemId(conn, memName, phone);
+		if(member==null) {
+			rollback(conn);
+		}else {
+			commit(conn);
+		}
+		
 		close(conn);
 		
-		System.out.println("m : " + m);
-		return m;
+		System.out.println("m : " + member);
+		return member;
 	}
 	
 	//비밀번호 찾기
 	public Member searchMemPw(String memberId, String memberName) {
 		Connection conn = getConnection();
-		MemberDao dao = new MemberDao();
-		Member m = dao.searchMemPw(conn, memberId, memberName);
+		Member member = new MemberDao().searchMemPw(conn, memberId, memberName);
 		close(conn);
 		
 
-		System.out.println("service : " + m);
-		return m;
+		System.out.println("service : " + member);
+		return member;
 	}
 	
 	

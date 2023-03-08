@@ -349,11 +349,11 @@ public class MemberDao {
 	}
 	
 public Member searchMemId(Connection conn, String memName, String phone) {
-		Member m = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		
 		String sql = prop.getProperty("searchMemberId");
+		Member member = null;
+		
 		
 		
 		try {
@@ -366,8 +366,8 @@ public Member searchMemId(Connection conn, String memName, String phone) {
 			
 			if(rset.next()) {
 				
-				m = new Member(rset.getString("memId")
-							, rset.getString("memName"));
+				member = new Member(rset.getString("memName")
+							, rset.getString("memId"));
 			}
 			
 		} catch (SQLException e) {
@@ -378,7 +378,7 @@ public Member searchMemId(Connection conn, String memName, String phone) {
 			close(rset);
 	}	
 	
-		return m;
+		return member;
 	}
 	
 	//비밀번호찾기 (분실시)
