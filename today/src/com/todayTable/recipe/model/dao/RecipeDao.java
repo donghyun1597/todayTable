@@ -54,6 +54,7 @@ public class RecipeDao {
 
 			while (rset.next()) {
 				Recipe r = new Recipe();
+				
 				r.setRecipeNo(rset.getInt("recipe_no"));
 				r.setRecipePic(rset.getString("recipe_pic"));
 				r.setRecipeName(rset.getString("recipe_name"));
@@ -99,6 +100,7 @@ public class RecipeDao {
 
 			while (rset.next()) {
 				Recipe r = new Recipe();
+				r.setRecipeNo(rset.getInt("recipe_no"));
 				r.setRecipePic(rset.getString("recipe_pic"));
 				r.setRecipeName(rset.getString("recipe_name"));
 				r.setRecipeDifficulty(rset.getString("recipe_difficulty"));
@@ -374,7 +376,7 @@ public class RecipeDao {
 				co.setCoNo(rset.getInt("co_no"));
 				co.setCoStep(rset.getString("co_step"));
 				co.setCoContent(rset.getString("co_content"));
-				co.setOrdImgImgurl(rset.getString("ordimg_imgurl"));
+				co.setCoImg(rset.getString("co_img"));
 
 				list.add(co);
 
