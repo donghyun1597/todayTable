@@ -17,6 +17,16 @@ import com.todayTable.recipe.model.vo.MyWishlist;
 import com.todayTable.recipe.model.vo.Recipe;
 
 public class RecipeService {
+	
+	public ArrayList<Recipe> selectRecipeList(){
+		Connection conn = getConnection();
+		
+		ArrayList<Recipe> list = new RecipeDao().selectRecipeList(conn);
+		
+		close(conn);
+		return list;
+		
+	}
    
    /**
     * 조회수 높은순 레시피 조회

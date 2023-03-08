@@ -33,6 +33,41 @@ public class RecipeDao {
 		}
 
 	}
+	
+	public ArrayList<Recipe> selectRecipeList(Connection conn){
+		ArrayList<Recipe> list = new ArrayList<Recipe>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectRecipeList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Recipe r = new Recipe();
+				r.setRecipeNo(rset.getInt("recipe_no"));
+				r.setRecipePic(rset.getString("recipe_pic"));
+				r.setRecipeName(rset.getString("recipe_name"));
+				r.setRecipeDifficulty(rset.getString("recipe_difficulty"));
+				r.setRecipeViews(rset.getInt("recipe_views"));
+				list.add(r);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+			
+		}
+		
+		return list;
+		
+		
+		
+	}
 
 	/**
 	 * 조회수 높은순 레시피

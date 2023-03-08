@@ -193,7 +193,7 @@
                                                 <div class="classynav">
                                                     <ul>
                                                         <li class="active"><a href="<%= contextPath%>">HOME</a></li>
-                                                        <li><a href="#">레시피</a>
+                                                        <li><a href="<%=contextPath %>/recipelist.rc">레시피</a>
                                                             <ul class="dropdown">
                                                                 <li><a href="#">테마별</a>
                                                                     <ul class="dropdown">
