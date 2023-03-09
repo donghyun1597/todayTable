@@ -22,7 +22,7 @@
 		box-sizing: border-box;
 		width: 1200px;
 		padding: 10px;
-		background-color: #e4e7eb;
+		background-color: #f0f4f7;
 		margin: 25px;
 		border-radius: 8px;
 	}
@@ -47,7 +47,8 @@
 	<div class="d-flex" id="wrapper">
 		<%@ include file="adminMenubar.jsp" %>
 		<div id="page-content-wrapper">
-			<h4 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">TODAY TABLE ADMIN</h4>
+			<br>
+			<h4 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: 30px;">TODAY TABLE ADMIN</h4>
 			<hr>
 			
 			<div id="alarm-wrap">
@@ -66,7 +67,7 @@
 					<hr>
 					<p>
 						처리대기 중인 신고가 <b><a href="<%= contextPath %>/adminReportForm.re?cpage=1"><%=c.getReportCount() %></a></b>건이 있습니다. <br>
-						게시글 신고 n건, 댓글 신고 n건
+						게시글 신고 <b><%= c.getRecipeReportCount() %></b>건, 댓글 신고 <b><%= c.getCommentReportCount() %></b>건
 					</p>
 				</div>
 				<div id="bottom-right">
@@ -74,7 +75,7 @@
 					<hr>
 					<p>
 						현재 진행중인 이벤트 <b><a href="<%= contextPath %>/adminEvent.ev?cpage=1"><%= c.getEventCount() %></a></b>건이 있습니다.<br>
-						1231
+						
 					</p>
 				</div>
 			</div>

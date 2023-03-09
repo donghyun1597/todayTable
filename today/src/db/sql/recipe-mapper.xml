@@ -33,6 +33,32 @@
 		WHERE RNUM BETWEEN 1 AND 4
 	</entry>
 
+	<entry key="recipeSelectListCount">
+		SELECT
+			   COUNT(*) count
+		  FROM TB_RECIPE
+		 WHERE RECIPE_STATUS='Y'
+	</entry>
+	
+	<entry key="recipeSelectList">
+	SELECT *
+	    FROM
+	    (SELECT ROWNUM RNUM, A.*
+	        FROM(
+	          SELECT 
+		        RECIPE_NO
+		      , RECIPE_NAME
+		      , MEM_ID  
+		      , RECIPE_DATE
+			FROM TB_RECIPE
+			JOIN TB_MEMBER USING(MEM_NO)
+			WHERE RECIPE_STATUS = 'Y'
+			ORDER
+			   BY RECIPE_NO DESC)
+	           A
+	           )
+	           WHERE RNUM BETWEEN ? AND ?
+	</entry>
 
 
 
@@ -214,6 +240,19 @@
 		
 		WHERE RECIPE_NO = ?
 	</entry>
+
+	
+
+	<entry key="deleteRecipe">
+		UPDATE
+				TB_RECIPE
+			SET
+				RECIPE_STAUS = 'N'
+		WHERE RECIPE_NO = ?
+	</entry>
+
+
+
 	<!-- 레시피 상세 조회 sql 끝 -->
 	
 	<entry key="insertRecipe">
@@ -248,8 +287,28 @@
 		    , DEFAULT
 		    , DEFAULT
 		    )
-			
+
 	
+
 	</entry>
+  	<entry key="selectDetailRecipe2">
+	SELECT
+		RECIPE_NO
+		, RECIPE_NAME
+		, RECIPE_TAG
+		, RECIPE_VIDEO
+		, RECIPE_DIFFICULTY
+		, RECIPE_PERSON
+		, RECIPE_TIME
+		, RECIPE_DATE
+		, MEM_id
+		, RECIPE_PIC
+		, RECIPE_VIEWS
+		FROM
+		TB_RECIPE
+		JOIN
+			TB_MEMBER USING(MEM_NO)
+		WHERE
+		RECIPE_NO = ?
 
 </properties>

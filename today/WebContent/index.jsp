@@ -82,7 +82,7 @@
                             <div class="hero-slides-content" data-animation="fadeInUp" data-delay="100ms">
                                 <h2 data-animation="fadeInUp" data-delay="300ms">MBTI별 추천요리</h2>
                                 <p data-animation="fadeInUp" data-delay="700ms">나와 어울리는 소울푸드는?</p>
-                                <a href="#" class="btn delicious-btn" data-animation="fadeInUp" data-delay="1000ms">참여하기</a>
+                                <a href="<%=contextPath%>/eventDetail.ev?num=7" class="btn delicious-btn" data-animation="fadeInUp" data-delay="1000ms">참여하기</a>
                             </div>
                         </div>
                     </div>
@@ -97,7 +97,7 @@
                             <div class="hero-slides-content" data-animation="fadeInUp" data-delay="100ms">
                                 <h2 data-animation="fadeInUp" data-delay="300ms">월간 식탁고사</h2>
                                 <p data-animation="fadeInUp" data-delay="700ms">제 1회 요리 영역</p>
-                                <a href="#" class="btn delicious-btn" data-animation="fadeInUp" data-delay="1000ms">참여하기</a>
+                                <a href="<%=contextPath%>/eventDetail.ev?num=8" class="btn delicious-btn" data-animation="fadeInUp" data-delay="1000ms">참여하기</a>
                             </div>
                         </div>
                     </div>
@@ -112,7 +112,7 @@
                             <div class="hero-slides-content" data-animation="fadeInUp" data-delay="100ms">
                                 <h2 data-animation="fadeInUp" data-delay="300ms">돈가스 덕후라면 반드시 도전!</h2>
                                 <p data-animation="fadeInUp" data-delay="700ms">월간 식탁고사: 제2회 돈가스 덕후력</p>
-                                <a href="#" class="btn delicious-btn" data-animation="fadeInUp" data-delay="1000ms">참여하기</a>
+                                <a href="<%=contextPath%>/eventDetail.ev?num=9" class="btn delicious-btn" data-animation="fadeInUp" data-delay="1000ms">참여하기</a>
                             </div>
                         </div>
                     </div>

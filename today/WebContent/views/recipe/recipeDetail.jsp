@@ -90,9 +90,11 @@
                 <div class="row">
                     <div class="col-12 col-md-8">
                         <div class="receipe-headline my-5">
+                            <input type="hidden" name="rNo" value="<%= recipe.getRecipeNo() %>">
+                            <input type="hidden" name="loginUser" value="<%= loginUser.getMemId() %>">
                             <span><%=recipe.getRecipeDate() %></span>
                             <h2><%=recipe.getRecipeName() %></h2>
-                            <div class="receipe-duration" style="text-align: center;">
+                            <div class="receipe-duration" style="text-align:center;">
                                 <div>인분: <%=recipe.getRecipePerson() %></div>
                                 <div>조리시간: <%=recipe.getRecipeTime() %></div>
                                 <div>난이도: <%=recipe.getRecipeDifficulty() %></div>

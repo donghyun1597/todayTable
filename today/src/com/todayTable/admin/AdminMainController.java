@@ -1,6 +1,8 @@
 package com.todayTable.admin;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -39,16 +41,21 @@ public class AdminMainController extends HttpServlet {
 		int reportCount = new AdminReportService().countReport();
 		int inquiryCount = new AdminInquiryService().countInquiry();
 		int eventCount = new AdminEventService().countEvent();
+		int recipeReportCount = new AdminReportService().countRecipeReport();
+		int commentReportCount = new AdminReportService().countCommentReport();
+		
 		
 		c.setMemCount(memCount);
 		c.setReportCount(reportCount);
 		c.setInquiryCount(inquiryCount);
 		c.setEventCount(eventCount);
+		c.setRecipeReportCount(recipeReportCount);
+		c.setCommentReportCount(commentReportCount);
 		
 		request.setAttribute("c", c);
 		
-		
-		request.getRequestDispatcher("views/admin/adminIndex.jsp").forward(request, response);
+		RequestDispatcher view = request.getRequestDispatcher("views/admin/adminIndex.jsp");
+		view.forward(request, response);
 			
 	
 	}

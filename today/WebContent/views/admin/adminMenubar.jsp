@@ -46,9 +46,8 @@
 				<a href="<%= contextPath %>/adminMain.ad"><img src="<%= contextPath %>/resources/image/logo.png" alt="" style="box-sizing: border-box; width: 100%; height: 100%;"></a>
 			</div>
 			<div class="list-group list-group-flush">
-				<a class="list-group-item list-group-item-action list-group-item-light p-3" href="<%= contextPath %>/adminMain.pic" style="border-top: 1px solid #dee2e6;"><span>메인사진변경</span></a>
 				<a class="list-group-item list-group-item-action list-group-item-light p-3"	href="<%= contextPath %>/adminSelectMember.mem"><span>회원관리</span></a>
-				<a class="list-group-item list-group-item-action list-group-item-light p-3"	href="#"><span>게시글관리</span></a>
+				<a class="list-group-item list-group-item-action list-group-item-light p-3"	href="<%= contextPath %>/adminRecipe.re?cpage=1"><span>게시글관리</span></a>
 				<a class="list-group-item list-group-item-action list-group-item-light p-3"	href="<%= contextPath %>/adminNotice.no?cpage=1"><span>공지사항관리</span></a>
 				<a class="list-group-item list-group-item-action list-group-item-light p-3"	href="<%= contextPath %>/adminEvent.ev?cpage=1"><span>이벤트관리</span></a> 
 				<a class="list-group-item list-group-item-action list-group-item-light p-3" href="<%= contextPath %>/adminInquiryForm.iq?cpage=1"><span>문의관리</span></a>

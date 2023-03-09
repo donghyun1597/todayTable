@@ -51,4 +51,24 @@ public class AdminReportService {
 		
 		return reportCount;
 	}
+	
+	public int countRecipeReport() {
+		Connection conn = getConnection();
+		
+		int recipeReportCount = new AdminReportDao().countRecipeReport(conn);
+		
+		close(conn);
+		
+		return recipeReportCount;
+	}
+	
+	public int countCommentReport() {
+		Connection conn = getConnection();
+		
+		int commentReportCount = new AdminReportDao().countCommentReport(conn);
+		
+		close(conn);
+		
+		return commentReportCount;
+	}
 }
