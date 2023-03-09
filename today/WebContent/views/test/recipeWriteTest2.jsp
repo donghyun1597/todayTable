@@ -31,10 +31,11 @@
 </head>
 <body>
   <%@ include file="../common/menubar.jsp" %>
+  <div style="float: left;" align="center">
   <div>
   <form action="<%=request.getContextPath()%>/insert.rc" method="post" enctype="multipart/form-data">
 
-	<div align="center">
+	<div>
         <div id="divMainPhotoUpload" class="cont_pic2">
           
           <div style="display: none;">
@@ -44,11 +45,11 @@
               <img id="mainImg" onclick="$('#file0').click()" src="https://recipe1.ezmember.co.kr/img/pic_none4.gif" style="width: 250px; height: 250px; cursor:pointer">
           </div>
         </div>
-        <div class="cont_line">
+        <div class="cont_line" style="display: flex; justify-content: center;">
         	<p class="cont_tit4">레시피 제목</p>
         	<input type="text" name="recipeName" id="cok_title" value="" class="form-control" placeholder="예) 소고기 미역국 끓이기" style="width:610px; ">
         </div>
-        <div class="cont_box pad_l_60">
+        <div class="cont_box pad_l_60" style="display: flex; justify-content: center;">
           <p class="cont_tit4">태그</p>
             <input type="text" name="recipeTag" class="ui-widget-content ui-autocomplete-input" autocomplete="off">
           
@@ -158,6 +159,7 @@
         
         
     </div>
+
     <script>
        let ingreNum = 2;
       $(function(){
@@ -168,7 +170,7 @@
         $(document).on("click",".add_ingre",function(){
           
           
-          let ingre = $('<li><input type="text" style="width:330px;"><input type="text" style="width:280px;"></li>');
+          let ingre = $('<li><input type="text" style="width:330px; placeholder="예)소고기"> <input type="text" style="width:280px; placeholder="300g"></li>');
           ingre.children().attr("name","ingre"+$(this).attr("id").substr(3));
           $(this).parent().prev().append(ingre);
           
@@ -369,6 +371,7 @@
       </div>
     </form>
     </div>
+  </div>
       <script>
         function insertRecipe(){
 

@@ -40,11 +40,11 @@ String contextPath = request.getContextPath(); // /jsp
 	
 	<table class ="table" style="margin:0 auto;width:700px;">
 		<tr>
-			<td><input type="text" name="memName" id="name" class="form-control" placeholder="이름을 입력하세요"></td>
+			<td><input type="text" name="memName" id="name" class="form-control" placeholder="이름을 입력하세요" required></td>
 		</tr>
 		<br>
 		<tr>
-			<td><input type="text" name="phone" id="phone" class="form-control" placeholder="전화번호를 입력하세요"></td>
+			<td><input type="text" name="phone" id="phone" class="form-control" placeholder="전화번호를 입력하세요" required></td>
 		</tr>
 	</table>
 	<button type="button" id="searchBtn" class= "btn btn-outline-info btn sm" onclick="searchMemId();">검색</button>
@@ -54,14 +54,14 @@ String contextPath = request.getContextPath(); // /jsp
 	
 	<script>
       function searchMemId(){
-         var memName = document.getElementById("name").value;
+         var name = document.getElementById("name").value;
          var phone = document.getElementById("phone").value;
          if(name == "" && phone == ""){
             alert("모든 정보를 입력해주세요.");
             return;
          }
          
-         var url = "<%= request.contextPath()%>/searchMemId.me"; // 요청 서블릿 url
+         var url = "<%=request.getContextPath()%>/searchMemId.me"; // 요청 서블릿 url
          
          var title ="searchMemId"; //윈도우 창 이름
          
@@ -74,8 +74,8 @@ String contextPath = request.getContextPath(); // /jsp
          
          searchFrm.target = title;//popup창과 form태그를 연결
          //action,method설정 후 form태그 submit
-         searchFrm.action ="/searchMemId.jsp";
-         searchFrm.method="post";
+         searchFrm.action = "<%= request.getContextPath() %>/searchMemId.me";
+         searchFrm.method = "post";
          
          searchFrm.submit();
       }

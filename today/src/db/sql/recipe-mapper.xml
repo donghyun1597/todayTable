@@ -67,7 +67,8 @@
 	<!-- 수민: 마이페이지_내가 만든 레시피 목록 조회 -->
 	<entry key="selectThumbnailList">
 		SELECT
-		RECIPE_NAME
+		  RECIPE_NO
+		, RECIPE_NAME
 		, RECIPE_DATE
 		, RECIPE_VIEWS
 		, RECIPE_PIC
@@ -147,7 +148,7 @@
 		JOIN TB_CATEGORY_NATION USING(C_NAT_NO)
 		WHERE C_INGRE_NAME = ?
 		OR C_NAT_NAME = ?
-		INTERSECT
+		UNION
 		SELECT RECIPE_NO
 		FROM TB_RECIPE
 		WHERE RECIPE_PERSON =?)
@@ -239,6 +240,7 @@
 		
 		WHERE RECIPE_NO = ?
 	</entry>
+
 	
 
 	<entry key="deleteRecipe">
@@ -249,7 +251,47 @@
 		WHERE RECIPE_NO = ?
 	</entry>
 
-	<entry key="selectDetailRecipe2">
+
+
+	<!-- 레시피 상세 조회 sql 끝 -->
+	
+	<entry key="insertRecipe">
+		INSERT INTO 
+		    TB_RECIPE
+		    (
+		      RECIPE_NO
+		    , RECIPE_NAME
+		    , RECIPE_TAG
+		    , RECIPE_VIDEO
+		    , RECIPE_DIFFICULTY
+		    , RECIPE_PERSON
+		    , RECIPE_TIME
+		    , RECIPE_DATE
+		    , MEM_NO
+		    , RECIPE_PIC
+		    , RECIPE_VIEWS
+		    , RECIPE_STATUS
+		    )
+		VALUES
+		    (
+		      SEQ_RECIPE_NO.NEXTVAL
+		    , ?
+		    , ?
+		    , ?
+		    , ?
+		    , ?
+		    , ?
+		    , DEFAULT
+		    , ?
+		    , ?
+		    , DEFAULT
+		    , DEFAULT
+		    )
+
+	
+
+	</entry>
+  	<entry key="selectDetailRecipe2">
 	SELECT
 		RECIPE_NO
 		, RECIPE_NAME
@@ -268,6 +310,5 @@
 			TB_MEMBER USING(MEM_NO)
 		WHERE
 		RECIPE_NO = ?
-	</entry>
 
 </properties>

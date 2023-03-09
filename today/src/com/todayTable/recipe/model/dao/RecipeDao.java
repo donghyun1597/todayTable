@@ -175,6 +175,7 @@ public class RecipeDao {
 
 			while (rset.next()) {
 				Recipe r = new Recipe();
+				r.setRecipeNo(rset.getInt("recipe_no"));
 				r.setRecipeName(rset.getString("recipe_name"));
 				r.setRecipeDate(rset.getDate("recipe_date"));
 				r.setRecipeViews(rset.getInt("recipe_views"));
@@ -490,6 +491,37 @@ public class RecipeDao {
 			close(pstmt);
 		}
 		return result;
+	}
+	
+	public int insertRecipe(Connection conn, Recipe r) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertRecipe");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, r.getRecipeName());
+			pstmt.setString(2, r.getRecipeTag());
+			pstmt.setString(3, r.getRecipeVideo());
+			pstmt.setString(4, r.getRecipeDifficulty());
+			pstmt.setInt(5, r.getRecipePerson());
+			pstmt.setInt(6, r.getRecipeTime());
+			pstmt.setInt(7, r.getMemNo());
+			pstmt.setString(8, r.getRecipePic());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+			
+		}
+		
+		return result;
+		
+		
+		
 	}
 
 }

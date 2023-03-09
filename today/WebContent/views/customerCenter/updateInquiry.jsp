@@ -9,6 +9,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 </head>
 <body>
 
@@ -76,7 +79,8 @@
           </div>
             <div id="privateChecked">
                 <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" name="checkPrivate" value="pri">
+                <%System.out.println(i.getInqPrivate()); %>
+                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" name="checkPrivate" value="pri" <%if(i.getInqPrivate().equals("Y")){%>checked<%} %>>
                     <label class="form-check-label" for="flexSwitchCheckChecked">비밀글 설정</label>
                 </div>
             </div>

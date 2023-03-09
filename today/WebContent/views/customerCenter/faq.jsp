@@ -75,67 +75,108 @@
 	<!-- ##### Breadcumb Area End ##### -->
 <!-- ----------------------------------------------------------------------------------------------------- -->
 
-    <div class="accordion" id="accordionExample">
+
+      <div class="accordion accordion-flush" id="accordionFlushExample" style="margin:auto">
         <div class="accordion-item">
-          <h2 class="accordion-header" id="headingOne">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                Q. 레시피 등록 방법을 알고싶어요.
+          <h2 class="accordion-header" id="flush-headingOne">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+              Q. 레시피 등록 방법을 알고싶어요.
             </button>
           </h2>
-          <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" >
-            <div class="accordion-body">
-                회원가입 및 로그인 후 [레시피 등록] 에서 레시피 등록이 가능합니다.
-            </div>
+          <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">회원가입 및 로그인 후 [레시피 등록] 에서 레시피 등록이 가능합니다.</div>
           </div>
         </div>
         <div class="accordion-item">
-          <h2 class="accordion-header" id="headingTwo">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                Q. 레시피 삭제 방법을 알고싶어요.
+          <h2 class="accordion-header" id="flush-headingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+              Q. 레시피 삭제 방법을 알고싶어요.
             </button>
           </h2>
-          <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" >
-            <div class="accordion-body">
-                [마이페이지 - MY레시피] 에서 레시피 삭제가 가능합니다.
-            </div>
+          <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">[마이페이지 - MY레시피] 에서 레시피 삭제가 가능합니다.</div>
           </div>
         </div>
         <div class="accordion-item">
-          <h2 class="accordion-header" id="headingThree">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                Q. 레시피 수정 방법을 알고싶어요.
+          <h2 class="accordion-header" id="flush-headingThree">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+              Q. 레시피 수정 방법을 알고싶어요.
             </button>
           </h2>
-          <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" >
-            <div class="accordion-body">
-                [마이페이지 - MY레시피] 에서 레시피 수정이 가능합니다.
-            </div>
+          <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">[마이페이지 - MY레시피] 에서 레시피 수정이 가능합니다.</div>
           </div>
         </div>
         <div class="accordion-item">
-            <h2 class="accordion-header" id="headingFour">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                Q. 회원 정보를 수정하고 싶어요.
-              </button>
-            </h2>
-            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" >
-              <div class="accordion-body">
-                  [마이페이지 - 회원정보수정] 에서 회원정보 수정이 가능합니다.
-              </div>
-            </div>
+          <h2 class="accordion-header" id="flush-headingFour">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+              Q. 회원 정보를 수정하고 싶어요.
+            </button>
+          </h2>
+          <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">[마이페이지 - 회원정보수정] 에서 회원정보 수정이 가능합니다.</div>
           </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="headingFive">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                Q. 회원 탈퇴를 하고싶어요.
-              </button>
-            </h2>
-            <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" >
-              <div class="accordion-body">
-                [마이페이지 - 회원정보수정 - 회원탈퇴] 에서 회원탈퇴가 가능합니다.
-              </div>
-            </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingFive">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
+              Q. 회원 탈퇴를 하고싶어요.
+            </button>
+          </h2>
+          <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">[마이페이지 - 회원정보수정 - 회원탈퇴] 에서 회원탈퇴가 가능합니다.</div>
           </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingSix">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">
+              Q. 닉네임을 변경하고싶어요.
+            </button>
+          </h2>
+          <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">[마이페이지 - 회원정보수정] 에서 닉네임 변경이 가능합니다.</div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingSeven">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSeven" aria-expanded="false" aria-controls="flush-collapseSeven">
+              Q. 프로필 사진을 변경하고 싶어요.
+            </button>
+          </h2>
+          <div id="flush-collapseSeven" class="accordion-collapse collapse" aria-labelledby="flush-headingSeven" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">[마이페이지 - 프로필관리] 에서 프로필사진 변경이 가능합니다.</div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingEight">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseEight" aria-expanded="false" aria-controls="flush-collapseEight">
+              Q. 사용자를 신고하고싶어요.
+            </button>
+          </h2>
+          <div id="flush-collapseEight" class="accordion-collapse collapse" aria-labelledby="flush-headingEight" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">[해당게시글 - 신고] 에서 게시글 신고 및 댓글 신고가 가능합니다.</div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingNine">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseNine" aria-expanded="false" aria-controls="flush-collapseNine">
+              Q. 비회원도 1:1문의를 열람할 수 있는지 궁금해요.
+            </button>
+          </h2>
+          <div id="flush-collapseNine" class="accordion-collapse collapse" aria-labelledby="flush-headingNine" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">비회원도 [1:1문의] 열람이 가능합니다. 하지만, 게시글은 회원만 가능합니다.</div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingTen">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTen" aria-expanded="false" aria-controls="flush-collapseTen">
+              Q. 레시피 사진을 저장하고 싶어요.
+            </button>
+          </h2>
+          <div id="flush-collapseTen" class="accordion-collapse collapse" aria-labelledby="flush-headingTen" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">직접 저장하세요.</div>
+          </div>
+        </div>
       </div>
 
 </div>

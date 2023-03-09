@@ -261,7 +261,7 @@
                                                                 </li>
                                                             </ul>
                                                         </li>
-                                                        <li><a href="#">요리영상</a></li>
+                                                        <li><a href="<%=request.getContextPath()%>/views/recipe/videoplaylist.jsp">요리영상</a></li>
                                                         <li><a href="#">랭킹</a>
                                                             <ul class="dropdown">
                                                                 <li><a href="#">인기셰프</a></li>
@@ -306,6 +306,8 @@
     <script defer src="<%=application.getContextPath()%>/resources/js/plugins/plugins.js"></script>
     <!-- Active js -->
     <script defer src="<%=application.getContextPath()%>/resources/js/active.js"></script>
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
    
 </body>
 </html>

@@ -193,12 +193,32 @@
 </entry>
 
 <entry key="searchMemberId">
-SELECT 
-    MEM_NAME
-    , MEM_ID
-    FROM TB_MEMBER
-    WHERE MEM_NAME = ?
-    AND PHONE = ?
+	SELECT 
+	    MEM_ID
+	    , MEM_NAME
+	    FROM
+	    	TB_MEMBER
+	    WHERE
+	    	MEM_NAME = ?
+	    AND
+	    	PHONE = ?
+</entry>
+
+<entry key="searchMemberPw">
+	SELECT 
+	    MEM_ID
+	    , MEM_NAME
+	    , MEM_PWD
+	    , PHONE
+	    FROM
+	    	TB_MEMBER
+	    WHERE
+	    	MEM_ID = ?
+	    AND
+	    	MEM_NAME = ?
+	    AND
+	    	PHONE = ?
+	    
 </entry>
 
 
@@ -236,7 +256,7 @@ SELECT
 			MEM_NO = ?
 </entry>
 	
-	
+
 	
 	
 	

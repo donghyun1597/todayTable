@@ -129,6 +129,11 @@
         display: flex;
         
         }
+
+        .submit input:hover{
+            background: orange;
+            cursor: pointer;
+        }
         
         .submit input {
         width: 100%;
@@ -141,6 +146,8 @@
         font-size: 1.2em;
         letter-spacing: 2px;
         }
+
+
 
 
     </style>

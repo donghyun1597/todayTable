@@ -59,12 +59,12 @@
     <!-- ##### Header Area End ##### -->
 
     <!-- ##### Breadcumb Area Start ##### -->
-    <div class="breadcumb-area bg-img bg-overlay" style="background-image: url("");">
+    <div class="breadcumb-area bg-img bg-overlay">
         <div class="container h-100">
             <div class="row h-100 align-items-center">
                 <div class="col-12">
                     <div class="breadcumb-text text-center">
-                        <h2>Recipe</h2>
+                        <h2 style="color:rgb(209, 95, 66)"><%=recipe.getRecipeTag()%></h2>
                     </div>
                 </div>
             </div>
@@ -138,7 +138,7 @@
                    
 
                     <!-- Ingredients -->
-                    <div class="col-12 col-lg-4" style="margin-left:50px">
+                    <div class="col-12 col-lg-3" style="margin-left:50px">
                         <div class="ingredients">
                         	<%for(int i=0;i<ingreClass.size();i++){ %>
                             <h4><%=ingreClass.get(i).getIngreCname() %></h4>
@@ -149,6 +149,7 @@
 		                            <div class="">
 		                                
 		                                <label style="font-size: 17px;"><%=ingredients.get(j).getIngreName() %></label>
+		                                <label style="font-size: 15px; float: right; color: rgb(148, 24, 100);"> <%=ingredients.get(j).getIngreAmount()%></label>
 		                            </div>
 									<%} %>
 								<%} %>
@@ -158,6 +159,7 @@
                         </div>
 
                     </div>
+                    
                 </div>
 
                 <div class="row">

@@ -91,6 +91,17 @@ public class Member {
 	}
 	
 	
+	
+	
+
+	public Member(String memId, String memPwd, String memName, String phone) {
+		super();
+		this.memId = memId;
+		this.memPwd = memPwd;
+		this.memName = memName;
+		this.phone = phone;
+	}
+
 
 	public Member(String memId, String memName) {
 		super();
