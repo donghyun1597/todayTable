@@ -63,7 +63,8 @@
     <!-- ##### Breadcumb Area End ##### -->
     <!-- ----------------------------------------------------------------------------------------------------- -->
         <div class="notice-wrap" align="center">
-            <table class="notice-area table-active" width="800px">
+            
+            <table class="notice-area table-active" width="800px" style="border: 3px solid darkgray;">
                 <tr>
                     <th width="600px" height="50px" style="text-align: center; font-size: 20px;" colspan="3">
                     	<% if(n.getNoticeClsfc().equals("일반")) { %>
@@ -83,7 +84,9 @@
                         <pre><%= n.getNoticeContents() %></pre>
                     </td>
                 </tr>
+            </div>
             </table>
+            
             <br><br>
             <a href="<%=contextPath%>/noticeList.no?cpage=1" class="btn btn-sm btn-primary">목록으로</a>
         </div>

@@ -22,7 +22,7 @@
         font-family: "Roboto", sans-serif;
     }
     #wrap {
-        height: 1000px;
+        height: 800px;
     }
     #notice {
             text-align: center;
@@ -32,54 +32,55 @@
             margin: auto;
     }
     .outer{
-        width: 1000px;
+        width: 800px;
         height: 600px;
         margin: auto;
         margin-top: 50px;
         }
     .reply-area{
     	width:100%
-    	height: auto;
     }
 </style>
-</style>
+
+
 </head>
 <body>
  <%@ include file="../common/menubar.jsp" %>
+     <!-- ----------------------------------------------------------------------------------------------------- -->
+     <!-- ##### Breadcumb Area Start ##### -->
+     <div class="breadcumb-area bg-img bg-overlay"
+     style="background-image: url(img/bg-img/breadcumb2.jpg);">
+     <div class="container h-100">
+         <div class="row h-100 align-items-center">
+             <div class="col-12">
+                 <div class="breadcumb-text text-center">
+                     <h2>이벤트</h2>
+                     <br>
+                     <h6 style="color: white;">- 이벤트를 공유하는 '이벤트' 페이지입니다.</h6>
+                 </div>
+             </div>
+         </div>
+     </div>
+     </div> <br><br>
+     <!-- ##### Breadcumb Area End ##### -->
+     <!-- ----------------------------------------------------------------------------------------------------- -->
+ <br><br>
+ <div id="notice">
+
     <div class="outer">
-   	    <br><br>
-    	<div id="notice">
-            <!-- ----------------------------------------------------------------------------------------------------- -->
-            <!-- ##### Breadcumb Area Start ##### -->
-            <div class="breadcumb-area bg-img bg-overlay"
-            style="background-image: url(img/bg-img/breadcumb2.jpg);">
-            <div class="container h-100">
-                <div class="row h-100 align-items-center">
-                    <div class="col-12">
-                        <div class="breadcumb-text text-center">
-                            <h2>이벤트</h2>
-                            <br>
-                            <h6 style="color: white;">- 이벤트를 공유하는 '이벤트' 페이지입니다.</h6>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            </div> <br><br>
-            <!-- ##### Breadcumb Area End ##### -->
-            <!-- ----------------------------------------------------------------------------------------------------- -->
         
         <div class="notice-wrap" align="center">
-            <table class="notice-area table-active" width="800px">
+            <table class="notice-area table-active" width="800px" style="border: 3px solid darkgray;" >
                 <tr>
-                    <th width="600px" height="50px" style="text-align: center; font-size: 20px;" colspan="3">
+                    <th width="600px" height="100px" style="text-align: center; font-size: 20px;" colspan="3">
                     	<%= ev.getEventName() %>
                    	</th>
                 </tr>
                 <tr>
-                    <td width="100px" colspan="3" style="text-align: right;"><%= ev.getEventDate() %></td>
+                    <td width="100px" height="100px" colspan="3" style="text-align: right;"><%= ev.getEventDate() %></td>
                 </tr>
                 <tr>
-                    <td colspan="3">
+                    <td width="800px" height="100px" colspan="3">
                         <pre><%= ev.getEventContents() %></pre>
                     </td>
                 </tr>
@@ -87,21 +88,21 @@
             <br><br>
 
             <div id="reply-area">
-                <table border="1" align="center">
-                    <thead style="width:800px">
+                <table align="center" style="border: 3px solid darkgray; width: 800px;">
+                    <thead>
                         <tr>
-                            <th>댓글</th>
+                            <th><p style="width: 120px; font-size: large; font-weight: 900; color: black;">댓글</p></th>
                             
-                            <% if(loginUser != null){ // 로그인이 되어 있는 경우 %>
+                            <% if(loginUser != null){ %>
                             <td>
-                                <textarea id="replyContent" rows="3" cols="50" style="resize:none; width:720px"></textarea>
+                                <textarea id="replyContent" rows="3" cols="50" style="resize:none; width:570px;"></textarea>
                             </td>
-                            <td><button class="btn-sm btn-primary"onclick="insertReply();">등록</button></td>
+                            <td><p style="width: 100px;"><button class="btn btn-primary"onclick="insertReply();">등록</button></p></td>
                             <%}else{ %>
                             <td>
-                                <textarea rows="3" cols="50" style="resize:none; width:720px" readonly>로그인 후 이용가능한 서비스 입니다.</textarea>
+                                <textarea rows="3" cols="50" style="resize:none; width:570px;" readonly>로그인 후 이용가능한 서비스 입니다.</textarea>
                             </td>
-                            <td><button class="btn-sm btn-primary" disabled>등록</button></td>
+                            <td><p style="width: 100px;"><button class="btn btn-primary" style="display: none;">등록</button></p></td>
                             <%} %>
                         </tr>
                     </thead>
@@ -112,11 +113,10 @@
                 
                 <script>
                     
-                    $(function(){
-                        selectReplyList();
-                        
-                        setInterval(selectReplyList, 1000);
-                    })
+	                $(function(){
+	                    selectReplyList();
+	                });
+
                     
                     // ajax로 댓글 작성용
                     function insertReply(){
@@ -125,7 +125,7 @@
                             url:"rInsert.ev",
                             data:{
                                 content:$("#replyContent").val(),
-                                bno:<%= ev.getEventNo() %> // userNo : 로그인 안한 경우, loginUser null인 경우에는 널포인트 날 수도 있음
+                                bno:<%= ev.getEventNo() %>
                             },
                             type:"post",
                             success:function(result){
@@ -140,7 +140,7 @@
                         })
                     }
                     
-                    // ajax로 해당 게시글에 딸린 댓글 목록 조회용
+                    // 댓글 목록 조회용
                     function selectReplyList(){
                         $.ajax({
                             url:"rlist.ev",
