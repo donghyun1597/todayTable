@@ -45,6 +45,8 @@
             width: 300px !important;
             height: 415px !important;
         }
+
+
         
     </style>
     
@@ -395,44 +397,43 @@
 
                
             </div>
-        </div><hr>
+        </div>
     </section>
     <!-- ##### Follow Us Instagram Area End ##### -->
 
 
     <!-- ##### Footer Area Start ##### -->
-	<footer class="footer-area" style="background-color: rgb(246, 246, 246);">
-        <div class="line" style="background-color: rgb(219, 219, 219); text-align: center; padding-top: 10px; padding-bottom: 10px;">
-            <span style="margin: 0 70px; font-size: 14px; font-weight: 600;">이용안내 </span>
-            <span style="margin: 0 70px; font-size: 14px; font-weight: 600;">개인정보처리방침 </span>
-            <span style="margin: 0 70px; font-size: 14px; font-weight: 600;">공지사항 </span>
-            <span style="margin: 0 70px; font-size: 14px; font-weight: 600;">자주묻는질문</span>
-        </div>
+    <footer class="footer-area" id="footerArea" style="background-color: rgb(252, 252, 252); height: auto;">
+        <div class="line" style="background-color: rgb(237, 237, 237); text-align: center; padding-top: 10px; padding-bottom: 10px;">
+            <span style="margin: 0 100px; font-size: 14px; font-weight: 600;">이용안내 </span>
+            <span style="margin: 0 100px; font-size: 14px; font-weight: 600;">개인정보처리방침 </span>
+            <span style="margin: 0 100px; font-size: 14px; font-weight: 600;">공지사항 </span>
+            <span style="margin: 0 100px; font-size: 14px; font-weight: 600;">자주묻는질문</span>
+        </div> <br>
         
         <div class="container h-100" style="padding-top: 15px; padding-bottom: 100px; width: 100%;">
-            <div class="row justify-content-center">
-              <div class="col-md-3 mb-4 mb-md-0">
-                <ul class="list-unstyled">
-                    <li><h6>이맛이조</h6></li>
-                  <li><i class="fa fa-envelope"></i> 이메일: dlaktdlwh361@gmail.com</li>
-                  <li><i class="fa fa-phone"></i> 전화번호: 010-1234-5678</li>
-                  <li><i class="fa fa-map-marker"></i> 주소: </li>
-                  <li> 서울 강남구 테헤란로142 플레이스 21층</li>
-                </ul>
-              </div>
-              <div class="col-md-4 mb-4 mb-md-0" style="width: 100%;">
-                <ul class="list-unstyled">
-                  <li><h6>운영시간 (주말. 공휴일 휴무)</h6></li>
-                  <li>전화문의- 10:00~12:00, 13:00~17:00</li>
-                  <li>1대1문의- 10:00~12:00, 13:00~17:00</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          
-          
-	</footer>
 
+            <div class="row justify-content-center">
+                <div class="colSm" id="div1">
+                    <ul class="list-unstyled" style="margin-right: 150px;">
+                        <li><h6>이맛이조</h6></li>
+                        <li><i class="fa fa-envelope"></i> 이메일:  dlaktdlwh361@gmail.com</li>
+                        <li><i class="fa fa-phone"></i> 전화번호:  010-1234-5678</li>
+                        <li><i class="fa fa-map-marker"></i> 주소:  서울 강남구 테헤란로142 플레이스 21층</li>
+
+                    </ul>
+                </div>
+
+                <div class="colSm" id="div2">
+                    <ul class="list-unstyled" style="margin-left: 150px;">
+                        <li><h6>운영시간 (주말. 공휴일 휴무)</h6></li>
+                        <li>전화문의: 10:00~12:00, 13:00~17:00</li>
+                        <li>1대1문의: 10:00~12:00, 13:00~17:00</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
     <!-- ##### Footer Area Start ##### -->
 	
 	<script>
