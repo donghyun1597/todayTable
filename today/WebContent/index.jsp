@@ -145,19 +145,13 @@
   <div class="container">
     <div class="row" style="flex-direction: column; align-items: center; padding-top: 50px;">
 
-<<<<<<< HEAD
+
         <div class="col-md-12" id="recommendSel1">
         <div style="font-size: 30px; font-weight: 600; padding-top: 20px; float: left; margin-right: 20px;">우리집 냉장고에는</div>
         <div id="recSel1" style="width: 150px; height: 100%; float: left; border-bottom: 2px solid black; padding-bottom: 5px;">
             <select class="form-control">
-                <option style="font-size: 16px;">소고기</option>
-=======
-        <div class="col-md-12" id="recommendSel1" style="background-color: #ffffff;">
-        <div style="font-size: 30px; font-weight: 600; padding-top: 20px; float: left; margin-right: 20px; padding-left: 300px;">우리집 냉장고에는</div>
-        <div style="width: 150px; height: 100%; float: left; border-bottom: 2px solid black;">
-            <select class="form-control" id="recSel1" >
+          
                 <option>소고기</option>
->>>>>>> d4940ee2067e98b1e77b787f04f29c8446a1c0ba
                 <option>돼지고기</option>
                 <option>닭고기</option>
                 <option>해산물</option>
@@ -172,15 +166,10 @@
       </div>
 
 
-<<<<<<< HEAD
+
       <div class="col-md-12" id="recommendSel2">
         <div id="recSel2" style="width: 150px; height: 100%;  float: left; border-bottom: 2px solid black;" >
-            <select class="form-control" style="font-size: 16px; font-weight: 500;">
-=======
-      <div class="col-md-12" id="recommendSel2" style="padding-left: 300px;">
-        <div style="width: 150px; height: 100%;  float: left; border-bottom: 2px solid black;" >
-            <select class="form-control" id="recSel2">
->>>>>>> d4940ee2067e98b1e77b787f04f29c8446a1c0ba
+            <select class="form-control" style="font-size: 16px; font-weight: 500;"> 
               <option>한국</option>
               <option>베트남</option>
               <option>중국</option>
@@ -195,20 +184,17 @@
             </label>
         </div>
 
-<<<<<<< HEAD
+
         <div id="recSel3" style="width: 150px; height: 100%; float: left; border-bottom: 2px solid black;" >
             <select class="form-control" style="font-size: 16px;">
-=======
-        <div style="width: 150px; height: 100%; float: left; border-bottom: 2px solid black;" >
-            <select class="form-control" id="recSel3" >
->>>>>>> d4940ee2067e98b1e77b787f04f29c8446a1c0ba
+
               <option value="2">친구와 함께</option>
               <option value="1">혼자서</option>
               <option value="3">가족과 함께</option>
             </select>
         </div>
 
-        <div >
+        <div>
             <label for="sel3">
                 <span style="font-size: 30px; font-weight: 600; padding-top: 20px; float: left; margin-right: 20px; margin-left: 20px;">먹을래요</span>
             </label>
