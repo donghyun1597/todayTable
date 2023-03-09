@@ -213,6 +213,6 @@
 		
 		WHERE RECIPE_NO = ?
 	</entry>
-
+	<!-- 레시피 상세 조회 sql 끝 -->
 
 </properties>

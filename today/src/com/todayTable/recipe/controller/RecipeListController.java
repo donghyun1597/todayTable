@@ -7,7 +7,10 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;import com.todayTable.recipe.model.vo.Recipe;
+import javax.servlet.http.HttpServletResponse;
+
+import com.todayTable.recipe.model.service.RecipeService;
+import com.todayTable.recipe.model.vo.Recipe;
 
 /**
  * Servlet implementation class RecipeListController
@@ -28,11 +31,12 @@ public class RecipeListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<Recipe> list = new ArrayList<Recipe>();
+		ArrayList<Recipe> list = new RecipeService().selectRecipeList();
 		
 		request.setAttribute("list", list);
 		
 		request.getRequestDispatcher("views/recipe/recipeListView.jsp").forward(request, response);
+		System.out.println(list);
 	}
 
 	/**
