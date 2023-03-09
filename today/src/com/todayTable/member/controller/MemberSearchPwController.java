@@ -34,21 +34,27 @@ public class MemberSearchPwController extends HttpServlet {
 		//1.인코딩
 		request.setCharacterEncoding("utf-8");
 		//2.변수저장
-		String memberId = request.getParameter("userId");
-		String memberName = request.getParameter("userName");
+		String memId = request.getParameter("id");
+		String memName = request.getParameter("name");
+		String phone = request.getParameter("phone");
+		
+		System.out.println(memId);
+		System.out.println(memName);
+		System.out.println(phone);
 		//3.비지니스로직
-		MemberService service = new MemberService();
-		Member member = service.searchMemPw(memberId,memberName);
+		Member member = new MemberService().searchMemPw(memId,memName,phone);
 		//4.뷰 처리
-		System.out.println("sevlet : " + member);
+		
+		
+//		System.out.println("controller : " + member);
 		if(member != null) {
-			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/views/member/searchPw.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/views/member/searchMemPw2.jsp");
 			request.setAttribute("members", member);
 			rd.forward(request, response);
 		}else {
 			request.setAttribute("msg", "정확한 정보를 입력해 주세요!");
 			request.setAttribute("loc", "/");
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/common/msg.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/views/common/memErrorPage.jsp");
 			rd.forward(request, response);
 		}
 	}
