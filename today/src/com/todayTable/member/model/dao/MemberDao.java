@@ -382,7 +382,8 @@ public class MemberDao {
 		String sql = prop.getProperty("searchMemberId");
 		Member member = null;
 		
-		
+//		System.out.println(memName);
+//		System.out.println(phone);
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -394,49 +395,53 @@ public class MemberDao {
 			
 			if(rset.next()) {
 				
-				member = new Member(rset.getString("memName")
-							, rset.getString("memId"));
+				member = new Member(rset.getString("mem_id"),
+									rset.getString("mem_name"));
 			}
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally{
-			close(pstmt);
 			close(rset);
+			close(pstmt);
 	}	
-	
+//		System.out.println("dao : " + member);	
 		return member;
 	}
 	
 	//비밀번호찾기 (분실시)
-	public Member searchMemPw(Connection conn, String memberId, String memberName) {
+	public Member searchMemPw(Connection conn, String memId, String memName, String phone) {
 	
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		String query = "select * from member where member_id=? and member_name=?";
-		Member m = null;
+		String sql = prop.getProperty("searchMemberPw");
+		Member member = null;
+		
 		try {
-			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, memberId);
-			pstmt.setString(2, memberName);
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, memId);
+			pstmt.setString(2, memName);
+			pstmt.setString(3, phone);
+			
 			rset = pstmt.executeQuery();
-			while(rset.next()){
-				m = new Member();
-				m.setMemId(rset.getString("memId"));
-				m.setMemPwd(rset.getString("memPwd"));
-				m.setMemName(rset.getString("memName"));
-				m.setPhone(rset.getString("phone"));
+			
+			if(rset.next()){
+				member = new Member(rset.getString("mem_id"),
+									rset.getString("mem_pwd"),
+									rset.getString("mem_name"),
+									rset.getString("phone"));
+
 			}
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally{
-			close(pstmt);
 			close(rset);
+			close(pstmt);
 	}	
-		return m;
+		System.out.println("dao : " + member);
+		return member;
 	}
 	
 

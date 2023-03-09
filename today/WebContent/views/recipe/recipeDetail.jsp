@@ -59,12 +59,12 @@
     <!-- ##### Header Area End ##### -->
 
     <!-- ##### Breadcumb Area Start ##### -->
-    <div class="breadcumb-area bg-img bg-overlay" style="background-image: url("");">
+    <div class="breadcumb-area bg-img bg-overlay">
         <div class="container h-100">
             <div class="row h-100 align-items-center">
                 <div class="col-12">
                     <div class="breadcumb-text text-center">
-                        <h2>Recipe</h2>
+                        <h2 style="color:rgb(209, 95, 66)"><%=recipe.getRecipeTag()%></h2>
                     </div>
                 </div>
             </div>
@@ -90,9 +90,11 @@
                 <div class="row">
                     <div class="col-12 col-md-8">
                         <div class="receipe-headline my-5">
+                            <input type="hidden" name="rNo" value="<%= recipe.getRecipeNo() %>">
+                            <input type="hidden" name="loginUser" value="<%= loginUser.getMemId() %>">
                             <span><%=recipe.getRecipeDate() %></span>
                             <h2><%=recipe.getRecipeName() %></h2>
-                            <div class="receipe-duration" style="text-align: center;">
+                            <div class="receipe-duration" style="text-align:center;">
                                 <div>인분: <%=recipe.getRecipePerson() %></div>
                                 <div>조리시간: <%=recipe.getRecipeTime() %></div>
                                 <div>난이도: <%=recipe.getRecipeDifficulty() %></div>
@@ -136,7 +138,7 @@
                    
 
                     <!-- Ingredients -->
-                    <div class="col-12 col-lg-4" style="margin-left:50px">
+                    <div class="col-12 col-lg-3" style="margin-left:50px">
                         <div class="ingredients">
                         	<%for(int i=0;i<ingreClass.size();i++){ %>
                             <h4><%=ingreClass.get(i).getIngreCname() %></h4>
@@ -147,6 +149,7 @@
 		                            <div class="">
 		                                
 		                                <label style="font-size: 17px;"><%=ingredients.get(j).getIngreName() %></label>
+		                                <label style="font-size: 15px; float: right; color: rgb(148, 24, 100);"> <%=ingredients.get(j).getIngreAmount()%></label>
 		                            </div>
 									<%} %>
 								<%} %>
@@ -156,6 +159,7 @@
                         </div>
 
                     </div>
+                    
                 </div>
 
                 <div class="row">

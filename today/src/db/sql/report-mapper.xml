@@ -58,4 +58,22 @@ SELECT
 WHERE 
        REP_STATUS = 'Y' AND REP_PROCESSING = 'N'
 </entry>
+
+<entry key="countRecipeReport">
+SELECT
+		COUNT(*) COUNT
+	FROM
+		TB_REPORT
+WHERE
+		REP_STATUS = 'Y' AND REP_PROCESSING = 'N' AND REP_CLSFC = '게시글신고'
+</entry>
+
+<entry key="countCommentReport">
+SELECT
+		COUNT(*) COUNT
+	FROM
+		TB_REPORT
+WHERE
+		REP_STATUS = 'Y' AND REP_PROCESSING = 'N' AND REP_CLSFC = '댓글신고'
+</entry>
 </properties>

@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	Member member = (Member)request.getAttribute("member");
+	Member member = (Member)request.getAttribute("members");
 	String contextPath = request.getContextPath(); // /jsp	
 
 %>
@@ -44,9 +44,9 @@
    <div class="wrap">
 
 
-   <div id="userName">[<%= member.getMemId() %> ]님의 아이디</div><br>
+   <div id="userName">[<%= member.getMemName() %> ]님의 아이디</div><br>
    <div id="userId">[<%= member.getMemId() %> ] 입니다.</div>
-   <button id="button" class="btn btn-outline-info " onclick="location.href='/views/member/login.jsp'">로그인 하러가기</button>
+   <a href="<%=request.getContextPath()%>/views/member/login.jsp">로그인 하러 가기</a>
    </div>
 </body>
 </html>

@@ -125,6 +125,8 @@
 			, PHONE
 			, WARNING_COUNT
 		FROM TB_MEMBER
+		WHERE MEM_STATUS = 'Y'
+		  AND MEM_ID != 'admin'
 	</entry>
 	
 	<entry key="selectMemberById">
@@ -191,12 +193,32 @@
 </entry>
 
 <entry key="searchMemberId">
-SELECT 
-    MEM_NAME
-    , MEM_ID
-    FROM TB_MEMBER
-    WHERE MEM_NAME = ?
-    AND PHONE = ?
+	SELECT 
+	    MEM_ID
+	    , MEM_NAME
+	    FROM
+	    	TB_MEMBER
+	    WHERE
+	    	MEM_NAME = ?
+	    AND
+	    	PHONE = ?
+</entry>
+
+<entry key="searchMemberPw">
+	SELECT 
+	    MEM_ID
+	    , MEM_NAME
+	    , MEM_PWD
+	    , PHONE
+	    FROM
+	    	TB_MEMBER
+	    WHERE
+	    	MEM_ID = ?
+	    AND
+	    	MEM_NAME = ?
+	    AND
+	    	PHONE = ?
+	    
 </entry>
 
 
@@ -219,6 +241,20 @@ SELECT
 	WHERE MEM_ID = ?
 </entry>
 
+<entry key="deleteMember">
+	UPDATE TB_MEMBER
+	SET MEM_STATUS = 'N'
+	WHERE MEM_NO = ?
+</entry>
+
+<entry key="increaseWarningCount">
+	UPDATE
+			TB_MEMBER
+		SET
+			WARNING_COUNT = WARNING_COUNT + 1
+	WHERE 
+			MEM_NO = ?
+</entry>
 	
 
 	

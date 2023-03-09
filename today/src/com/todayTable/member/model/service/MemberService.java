@@ -134,6 +134,9 @@ public class MemberService {
 		
 		Connection conn = getConnection();
 		
+//		System.out.println(memName);
+//		System.out.println(phone);
+		
 		Member member = new MemberDao().searchMemId(conn, memName, phone);
 		if(member==null) {
 			rollback(conn);
@@ -143,14 +146,14 @@ public class MemberService {
 		
 		close(conn);
 		
-		System.out.println("m : " + member);
+//		System.out.println("service : " + member);
 		return member;
 	}
 	
 	//비밀번호 찾기
-	public Member searchMemPw(String memberId, String memberName) {
+	public Member searchMemPw(String memId, String memName, String phone) {
 		Connection conn = getConnection();
-		Member member = new MemberDao().searchMemPw(conn, memberId, memberName);
+		Member member = new MemberDao().searchMemPw(conn, memId, memName, phone);
 		close(conn);
 		
 
