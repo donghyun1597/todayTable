@@ -310,5 +310,26 @@
 			TB_MEMBER USING(MEM_NO)
 		WHERE
 		RECIPE_NO = ?
-
+	</entry>
+	
+	<entry key="selectRecipeListOrderByView">
+	SELECT
+        RECIPE_NO
+      , RECIPE_NAME
+      , RECIPE_TAG
+      , RECIPE_VIDEO
+      , RECIPE_DIFFICULTY
+      , RECIPE_PERSON
+      , RECIPE_TIME
+      , RECIPE_DATE
+      , MEM_NO
+      , RECIPE_PIC
+      , RECIPE_VIEWS
+    FROM
+        TB_RECIPE
+    WHERE 
+        RECIPE_STATUS = 'Y'
+    ORDER BY
+        RECIPE_VIEWS DESC
+	</entry>
 </properties>

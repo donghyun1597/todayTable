@@ -200,7 +200,15 @@ public class RecipeService {
    }
    
    
-   
+   public ArrayList<Recipe> selectRecipeListOrderByView() {
+	   Connection conn = getConnection();
+	   
+	   ArrayList<Recipe> list = new RecipeDao().selectRecipeListOrderByView(conn);
+	   
+	   close(conn);
+	   
+	   return list;
+   }
    
    
    

@@ -9,7 +9,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>오늘의 식탁 관리자</title>
+<link rel="icon" href="resources/image/core-img/favicon.ico">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
@@ -57,7 +58,7 @@
 							<span style="font-weight: 800;">현재 적용중인 이미지</span>
 							<br><hr>
 							<% for(MainImg mi : mainImgList) { %>
-							<div class="presentImg" style="width:200px; height:200px; display:inline-block; border: 1px solid black; margin-left: 15px; background-image: url(<%=contextPath %>/<%=mi.getMainImgImg() %>); background-size: 100% 100%;">
+							<div class="presentImg" style="width:200px; height:200px; display:inline-block; border: 1px solid black; margin-left: 15px; background-image: url(<%=contextPath%>/<%=mi.getMainImgImg() %>); background-size: 100% 100%;">
 								<!-- <img src="<%=contextPath%>/resources/image/bg-img/sumin1.jpeg" width="100%" height="100%"> -->
 								<button class="btn btn-sm btn-dark del_btn" value="<%= mi.getMainImgNo() %>">X</button>
 							</div>
