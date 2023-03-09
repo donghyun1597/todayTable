@@ -222,7 +222,7 @@
                                              <input type="hidden" value="<%= r.getMemNo() %>>">
                                              <div class="col-12 col-sm-6 col-lg-4" id="sumin-col" style="padding-left: 0px;">
                                                 <div class="single-best-receipe-area mb-30" style="padding-top: 5px;">
-                                                   <img src="<%= r.getRecipePic() %>" alt="음식 이미지" id="img-food">
+                                                   <a href="<%=contextPath%>/recipeView.rc?recipeNo=<%=r.getRecipeNo()%>"><img src="<%=contextPath + r.getRecipePic() %>" alt="음식 이미지" id="img-food"></a>
                                                    <div class="receipe-content" style="padding-top: 5px;">
                                                       <div class="post-comment-share-area d-flex">
                                                          <div class="post-favourite">
