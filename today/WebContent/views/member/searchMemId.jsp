@@ -54,14 +54,14 @@ String contextPath = request.getContextPath(); // /jsp
 	
 	<script>
       function searchMemId(){
-         var memName = document.getElementById("name").value;
+         var name = document.getElementById("name").value;
          var phone = document.getElementById("phone").value;
          if(name == "" && phone == ""){
             alert("모든 정보를 입력해주세요.");
             return;
          }
          
-         var url = "<%= request.contextPath()%>/searchMemId.me"; // 요청 서블릿 url
+         var url = "<%=request.getContextPath()%>/searchMemId.me"; // 요청 서블릿 url
          
          var title ="searchMemId"; //윈도우 창 이름
          
@@ -74,7 +74,7 @@ String contextPath = request.getContextPath(); // /jsp
          
          searchFrm.target = title;//popup창과 form태그를 연결
          //action,method설정 후 form태그 submit
-         searchFrm.action ="/searchMemId.jsp";
+         searchFrm.action ="<%= request.getContextPath() %>/searchMemId.me";
          searchFrm.method="post";
          
          searchFrm.submit();
