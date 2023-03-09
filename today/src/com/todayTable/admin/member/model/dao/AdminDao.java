@@ -152,4 +152,49 @@ public class AdminDao {
 		return memCount;
 	}
 	
+	public int deleteMember(Connection conn, int mNo) {
+		PreparedStatement pstmt = null;
+		
+		int result = 0;
+		
+		String sql = prop.getProperty("deleteMember");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, mNo);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
+	public int increaseWarningCount(Connection conn, int mNo) {
+PreparedStatement pstmt = null;
+		
+		int result = 0;
+		
+		String sql = prop.getProperty("increaseWarningCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, mNo);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
 }

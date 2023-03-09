@@ -54,11 +54,16 @@ public class AdminLoginController extends HttpServlet {
 			int reportCount = new AdminReportService().countReport();
 			int inquiryCount = new AdminInquiryService().countInquiry();
 			int eventCount = new AdminEventService().countEvent();
+			int recipeReportCount = new AdminReportService().countRecipeReport();
+			int commentReportCount = new AdminReportService().countCommentReport();
+			
 			
 			c.setMemCount(memCount);
 			c.setReportCount(reportCount);
 			c.setInquiryCount(inquiryCount);
 			c.setEventCount(eventCount);
+			c.setRecipeReportCount(recipeReportCount);
+			c.setCommentReportCount(commentReportCount);
 			
 			request.setAttribute("c", c);
 			
