@@ -202,6 +202,23 @@
 	    	PHONE = ?
 </entry>
 
+<entry key="searchMemberPw">
+	SELECT 
+	    MEM_ID
+	    , MEM_NAME
+	    , MEM_PWD
+	    , PHONE
+	    FROM
+	    	TB_MEMBER
+	    WHERE
+	    	MEM_ID = ?
+	    AND
+	    	MEM_NAME = ?
+	    AND
+	    	PHONE = ?
+	    
+</entry>
+
 
 <entry key="countMember">
 	SELECT

@@ -151,9 +151,9 @@ public class MemberService {
 	}
 	
 	//비밀번호 찾기
-	public Member searchMemPw(String memberId, String memberName) {
+	public Member searchMemPw(String memId, String memName, String phone) {
 		Connection conn = getConnection();
-		Member member = new MemberDao().searchMemPw(conn, memberId, memberName);
+		Member member = new MemberDao().searchMemPw(conn, memId, memName, phone);
 		close(conn);
 		
 

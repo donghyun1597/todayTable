@@ -25,7 +25,7 @@
 		text-align : center;
 		font-size:15px;
 	}
-	#userId{
+	#userPw{
 		text-align : center;
 	}
 </style>
@@ -33,8 +33,8 @@
 	<body>
 		<div class="wrap">
 		<div id="userName">[<%=member.getMemName() %>]님의 비밀번호</div><br>
-		<div id="userId">[<%=member.getMemPwd() %>] 입니다.</div>
-		<button id="button" class="btn btn-outline-info " onclick="location.href='/views/member/login.jsp'">로그인 하러가기</button>
+		<div id="userPw">[<%=member.getMemPwd() %>] 입니다.</div>
+		<a href="<%=request.getContextPath()%>/views/member/login.jsp">로그인 하러 가기</a>
 		</div>
 </body>
 </html>

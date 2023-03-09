@@ -1,6 +1,5 @@
 package com.todayTable.member.controller;
 
-import java.io.Console;
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
