@@ -215,5 +215,41 @@
 		WHERE RECIPE_NO = ?
 	</entry>
 	<!-- 레시피 상세 조회 sql 끝 -->
+	
+	<entry key="insertRecipe">
+		INSERT INTO 
+		    TB_RECIPE
+		    (
+		      RECIPE_NO
+		    , RECIPE_NAME
+		    , RECIPE_TAG
+		    , RECIPE_VIDEO
+		    , RECIPE_DIFFICULTY
+		    , RECIPE_PERSON
+		    , RECIPE_TIME
+		    , RECIPE_DATE
+		    , MEM_NO
+		    , RECIPE_PIC
+		    , RECIPE_VIEWS
+		    , RECIPE_STATUS
+		    )
+		VALUES
+		    (
+		      SEQ_RECIPE_NO.NEXTVAL
+		    , ?
+		    , ?
+		    , ?
+		    , ?
+		    , ?
+		    , ?
+		    , DEFAULT
+		    , ?
+		    , ?
+		    , DEFAULT
+		    , DEFAULT
+		    )
+			
+	
+	</entry>
 
 </properties>

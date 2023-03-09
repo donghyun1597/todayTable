@@ -129,6 +129,29 @@ public class RecipeService {
       
    }
    
+   public int insertRecipe(Recipe r,String[] ingreClass,ArrayList<String> ingreStrArr,ArrayList<CookingOrder> OrdList) {
+	   Connection conn = getConnection();
+	   
+	   
+	   int result1 = new RecipeDao().insertRecipe(conn, r);
+	   
+	   int result2 = 1;
+	   int result3 = 1;
+	   if(result1>0) {
+		   for(int i=0;i<ingreClass.length;i++) {
+			   result2 = new RecipeDao().insertIngreClass(ingreClass[i]);
+			   for(int j=0;j<ingreList.size();j++) {
+				   result3 = new RecipeDao().insertIngredient(ingreStrArr[i]);
+			   }
+			   
+		   }
+		   
+	   }
+	   
+	   return result;
+	   
+   }
+   
    
    
    
