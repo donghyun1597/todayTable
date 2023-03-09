@@ -44,8 +44,10 @@
         	color:#808080;
         
         }
+        
     </style>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<link href="https://webfontworld.github.io/nongshim/Ansungtangmyun.css" rel="stylesheet">
 </head>
 
 <body>
@@ -64,7 +66,7 @@
             <div class="row h-100 align-items-center">
                 <div class="col-12">
                     <div class="breadcumb-text text-center">
-                        <h2 style="color:rgb(209, 95, 66)"><%=recipe.getRecipeTag()%></h2>
+                        <h2 style="color:#40ba37"><%=recipe.getRecipeTag()%></h2>
                     </div>
                 </div>
             </div>
@@ -159,41 +161,103 @@
                     </div>
                     
                 </div>
-
+				
                 <div class="row">
                     <div class="col-12">
                         <div class="section-heading text-left">
-                            <h3>댓글을 남겨보세요!</h3>
+                            <h5>댓글</h5>
                         </div>
+                        
                     </div>
+                    
                 </div>
-
+<%if(loginUser!=null){ %>
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-10">
                         <div class="contact-form-area">
-                            <form action="#" method="post">
                                 <div class="">
-                                    <div class="col-12">
-                                        <input type="text" class="form-control" id="subject" placeholder="Subject">
+                               
+                                    <br>
+                                    <div class="col-10">
+                                        <textarea name="message" class="form-control" id="replyContent" cols="30" rows="10" placeholder="댓글입력"></textarea>
                                     </div>
                                     <br>
-                                    <div class="col-12">
-                                        <textarea name="message" class="form-control" id="message" cols="30" rows="10" placeholder="Message"></textarea>
-                                    </div>
-                                    <br>
-                                    <div class="col-12">
-                                        <button class="btn delicious-btn mt-30" type="submit">Post Comments</button>
+                                    <div class="col-10">
+                                        <button type="button" onclick="insertComment();">댓글달기</button>
                                     </div>
                                 </div>
-                            </form>
+                            
                         </div>
                     </div>
                 </div>
-                
+                <%} %>
+                 <div class="row" style="">
+                    <div class="col-10" id="comment-area">
+                    </div>
+                 </div>
             </div>
         </div>
     </div>
 
+
+	<script>
+	
+		$(function(){
+	        selectReplyList();
+	        
+	        setInterval(selectReplyList, 10000);
+	
+	    })
+	    
+	    function selectReplyList(){
+	        $.ajax({
+	            url : "comList.rc",
+	            data : {rno:<%=recipe.getRecipeNo()%>},
+	            success : function(reply){
+	                console.log(reply);
+	                let value = "";
+	                for(let i=0;i<reply.length;i++){
+	                    value += "<div style='margin-top:20px; border:5px solid gray;'>"+
+	                            "<div> 이름 : " + reply[i].memName +"</div>"
+	                            +"<div> 내용 : " + reply[i].comContent + "</div>"
+	                          +"</div>"
+	                            
+	                }
+	                $("#comment-area").html(value);
+	            },
+	            error:function(){
+	                console.log("ajax 통신 실패!!!");
+	            }
+	
+	        })
+	    }   
+		function insertComment(){
+	        console.log($("#replyContent").val());
+	        
+	        $.ajax({
+	            url : "rinsert.rc",
+	            data : {
+	                    content:$("#replyContent").val(),
+	                    bno:<%=recipe.getRecipeNo()%> // userNo : 로그인 안한경우, loginUser null인 경우에는 널포인트 에러 발생
+	                    },
+	            type:"post",
+	            success : function(result){
+	            	if(result>0){ // 댓글 작성 성공
+	                	selectReplyList();
+	                	$("#replyContent").val("");
+	            		
+	            	}else{
+	            		
+	            	}
+	            },
+	            error:function(){
+	                console.log("ajax 통신 실패!!!");
+	            }
+	
+	        })
+		}
+	
+	</script>
     <!-- ##### Follow Us Instagram Area Start ##### -->
     <div class="follow-us-instagram">
         <div class="container">
@@ -298,7 +362,31 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         </div>
     </footer>
     <!-- ##### Footer Area Start ##### -->
+    
+    <script>
+        $(function(){
+        	var out = localStorage.getItem('list');
+			var list = JSON.parse(out);
+			if ( list == null) list = [];
+			
+            var recipeNo = "<%=recipe.getRecipeNo()%>";
+            var recipePic = "<%=recipe.getRecipePic()%>";
+            var recipeName = "<%=recipe.getRecipeName()%>";
+            var str = recipeNo+'|'+recipePic+'|'+recipeName;
+            
+            
+            list.unshift(str); // 앞에서부터 저장
+            let result = [... new Set(list)];
+           if(result.length==6){
+               result.pop();
+           }
+           localStorage.setItem('list', JSON.stringify(result));
 
+           
+       
+        })
+		
+    </script>
     
 </body>
 

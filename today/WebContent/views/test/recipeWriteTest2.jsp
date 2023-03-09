@@ -31,10 +31,11 @@
 </head>
 <body>
   <%@ include file="../common/menubar.jsp" %>
-  <div style="float: left;" align="center">
+ 
+  <div style="margin-left: 350px">
   <div>
   <form action="<%=request.getContextPath()%>/insert.rc" method="post" enctype="multipart/form-data">
-
+	<input type="hidden" value="<%=loginUser.getMemNo()%>" name="memNo">
 	<div>
         <div id="divMainPhotoUpload" class="cont_pic2">
           
@@ -45,29 +46,18 @@
               <img id="mainImg" onclick="$('#file0').click()" src="https://recipe1.ezmember.co.kr/img/pic_none4.gif" style="width: 250px; height: 250px; cursor:pointer">
           </div>
         </div>
-        <div class="cont_line" style="display: flex; justify-content: center;">
+        <div class="cont_line" style="margin-bottom: 35px">
         	<p class="cont_tit4">레시피 제목</p>
         	<input type="text" name="recipeName" id="cok_title" value="" class="form-control" placeholder="예) 소고기 미역국 끓이기" style="width:610px; ">
         </div>
-        <div class="cont_box pad_l_60" style="display: flex; justify-content: center;">
+        <div class="cont_box pad_l_60" style="margin-bottom: 35px">
           <p class="cont_tit4">태그</p>
             <input type="text" name="recipeTag" class="ui-widget-content ui-autocomplete-input" autocomplete="off">
           
         </div>
         
-        <p class="cont_tit4">동영상</p>
-        <div class="cont_line pad_b_25">
-            
-            <textarea name="recipe_video" id="cok_video_url" class="form-control step_cont" prev_url="" placeholder="동영상이 있으면 주소를 입력하세요.(Youtube,네이버tvcast,다음tvpot 만 가능) 예)http://youtu.be/lA0Bxo3IZmM" style="height:100px; width:380px; resize:none;"></textarea>
-            <div style="position:absolute;left:-3000px">
-              <input type="file" name="q_video_file" id="q_video_file" file_gubun="video" accept="jpeg,png,gif" >
-            </div>
-            <div id="divVideoPhotoBox" is_over="0" class="thumb_m">
-                <img id="videoPhotoHolder" src="https://recipe1.ezmember.co.kr/img/pic_none5.gif" style="width: 177px; height: 100px;">
-            </div>
-        </div>
-  
-        <div class="cont_line"><p class="cont_tit4">카테고리</p>
+        
+        <div class="cont_line" style="margin-bottom: 35px"><p class="cont_tit4">카테고리</p>
           <select name="c_theme_no" id="cok_sq_category_4" text="테마별" class="defSelect">
             <option value="">테마별</option>
             <option value="TM1">건강식</option>
@@ -85,15 +75,17 @@
             <option value="T3">전자레인지</option>
             <option value="T4">오븐</option>
             <option value="T5">에어프라이어</option>
+            <option value="T99">에어프라이어</option>
            
           </select>
           <select name="c_ingre_no" id="cok_sq_category_1" text="재료별" class="defSelect">
             <option value="">재료별</option>
             <option value="I1">소고기</option>
-            <option value="I2">돼기괴</option>
-            <option value="I3">소고기</option>
-            <option value="I4">닭고기</option>
-            <option value="I6">채소</option>
+            <option value="I2">돼지고기</option>
+            <option value="I3">닭고기</option>
+            <option value="I4">채소</option>
+            <option value="I5">해산물</option>
+            <option value="I99">기타</option>
             
             </select>
           <select name="c_step_no" id="cok_sq_category_3" text="방법별" class="defSelect">
@@ -103,7 +95,10 @@
             <option value="S3">볶음</option>
             <option value="S4">무침</option>
             <option value="S5">튀김</option>
+            <option value="S6">끓이기</option>
+            <option value="S7">기타</option>
           </select>
+
           <select name="c_kind_no" id="cok_sq_category_3" text="종류별" class="defSelect">
             <option value="">종류별</option>
             <option value="K1">안주</option>
@@ -113,6 +108,9 @@
             <option value="K5">디저트</option>
             <option value="K6">김치/젓갈</option>
             <option value="K7">차/음료/술</option>
+            <option value="K6">면</option>
+            <option value="K7">기타</option>
+            
           </select>
           <select name="c_nat_no" id="cok_sq_category_3" text="국가별" class="defSelect">
             <option value="">국가별</option>
@@ -247,12 +245,12 @@
         </script>
 
     </div>
-    <div class="noti">
+    <div class="noti" style="margin-bottom: 35px">
       <div class="noti_btn">
         <button type="button" id="addIngreClass"><span class="glyphicon glyphicon-plus"></span> 재료/양념 묶음 추가</button>
       </div>
   </div>
-    <div class="cont_line"><p class="cont_tit4">요리정보</p>
+    <div class="cont_line" style="margin-bottom: 50px"><p class="cont_tit4">요리정보</p>
       인원
         <select name="cok_portion" id="cok_portion" text="인원" class="defSelect">
           <option value="">인원</option><option value="1">1인분</option>
@@ -277,20 +275,21 @@
         <span class="pad_l_30">난이도 </span>
         <select name="cok_degree" id="cok_degree" text="난이도" class="defSelect">
           <option value="">난이도</option>
-          <option value="1">상</option>
-          <option value="2">중</option>
-          <option value="3">하</option>
+          <option value="상">상</option>
+          <option value="중">중</option>
+          <option value="하">하</option>
         </select>
       </div>
       
+      
         <div id="divStepArea" class="ui-sortable">
 
-          <div id="divStepItem_1" class="step">
+          <div id="divStepItem_1" class="step" style="display: flex;">
             <p style="cursor:pointer" class="stepNo">Step1</p>
-            <div style="display:inline-block">
+            <div>
                 <textarea name="recipeOrder" placeholder="예) 소고기는 기름기를 떼어내고 적당한 크기로 썰어주세요." style="height:160px; width:430px; resize:none;"></textarea>
             </div>
-            <div style="display:inline-block">
+            <div style="">
               <div id="file-area" style="display: none;">
                 <input type="file" class='file' name="file1" id="file1" onchange="loadImg(this,1);">
               </div>
@@ -341,7 +340,7 @@
       let no = 2;
       let step = $(".step").html();
       function addStep(){
-        let divStep = $('<div></div>').append(step);
+        let divStep = $('<div style="display: flex;"></div>').append(step);
         divStep.children('.stepNo').text('step'+no);
         divStep.find("#file1").attr("name","file"+no).attr("id","file"+no).attr("onchange","loadImg(this,"+no+");");
         divStep.find("#stepImg1").attr("id","stepImg"+no);
@@ -363,20 +362,126 @@
 
 
     </script>
-    
+    	<br>
+    	<br>
       <div class="regi_btm">
-        <button type="submit">작성하기</button>
+        <button type="submit" class="btn-lg btn-default">작성하기</button>
         
         <button type="button" onclick="history.back();" class="btn-lg btn-default">취소</button>
       </div>
     </form>
     </div>
   </div>
+  <div class="follow-us-instagram">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h5>Follow Us Instragram</h5>
+                </div>
+            </div>
+        </div>
+        <!-- Instagram Feeds -->
+        <div class="insta-feeds d-flex flex-wrap">
+            <!-- Single Insta Feeds -->
+            <div class="single-insta-feeds">
+                <img src="img/bg-img/insta1.jpg" alt="">
+                <!-- Icon -->
+                <div class="insta-icon">
+                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                </div>
+            </div>
+
+            <!-- Single Insta Feeds -->
+            <div class="single-insta-feeds">
+                <img src="img/bg-img/insta2.jpg" alt="">
+                <!-- Icon -->
+                <div class="insta-icon">
+                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                </div>
+            </div>
+
+            <!-- Single Insta Feeds -->
+            <div class="single-insta-feeds">
+                <img src="img/bg-img/insta3.jpg" alt="">
+                <!-- Icon -->
+                <div class="insta-icon">
+                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                </div>
+            </div>
+
+            <!-- Single Insta Feeds -->
+            <div class="single-insta-feeds">
+                <img src="img/bg-img/insta4.jpg" alt="">
+                <!-- Icon -->
+                <div class="insta-icon">
+                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                </div>
+            </div>
+
+            <!-- Single Insta Feeds -->
+            <div class="single-insta-feeds">
+                <img src="img/bg-img/insta5.jpg" alt="">
+                <!-- Icon -->
+                <div class="insta-icon">
+                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                </div>
+            </div>
+
+            <!-- Single Insta Feeds -->
+            <div class="single-insta-feeds">
+                <img src="img/bg-img/insta6.jpg" alt="">
+                <!-- Icon -->
+                <div class="insta-icon">
+                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                </div>
+            </div>
+
+            <!-- Single Insta Feeds -->
+            <div class="single-insta-feeds">
+                <img src="img/bg-img/insta7.jpg" alt="">
+                <!-- Icon -->
+                <div class="insta-icon">
+                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ##### Follow Us Instagram Area End ##### -->
+
+    <!-- ##### Footer Area Start ##### -->
+    <footer class="footer-area">
+        <div class="container h-100">
+            <div class="row h-100">
+                <div class="col-12 h-100 d-flex flex-wrap align-items-center justify-content-between">
+                    <!-- Footer Social Info -->
+                    <div class="footer-social-info text-right">
+                        <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                    </div>
+                    <!-- Footer Logo -->
+                    <div class="footer-logo">
+                        <a href="index.html"><img src="img/core-img/logo.png" alt=""></a>
+                    </div>
+                    <!-- Copywrite -->
+                    <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- ##### Footer Area Start ##### -->
+    
+    <script>
+        
+    </script>
+    
       <script>
-        function insertRecipe(){
-
-
-        }
+       
           
           // function doSubmit(){
           //   let ingreForm=$('<form action="/today/ingreIn.re" method="POST"><form>');

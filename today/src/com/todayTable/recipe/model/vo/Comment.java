@@ -9,8 +9,26 @@ public class Comment {
 	private int memNo;
 	private Date comDate;
 	private String comStatus;
+	private String memId;
+	private String memName;
 	
+	public String getMemName() {
+		return memName;
+	}
+
+	public void setMemName(String memName) {
+		this.memName = memName;
+	}
+
 	public Comment() {}
+
+	public String getMemId() {
+		return memId;
+	}
+
+	public void setMemId(String memId) {
+		this.memId = memId;
+	}
 
 	public Comment(int comNo, int recipeNo, String comContent, int memNo, Date comDate, String comStatus) {
 		super();

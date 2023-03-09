@@ -8,6 +8,7 @@ import static com.todayTable.common.JDBCTemplate.*;
 
 import com.todayTable.category.model.vo.Category;
 import com.todayTable.recipe.model.dao.RecipeDao;
+import com.todayTable.recipe.model.vo.Comment;
 import com.todayTable.recipe.model.vo.CookingOrder;
 import com.todayTable.recipe.model.vo.IngreClass;
 import com.todayTable.recipe.model.vo.Ingredient;
@@ -129,26 +130,35 @@ public class RecipeService {
       
    }
    
-   public int insertRecipe(Recipe r,String[] ingreClass,ArrayList<String> ingreStrArr,ArrayList<CookingOrder> OrdList) {
+   public int insertRecipe(Recipe r,String[] ingreClass,ArrayList<String[]> ingreStrArr,ArrayList<CookingOrder> cookList,Category c) {
 	   Connection conn = getConnection();
 	   
-	   
+	   System.out.println(cookList);
 	   int result1 = new RecipeDao().insertRecipe(conn, r);
 	   
 	   int result2 = 1;
 	   int result3 = 1;
+	  
 	   if(result1>0) {
 		   for(int i=0;i<ingreClass.length;i++) {
-			   result2 = new RecipeDao().insertIngreClass(ingreClass[i]);
-			   for(int j=0;j<ingreList.size();j++) {
-				   result3 = new RecipeDao().insertIngredient(ingreStrArr[i]);
-			   }
+			   result2 += new RecipeDao().insertIngreClass(conn,ingreClass[i]);
+			   new RecipeDao().insertIngredient(conn,ingreStrArr.get(i));
 			   
 		   }
 		   
+		   new RecipeDao().insertCookingOrder(conn,cookList);
+		   result3 = new RecipeDao().insertRecipeCategory(conn,c);
+		   
+		   
 	   }
-	   
-	   return result;
+	   if(result2*result3!=0) {
+		   commit(conn);
+	   }
+	   else {
+		   rollback(conn);
+	   }
+	   close(conn);
+	   return result2*result3;
 	   
    }
    
@@ -200,9 +210,32 @@ public class RecipeService {
    }
    
    
+   public int insertComment(int recipeNo,int userNo, String comment) {
+	   Connection conn = getConnection();
+	   
+	   int result = new RecipeDao().insertComment(conn,recipeNo,userNo,comment);
+	   
+	   if(result>0) {
+		   commit(conn);
+	   }else {
+		   rollback(conn);
+	   }
+	   close(conn);
+	   return result;
+   }
    
    
-   
+   public ArrayList<Comment> selectComList(int recipeNo){
+	   Connection conn = getConnection();
+	   
+	   ArrayList<Comment> clist = new RecipeDao().selectComList(conn,recipeNo);
+	   
+	   close(conn);
+	   
+	   return clist;
+	   
+	   
+   }
    
    
    

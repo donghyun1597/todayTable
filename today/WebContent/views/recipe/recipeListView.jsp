@@ -15,7 +15,7 @@
 <style>
 
     img{
-        border-radius: 10px;
+        border-radius: 5px;
     }
 </style>
 </head>
@@ -46,7 +46,7 @@
 				<div style="width:300px; height:415px;">
 			        <div style="margin-right: 30px;">
 			            <div class="single-best-receipe-area mb-30">
-			                <div style="width:250px; height:250px;">
+			                <div style="width:250px; height:250px; border-radius: 10px; border: 2px solid gray;">
 			                    <a href="<%=contextPath%>/recipeView.rc?recipeNo=<%=list.get(j).getRecipeNo()%>">
 			                        <img src="<%=contextPath%><%=list.get(j).getRecipePic() %>" alt="음식2" style="width:100%; height:100%;">
 			                    </a>
@@ -68,7 +68,7 @@
 			            </div>
 			        </div>
 			    </div>
-			    <%if(j==list.size()-1){%>
+			    <!-- <%if(j==list.size()-1){%>
 			    	<%for(int k=0;k<3;k++){ %>
 				    	<div style="width:300px; height:415px;">
 				        <div style="margin-right: 30px;">
@@ -97,7 +97,7 @@
 				    </div>
 				    <%} %>
 			    	
-			    <% }%>
+			    <% }%> -->
 		    <%} %>
 		    
 			</div>

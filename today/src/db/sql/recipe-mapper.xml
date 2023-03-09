@@ -109,6 +109,9 @@
 
 
 	<entry key="selectRecommnedRecipe">
+	
+
+	
 		SELECT
 		RECIPE_NO
 		, RECIPE_PIC
@@ -251,5 +254,69 @@
 			
 	
 	</entry>
-
+	<entry key="insertIngreClass">
+	
+		INSERT INTO 
+		    TB_INGRE_CLASS(INGRE_C_NO, RECIPE_NO, INGRE_C_NAME)
+		VALUES
+		    (SEQ_ING_C_NO.NEXTVAL, SEQ_RECIPE_NO.CURRVAL, ?)
+	</entry>
+	<entry key="insertIngredient">
+		INSERT INTO 
+		    TB_INGREDIENT(INGRE_NO, INGRE_C_NO, INGRE_NAME, INGRE_AMOUNT)
+		VALUES
+		    (SEQ_INGRE_NO.NEXTVAL, SEQ_ING_C_NO.CURRVAL, ?, ?)
+	</entry>
+	
+	<entry key="insertCookingOrder">
+		INSERT INTO 
+	    	TB_COOKING_ORDER(CO_NO, RECIPE_NO, CO_STEP, CO_CONTENT,CO_IMG)
+		VALUES
+	    	(SEQ_CO_NO.NEXTVAL, SEQ_RECIPE_NO.CURRVAL, SEQ_CO_STEP.NEXTVAL, ?, ?)
+	
+	</entry>
+	
+	<entry key="insertRecipeCategory">
+	INSERT INTO 
+		    TB_CATEGORY
+		    (RECIPE_NO,C_NAT_NO,C_STEP_NO,C_TOOL_NO,C_KIND_NO,C_THEME_NO,C_INGRE_NO)
+		VALUES
+		    (SEQ_RECIPE_NO.CURRVAL,?,?,?,?,?,?)
+	</entry>
+	
+	<entry key="insertComment">
+		INSERT
+    INTO TB_COMMENT
+    (
+      COM_NO
+    , RECIPE_NO
+    , COM_CONTENT
+    , MEM_NO
+    , COM_DATE
+    , COM_STATUS
+    )
+    VALUES
+    (
+      SEQ_COM_NO.NEXTVAL
+    , ?
+    , ?
+    , ?
+    , DEFAULT
+    , DEFAULT
+    )
+	
+	</entry>
+	
+	<entry key="selectComList">
+		SELECT
+			MEM_NAME
+			,COM_CONTENT
+		FROM
+			TB_COMMENT
+		JOIN 
+            TB_MEMBER USING(MEM_NO)
+		WHERE
+			RECIPE_NO = ?
+	
+	</entry>
 </properties>

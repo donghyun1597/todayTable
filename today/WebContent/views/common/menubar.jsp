@@ -34,18 +34,51 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>오늘의 식탁</title>
+    <link href="https://webfontworld.github.io/nongshim/Ansungtangmyun.css" rel="stylesheet">
     <link rel="icon" href="<%=application.getContextPath()%>/resources/image/core-img/logo.jpg">
 
     <!-- Core Stylesheet -->
     <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/css/style.css">
     
-    
     <style>
     
+    	body * {
+        	font-family: 'Ansungtangmyun';
+        }
     
     
         /* 로고 이미지 영역 수정했음 */
         .nav-brand { width: 150px; }
+
+        #sidebar {
+		background: #333;
+		width: 300px;
+		height: 100%;
+		top: 0;
+		left: -300px;
+		position: fixed;
+	}
+	#sidebar > ul {
+		margin:0;
+		padding: 0;
+		top:50px;
+		left:70px;
+		position: absolute;
+	}
+	#sidebar li {
+		margin: 0 0 20px;
+		list-style: none;
+	}
+	#sidebar > button {
+		background:#333;
+		position: absolute;
+		top: 150px;
+		left: 300px;
+		width: 52px;
+		height: 52px;
+		border: none;
+		color: white;
+	}
         
     </style>
    	
@@ -292,10 +325,69 @@
                                     </div>
                                 </div>
                             </div>
+
+                            
+	    <aside id="sidebar" style="background-color: bisque;">
+            <div id="latelyViewItemList" style="padding-left: 50px; padding-right: 50px;">
+                
+            </div>
+            <button><span class="btn_t">최근본 레시피</span></button>
+            
+        </aside>
+    <script>
+        let outlist = localStorage.getItem("list");
+        let list = JSON.parse(outlist);
+
+        if(list==0){
+            console.log("asdsadlasjhdaskjd")
+            $("#latelyViewItemList").html("<li>최근본상품이 없습니다<li>");
+            
+        }else{
+            console.log(123)
+            var latelyList = [];
+            for (i in list){
+                var strArray = list[i].split('|');
+                var lately = '<div><a href="recipeView.rc?recipeNo='+strArray[0]+'"><img src="/today'+strArray[1]+'"></a>'
+                            +strArray[2]+'</div>';
+                    
+                latelyList += lately;
+                
+            }
+            $("#latelyViewItemList").html(latelyList);
+        }
+
+        
+        
+        $(function(){
+        	
+            
+            var duration = 300;
+    
+            var $side = $('#sidebar');
+            var $sidebt = $side.find('button').on('click', function(){
+                $side.toggleClass('open');
+    
+                if($side.hasClass('open')) {
+                    $side.stop(true).animate({left:'0px'}, duration);
+                    $sidebt.find('span').text('X');
+                }else{
+                    $side.stop(true).animate({left:'-300px'}, duration);
+                    $sidebt.find('span').text('최근본레시피');
+                };
+            });
+            
+            
+            
+        });
+        
+    </script>
+                            
+                            
     </header>
     <!-- ##### All Javascript Files ##### -->
     
     <!-- ##### All Javascript Files ##### -->
+    
     <!-- jQuery-2.2.4 js -->
     <script defer src="<%=application.getContextPath()%>/resources/js/jquery/jquery-2.2.4.min.js"></script>
     <!-- Popper js -->

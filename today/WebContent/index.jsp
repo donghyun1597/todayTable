@@ -6,14 +6,18 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="<%=application.getContextPath()%>/resources/css/style.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+	
 	 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-  
+  <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/css/style.css">
+    
+    
     
     <style>
+    
+    	
    
         /* 로고 이미지 영역 수정했음 */
         .nav-brand { width: 80%;}
@@ -56,10 +60,24 @@
         color: #2f2f2f;
         font-size: 17px;
         }
-
-
+		<style type="text/css">
+		.videoTeduri {
+		  position: relative;
+		  padding-bottom: 56.25%;
+		  height: 0;
+		}
+		.videoTeduri iframe {
+		  position: absolute;
+		  top: 0;
+		  left: 0;
+		  width: 100%;
+		  height: 100%;
+		}
+		</style>
+        
         
     </style>
+  
     
     <!-- <script src="<%=application.getContextPath()%>/resources/js/mainPage.js"></script> -->
 </head>
@@ -129,8 +147,8 @@
 
         <div class="col-md-12" id="recommendSel1">
         <div style="font-size: 30px; font-weight: 600; padding-top: 20px; float: left; margin-right: 20px;">우리집 냉장고에는</div>
-        <div style="width: 150px; height: 100%; float: left; border-bottom: 2px solid black; padding-bottom: 5px;">
-            <select class="form-control" id="recSel1">
+        <div id="recSel1" style="width: 150px; height: 100%; float: left; border-bottom: 2px solid black; padding-bottom: 5px;">
+            <select class="form-control">
                 <option style="font-size: 16px;">소고기</option>
                 <option>돼지고기</option>
                 <option>닭고기</option>
@@ -147,8 +165,8 @@
 
 
       <div class="col-md-12" id="recommendSel2">
-        <div style="width: 150px; height: 100%;  float: left; border-bottom: 2px solid black;" >
-            <select class="form-control" id="recSel2" style="font-size: 16px; font-weight: 500;">
+        <div id="recSel2" style="width: 150px; height: 100%;  float: left; border-bottom: 2px solid black;" >
+            <select class="form-control" style="font-size: 16px; font-weight: 500;">
               <option>한국</option>
               <option>베트남</option>
               <option>중국</option>
@@ -163,8 +181,8 @@
             </label>
         </div>
 
-        <div style="width: 150px; height: 100%; float: left; border-bottom: 2px solid black;" >
-            <select class="form-control" id="recSel3" style="font-size: 16px;">
+        <div id="recSel3" style="width: 150px; height: 100%; float: left; border-bottom: 2px solid black;" >
+            <select class="form-control" style="font-size: 16px;">
               <option value="2">친구와 함께</option>
               <option value="1">혼자서</option>
               <option value="3">가족과 함께</option>
@@ -255,7 +273,7 @@
     <section class="cta-area bg-img bg-overlay">
         <div class="container h-100"> <br>
             <span class="section-heading" style="text-align: left; margin-top: auto;" >
-                <h3>OUR RECIPES</h3>
+                <h3>인기 레시피</h3>
             </span>
             <div class="row h-100 align-items-center" id="topRecipe">
                 
@@ -274,7 +292,7 @@
             <div class="row">
                 <div class="col-12"> <br><br>
                     <div class="section-heading" style="text-align: left;">
-                        <h3>OUR RECIPES VIDEO</h3>
+                        <h3>요리 영상</h3>
                     </div>
                 </div>
             </div>
@@ -282,59 +300,23 @@
             <div class="row">
                 <!-- Single Best Receipe Area -->
                 <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-best-receipe-area mb-30">
-                        <img src="resources/image/bg-img/sumin6.jpg" alt="음식1">
-                        <div class="receipe-content">
-                            <a href="#">
-                                <h5>레시피9</h5>
-                            </a>
-                            <div class="ratings">난이도
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                            </div>
-                        </div>
-                    </div>
+                    <div style="position: relative; height:0; padding-bottom: 56.25%; margin: 40px 0px;">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/q5vuLwdh97U" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position: absolute; width:100%; height:100%;"></iframe>
+</div>
                 </div>
+
 
                 <!-- Single Best Receipe Area -->
                 <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-best-receipe-area mb-30">
-                        <img src="resources/image/bg-img/sumin6.jpg" alt="음식2">
-                        <div class="receipe-content">
-                            <a href="receipe-post.html">
-                                <h5>레시피10</h5>
-                            </a>
-                            <div class="ratings">난이도
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                            </div>
-                        </div>
-                    </div>
+                    <div style="position: relative; height:0; padding-bottom: 56.25%; margin: 40px 0px;">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/BE5b1FLlBco" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position: absolute; width:100%; height:100%;"></iframe>
+</div>
                 </div>
-
                 <!-- Single Best Receipe Area -->
                 <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-best-receipe-area mb-30">
-                        <img src="resources/image/bg-img/sumin6.jpg" alt="">
-                        <div class="receipe-content">
-                            <a href="receipe-post.html">
-                                <h5>레시피11</h5>
-                            </a>
-                            <div class="ratings">난이도
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                            </div>
-                        </div>
-                    </div>
+                    <div style="position: relative; height:0; padding-bottom: 56.25%; margin: 40px 0px;">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/oW5R46_4zOg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position: absolute; width:100%; height:100%;"></iframe>
+</div>
                 </div>
 
                
@@ -349,7 +331,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="section-heading" style="text-align: left;">
-                        <h3>OUR LATEST RECIPES</h3>
+                        <h3>최근 레시피</h3>
                     </div>
                 </div>
             </div>
@@ -526,29 +508,31 @@
 		        })
 		        
 		    }
-		    
+		    $(function(){
+
+           
 		    $("#btn1").click(function recommendRecipe(){
 		        
 		        let value = "";
 		        let peopleValue = "";
-		        switch ($("#recSel3").val()) {
-		            case '친구': 
+		        switch ($("#recSel3 span").text()) {
+		            case '친구와 함께': 
 		                peopleValue="2";
 		                    
 		                break;
-		            case '혼자': 
+		            case '혼자서': 
 		                peopleValue="1";
 		                
 		                break;
-		            case '부모님': 
+		            case '가족과 함께': 
 		                peopleValue="3";
 		                
 		                break;
 		        }
 		        $.ajax({
 		            url : "recommend.re",
-		            data : {ingre : $("#recSel1").val()
-		                    ,nation : $("#recSel2").val()
+		            data : {ingre : $("#recSel1 span").text()
+		                    ,nation : $("#recSel2 span").text()
 		                    ,people : peopleValue},
 		            success : function(list){
 		                console.log(list);
@@ -620,10 +604,10 @@
 	
 		})
 
-	
+    })
 	</script>
 
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 
 
   
