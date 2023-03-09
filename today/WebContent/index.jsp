@@ -46,8 +46,17 @@
             height: 415px !important;
         }
 
+        #recSel1 {
+        border-bottom: 2px solid black;
+        background-color: #ffffff;
+        border-radius: 0;
+        width: 100%;
+        height: 60px;
+        line-height: 60px;
+        color: #2f2f2f;
+        font-size: 17px;
+        }
 
-        
 
         
     </style>
@@ -114,47 +123,69 @@
     <!-- ##### Hero Area End ##### -->
 
     <!-- 여기다가 랜덤박스 넣으려함 -->
- <section class="recommend-area bg-light py-5">
+ <section class="recommend-area">
   <div class="container">
-    <div class="row">
+    <div class="row" style="flex-direction: column; align-items: center;">
 
-      <div class="col-md-4 mb-3 mb-md-0" id="recommendSel1">
-        <label for="sel2"><span style="font-size: 34px; font-weight: 600;">우리집 냉장고에는</span></label>
-        <select class="form-control">
-          <option>소고기</option>
-          <option>돼지고기</option>
-          <option>닭고기</option>
-          <option>해산물</option>
-          <option>채소</option>
-        </select> 
-      </div>
-
-      <div class="col-md-4 mb-3 mb-md-0" id="recommendSel2">
-        <label for="sel2"><span style="font-size: 34px; font-weight: 600;">가 있고</span></label>
-        <select class="form-control">
-          <option>한국</option>
-          <option>베트남</option>
-          <option>중국</option>
-          <option>이탈리아</option>
-          <option>일본</option>
-        </select>
-      </div>
-
-      <div class="col-md-4 mb-3 mb-md-0" id="recommendSel3">
-        <label for="sel1"><span style="font-size: 34px; font-weight: 600;">음식을</span></label>
-        <select class="form-control">
-          <option value="2">친구와 함께</option>
-          <option value="1">혼자서</option>
-          <option value="3">가족과 함께</option>
-        </select>
+        <div class="col-md-12" id="recommendSel1">
+        <div style="font-size: 30px; font-weight: 600; padding-top: 20px; float: left; margin-right: 20px;">우리집 냉장고에는</div>
+        <div style="width: 150px; height: 100%; float: left; border-bottom: 2px solid black; padding-bottom: 5px;">
+            <select class="form-control" id="recSel1">
+                <option style="font-size: 16px;">소고기</option>
+                <option>돼지고기</option>
+                <option>닭고기</option>
+                <option>해산물</option>
+                <option>채소</option>
+              </select>
+        </div>
+        <div style=" height: 100%; float: left;">
+            <label for="sel1">
+                <span style="font-size: 30px; font-weight: 600; padding-top: 20px; float: left; float: left; margin-left: 20px;">가 있고</span>
+            </label>
+        </div>
       </div>
 
 
+      <div class="col-md-12" id="recommendSel2">
+        <div style="width: 150px; height: 100%;  float: left; border-bottom: 2px solid black;" >
+            <select class="form-control" id="recSel2" style="font-size: 16px; font-weight: 500;">
+              <option>한국</option>
+              <option>베트남</option>
+              <option>중국</option>
+              <option>이탈리아</option>
+              <option>일본</option>
+            </select>
+        </div>
+        
+        <div style=" height: 100%; float: left;">
+            <label for="sel2">
+                <span style="font-size: 30px; font-weight: 600; padding-top: 20px; float: left; margin-right: 20px;">음식을</span>
+            </label>
+        </div>
 
+        <div style="width: 150px; height: 100%; float: left; border-bottom: 2px solid black;" >
+            <select class="form-control" id="recSel3" style="font-size: 16px;">
+              <option value="2">친구와 함께</option>
+              <option value="1">혼자서</option>
+              <option value="3">가족과 함께</option>
+            </select>
+        </div>
+
+        <div >
+            <label for="sel3">
+                <span style="font-size: 30px; font-weight: 600; padding-top: 20px; float: left; margin-right: 20px;">먹을래요</span>
+            </label>
+        </div>
+      </div>
+
+
+      
+
+        
 
     <div class="row mt-3">
       <div class="col-12">
-        <button type="button" id="btn1" class="btn btn-outline-dark btn-lg">먹고싶어요</button>
+        <button type="button" id="btn1" class="btn btn-outline-dark btn-lg">내 취향 음식 보기</button>
       </div>
     </div>
 
@@ -165,11 +196,13 @@
 <!-- ##### Best Receipe Area Start ##### -->
 <section class="best-receipe-area py-5">
   <div class="container">
-    <div class="row align-items-center" id="recommend"></div>
+    <div class="row align-items-center" id="recommend">
+
+    </div>
   </div>
   <div class="d-flex justify-content-center mt-4">
-    <button type="button" class="btn btn-secondary btnPrev me-3">이전</button>
-    <button type="button" class="btn btn-secondary btnNext">다음</button>
+    <button type="button" class="btn btn-success btn-sm btnPrev me-3">이전</button>
+    <button type="button" class="btn btn-success btn-sm btnNext" style="margin-left: 20px;">다음</button>
   </div>
 </section>
 
@@ -495,11 +528,10 @@
 		    }
 		    
 		    $("#btn1").click(function recommendRecipe(){
-		        let ingre = $("#recommendSel1 span").text();
-		        let nation = $("#recommendSel2 span").text();
+		        
 		        let value = "";
 		        let peopleValue = "";
-		        switch ($("#recommendSel3 span").text()) {
+		        switch ($("#recSel3").val()) {
 		            case '친구': 
 		                peopleValue="2";
 		                    
@@ -515,8 +547,8 @@
 		        }
 		        $.ajax({
 		            url : "recommend.re",
-		            data : {ingre : $("#recommendSel1 span").text()
-		                    ,nation : $("#recommendSel2 span").text()
+		            data : {ingre : $("#recSel1").val()
+		                    ,nation : $("#recSel2").val()
 		                    ,people : peopleValue},
 		            success : function(list){
 		                console.log(list);
