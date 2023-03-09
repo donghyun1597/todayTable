@@ -48,6 +48,8 @@
 
 
         
+
+        
     </style>
     
     <!-- <script src="<%=application.getContextPath()%>/resources/js/mainPage.js"></script> -->
@@ -112,62 +114,65 @@
     <!-- ##### Hero Area End ##### -->
 
     <!-- 여기다가 랜덤박스 넣으려함 -->
-    <!-- ##### Top Catagory Area Start ##### section-padding-80-0 -->
-    <section class="recommend-area"> 
-        <div class="container">
+ <section class="recommend-area bg-light py-5">
+  <div class="container">
+    <div class="row">
 
-           
-			<div class="form-group" id="recommendSel1">
-				<label for="sel2">우리집 냉장고에는</label>
-				<select class="form-control">
-					<option>소고기</option>
-					<option>돼지고기</option>
-					<option>닭고기</option>
-					<option>해산물</option>
-					<option>채소</option>
-			  	</select>
-			</div>
-			<div class="form-group" id="recommendSel2">
-				<label for="sel2">가 있고</label>
-				<select class="form-control">
-				    <option>한국</option>
-				    <option>베트남</option>
-				    <option>중국</option>
-				    <option>이탈리아</option>
-				    <option>일본</option>
-                      
-			  	</select>
-			</div>
-            <div class="form-group"  id="recommendSel3">
-	  			<label for="sel1">음식을</label>
-			  	<select class="form-control">
-				    <option value="2">친구</option>
-				    <option value="1">혼자</option>
-				    <option value="3">부모님</option>
-				    
-			  	</select>
-			</div>
-			<div>랑 먹을래요</div>
-			<button type="button" id="btn1">추천!</button>
-        </div>
-        
-    </section>
-    <!-- ##### Top Catagory Area End ##### -->
+      <div class="col-md-4 mb-3 mb-md-0" id="recommendSel1">
+        <label for="sel2"><span style="font-size: 34px; font-weight: 600;">우리집 냉장고에는</span></label>
+        <select class="form-control">
+          <option>소고기</option>
+          <option>돼지고기</option>
+          <option>닭고기</option>
+          <option>해산물</option>
+          <option>채소</option>
+        </select> 
+      </div>
+
+      <div class="col-md-4 mb-3 mb-md-0" id="recommendSel2">
+        <label for="sel2"><span style="font-size: 34px; font-weight: 600;">가 있고</span></label>
+        <select class="form-control">
+          <option>한국</option>
+          <option>베트남</option>
+          <option>중국</option>
+          <option>이탈리아</option>
+          <option>일본</option>
+        </select>
+      </div>
+
+      <div class="col-md-4 mb-3 mb-md-0" id="recommendSel3">
+        <label for="sel1"><span style="font-size: 34px; font-weight: 600;">음식을</span></label>
+        <select class="form-control">
+          <option value="2">친구와 함께</option>
+          <option value="1">혼자서</option>
+          <option value="3">가족과 함께</option>
+        </select>
+      </div>
 
 
-     <!-- ##### Best Receipe Area Start ##### -->
-     <section class="best-receipe-area">
-        <div class="container">
 
-            <div class="row align-items-center" id="recommend">
-                
-            
-            </div>
-            
-            
-        </div>
-        <button type="button" class="btnPrev">이전</button>
-        <button type="button" class="btnNext">다음</button>
+
+    <div class="row mt-3">
+      <div class="col-12">
+        <button type="button" id="btn1" class="btn btn-outline-dark btn-lg">먹고싶어요</button>
+      </div>
+    </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ##### Best Receipe Area Start ##### -->
+<section class="best-receipe-area py-5">
+  <div class="container">
+    <div class="row align-items-center" id="recommend"></div>
+  </div>
+  <div class="d-flex justify-content-center mt-4">
+    <button type="button" class="btn btn-secondary btnPrev me-3">이전</button>
+    <button type="button" class="btn btn-secondary btnNext">다음</button>
+  </div>
+</section>
+
 
         <script>
             $(function(){
@@ -403,7 +408,7 @@
 
 
     <!-- ##### Footer Area Start ##### -->
-    <footer class="footer-area" id="footerArea" style="background-color: rgb(252, 252, 252); height: auto;">
+    <footer class="footer-area" id="footerArea" style="background-color: rgb(252, 252, 252); ">
         <div class="line" style="background-color: rgb(237, 237, 237); text-align: center; padding-top: 10px; padding-bottom: 10px;">
             <span style="margin: 0 100px; font-size: 14px; font-weight: 600;">이용안내 </span>
             <span style="margin: 0 100px; font-size: 14px; font-weight: 600;">개인정보처리방침 </span>
