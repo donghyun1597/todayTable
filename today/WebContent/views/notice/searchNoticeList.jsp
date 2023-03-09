@@ -131,7 +131,7 @@
             	<!-- case1. 공지글 없음 -->
             	<%if(list.isEmpty()) { %>
            		<tr>
-                    <td colspan="4">존재하는 공지사항이 없습니다.</td>
+                    <td colspan="4">'<%=searchText %>'의 검색결과가 없습니다.</td>
                 </tr>
                 <% }else { %>
                 <!-- case2. 공지글 있음 -->

@@ -34,18 +34,18 @@ public class RecipeDao {
 		}
 
 	}
-	
+
 	public ArrayList<Recipe> selectRecipeList(Connection conn){
 		ArrayList<Recipe> list = new ArrayList<Recipe>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String sql = prop.getProperty("selectRecipeList");
-		
+
 		try {
 			pstmt = conn.prepareStatement(sql);
-			
+
 			rset = pstmt.executeQuery();
-			
+
 			while(rset.next()) {
 				Recipe r = new Recipe();
 				r.setRecipeNo(rset.getInt("recipe_no"));
@@ -61,18 +61,18 @@ public class RecipeDao {
 		}finally {
 			close(rset);
 			close(pstmt);
-			
+
 		}
-		
+
 		return list;
-		
-		
-		
+
+
+
 	}
 
 	/**
 	 * 조회수 높은순 레시피
-	 * 
+	 *
 	 * @param conn
 	 * @return
 	 */
@@ -90,7 +90,7 @@ public class RecipeDao {
 
 			while (rset.next()) {
 				Recipe r = new Recipe();
-				
+
 				r.setRecipeNo(rset.getInt("recipe_no"));
 				r.setRecipePic(rset.getString("recipe_pic"));
 				r.setRecipeName(rset.getString("recipe_name"));
@@ -113,7 +113,7 @@ public class RecipeDao {
 
 	/**
 	 * 레시피 추천 dao
-	 * 
+	 *
 	 * @param conn
 	 * @param values
 	 * @return
@@ -122,7 +122,7 @@ public class RecipeDao {
 		ArrayList<Recipe> list = new ArrayList<Recipe>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		
+
 		String sql = prop.getProperty("selectRecommnedRecipe");
 		// System.out.println(values[0]);
 		// System.out.println(values[1]);
@@ -159,7 +159,7 @@ public class RecipeDao {
 
 	/**
 	 * 마이페이지_내가 만든 레시피 목록 조회
-	 * 
+	 *
 	 * @author sm.kim
 	 * @param conn
 	 * @param memNo
@@ -199,7 +199,7 @@ public class RecipeDao {
 
 	/**
 	 * 마이페이지_내가 작성한 댓글 조회
-	 * 
+	 *
 	 * @author sm.kim
 	 * @param conn
 	 * @param memNo
@@ -233,7 +233,7 @@ public class RecipeDao {
 
 	/**
 	 * 마이페이지_내가 찜한 목록 조회
-	 * 
+	 *
 	 * @author sm.kim
 	 * @param conn
 	 * @param memNo
@@ -458,7 +458,7 @@ public class RecipeDao {
 
 	/**
 	 * 마이페이지 댓글 삭제하기
-	 * 
+	 *
 	 * @author sm.kim
 	 * @param conn
 	 * @param checkInt
@@ -494,7 +494,7 @@ public class RecipeDao {
 		}
 		return result;
 	}
-	
+
 	public int insertRecipe(Connection conn, Recipe r) {
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -510,32 +510,32 @@ public class RecipeDao {
 			pstmt.setInt(6, r.getRecipeTime());
 			pstmt.setInt(7, r.getMemNo());
 			pstmt.setString(8, r.getRecipePic());
-			
+
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			close(pstmt);
-			
+
 		}
-		
+
 		return result;
-		
-		
-		
+
+
+
 	}
-	
+
 	public int insertIngreClass(Connection conn,String ingreClass) {
 		int result =0;
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("insertIngreClass");
-		
+
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, ingreClass);
-			
+
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -543,18 +543,18 @@ public class RecipeDao {
 		}finally {
 			close(pstmt);
 		}
-		
+
 		return result;
 	}
-	
+
 	public void insertIngredient(Connection conn,String[] ingredient) {
-		
+
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("insertIngredient");
-		
+
 		try {
 			pstmt = conn.prepareStatement(sql);
-			
+
 			for (int i = 0; i < ingredient.length; i++) {
 				if(i+1==ingredient.length) {
 					break;
@@ -563,35 +563,35 @@ public class RecipeDao {
 				pstmt.setString(2, ingredient[i+1]);
 				pstmt.addBatch();
 				pstmt.clearParameters();
-				
+
 			}
 			pstmt.executeBatch();
-				
-			
-			
+
+
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			close(pstmt);
 		}
-		
+
 	}
-	
+
 	public void insertCookingOrder(Connection conn,ArrayList<CookingOrder> cookList) {
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("insertCookingOrder");
-		
+
 		System.out.println(cookList);
 			try {
 				pstmt = conn.prepareStatement(sql);
 				for (int i = 0; i < cookList.size(); i++) {
-					
+
 					pstmt.setString(1, cookList.get(i).getCoContent());
 					pstmt.setString(2, cookList.get(i).getCoImg());
 					pstmt.addBatch();
 					pstmt.clearParameters();
-					
+
 				}
 				pstmt.executeBatch();
 			} catch (SQLException e) {
@@ -600,26 +600,26 @@ public class RecipeDao {
 			}finally {
 				close(pstmt);
 			}
-			
-			
-				
+
+
+
 	}
-	
+
 	public int insertRecipeCategory(Connection conn,Category c) {
 		int result = 0;
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("insertRecipeCategory");
-		
+
 		try {
 			pstmt = conn.prepareStatement(sql);
-			
+
 			pstmt.setString(1, c.getcNatNo());
 			pstmt.setString(2, c.getcStepNo());
 			pstmt.setString(3, c.getcToolNo());
 			pstmt.setString(4, c.getcKindNo());
 			pstmt.setString(5, c.getcThemeNo());
 			pstmt.setString(6, c.getcIngreNo());
-			
+
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -628,34 +628,34 @@ public class RecipeDao {
 			close(pstmt);
 		}
 		return result;
-		
-		
+
+
 	}
-	
+
 	public int insertComment(Connection conn,int recipeNo,int userNo,String comment) {
 		int result = 0;
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("insertComment");
-		
+
 		try {
 			pstmt = conn.prepareStatement(sql);
-			
+
 			pstmt.setInt(1, recipeNo);
 			pstmt.setString(2, comment);
 			pstmt.setInt(3, userNo);
-			
+
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			close(pstmt);
-			
+
 		}
 		return result;
-		
+
 	}
-	
+
 	public ArrayList<Comment> selectComList(Connection conn,int recipeNo){
 		ArrayList<Comment> clist = new ArrayList<Comment>();
 		PreparedStatement pstmt = null;
@@ -664,18 +664,18 @@ public class RecipeDao {
 		System.out.println(recipeNo);
 		try {
 			pstmt = conn.prepareStatement(sql);
-			
+
 			pstmt.setInt(1, recipeNo);
-			
+
 			rset = pstmt.executeQuery();
-			
+
 			while(rset.next()) {
 				Comment c =new Comment();
-				
+
 				c.setMemName(rset.getString("mem_name"));
 				c.setComContent(rset.getString("com_content"));
 				clist.add(c);
-				
+
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -685,26 +685,8 @@ public class RecipeDao {
 			close(pstmt);
 		}
 		return clist;
-		
-		
+
+
 	}
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

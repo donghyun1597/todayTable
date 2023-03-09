@@ -1,28 +1,26 @@
-package com.todayTable.recipe.controller;
+package com.todayTable.admin.customerCenter.report.controller;
 
 import java.io.IOException;
-
-import java.util.HashMap;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.todayTable.recipe.model.service.RecipeService;
+import com.todayTable.admin.recipe.model.service.AdminRecipeService;
+import com.todayTable.recipe.model.vo.Recipe;
 
 /**
- * Servlet implementation class RecipeDetailView
+ * Servlet implementation class AdminReportSanctionController
  */
-@WebServlet("/recipeView.rc")
-public class RecipeDetailView extends HttpServlet {
+@WebServlet("/adminReport.re")
+public class AdminReportSanctionController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public RecipeDetailView() {
+    public AdminReportSanctionController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,12 +29,19 @@ public class RecipeDetailView extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		
-		int recipeNo = Integer.parseInt(request.getParameter("recipeNo"));
+		String strNo = request.getParameter("rNo");
 		
-		HashMap<String, Object> list = new RecipeService().selectRecipeDetail(recipeNo);
-		request.setAttribute("list", list);
-		request.getRequestDispatcher("views/recipe/recipeDetail.jsp").forward(request, response);
+		strNo = strNo.substring(30);
+		int rNo = Integer.parseInt(strNo);
+		
+		Recipe r = new AdminRecipeService().selectRecipe(rNo);
+		
+		request.setAttribute("r", r);
+		
+		
+		request.getRequestDispatcher("/search.mem?searchOption=memId&searchContent=" + r.getMemId()).forward(request, response);
 	}
 
 	/**

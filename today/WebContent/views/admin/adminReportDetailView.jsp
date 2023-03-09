@@ -8,7 +8,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>오늘의 식탁 관리자</title>
+<link rel="icon" href="resources/image/core-img/favicon.ico">ㄴ
 <style>
     @import url(https://fonts.googleapis.com/css?family=Roboto:400,700,500);
 	body {
@@ -57,18 +58,35 @@
                     <tr>
                         <th colspan="2" style="text-align: left;">신고내용</th>
                     </tr>
+					<form action="adminReport.re">
                     <tr>
                         <td colspan="2">
-                        	<textarea rows="10" style="width:70%; resize:none;" >
+                        	<textarea rows="10" cols="100" style="resize:none;" readonly>
  								<%= r.getRepContents() %>
- 								
-
- 								<%= r.getRepUrl() %>                   
+ 								<%= r.getRepUrl() %>                  
                        		</textarea>
                    		</td>
                     </tr>
+					<tr>
+						<td align="right">
+							<input type="hidden" name="rNo" value="<%= r.getRepUrl() %>">
+							<button class="btn btn-sm btn-danger" id="sanction">회원제재</button>
+						</td>
+						<td align="left">
+							<a href="<%= contextPath %>/adminReportForm.re?cpage=1" class="btn btn-sm btn-primary">목록으로</a>
+						</td>
+					</tr>
+					</form>
                 </tbody>
             </table>
+
+			<!-- <script>
+				$(function(){
+					$("#sanction").click(function(){
+						location.href = "<%= contextPath %>/adminReport.re";
+					})
+				})
+			</script> -->
 		</div>
 		
 	</div>

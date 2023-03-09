@@ -4,9 +4,9 @@
 	<entry key="selectRecipeList">
 		SELECT
 			*
-		FROM 
+		FROM
 			TB_RECIPE
-	
+
 	</entry>
 
 	<entry key="selectMainThumbnailList">
@@ -33,6 +33,32 @@
 		WHERE RNUM BETWEEN 1 AND 4
 	</entry>
 
+	<entry key="recipeSelectListCount">
+		SELECT
+			   COUNT(*) count
+		  FROM TB_RECIPE
+		 WHERE RECIPE_STATUS='Y'
+	</entry>
+
+	<entry key="recipeSelectList">
+	SELECT *
+	    FROM
+	    (SELECT ROWNUM RNUM, A.*
+	        FROM(
+	          SELECT
+		        RECIPE_NO
+		      , RECIPE_NAME
+		      , MEM_ID
+		      , RECIPE_DATE
+			FROM TB_RECIPE
+			JOIN TB_MEMBER USING(MEM_NO)
+			WHERE RECIPE_STATUS = 'Y'
+			ORDER
+			   BY RECIPE_NO DESC)
+	           A
+	           )
+	           WHERE RNUM BETWEEN ? AND ?
+	</entry>
 
 
 
@@ -109,9 +135,9 @@
 
 
 	<entry key="selectRecommnedRecipe">
-	
 
-	
+
+
 		SELECT
 		RECIPE_NO
 		, RECIPE_PIC
@@ -214,13 +240,26 @@
 			, CO_IMG
 		FROM
 		TB_COOKING_ORDER
-		
+
 		WHERE RECIPE_NO = ?
 	</entry>
+
+
+
+	<entry key="deleteRecipe">
+		UPDATE
+				TB_RECIPE
+			SET
+				RECIPE_STAUS = 'N'
+		WHERE RECIPE_NO = ?
+	</entry>
+
+
+
 	<!-- 레시피 상세 조회 sql 끝 -->
-	
+
 	<entry key="insertRecipe">
-		INSERT INTO 
+		INSERT INTO
 		    TB_RECIPE
 		    (
 		      RECIPE_NO
@@ -251,39 +290,39 @@
 		    , DEFAULT
 		    , DEFAULT
 		    )
-			
-	
+
+
 	</entry>
 	<entry key="insertIngreClass">
-	
-		INSERT INTO 
+
+		INSERT INTO
 		    TB_INGRE_CLASS(INGRE_C_NO, RECIPE_NO, INGRE_C_NAME)
 		VALUES
 		    (SEQ_ING_C_NO.NEXTVAL, SEQ_RECIPE_NO.CURRVAL, ?)
 	</entry>
 	<entry key="insertIngredient">
-		INSERT INTO 
+		INSERT INTO
 		    TB_INGREDIENT(INGRE_NO, INGRE_C_NO, INGRE_NAME, INGRE_AMOUNT)
 		VALUES
 		    (SEQ_INGRE_NO.NEXTVAL, SEQ_ING_C_NO.CURRVAL, ?, ?)
 	</entry>
-	
+
 	<entry key="insertCookingOrder">
-		INSERT INTO 
+		INSERT INTO
 	    	TB_COOKING_ORDER(CO_NO, RECIPE_NO, CO_STEP, CO_CONTENT,CO_IMG)
 		VALUES
 	    	(SEQ_CO_NO.NEXTVAL, SEQ_RECIPE_NO.CURRVAL, SEQ_CO_STEP.NEXTVAL, ?, ?)
-	
+
 	</entry>
-	
+
 	<entry key="insertRecipeCategory">
-	INSERT INTO 
+	INSERT INTO
 		    TB_CATEGORY
 		    (RECIPE_NO,C_NAT_NO,C_STEP_NO,C_TOOL_NO,C_KIND_NO,C_THEME_NO,C_INGRE_NO)
 		VALUES
 		    (SEQ_RECIPE_NO.CURRVAL,?,?,?,?,?,?)
 	</entry>
-	
+
 	<entry key="insertComment">
 		INSERT
     INTO TB_COMMENT
@@ -304,19 +343,19 @@
     , DEFAULT
     , DEFAULT
     )
-	
+
 	</entry>
-	
+
 	<entry key="selectComList">
 		SELECT
 			MEM_NAME
 			,COM_CONTENT
 		FROM
 			TB_COMMENT
-		JOIN 
+		JOIN
             TB_MEMBER USING(MEM_NO)
 		WHERE
 			RECIPE_NO = ?
-	
+
 	</entry>
 </properties>

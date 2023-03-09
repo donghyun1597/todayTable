@@ -137,7 +137,7 @@
                 <!-- case1. 문의글 없음 -->
             	<%if(list.isEmpty()) { %>
            		<tr>
-                    <td colspan="5">존재하는 문의글이 없습니다.</td>
+                    <td colspan="5">'<%=searchText %>'의 검색결과가 없습니다.</td>
                 </tr>
                 <% }else { %>
                 <!-- case2. 문의글 있음 -->
