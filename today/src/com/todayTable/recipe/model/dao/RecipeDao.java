@@ -175,6 +175,7 @@ public class RecipeDao {
 
 			while (rset.next()) {
 				Recipe r = new Recipe();
+				r.setRecipeNo(rset.getInt("recipe_no"));
 				r.setRecipeName(rset.getString("recipe_name"));
 				r.setRecipeDate(rset.getDate("recipe_date"));
 				r.setRecipeViews(rset.getInt("recipe_views"));

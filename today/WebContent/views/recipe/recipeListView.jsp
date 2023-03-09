@@ -26,11 +26,15 @@
     </div>
 	<%if(list == null){ %>
 	<div style="text-align: center; color:blue"><h1>조회된 레시피가 없습니다</h1></div>
+	
 	<%}else{ %>
+		
 		<%for(int i=0;i<list.size();i=i+4){ %>
 			
-			<div style="display:flex">
-			<%for(int j=i;j<i+4;j++){ %>
+			<div style="display:flex;">
+			<%for(int j=i;j<i+4&&j<list.size();j++){ %>
+				
+				
 				<div style="width:300px; height:415px;">
 			        <div style="margin-right: 30px;">
 			            <div class="single-best-receipe-area mb-30">
@@ -62,7 +66,6 @@
 		<%} %>
 	   <%} %>
 	    
-   
-	
+  
 </body>
 </html>
