@@ -38,11 +38,12 @@ public class UpdateInquiryController extends HttpServlet {
 		String inqQuestion = request.getParameter("inqQuestion");
 		String checkPrivate = null;
 		
-		if(request.getParameter("checkPrivate") == "pri") {
+		if(request.getParameter("checkPrivate").equals("pri")) {
 			checkPrivate = "Y";
 		}else {
 			checkPrivate = "N";
 		}
+		
 		
 		Inquiry i = new Inquiry();
 		i.setInqName(inqName);
