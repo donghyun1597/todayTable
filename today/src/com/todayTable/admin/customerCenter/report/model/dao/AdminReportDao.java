@@ -148,4 +148,52 @@ public class AdminReportDao {
 		
 		return reportCount;
 	}
+	
+	public int countRecipeReport(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int recipeReportCount = 0;
+		
+		String sql = prop.getProperty("countRecipeReport");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				recipeReportCount = rset.getInt("count");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return recipeReportCount;
+	}
+	
+	public int countCommentReport(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int commentReportCount = 0;
+		
+		String sql = prop.getProperty("countCommentReport");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				commentReportCount = rset.getInt("count");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return commentReportCount;
+	}
 }

@@ -15,6 +15,7 @@ public class Recipe {
 	private String recipePic;	// 레시피 사진
 	private int recipeViews;	// 레시피 조회수
 	private String recipeStatus;	// 레시피 삭제 여부
+	private String memId;
 	
 	public Recipe() {}
 	
@@ -23,6 +24,27 @@ public class Recipe {
 	
 	
 	
+	public Recipe(int recipeNo, String recipeName, String recipeTag, String recipeVideo, String recipeDifficulty,
+			int recipePerson, int recipeTime, Date recipeDate, String memId, String recipePic, int recipeViews) {
+		super();
+		this.recipeNo = recipeNo;
+		this.recipeName = recipeName;
+		this.recipeTag = recipeTag;
+		this.recipeVideo = recipeVideo;
+		this.recipeDifficulty = recipeDifficulty;
+		this.recipePerson = recipePerson;
+		this.recipeTime = recipeTime;
+		this.recipeDate = recipeDate;
+		this.memId = memId;
+		this.recipePic = recipePic;
+		this.recipeViews = recipeViews;
+	}
+
+
+
+
+
+
 	// sumin 썸네일용
 	public Recipe(String recipeName, Date recipeDate,int recipeViews, String recipePic, int memNo) {
 		super();
@@ -34,9 +56,13 @@ public class Recipe {
 	}
 
 
-
-
-
+	public Recipe(int recipeNo, String recipeName, String memId, Date recipeDate) {
+		super();
+		this.recipeNo = recipeNo;
+		this.recipeName = recipeName;
+		this.memId = memId;
+		this.recipeDate = recipeDate;
+	}
 
 
 	public Recipe(int recipeNo, String recipeName, String recipeTag, String recipeVideo, String recipeDifficulty,
@@ -56,6 +82,29 @@ public class Recipe {
 		this.recipeViews = recipeViews;
 		this.recipeStatus = recipeStatus;
 	}
+	
+	
+
+	public Recipe(int recipeNo, String recipeName, String recipeTag, String recipeVideo, String recipeDifficulty,
+			int recipePerson, int recipeTime, Date recipeDate, int memNo, String recipePic, int recipeViews) {
+		super();
+		this.recipeNo = recipeNo;
+		this.recipeName = recipeName;
+		this.recipeTag = recipeTag;
+		this.recipeVideo = recipeVideo;
+		this.recipeDifficulty = recipeDifficulty;
+		this.recipePerson = recipePerson;
+		this.recipeTime = recipeTime;
+		this.recipeDate = recipeDate;
+		this.memNo = memNo;
+		this.recipePic = recipePic;
+		this.recipeViews = recipeViews;
+	}
+
+
+
+
+
 
 	public int getRecipeNo() {
 		return recipeNo;
@@ -152,6 +201,19 @@ public class Recipe {
 	public void setRecipeStatus(String recipeStatus) {
 		this.recipeStatus = recipeStatus;
 	}
+
+	
+	public String getMemId() {
+		return memId;
+	}
+
+
+	public void setMemId(String memId) {
+		this.memId = memId;
+	}
+
+
+
 
 	@Override
 	public String toString() {

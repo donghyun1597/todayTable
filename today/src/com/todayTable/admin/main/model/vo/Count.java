@@ -6,6 +6,8 @@ public class Count {
 	private int inquiryCount;
 	private int reportCount;
 	private int eventCount;
+	private int recipeReportCount;
+	private int commentReportCount;
 	
 	public Count() {}
 
@@ -15,6 +17,18 @@ public class Count {
 		this.inquiryCount = inquiryCount;
 		this.reportCount = reportCount;
 		this.eventCount = eventCount;
+	}
+	
+
+	public Count(int memCount, int inquiryCount, int reportCount, int eventCount, int recipeReportCount,
+			int commentReportCount) {
+		super();
+		this.memCount = memCount;
+		this.inquiryCount = inquiryCount;
+		this.reportCount = reportCount;
+		this.eventCount = eventCount;
+		this.recipeReportCount = recipeReportCount;
+		this.commentReportCount = commentReportCount;
 	}
 
 	public int getMemCount() {
@@ -47,6 +61,22 @@ public class Count {
 
 	public void setEventCount(int eventCount) {
 		this.eventCount = eventCount;
+	}
+
+	public int getRecipeReportCount() {
+		return recipeReportCount;
+	}
+
+	public void setRecipeReportCount(int recipeReportCount) {
+		this.recipeReportCount = recipeReportCount;
+	}
+
+	public int getCommentReportCount() {
+		return commentReportCount;
+	}
+
+	public void setCommentReportCount(int commentReportCount) {
+		this.commentReportCount = commentReportCount;
 	}
 
 	@Override

@@ -51,4 +51,35 @@ public class AdminService {
 		return memCount;
 	}
 	
+	public int deleteMember(int mNo) {
+		Connection conn = getConnection();
+		
+		int result = new AdminDao().deleteMember(conn, mNo);
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+	}
+	
+	public int increaseWarningCount(int mNo) {
+		Connection conn = getConnection();
+		
+		int result = new AdminDao().increaseWarningCount(conn, mNo);
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+	}
 }
