@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.todayTable.member.model.service.MemberService;
+import com.todayTable.member.model.vo.Member;
 
 /**
  * Servlet implementation class MemberDeleteController
@@ -31,11 +32,14 @@ public class MemberDeleteController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
-		String memId = request.getParameter("memId");
+		HttpSession session = request.getSession();
+		Member m = (Member)session.getAttribute("loginUser");
+		
+		String memId = m.getMemId();
 		
 		int result = new MemberService().deleteMem(memId);
 		
-		HttpSession session = request.getSession();
+		System.out.println("memId" + memId);
 		
 		if(result > 0) {
 			session.setAttribute("alertMsg", "성공적으로 탈퇴되었습니다. 그 동안 이용해주셔서 감사합니다 ");
