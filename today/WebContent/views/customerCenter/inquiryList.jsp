@@ -276,7 +276,7 @@
                 const $ptr = $ptd.parent();
                 
                 if($div.css("display") == "none"){
-                    $ptr.children("td .pub").slideUp();
+                    $(".pub").next().slideUp();
                     $div.slideDown();
                 }else {
                     $div.slideUp();

@@ -89,7 +89,12 @@ public class SearchInquiryController extends HttpServlet {
 		}
 		
 		request.setAttribute("list", list);
-		Inquiry deleteNo = list.get(0);
+		Inquiry deleteNo = null;
+		if(list.isEmpty()) {
+			deleteNo = null;
+		}else {
+			deleteNo = list.get(0);
+		}
 		int search = 1;
 		
 		// 문의 목록 페이지	
