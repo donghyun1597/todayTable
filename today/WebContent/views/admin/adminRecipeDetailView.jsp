@@ -20,7 +20,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>오늘의 식탁 관리자</title>
+<link rel="icon" href="resources/image/core-img/favicon.ico">
 <style>
 #recipeHead{
 	color: white;

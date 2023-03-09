@@ -523,5 +523,43 @@ public class RecipeDao {
 		
 		
 	}
+	
+	public ArrayList<Recipe> selectRecipeListOrderByView(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<Recipe> list = new ArrayList<Recipe>();
+		
+		String sql = prop.getProperty("selectRecipeListOrderByView");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Recipe r = new Recipe();
+				r.setRecipeNo(rset.getInt("recipe_no"));
+				r.setRecipeName(rset.getString("recipe_name"));
+				r.setRecipeTag(rset.getString("recipe_tag"));
+				r.setRecipeVideo(rset.getString("RECIPE_VIDEO"));
+				r.setRecipeDifficulty(rset.getString("RECIPE_DIFFICULTY"));
+				r.setRecipePerson(rset.getInt("RECIPE_PERSON"));
+				r.setRecipeTime(rset.getInt("RECIPE_TIME"));
+				r.setRecipeDate(rset.getDate("RECIPE_DATE"));
+				r.setMemNo(rset.getInt("MEM_no"));
+				r.setRecipePic(rset.getString("RECIPE_PIC"));
+				r.setRecipeViews(rset.getInt("RECIPE_VIEWS"));
+				
+				list.add(r);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+	}
 
 }
