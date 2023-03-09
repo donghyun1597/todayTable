@@ -81,7 +81,7 @@
                 </tr>
                 <tr>
                     <td width="800px" height="100px" colspan="3">
-                        <pre><%= ev.getEventContents() %></pre>
+                        <pre style="width: 800px;"><%= ev.getEventContents() %></pre>
                     </td>
                 </tr>
             </table>
