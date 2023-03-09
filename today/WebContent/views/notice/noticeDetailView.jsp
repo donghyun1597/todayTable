@@ -31,6 +31,12 @@
             width: 800px;
             margin: auto;
     }
+    .notice-area {
+        padding-top: 50px;
+        padding-bottom: 50px;
+        padding-left: 50px;
+        padding-right: 50px;
+    }
 </style>
 </head>
 <body>
@@ -65,10 +71,12 @@
                    		<% } else if(n.getNoticeClsfc().equals("긴급")) { %>
                    			<p style="color:red; display:inline; font-size:18px; font-weight:900"><%= "[" + n.getNoticeClsfc() + "]   " %></p> <%= "  " + n.getNoticeName() %>
                    		<% } %>
+                        <br><br>
                    	</th>
                 </tr>
                 <tr>
                     <td width="100px" colspan="3" style="text-align: right;"><%= n.getNoticeDate() %></td>
+                    <br><br>
                 </tr>
                 <tr>
                     <td colspan="3">

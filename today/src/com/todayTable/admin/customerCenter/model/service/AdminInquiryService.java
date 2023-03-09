@@ -88,4 +88,14 @@ public class AdminInquiryService {
 		
 		return listCount;
 	}
+	
+	public int countInquiry() {
+		Connection conn = getConnection();
+		
+		int inquiryCount = new AdminInquiryDao().countInquiry(conn);
+		
+		close(conn);
+		
+		return inquiryCount;
+	}
 }

@@ -216,6 +216,16 @@
 		       WHERE RNUM BETWEEN ? AND ?
 	</entry>
 	
+
+	<entry key="countInquiry">
+	SELECT
+        COUNT(*) COUNT
+    FROM
+        TB_INQUIRY
+	WHERE 
+        INQ_STATUS = 'Y' AND INQ_PROCESSING = 'N'
+   </entry>
+
 	<entry key="searchInquiryTitleCount">
 		SELECT
 		       COUNT(*) count

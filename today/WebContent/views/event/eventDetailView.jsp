@@ -31,11 +31,22 @@
             width: 800px;
             margin: auto;
     }
+    .outer{
+        width: 1000px;
+        height: 600px;
+        margin: auto;
+        margin-top: 50px;
+        }
+    .reply-area{
+    	width:100%
+    	height: auto;
+    }
+</style>
 </style>
 </head>
 <body>
  <%@ include file="../common/menubar.jsp" %>
-    <div id="wrap">
+    <div class="outer">
    	    <br><br>
     	<div id="notice">
             <!-- ----------------------------------------------------------------------------------------------------- -->
@@ -73,6 +84,88 @@
                     </td>
                 </tr>
             </table>
+            <br><br>
+
+            <div id="reply-area">
+                <table border="1" align="center">
+                    <thead style="width:800px">
+                        <tr>
+                            <th>댓글</th>
+                            
+                            <% if(loginUser != null){ // 로그인이 되어 있는 경우 %>
+                            <td>
+                                <textarea id="replyContent" rows="3" cols="50" style="resize:none; width:720px"></textarea>
+                            </td>
+                            <td><button class="btn-sm btn-primary"onclick="insertReply();">등록</button></td>
+                            <%}else{ %>
+                            <td>
+                                <textarea rows="3" cols="50" style="resize:none; width:720px" readonly>로그인 후 이용가능한 서비스 입니다.</textarea>
+                            </td>
+                            <td><button class="btn-sm btn-primary" disabled>등록</button></td>
+                            <%} %>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                    </tbody>
+                </table>
+                
+                <script>
+                    
+                    $(function(){
+                        selectReplyList();
+                        
+                        setInterval(selectReplyList, 1000);
+                    })
+                    
+                    // ajax로 댓글 작성용
+                    function insertReply(){
+                        
+                        $.ajax({
+                            url:"rInsert.ev",
+                            data:{
+                                content:$("#replyContent").val(),
+                                bno:<%= ev.getEventNo() %> // userNo : 로그인 안한 경우, loginUser null인 경우에는 널포인트 날 수도 있음
+                            },
+                            type:"post",
+                            success:function(result){
+                                if(result>0){
+                                    selectReplyList();
+                                    $("#replyContent").val("");
+                                }
+                            },
+                            error:function(){
+                                console.log("댓글작성용 ajax 통신 실패!");
+                            }
+                        })
+                    }
+                    
+                    // ajax로 해당 게시글에 딸린 댓글 목록 조회용
+                    function selectReplyList(){
+                        $.ajax({
+                            url:"rlist.ev",
+                            data:{bno:<%= ev.getEventNo() %>},
+                            success:function(list){
+                                let value = "";
+                                for(let i=0 ; i<list.length ; i++) {
+                                    value += "<tr>"
+                                                + "<td>" + list[i].replyWriter + "</td>"
+                                                + "<td>" + list[i].replyContent  + "</td>"
+                                                + "<td>" + list[i].createDate + "</td>"
+                                                + "</tr>"
+                                }
+                                $("#reply-area tbody").html(value);
+                            },
+                            error:function(){
+                                console.log("ajax 통신 실패!");
+                            }
+                        })
+                    }
+                
+                </script>
+            
+            </div>
+
             <br><br>
             <a href="<%=contextPath%>/eventList.ev?cpage=1" class="btn btn-sm btn-primary">목록으로</a>
         </div>

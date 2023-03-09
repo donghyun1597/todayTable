@@ -58,7 +58,14 @@
                         <th colspan="2" style="text-align: left;">신고내용</th>
                     </tr>
                     <tr>
-                        <td colspan="2"><%= r.getRepContents() %></td>
+                        <td colspan="2">
+                        	<textarea rows="10" style="width:70%; resize:none;" >
+ 								<%= r.getRepContents() %>
+ 								
+
+ 								<%= r.getRepUrl() %>                   
+                       		</textarea>
+                   		</td>
                     </tr>
                 </tbody>
             </table>

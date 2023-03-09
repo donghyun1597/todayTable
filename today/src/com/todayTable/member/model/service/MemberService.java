@@ -164,7 +164,27 @@ public class MemberService {
 	
 	
 	
-	
+	/**
+	 * 회원 탈퇴
+	 * @param memId
+	 * @param memPwd
+	 * @return
+	 */
+	public int deleteMem(String memId) {
+		
+		Connection conn = getConnection();
+		
+		int result = new MemberDao().deleteMem(conn, memId);
+				
+		System.out.println("서비스" + result);
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
 	
 	
 	

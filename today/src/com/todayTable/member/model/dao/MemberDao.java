@@ -444,7 +444,35 @@ public class MemberDao {
 	
 	
 	
-	
+	/**
+	 * 마이페이지 회원 탈퇴
+	 * @param conn
+	 * @param memId
+	 * @param memPwd
+	 * @return
+	 */
+	public int deleteMem(Connection conn, String memId) {
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("deleteMem");
+		
+		System.out.println("dao" + result);
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, memId);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}			
+		return result;
+	}
 	
 	
 }

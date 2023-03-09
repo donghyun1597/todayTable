@@ -110,7 +110,8 @@ public class AdminReportDao {
 									  rset.getString("rep_contents"),
 									  rset.getDate("rep_date"),
 									  rset.getString("rep_clsfc"),
-									  rset.getString("rep_processing")
+									  rset.getString("rep_processing"),
+									  rset.getString("rep_url")
 						);
 						
 			}
@@ -121,5 +122,30 @@ public class AdminReportDao {
 			close(pstmt);
 		}
 		return r;
+	}
+	
+	public int countReport(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int reportCount = 0;
+		
+		String sql = prop.getProperty("countReport");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				reportCount = rset.getInt("count");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return reportCount;
 	}
 }

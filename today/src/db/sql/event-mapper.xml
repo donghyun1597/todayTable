@@ -96,4 +96,137 @@
  				, ?		
  			)
 	</entry>
+	
+
+	<entry key="searchEventTitleCount">
+	    SELECT
+		       COUNT(*) count
+		  FROM TB_EVENT
+		 WHERE EVENT_STATUS = 'Y'
+		   AND EVENT_NAME LIKE '%'|| ? ||'%'
+	</entry>
+	
+	<entry key="searchEventContentCount">
+	    SELECT
+		       COUNT(*) count
+		  FROM TB_EVENT
+		 WHERE EVENT_STATUS = 'Y'
+		   AND EVENT_CONTENTS LIKE '%'|| ? ||'%'
+	</entry>
+	
+	<entry key="searchEventTitleContentCount">
+	    SELECT
+		       COUNT(*) count
+		  FROM TB_EVENT
+		 WHERE EVENT_STATUS = 'Y'
+		   AND (EVENT_NAME LIKE '%'|| ? ||'%' OR EVENT_CONTENTS LIKE '%'|| ? ||'%')
+	</entry>
+	
+	<entry key="searchEventTitle">
+		SELECT *
+	    FROM
+	    (SELECT ROWNUM RNUM, A.*
+	        FROM(
+	          SELECT 
+		        EVENT_NO
+		      , EVENT_PROCESSING
+		      , EVENT_NAME
+		      , EVENT_DATE
+			FROM TB_EVENT
+			WHERE EVENT_STATUS = 'Y'
+			  AND EVENT_NAME LIKE '%'|| ? ||'%'
+			ORDER
+			   BY EVENT_NO DESC)
+	           A
+	           )
+	           WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="searchEventContent">
+		SELECT *
+	    FROM
+	    (SELECT ROWNUM RNUM, A.*
+	        FROM(
+	          SELECT 
+		        EVENT_NO
+		      , EVENT_PROCESSING
+		      , EVENT_NAME
+		      , EVENT_DATE
+			FROM TB_EVENT
+			WHERE EVENT_STATUS = 'Y'
+			  AND EVENT_CONTENTS LIKE '%'|| ? ||'%'
+			ORDER
+			   BY EVENT_NO DESC)
+	           A
+	           )
+	           WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="searchEventTitleContent">
+		SELECT *
+	    FROM
+	    (SELECT ROWNUM RNUM, A.*
+	        FROM(
+	          SELECT 
+		        EVENT_NO
+		      , EVENT_PROCESSING
+		      , EVENT_NAME
+		      , EVENT_DATE
+			FROM TB_EVENT
+			WHERE EVENT_STATUS = 'Y'
+			  AND (EVENT_NAME LIKE '%'|| ? ||'%' OR EVENT_CONTENTS LIKE '%'|| ? ||'%')
+			ORDER
+			   BY EVENT_NO DESC)
+	           A
+	           )
+	           WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="insertReply">
+		INSERT
+		  INTO TB_EVENT_COMMENT
+		  (
+		    EVENT_COM_NO
+		  , EVENT_NO
+          , MEM_NO
+		  , EVENT_COM_CONTENTS
+		  , EVENT_COM_DATE
+          , EVENT_COM_STATUS
+		  )
+		  VALUES
+		  (
+		    SEQ_EVENT_COM_NO.NEXTVAL
+		  , ?
+		  , ?
+		  , ?
+          , SYSDATE
+          , 'Y'
+		  )
+	</entry>
+	
+	<entry key="selectReplyList">
+     SELECT
+	        EVENT_COM_NO
+	      , EVENT_COM_CONTENTS
+	      , NICKNAME
+	      , TO_CHAR(EVENT_COM_DATE, 'YY/MM/DD HH:MI') "EVENT_COM_DATE"
+	   FROM TB_EVENT_COMMENT EC
+	   JOIN TB_MEMBER USING (MEM_NO)
+	  WHERE EVENT_COM_STATUS = 'Y'
+	    AND EVENT_NO = ?
+	  ORDER
+	     BY EVENT_COM_NO DESC
+	</entry>
+	
+	
+	
+
+	<entry key="countEvent">
+	SELECT 
+        COUNT(*) COUNT
+    FROM
+        TB_EVENT
+	WHERE
+        EVENT_STATUS = 'Y' AND EVENT_PROCESSING = 'Y'
+	</entry>
 </properties>
