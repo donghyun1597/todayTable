@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 
 <!DOCTYPE html>
 <html>
@@ -74,30 +75,30 @@
   </head>
   <body>
 
-    <%@ include file="views/common/menubar.jsp" %>
+	<%@ include file="/views/common/menubar.jsp" %>
 
     <h1>요리영상 모음</h1>
     
     <ul>
       <li>
-        <h2>돼지고기 김치찌개</h2>
-        <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" title="Video Title 1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <h2>전국 분식</h2>
+        <iframe src="https://www.youtube.com/embed/3nzlIlsF9Cs" title="Video Title 1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
         <p>Description of Video 1</p>
 
       </li>
       <li>
         <h2>스팸 김치찌개</h2>
-        <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" title="Video Title 2" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/4eweEsiiJhI" title="Video Title 2" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
         <p>Description of Video 2</p>
       </li>
       <li>
         <h2>순두부 김치찜</h2>
-        <iframe src="https://www.youtube.com/embed/VIDEO_ID_3" title="Video Title 3" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/szDYnZbJ44Y" title="Video Title 3" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
         <p>Description of Video 3</p>
       </li>
       <li>
-        <h2>순대국밥</h2>
-        <iframe src="https://www.youtube.com/embed/VIDEO_ID_3" title="Video Title 3" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <h2>망원동 삼겹살</h2>
+        <iframe src="https://www.youtube.com/embed/2zrfG0wCNXw" title="Video Title 3" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
         <p>Description of Video 3</p>
       </li>
       <li>
