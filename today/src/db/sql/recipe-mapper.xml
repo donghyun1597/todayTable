@@ -310,5 +310,6 @@
 			TB_MEMBER USING(MEM_NO)
 		WHERE
 		RECIPE_NO = ?
+	</entry>
 
 </properties>

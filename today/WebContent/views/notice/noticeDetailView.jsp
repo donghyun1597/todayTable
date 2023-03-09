@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>공지사항</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
@@ -66,7 +66,7 @@
             
             <table class="notice-area table-active" width="800px" style="border: 3px solid darkgray;">
                 <tr>
-                    <th width="600px" height="50px" style="text-align: center; font-size: 20px;" colspan="3">
+                    <th width="600px" height="100px" style="text-align: center; font-size: 20px;" colspan="3">
                     	<% if(n.getNoticeClsfc().equals("일반")) { %>
                     		<%= n.getNoticeName() %>
                    		<% } else if(n.getNoticeClsfc().equals("긴급")) { %>
@@ -76,12 +76,12 @@
                    	</th>
                 </tr>
                 <tr>
-                    <td width="100px" colspan="3" style="text-align: right;"><%= n.getNoticeDate() %></td>
+                    <td width="100px" height="100px" colspan="3" style="text-align: right;"><%= n.getNoticeDate() %></td>
                     <br><br>
                 </tr>
                 <tr>
-                    <td colspan="3">
-                        <pre><%= n.getNoticeContents() %></pre>
+                    <td colspan="3" height="100px">
+                        <pre style="width: 800px;"><%= n.getNoticeContents() %></pre>
                     </td>
                 </tr>
             </div>
