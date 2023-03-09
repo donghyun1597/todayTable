@@ -125,13 +125,13 @@
     <!-- 여기다가 랜덤박스 넣으려함 -->
  <section class="recommend-area">
   <div class="container">
-    <div class="row" style="flex-direction: column; align-items: center;">
+    <div class="row" style="flex-direction: column; align-items: center; padding-top: 50px;">
 
-        <div class="col-md-12" id="recommendSel1">
-        <div style="font-size: 30px; font-weight: 600; padding-top: 20px; float: left; margin-right: 20px;">우리집 냉장고에는</div>
-        <div style="width: 150px; height: 100%; float: left; border-bottom: 2px solid black; padding-bottom: 5px;">
-            <select class="form-control" id="recSel1">
-                <option style="font-size: 16px;">소고기</option>
+        <div class="col-md-12" id="recommendSel1" style="background-color: #ffffff;">
+        <div style="font-size: 30px; font-weight: 600; padding-top: 20px; float: left; margin-right: 20px; padding-left: 300px;">우리집 냉장고에는</div>
+        <div style="width: 150px; height: 100%; float: left; border-bottom: 2px solid black;">
+            <select class="form-control" id="recSel1" >
+                <option>소고기</option>
                 <option>돼지고기</option>
                 <option>닭고기</option>
                 <option>해산물</option>
@@ -146,9 +146,9 @@
       </div>
 
 
-      <div class="col-md-12" id="recommendSel2">
+      <div class="col-md-12" id="recommendSel2" style="padding-left: 300px;">
         <div style="width: 150px; height: 100%;  float: left; border-bottom: 2px solid black;" >
-            <select class="form-control" id="recSel2" style="font-size: 16px; font-weight: 500;">
+            <select class="form-control" id="recSel2">
               <option>한국</option>
               <option>베트남</option>
               <option>중국</option>
@@ -159,12 +159,12 @@
         
         <div style=" height: 100%; float: left;">
             <label for="sel2">
-                <span style="font-size: 30px; font-weight: 600; padding-top: 20px; float: left; margin-right: 20px;">음식을</span>
+                <span style="font-size: 30px; font-weight: 600; padding-top: 20px; float: left; margin-right: 20px; margin-left: 20px;">음식을</span>
             </label>
         </div>
 
         <div style="width: 150px; height: 100%; float: left; border-bottom: 2px solid black;" >
-            <select class="form-control" id="recSel3" style="font-size: 16px;">
+            <select class="form-control" id="recSel3" >
               <option value="2">친구와 함께</option>
               <option value="1">혼자서</option>
               <option value="3">가족과 함께</option>
@@ -173,7 +173,7 @@
 
         <div >
             <label for="sel3">
-                <span style="font-size: 30px; font-weight: 600; padding-top: 20px; float: left; margin-right: 20px;">먹을래요</span>
+                <span style="font-size: 30px; font-weight: 600; padding-top: 20px; float: left; margin-right: 20px; margin-left: 20px;">먹을래요</span>
             </label>
         </div>
       </div>
