@@ -382,7 +382,8 @@ public class MemberDao {
 		String sql = prop.getProperty("searchMemberId");
 		Member member = null;
 		
-		
+//		System.out.println(memName);
+//		System.out.println(phone);
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -394,18 +395,17 @@ public class MemberDao {
 			
 			if(rset.next()) {
 				
-				member = new Member(rset.getString("memName")
-							, rset.getString("memId"));
+				member = new Member(rset.getString("mem_id"),
+									rset.getString("mem_name"));
 			}
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally{
-			close(pstmt);
 			close(rset);
+			close(pstmt);
 	}	
-	
+//		System.out.println("dao : " + member);	
 		return member;
 	}
 	

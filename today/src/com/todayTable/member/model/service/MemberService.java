@@ -134,6 +134,9 @@ public class MemberService {
 		
 		Connection conn = getConnection();
 		
+//		System.out.println(memName);
+//		System.out.println(phone);
+		
 		Member member = new MemberDao().searchMemId(conn, memName, phone);
 		if(member==null) {
 			rollback(conn);
@@ -143,7 +146,7 @@ public class MemberService {
 		
 		close(conn);
 		
-		System.out.println("m : " + member);
+//		System.out.println("service : " + member);
 		return member;
 	}
 	

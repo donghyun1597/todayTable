@@ -1,5 +1,6 @@
 package com.todayTable.member.controller;
 
+import java.io.Console;
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -36,10 +37,14 @@ public class MemberSearchIdController extends HttpServlet {
 				//2.변수저장
 				String memName = request.getParameter("name");
 				String phone = request.getParameter("phone");
+				
+//				System.out.println(memName);
+//				System.out.println(phone);
+				
 				//3.비지니스로직
 				Member member = new MemberService().searchMemId(memName,phone);
 				
-//				System.out.println("member : " + member);
+//				System.out.println("controller : " + member);
 
 				//4.뷰 처리
 				if(member != null) {
