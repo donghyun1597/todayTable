@@ -79,8 +79,11 @@
           </div>
             <div id="privateChecked">
                 <div class="form-check form-switch">
-                <%System.out.println(i.getInqPrivate()); %>
-                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" name="checkPrivate" value="pri" <%if(i.getInqPrivate().equals("Y")){%>checked<%} %>>
+				<%if(i.getInqPrivate().equals("Y")){ %>
+                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" name="checkPrivate" value="pri" checked>
+                <%} else{%>
+                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" name="checkPrivate" value="pri">
+				<% } %>
                     <label class="form-check-label" for="flexSwitchCheckChecked">비밀글 설정</label>
                 </div>
             </div>

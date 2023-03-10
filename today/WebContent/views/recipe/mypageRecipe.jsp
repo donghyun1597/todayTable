@@ -294,10 +294,16 @@
                                                    </span>
                                                 </div>
                                              </td>
+
+                                             <td style="width: 25%;" align="center"><img
+                                                src="<%=contextPath%><%=c.getRecipePic()%>"
+                                                style="width: 120px; height: 90px; border-radius: 10px;"></td>
+
                                              <td style="width: 25%;" align="center">
                                              <a href="<%=contextPath%>/recipeView.rc?recipeNo=<%=c.getComNo()%>">
                                              <img src="<%=contextPath + c.getRecipePic()%>"
                                                 style="width: 120px; height: 90px; border-radius: 10px;"></a></td>
+
                                           </tr>
                                        </tbody>
                                     </div>
@@ -353,8 +359,12 @@
                                              </td>
                                              
                                              <td style="width: 25%;" align="center;">
+
+                                                <img src="<%=contextPath%><%= w.getRecipePic() %>" style="width: 120px; height: 90px; border-radius: 10px;">
+
                                              <a href="<%=contextPath%>/recipeView.rc?recipeNo=<%=w.getRecipeName()%>">
                                                 <img src="<%=contextPath+ w.getRecipePic() %>" style="width: 120px; height: 90px; border-radius: 10px;"></a>
+
                                              </td>
 
                                              <td style="width: 70%; padding-top: 20px;">
