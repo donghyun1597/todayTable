@@ -51,7 +51,6 @@
 				<a class="list-group-item list-group-item-action list-group-item-light p-3"	href="<%= contextPath %>/adminNotice.no?cpage=1"><span>공지사항관리</span></a>
 				<a class="list-group-item list-group-item-action list-group-item-light p-3"	href="<%= contextPath %>/adminEvent.ev?cpage=1"><span>이벤트관리</span></a> 
 				<a class="list-group-item list-group-item-action list-group-item-light p-3" href="<%= contextPath %>/adminInquiryForm.iq?cpage=1"><span>문의관리</span></a>
-				<a class="list-group-item list-group-item-action list-group-item-light p-3" href="<%= contextPath %>/adminReportForm.re?cpage=1"><span>신고관리</span></a>
 				<a class="list-group-item list-group-item-action list-group-item-light p-3" href="<%= contextPath %>/adminLogout.me"><span>로그아웃</span></a>
 			</div>
 		</div>

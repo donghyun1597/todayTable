@@ -66,7 +66,7 @@
             
             <table class="notice-area table-active" width="800px" style="border: 3px solid darkgray;">
                 <tr>
-                    <th width="600px" height="50px" style="text-align: center; font-size: 20px;" colspan="3">
+                    <th width="600px" height="100px" style="text-align: center; font-size: 20px;" colspan="3">
                     	<% if(n.getNoticeClsfc().equals("일반")) { %>
                     		<%= n.getNoticeName() %>
                    		<% } else if(n.getNoticeClsfc().equals("긴급")) { %>
@@ -76,12 +76,12 @@
                    	</th>
                 </tr>
                 <tr>
-                    <td width="100px" colspan="3" style="text-align: right;"><%= n.getNoticeDate() %></td>
+                    <td width="100px" height="100px" colspan="3" style="text-align: right;"><%= n.getNoticeDate() %></td>
                     <br><br>
                 </tr>
                 <tr>
-                    <td colspan="3">
-                        <pre><%= n.getNoticeContents() %></pre>
+                    <td colspan="3" height="100px">
+                        <pre style="width: 800px;"><%= n.getNoticeContents() %></pre>
                     </td>
                 </tr>
             </div>

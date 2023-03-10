@@ -41,10 +41,10 @@ public class WirteInquiryController extends HttpServlet {
 		String inqName = request.getParameter("inqName");
 		String inqQuestion = request.getParameter("inqQuestion");
 		String checkPrivate = null;
-		if(request.getParameter("checkPrivate").equals("pri")) {
-			checkPrivate = "Y";
-		}else {
+		if(request.getParameter("checkPrivate") == null) {
 			checkPrivate = "N";
+		}else {
+			checkPrivate = "Y";
 		}
 		HttpSession session = request.getSession();
 		

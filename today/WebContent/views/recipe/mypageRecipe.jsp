@@ -295,7 +295,7 @@
                                                 </div>
                                              </td>
                                              <td style="width: 25%;" align="center"><img
-                                                src="<%=c.getRecipePic()%>"
+                                                src="<%=contextPath%><%=c.getRecipePic()%>"
                                                 style="width: 120px; height: 90px; border-radius: 10px;"></td>
                                           </tr>
                                        </tbody>
@@ -352,7 +352,7 @@
                                              </td>
                                              
                                              <td style="width: 25%;" align="center;">
-                                                <img src="<%= w.getRecipePic() %>" style="width: 120px; height: 90px; border-radius: 10px;">
+                                                <img src="<%=contextPath%><%= w.getRecipePic() %>" style="width: 120px; height: 90px; border-radius: 10px;">
                                              </td>
 
                                              <td style="width: 70%; padding-top: 20px;">
