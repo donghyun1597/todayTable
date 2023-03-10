@@ -251,7 +251,7 @@ public class RecipeDao {
 
 			while (rset.next()) {
 				wlist.add(new MyWishlist(rset.getString("recipe_name"), rset.getString("recipe_pic"),
-						rset.getInt("recipe_views")));
+						rset.getInt("recipe_views"),rset.getInt("recipe_no")));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

@@ -341,7 +341,7 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row" id="latley">
                 <!-- Single Best Receipe Area -->
                 <div class="col-12 col-sm-6 col-lg-4" id="col-510">
                     <div class="single-best-receipe-area mb-30">
@@ -504,6 +504,7 @@
 		                    
 		                }
 		                $("#topRecipe").html(value);
+		                $("#latley").html(value);
 		            },
 		            error : function(){
 		                console.log("ajax 실패!!!");

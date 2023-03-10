@@ -92,7 +92,10 @@
                 <div class="row">
                     <div class="col-12 col-md-8">
                         <div class="receipe-headline my-5">
+
                             
+
+
                             <span><%=recipe.getRecipeDate() %></span>
                             <h2><%=recipe.getRecipeName() %></h2>
                             <div class="receipe-duration" style="text-align:center;">
