@@ -147,7 +147,7 @@
 
 
         <div class="col-md-12" id="recommendSel1">
-        <div style="font-size: 30px; font-weight: 600; padding-top: 20px; float: left; margin-right: 20px;">우리집 냉장고에는</div>
+        <div style="font-size: 30px; font-weight: 600; padding-top: 20px; float: left; margin-right: 20px; padding-left:300px">우리집 냉장고에는</div>
         <div id="recSel1" style="width: 150px; height: 100%; float: left; border-bottom: 2px solid black; padding-bottom: 5px;">
             <select class="form-control">
           
@@ -167,7 +167,7 @@
 
 
 
-      <div class="col-md-12" id="recommendSel2">
+      <div class="col-md-12" id="recommendSel2" style="padding-left:300px;">
         <div id="recSel2" style="width: 150px; height: 100%;  float: left; border-bottom: 2px solid black;" >
             <select class="form-control" style="font-size: 16px; font-weight: 500;"> 
               <option>한국</option>
