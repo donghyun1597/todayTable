@@ -63,14 +63,7 @@
 					<hr>
 					<p>처리대기 중인 문의가 <b><a href="<%= contextPath %>/adminInquiryForm.iq?cpage=1"><%= c.getInquiryCount() %></a></b>건이 있습니다.</p>
 				</div>
-				<div id="bottom-left">
-					<b>신고관리</b>
-					<hr>
-					<p>
-						처리대기 중인 신고가 <b><a href="<%= contextPath %>/adminReportForm.re?cpage=1"><%=c.getReportCount() %></a></b>건이 있습니다. <br>
-						게시글 신고 <b><%= c.getRecipeReportCount() %></b>건, 댓글 신고 <b><%= c.getCommentReportCount() %></b>건
-					</p>
-				</div>
+				
 				<div id="bottom-right">
 					<b>이벤트</b>
 					<hr>

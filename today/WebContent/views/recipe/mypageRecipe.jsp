@@ -15,9 +15,7 @@
    int mycommentCount = clist.size();
 %>
 
-    <script>
-        $('#updateModal').modal('show');
-    </script>
+   
 
 
 <!DOCTYPE html>
@@ -32,6 +30,8 @@
 <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
 <!-- Title -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script defer src="<%=application.getContextPath()%>/resources/js/jquery/jquery-2.2.4.min.js"></script>
 <title>오늘의 식탁</title>
 
 <style>
@@ -162,11 +162,12 @@
 </head>
 
 <body>
+
    <%@ include file="../common/menubar.jsp"%>
+    
 <!-- ----------------------------------------------------------------------------------------------------- -->
    <!-- ##### Breadcumb Area Start ##### -->
-   <div class="breadcumb-area bg-img bg-overlay"
-      style="background-image: url(img/bg-img/breadcumb2.jpg);">
+   <div class="breadcumb-area bg-img bg-overlay" style="background-image: url(img/bg-img/breadcumb2.jpg);">
       <div class="container h-100">
          <div class="row h-100 align-items-center">
             <div class="col-12">
@@ -362,7 +363,7 @@
 
                                                 <img src="<%=contextPath%><%= w.getRecipePic() %>" style="width: 120px; height: 90px; border-radius: 10px;">
 
-                                             <a href="<%=contextPath%>/recipeView.rc?recipeNo=<%=w.getRecipeName()%>">
+                                             <a href="<%=contextPath%>/recipeView.rc?recipeNo=<%=w.getRecipeNo()%>">
                                                 <img src="<%=contextPath+ w.getRecipePic() %>" style="width: 120px; height: 90px; border-radius: 10px;"></a>
 
                                              </td>

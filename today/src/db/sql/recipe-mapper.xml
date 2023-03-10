@@ -100,10 +100,11 @@
 	<!-- 수민: 마이페이지_내가 찜한 목록 조회 -->
 	<entry key="selectWishList">
 		SELECT
-		RECIPE_NAME
+		  R.RECIPE_NO		
+		, RECIPE_NAME
 		, RECIPE_PIC
 		, RECIPE_VIEWS
-		FROM TB_RECIPE
+		FROM TB_RECIPE R
 		JOIN TB_WISHLIST USING (MEM_NO)
 		WHERE MEM_NO = ?
 		AND RECIPE_STATUS = 'Y'
