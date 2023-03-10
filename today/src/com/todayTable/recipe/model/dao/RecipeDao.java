@@ -688,5 +688,132 @@ public class RecipeDao {
 
 
 	}
+	
+	public ArrayList<Recipe> selectRecipeListOrderByView(Connection conn){
+		ArrayList<Recipe> list = new ArrayList<Recipe>();
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("selectRecipeListOrderByView");
+		ResultSet rset = null;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+
+			while (rset.next()) {
+				Recipe r = new Recipe();
+				r.setRecipeNo(rset.getInt("recipe_no"));
+				r.setRecipeName(rset.getString("recipe_name"));
+				r.setRecipeDate(rset.getDate("recipe_date"));
+				r.setRecipeViews(rset.getInt("recipe_views"));
+				r.setRecipePic(rset.getString("recipe_pic"));
+
+				list.add(r);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+
+		System.out.println(list);
+		return list;
+	}
+	
+	public ArrayList<Recipe> searchRecipeName(Connection conn,String search){
+		ArrayList<Recipe> list = new ArrayList<Recipe>();
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("searchRecipeName");
+		ResultSet rset = null;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, search);
+			rset = pstmt.executeQuery();
+
+			while (rset.next()) {
+				Recipe r = new Recipe();
+				r.setRecipeNo(rset.getInt("recipe_no"));
+				r.setRecipeName(rset.getString("recipe_name"));
+				r.setRecipeDate(rset.getDate("recipe_date"));
+				r.setRecipeViews(rset.getInt("recipe_views"));
+				r.setRecipePic(rset.getString("recipe_pic"));
+
+				list.add(r);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+
+		System.out.println(list);
+		return list;
+	}
+	
+	public int increaseView(Connection conn,int recipeNo) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("increaseView");
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, recipeNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+		
+	}
+	public int insertWishlist(Connection conn,int memNo,int recipeNo) {
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertWishlist");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, memNo);
+			pstmt.setInt(2, recipeNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	
+	public int deleteWishlist(Connection conn,int memNo,int recipeNo) {
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("deleteWishlist");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, memNo);
+			pstmt.setInt(2, recipeNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
 
 }

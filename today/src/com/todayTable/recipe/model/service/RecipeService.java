@@ -122,8 +122,15 @@ public class RecipeService {
       list.put("ingredients", ingredients);
       list.put("category", category);
       list.put("cookingOrders", cookingOrders);
-
-
+      
+      int result = new RecipeDao().increaseView(conn,recipeNo);
+      
+      if(result>0) {
+    	  commit(conn);
+      }else {
+    	  rollback(conn);
+      }
+      
       close(conn);
 
       return list;
@@ -236,8 +243,52 @@ public class RecipeService {
 
 
    }
-
-
+   
+   public ArrayList<Recipe> selectRecipeListOrderByView(){
+	   Connection conn = getConnection();
+	   
+	   ArrayList<Recipe> list = new RecipeDao().selectRecipeListOrderByView(conn);
+	   
+	   close(conn);
+	   
+	   return list;
+   }
+   
+   public ArrayList<Recipe> searchRecipeName(String search){
+	   Connection conn = getConnection();
+	   
+	   ArrayList<Recipe> list = new RecipeDao().searchRecipeName(conn,search);
+	   
+	   close(conn);
+	   
+	   return list;
+   }
+   
+   public int insertWishlist(int memNo,int recipeNo) {
+	   Connection conn = getConnection();
+	   
+	   int result = new RecipeDao().insertWishlist(conn, memNo, recipeNo);
+	   
+	   if(result>0) {
+		   commit(conn);
+	   }else {
+		   rollback(conn);
+	   }
+	   return result;
+   }
+   public int deleteWishlist(int memNo,int recipeNo) {
+	   Connection conn = getConnection();
+	   
+	   int result = new RecipeDao().deleteWishlist(conn, memNo, recipeNo);
+	   
+	   if(result>0) {
+		   commit(conn);
+	   }else {
+		   rollback(conn);
+	   }
+	   return result;
+   }
+   
 
 
 

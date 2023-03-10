@@ -358,4 +358,64 @@
 			RECIPE_NO = ?
 
 	</entry>
+	
+	<entry key="searchRecipeName">
+		SELECT
+		  RECIPE_NO
+		, RECIPE_NAME
+		, RECIPE_DATE
+		, RECIPE_VIEWS
+		, RECIPE_PIC
+		FROM TB_RECIPE
+		WHERE RECIPE_NAME LIKE '%'||?||'%'
+		
+	</entry>
+	
+	<entry key="selectRecipeListOrderByView">
+		SELECT
+        RECIPE_NO
+      , RECIPE_NAME
+      , RECIPE_TAG
+      , RECIPE_VIDEO
+      , RECIPE_DIFFICULTY
+      , RECIPE_PERSON
+      , RECIPE_TIME
+      , RECIPE_DATE
+      , MEM_NO
+      , RECIPE_PIC
+      , RECIPE_VIEWS
+    FROM
+        TB_RECIPE
+    WHERE 
+        RECIPE_STATUS = 'Y'
+    ORDER BY
+        RECIPE_VIEWS DESC
+	</entry>
+	<entry key="increaseView">
+		UPDATE
+			    TB_RECIPE
+			SET 
+			    RECIPE_VIEWS = RECIPE_VIEWS+1
+			WHERE
+			    RECIPE_NO = ?
+			AND
+			    RECIPE_STATUS = 'Y'
+	</entry>
+	
+	<entry key="insertWishlist">
+		INSERT INTO
+    TB_WISHLIST
+        (
+         MEM_NO
+        ,RECIPE_NO)
+    VALUES
+        (?,?)
+	</entry>
+	
+	<entry key="deleteWishlist">
+	DELETE TB_WISHLIST
+		WHERE MEM_NO = ?
+		AND RECIPE_NO = ?
+	</entry>
+	
 </properties>

@@ -13,16 +13,16 @@ import com.todayTable.recipe.model.service.RecipeService;
 import com.todayTable.recipe.model.vo.Recipe;
 
 /**
- * Servlet implementation class RecipeOrderByViewController
+ * Servlet implementation class RecipeSearchController
  */
-@WebServlet("/topviews.rc")
-public class RecipeOrderByViewController extends HttpServlet {
+@WebServlet("/search.rc")
+public class RecipeSearchController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public RecipeOrderByViewController() {
+    public RecipeSearchController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,11 +31,15 @@ public class RecipeOrderByViewController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<Recipe> list = new RecipeService().selectRecipeListOrderByView();
+		String search = request.getParameter("search");
+		
+		ArrayList<Recipe> list = new RecipeService().searchRecipeName(search);
 		
 		request.setAttribute("list", list);
 		
 		request.getRequestDispatcher("views/recipe/recipeListView.jsp").forward(request, response);
+		
+		
 	}
 
 	/**

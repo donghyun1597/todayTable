@@ -73,7 +73,7 @@
         </div>
     </div>
     <!-- ##### Breadcumb Area End ##### -->
-
+    
     <div class="receipe-post-area section-padding-80">
 
     
@@ -92,8 +92,7 @@
                 <div class="row">
                     <div class="col-12 col-md-8">
                         <div class="receipe-headline my-5">
-                            <!-- <input type="hidden" name="rNo" value="<%= recipe.getRecipeNo() %>"> -->
-                            <!--  <input type="hidden" name="loginUser" value="<%= loginUser.getMemId() %>"> -->
+                            
                             <span><%=recipe.getRecipeDate() %></span>
                             <h2><%=recipe.getRecipeName() %></h2>
                             <div class="receipe-duration" style="text-align:center;">
@@ -113,11 +112,53 @@
                                 <i class="fa fa-star" aria-hidden="true"></i>
                                 <i class="fa fa-star-o" aria-hidden="true"></i>
                             </div>
-                            <a href="#" class="btn delicious-btn">찜하기</a>
+                            <%if(loginUser!=null){%>
+                                <div id="changeC">
+                            <a href="#" class="btn delicious-btn like_N" id="likeN">찜하기</a>
+                        </div>
+                            <input type="hidden" id="memNo" value=<%=loginUser.getMemNo() %>>
+                            <%} %>
                         </div>
                     </div>
                 </div>
+                <script>
+                    $(function(){
 
+                   
+                    $(document).on("click",".like_N",function(){
+                        if($(this).attr("id")=="likeN"){
+                            $.ajax({
+
+                                url:"insertw.rc",
+                                data:{memNo:$("#memNo").val()
+                                        ,recipeNo:<%=recipe.getRecipeNo()%>},
+                                success:function(){
+                                    $("#changeC").css("background-color","red");
+                                },
+                                error : function(){
+		            	            console.log("ajax 통신 실패!!!");
+		            	        }
+                            })
+                        }else{
+                            $.ajax({
+
+                                url:"insertd.rc",
+                                data:{memNo:$("#memNo").val()
+                                        ,recipeNo:<%=recipe.getRecipeNo()%>},
+                                success:function(){
+                                    $(#changeC).css("background-color","green");
+                                },
+                                error : function(){
+                                    console.log("ajax 통신 실패!!!");
+                                }
+                            })
+                        }
+
+
+                    })
+                })
+
+                </script>
                 <div class="row">
                     <div class="col-12 col-lg-8">
                     	<%for(int i=0;i<cookingOrders.size();i++){ %>

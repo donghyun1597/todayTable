@@ -112,7 +112,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <form action="#" method="post">
+                    <form action="<%=contextPath%>/search.rc" method="get">
                         <input type="search" name="search" placeholder="검색어를 입력해주세요.">
                         <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                     </form>
@@ -298,7 +298,7 @@
                                                         <li><a href="#">랭킹</a>
                                                             <ul class="dropdown">
                                                                 <li><a href="#">인기셰프</a></li>
-                                                                <li><a href="#">인기레시피</a></li>
+                                                                <li><a href="<%=contextPath%>/topviews.rc">인기레시피</a></li>
                                                             </ul>
                                                         </li>
                                                         <li><a href="#">더보기</a>

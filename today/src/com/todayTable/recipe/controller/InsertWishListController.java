@@ -1,8 +1,6 @@
 package com.todayTable.recipe.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,19 +8,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.todayTable.recipe.model.service.RecipeService;
-import com.todayTable.recipe.model.vo.Recipe;
 
 /**
- * Servlet implementation class RecipeOrderByViewController
+ * Servlet implementation class InsertWishListController
  */
-@WebServlet("/topviews.rc")
-public class RecipeOrderByViewController extends HttpServlet {
+@WebServlet("/insertw.rc")
+public class InsertWishListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public RecipeOrderByViewController() {
+    public InsertWishListController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,11 +28,11 @@ public class RecipeOrderByViewController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<Recipe> list = new RecipeService().selectRecipeListOrderByView();
+		int memNo = Integer.parseInt(request.getParameter("memNo"));
+		int recipeNo = Integer.parseInt(request.getParameter("recipeNo"));
 		
-		request.setAttribute("list", list);
-		
-		request.getRequestDispatcher("views/recipe/recipeListView.jsp").forward(request, response);
+		int result = new RecipeService().insertWishlist(memNo, recipeNo);
+		response.getWriter().print(result);
 	}
 
 	/**
