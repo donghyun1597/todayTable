@@ -556,11 +556,13 @@ public class RecipeDao {
 			pstmt = conn.prepareStatement(sql);
 
 			for (int i = 0; i < ingredient.length; i++) {
-				if(i+1==ingredient.length) {
+				if(i+2==ingredient.length) {
 					break;
 				}
 				pstmt.setString(1, ingredient[i]);
+				System.out.println(ingredient[i]);
 				pstmt.setString(2, ingredient[i+1]);
+				System.out.println(ingredient[i]);
 				pstmt.addBatch();
 				pstmt.clearParameters();
 

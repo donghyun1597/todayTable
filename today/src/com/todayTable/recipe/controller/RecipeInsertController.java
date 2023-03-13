@@ -77,7 +77,7 @@ public class RecipeInsertController extends HttpServlet {
 				ingreNum++;
 				
 			}
-			
+			System.out.println(ingreList);
 			ArrayList<CookingOrder> cookList = new ArrayList<CookingOrder>();
 			
 			

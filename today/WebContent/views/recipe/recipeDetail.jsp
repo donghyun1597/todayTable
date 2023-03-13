@@ -117,7 +117,7 @@
                             </div>
                             <%if(loginUser!=null){%>
                                 <div id="changeC">
-                            <a href="#" class="btn delicious-btn like_N" id="likeN">찜하기</a>
+                            <button class="btn delicious-btn like_N" id="likeN">찜하기</button>
                         </div>
                             <input type="hidden" id="memNo" value=<%=loginUser.getMemNo() %>>
                             <%} %>
@@ -127,8 +127,9 @@
                 <script>
                     $(function(){
 
-                   
-                    $(document).on("click",".like_N",function(){
+                   	console.log("asdsadsad")
+                    $(document).on("click","#like_N",function(){
+                    	console.log("2138921738921739qowieuiowqe")
                         if($(this).attr("id")=="likeN"){
                             $.ajax({
 
@@ -137,6 +138,8 @@
                                         ,recipeNo:<%=recipe.getRecipeNo()%>},
                                 success:function(){
                                     $("#changeC").css("background-color","red");
+                                    console.log("asdsads");
+                                    
                                 },
                                 error : function(){
 		            	            console.log("ajax 통신 실패!!!");
@@ -149,7 +152,7 @@
                                 data:{memNo:$("#memNo").val()
                                         ,recipeNo:<%=recipe.getRecipeNo()%>},
                                 success:function(){
-                                    $(#changeC).css("background-color","green");
+                                    $("#changeC").css("background-color","green");
                                 },
                                 error : function(){
                                     console.log("ajax 통신 실패!!!");
@@ -251,7 +254,7 @@
 		$(function(){
 	        selectReplyList();
 	        
-	        setInterval(selectReplyList, 10000);
+	       
 	
 	    })
 	    
